@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Lato:200');
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background-image: url(https://images.unsplash.com/photo-1515254100245-67228492bf65?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=1b058fcd3bdba98711aa240123fca6b8);
+        background-position: center center;
+        background-size: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .animated-box {
+        font-family: 'Lato';
+        color: #ffffff;
+        padding: 30px;
+        text-align: center;
+        border-radius: 4px;
+      }
+
+      .animated-box h1 {
+        font-weight: 200;
+        font-size: 40px;
+        text-transform: uppercase;
+      }
+
+      .animated-box p {
+        font-weight: 200;
+      }
+
+      /* The animation starts here */
+      .animated-box {
+        position: relative;
+      }
+
+      .animated-box:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 10px;
+        background: linear-gradient(120deg, #00f260, #0575e6, #00f260);
+        background-size: 300% 300%;
+        clip-path: polygon(
+          0% 100%,
+          10px 100%,
+          10px 10px,
+          calc(100% - 10px) 10px,
+          calc(100% - 10px) calc(100% - 10px),
+          10px calc(100% - 10px),
+          10px 100%,
+          100% 100%,
+          100% 0%,
+          0% 0%
+        );
+      }
+
+      .animated-box.in:after {
+        animation: frame-enter 1s forwards ease-in-out reverse,
+          gradient-animation 4s ease-in-out infinite;
+      }
+
+      /* motion */
+      @keyframes gradient-animation {
+        0% {
+          background-position: 15% 0%;
+        }
+        50% {
+          background-position: 85% 100%;
+        }
+        100% {
+          background-position: 15% 0%;
+        }
+      }
+
+      @keyframes frame-enter {
+        0% {
+          clip-path: polygon(
+            0% 100%,
+            10px 100%,
+            10px 10px,
+            calc(100% - 10px) 10px,
+            calc(100% - 10px) calc(100% - 10px),
+            10px calc(100% - 10px),
+            10px 100%,
+            100% 100%,
+            100% 0%,
+            0% 0%
+          );
+        }
+        25% {
+          clip-path: polygon(
+            0% 100%,
+            10px 100%,
+            10px 10px,
+            calc(100% - 10px) 10px,
+            calc(100% - 10px) calc(100% - 10px),
+            calc(100% - 10px) calc(100% - 10px),
+            calc(100% - 10px) 100%,
+            100% 100%,
+            100% 0%,
+            0% 0%
+          );
+        }
+        50% {
+          clip-path: polygon(
+            0% 100%,
+            10px 100%,
+            10px 10px,
+            calc(100% - 10px) 10px,
+            calc(100% - 10px) 10px,
+            calc(100% - 10px) 10px,
+            calc(100% - 10px) 10px,
+            calc(100% - 10px) 10px,
+            100% 0%,
+            0% 0%
+          );
+        }
+        75% {
+          -webkit-clip-path: polygon(
+            0% 100%,
+            10px 100%,
+            10px 10px,
+            10px 10px,
+            10px 10px,
+            10px 10px,
+            10px 10px,
+            10px 10px,
+            10px 0%,
+            0% 0%
+          );
+        }
+        100% {
+          -webkit-clip-path: polygon(
+            0% 100%,
+            10px 100%,
+            10px 100%,
+            10px 100%,
+            10px 100%,
+            10px 100%,
+            10px 100%,
+            10px 100%,
+            10px 100%,
+            0% 100%
+          );
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="animated-box in">
+      <h1>Animated border</h1>
+      <p>Without fixed width or static background</p>
+    </div>
+  </body>
+</html>
+<script>
+  
+</script>
