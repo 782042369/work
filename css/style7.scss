@@ -1,0 +1,77 @@
+$htmlfontsize:3.75;
+
+@function pxTorem($px) {
+  //$px为需要转换的字号 
+  @return $px / $htmlfontsize * 1+vw;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: pxTorem(70)
+}
+
+.box {
+  width: pxTorem(70);
+  height: pxTorem(26);
+  position: relative;
+  font-size: pxTorem(7);
+  line-height: pxTorem(26);
+  padding-left: pxTorem(26);
+  box-sizing: border-box;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: pxTorem(70);
+    height: pxTorem(13);
+    left: pxTorem(-6);
+    z-index: -1;
+  }
+
+  &::after {
+    transform: skew(-35deg);
+    bottom: 0px;
+  }
+
+  &::before {
+    transform: skew(35deg);
+    top: 0px;
+
+  }
+}
+
+.box:nth-child(1) {
+
+  &::after,
+  &::before {
+
+    background: red;
+  }
+}
+
+.box:nth-child(2) {
+
+  &::after,
+  &::before {
+    background: pink;
+  }
+}
+
+.box:nth-child(3) {
+
+  &::after,
+  &::before {
+    background: yellowgreen;
+  }
+}
+
+.box:nth-child(4) {
+
+  &::after,
+  &::before {
+    background: greenyellow;
+  }
+}
