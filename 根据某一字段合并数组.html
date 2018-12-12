@@ -6,21 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>根据某一字段合并数组</title>
+  <style>
+    body,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 
 <body>
-
+  <ul id="box"></ul>
+  <ul id="box1"></ul>
 </body>
 
 </html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  let arr = [{
+  const arr = [{
       id: '123a',
       num: 100
     },
     {
       id: '123a',
       num: 200
+    },
+    {
+      id: '123a',
+      num: 2000
     },
     {
       id: '123b',
@@ -56,14 +70,14 @@
   for (let i in arr) {
     let ai = arr[i]
     if (!map[ai.id]) {
-      dest.push({
-        id: ai.id,
-        name: ai.name
-      });
       map[ai.id] = ai
     } else {
-      map[ai.id].num = map[ai.id].num+ ai.num
+      map[ai.id].num = map[ai.id].num + ai.num
     }
   }
-  console.log(map)
+  var html1 = ''
+  for (let i in map) {
+    html1 += `<li>${map[i].id}-${map[i].num}</li>`
+  }
+  $('#box1').html(html1)
 </script>
