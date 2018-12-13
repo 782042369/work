@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  const arr = [4, 2, 7, 5, 6, 0, 8];
+  const sleepSort = function (arr, callback) {
+    let res = [];
+    arr.forEach(item => {
+      setTimeout(() => {
+        res.push(item)
+        // 如果执行完毕，回调
+        if (res.length === arr.length) callback(res);
+      }, item)
+    });
+  }
+  sleepSort(arr, res => {
+    console.log(res)
+  })
+</script>
