@@ -9,20 +9,35 @@
 </head>
 
 <body>
-
 </body>
 
 </html>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  $.ajax({
-    type: 'get',
-    url: 'http://192.168.58.45:3000/123',
-    success: function (data) {
-      console.log(data);
-    },
-    error: function () {
-      console.log('error');
-    }
-  })
+  // setTimeout(() => {
+  //   console.log(1)
+  // }, 0)
+  // let p = new Promise(function (resolve, reject) {
+  //   //做一些异步操作
+  //   console.log(2)
+  //   setTimeout(function () {
+  //     console.log(3)
+  //   }, 0)
+  //   resolve()
+  // })
+  // p.then(function () {
+  //   console.log(4)
+  // })
+  // console.log(5)
+  var foo = function () {
+    var local = 'local var';
+    var bar = function () {
+      var local = 'another var';
+      var baz = function () {
+        console.log(local);
+      };
+      baz();
+    };
+    bar();
+  };
+  foo();
 </script>
