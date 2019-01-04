@@ -1,0 +1,59 @@
+$htmlfontsize:100;
+
+@function pxTorem($px) {
+  //$px为需要转换的字号 
+  @return $px / $htmlfontsize * 1+rem;
+}
+
+html {
+  font-size: 26.6667vw;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.teamNum {
+  width: pxTorem(40);
+  text-align: center;
+  height: pxTorem(40);
+  line-height: pxTorem(40);
+  margin: 50vh auto 0;
+  position: relative;
+  background: #f0f0f0;
+  padding: 0;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: pxTorem(2);
+  }
+
+  &::before {
+    content: '';
+    width: 50%;
+    height: 50%;
+    background:
+      linear-gradient(to left, #000, #000) right top no-repeat,
+      linear-gradient(to bottom, #000, #000) right top no-repeat,
+      linear-gradient(to left, #000, #000) right bottom no-repeat,
+      linear-gradient(to bottom, #000, #000) right bottom no-repeat,
+      linear-gradient(to left, #000, #000) left top no-repeat,
+      linear-gradient(to bottom, #000, #000) left top no-repeat,
+      linear-gradient(to left, #000, #000) left bottom no-repeat,
+      linear-gradient(to bottom, #000, #000) left bottom no-repeat,
+      linear-gradient(to left, #fff, #fff) repeat;
+    background-size: pxTorem(8) pxTorem(2), pxTorem(2) pxTorem(8);
+  }
+
+  &::after {
+    width: 30%;
+    height: pxTorem(2);
+    background: black;
+  }
+}
