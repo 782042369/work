@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #ececec;
+      min-width: 100vw;
+      min-height: 100vh;
+    }
+
+    .box {
+      position: relative;
+      width: 445px;
+      height: 500px;
+      margin: auto;
+    }
+
+    .sjabsolute {
+      position: absolute;
+      z-index: 2;
+    }
+
+    svg polygon {
+      fill: #2e2f3a;
+      stroke: #c8b29b;
+      stroke-width: 3;
+    }
+
+    .sja,
+    .sjc,
+    .sjb {
+      bottom: 24px;
+      height: 220px;
+    }
+
+    .sjc {
+      bottom: 24px;
+      height: 174px;
+    }
+
+    .mirror {
+      transform: scale(-1, 1);
+    }
+
+    .sjf {
+      width: 100%;
+      height: 26px;
+      bottom: 0;
+      background: #000;
+      border: 2px solid #c8b29b;
+    }
+
+    .smallsj polygon {
+      stroke-width: 2;
+    }
+
+    .main {
+      background: #FFF;
+      width: 364px;
+      height: 94%;
+      z-index: 1;
+      left: 50%;
+      transform: translate(-50%);
+      bottom: 0;
+    }
+
+    .sjd {
+      left: 28px;
+      bottom: 218px;
+    }
+
+    .sje {
+      right: 28px;
+      bottom: 218px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <span class="sjabsolute sja">
+      <svg width="445" height="220" version="1" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 0,215 445,215" />
+      </svg>
+    </span>
+    <span class="mirror sjabsolute sjb">
+      <svg width="445" height="220" version="1" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 0,215 445,215" />
+      </svg>
+    </span>
+    <span class="sjabsolute sjc">
+      <svg width="445" height="174" version="1" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="222.5,0 0,171 445,171" />
+      </svg>
+    </span>
+    <span class="smallsj sjabsolute sjd">
+      <svg width="14" height="14" version="1" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="12,0 0,6 12,12" />
+      </svg>
+    </span>
+    <span class="mirror smallsj sjabsolute sje">
+      <svg width="14" height="14" version="1" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="12,0 0,6 12,12" />
+      </svg>
+    </span>
+    <span class="sjabsolute sjf">
+    </span>
+    <span class='sjabsolute main'>
+      <main>50</main>
+    </span>
+  </div>
+</body>
+
+</html>
