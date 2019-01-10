@@ -1,0 +1,79 @@
+$htmlfontsize:100; // 根节点设置 font-size 计算
+
+@function pxTorem($px) {
+  //$px为需要转换的字号 
+  @return $px / $htmlfontsize * 1+rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 13.333333vw; // 375  1rem = 100px 750 设计图 写 26.666667vw;
+}
+
+body {
+  background: #f0f1;
+}
+
+.bg {
+  background-image: url('./css_sprites.png');
+  // background-size: 200);
+  background-size: pxTorem(710) pxTorem(587);
+}
+
+.bg-button {
+  width: pxTorem(320);
+  height: pxTorem(80);
+  background-position: pxTorem(-259) pxTorem(-230);
+}
+
+.bg-tujiabx {
+  width: pxTorem(229);
+  height: pxTorem(188);
+  background-position: pxTorem(-10) pxTorem(-230);
+}
+
+.bg-tujiaclose {
+  width: pxTorem(50);
+  height: pxTorem(50);
+  background-position: pxTorem(-92) pxTorem(-438);
+}
+
+.bg-tujiays {
+  width: pxTorem(221);
+  height: pxTorem(34);
+  background-position: pxTorem(-259) pxTorem(-330);
+}
+
+.bg-tujiazs {
+  width: pxTorem(39);
+  height: pxTorem(27);
+  background-position: pxTorem(-500) pxTorem(-330);
+}
+
+.bg-tujiadg {
+  width: pxTorem(50);
+  height: pxTorem(50);
+  background-position: pxTorem(-162) pxTorem(-438);
+}
+
+.bg-tujiazys {
+  width: pxTorem(58);
+  height: pxTorem(47);
+  background-position: pxTorem(-599) pxTorem(-230);
+}
+
+.bg-tujiaquan {
+  width: pxTorem(690);
+  height: pxTorem(200);
+  background-position: pxTorem(-10) pxTorem(-10);
+}
+
+.bg-nokey {
+  width: pxTorem(62);
+  height: pxTorem(139);
+  background-position: pxTorem(-10) pxTorem(-438);
+}

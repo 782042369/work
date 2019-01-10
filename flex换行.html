@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>换行</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    li {
+      list-style: none;
+      width: 33.3333%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 2%;
+
+    }
+
+    li:nth-child(-n+6) {
+      border-bottom: 1px solid;
+    }
+
+    ul {
+      display: flex;
+      width: 100vw;
+      flex-wrap: wrap;
+      border-bottom: 1px solid;
+
+    }
+
+    li span:nth-child(1) {
+      width: 20px;
+      height: 20px;
+      background: red;
+    }
+
+    li span:nth-child(2) {
+      flex: 1;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <span></span>
+      <span>钱包</span>
+    </li>
+    <li>
+      <span></span>
+      <span>我的钱包</span>
+    </li>
+    <li>
+      <span></span>
+      <span>我的钱包</span>
+    </li>
+    <li>
+      <span></span>
+      <span>我的钱包</span>
+    </li>
+    <li>
+      <span></span>
+      <span>我的钱包</span>
+    </li>
+    <li>
+      <span></span>
+      <span>我的钱包</span>
+    </li>
+    <li>
+      <span></span>
+      <span>我的钱包</span>
+    </li>
+    <li>
+      <span></span>
+      <span>我的钱包</span>
+    </li>
+  </ul>
+  <pre>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+  
+      li {
+        list-style: none;
+        width: 33.3333%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 2%;
+  
+      }
+  
+      li:nth-child(-n+6) {
+        border-bottom: 1px solid;
+      }
+  
+      ul {
+        display: flex;
+        width: 100vw;
+        flex-wrap: wrap;
+        border-bottom: 1px solid;
+  
+      }
+  
+      li span:nth-child(1) {
+        width: 20px;
+        height: 20px;
+        background: red;
+      }
+  
+      li span:nth-child(2) {
+        flex: 1;
+        padding-left: 20px;
+      }
+  </pre>
+</body>
+
+</html>
