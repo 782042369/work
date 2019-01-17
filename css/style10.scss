@@ -1,0 +1,35 @@
+$htmlfontsize:100; // 根节点设置 font-size 计算
+
+@function pxTorem($px) {
+  //$px为需要转换的字号 
+  @return $px / $htmlfontsize * 1+rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 13.333333vw; // 375  1rem = 100px 750 设计图 写 26.666667vw;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+
+body {
+  background-color: black;
+}
+
+h1 {
+  font-size: pxTorem(72);
+  color: white;
+  width: pxTorem(508);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 6s steps(7);
+}
