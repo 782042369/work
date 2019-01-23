@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="https://cdn.bootcss.com/pixi.js/4.8.5/pixi.min.js"></script>
+<script type="text/javascript">
+  // renderer = new PIXI.CanvasRenderer(256, 256); 强制 canvas
+  // renderer = new PIXI.WebGLRenderer(256, 256); 强制 webgl
+  //Create the renderer
+  var renderer = PIXI.autoDetectRenderer(
+    512, 512, {
+      antialias: false, // antialias抗锯齿
+      transparent: false, // 让canvas背景透明
+      resolution: 1 // resolution能使在不同分辨率和像素密度的显示器上工作起来更简单
+    }
+  );
+  renderer.view.style.position = "absolute";
+  renderer.view.style.display = "block";
+  renderer.autoResize = true;
+  renderer.resize(window.innerWidth, window.innerHeight);
+  //Add the canvas to the HTML document
+  document.body.appendChild(renderer.view);
+
+  //Create a container object called the `stage`
+  var stage = new PIXI.Container();
+
+  //Tell the `renderer` to `render` the `stage`
+  renderer.render(stage);
+</script>
