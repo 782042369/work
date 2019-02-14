@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      line-height: 32px;
+      background: red;
+    }
+
+    .a>span {
+      font-size: 24px;
+    }
+
+    .box>span {
+      background: yellow;
+      line-height: 36px;
+    }
+
+    .verticalbox {
+      line-height: 32px;
+    }
+
+    .verticalbox>span {
+      font-size: 24px;
+      vertical-align: top;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box a">
+    <span>1</span>
+  </div>
+  <div class="box">
+    <span>2</span>
+  </div>
+  <div class="verticalbox"> x<span>文字 x</span>
+  </div>
+  <pre>
+  .box {
+    line-height: 32px;
+    background: red;
+  }
+
+  .a>span {
+    font-size: 24px;
+  }
+
+  .box>span {
+    background: yellow;
+    line-height: 36px;
+  }
+  </pre>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html {
+      overflow-y: scroll;
+    }
+
+    :root {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    :root body {
+      position: absolute;
+    }
+
+    body {
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, .3);
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #ddd;
+      border-radius: 6px;
+    }
+
+    .box {
+      height: 200vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+
+</html>
