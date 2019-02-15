@@ -1,0 +1,72 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2018-12-28 11:12:59
+ * @Description: part5
+ */
+.section:nth-of-type(5) {
+  .fp-tableCell {
+    background-image: url(../images/part5/1.jpg);
+    background-size: cover;
+    background-position: top center;
+
+    .txtbox {
+      width: 490px;
+      padding-top: 264px;
+      line-height: 80px;
+      margin-left: 60px;
+      text-align: left;
+    }
+
+    &>img:nth-of-type(1) {
+      left: 0;
+      width: 100%;
+      height: 366px;
+      bottom: 0;
+      z-index: 10000;
+
+    }
+
+    &>img:nth-of-type(2) {
+      left: 0;
+      width: 100%;
+      height: 580px;
+      bottom: 0;
+      z-index: 10000;
+    }
+
+    &>img:nth-of-type(3) {
+      left: 0;
+      width: 100%;
+      height: 518px;
+      bottom: 0;
+      z-index: 10003;
+    }
+
+    &>img:nth-of-type(4) {
+      height: 144px;
+      right: 180px;
+      bottom: 340px;
+      z-index: 10002;
+    }
+
+    &>img:nth-of-type(5) {
+      height: 74px;
+      left: -280px;
+      bottom: 320px;
+      z-index: 10002;
+    }
+  }
+}
+
+.fp-completely.section:nth-of-type(5) {
+  .fp-tableCell {
+
+    &>img:nth-of-type(1),
+    &>img:nth-of-type(2),
+    &>img:nth-of-type(3) {
+      animation: part5key1 3s ease-in infinite;
+    }
+  }
+}

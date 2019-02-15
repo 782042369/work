@@ -1,0 +1,184 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-21 17:15:16
+ * @Description: part9
+ */
+$imgurl: 'https://static.ruubypay.com/activities-v2/images/the-wandering-earth';
+
+.share {
+  height: 100vh;
+  width: 100vw;
+  padding-top: 60vh;
+  opacity: 0;
+
+
+  ul {
+    line-height: 100px;
+    height: 100px;
+    height: 100px;
+    width: 533px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+
+    }
+
+    &::after {
+      height: 76px;
+      right: 183px;
+      width: 6px;
+      background: #FF9F3B;
+      z-index: 5;
+    }
+
+    &::before {
+      height: 152px;
+      right: 184px;
+      width: 2px;
+      border-right: 1px dashed #fff;
+      /*no*/
+      z-index: 6;
+      transform-origin: 0 0;
+      transform: scale(0.5);
+      top: 10px;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      height: 100%;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        transform-origin: 0 0;
+        transform: scale(0.5);
+        border: 1px solid #fff;
+        /*no*/
+        z-index: 1;
+        border-radius: 20px;
+      }
+
+      span {
+        text-align: center;
+        color: #FFFFFF;
+      }
+    }
+
+    li:nth-child(1) {
+      flex-direction: column;
+      background: #FF9F3B;
+      flex: 1;
+
+      span:nth-child(1) {
+        font-size: 28.8px;
+        line-height: 28px;
+      }
+
+      span:nth-child(2) {
+        font-size: 14px;
+        line-height: 27.2px;
+      }
+    }
+
+    li:nth-child(2) {
+      width: 186px;
+      background: #FF9F3B;
+
+
+      span {
+        font-size: 23px;
+        color: #FF9F3B;
+        line-height: 40px;
+        background: #fff;
+        width: 153px;
+        height: 40px;
+        border-radius: 20px;
+
+      }
+    }
+  }
+
+  main {
+
+    &>span:nth-of-type(1) {
+      margin-top: 60px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.30);
+      border-radius: 10px;
+      font-size: 28.8px;
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 80px;
+      height: 80px;
+      width: 533px;
+      background: #F3736C;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        transform-origin: 0 0;
+        transform: scale(0.5);
+        border: 1px solid #fff;
+        /*no*/
+        z-index: -1;
+        border-radius: 20px;
+      }
+    }
+  }
+
+  .zhidao {
+    position: fixed;
+    z-index: 100000;
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.60);
+    background-image: url('../images/arrow.png');
+    background-repeat: no-repeat;
+    background-size: 124px 116px;
+    background-position: 586px 32px;
+
+    img {
+      width: 276px;
+      height: 46px;
+      position: absolute;
+      top: 174px;
+      right: 26px;
+    }
+  }
+
+}
+
+.guodu.share {
+  animation: partcommonkey6 1.96s cubic-bezier(0.33, 0, 0.67, 1);
+  opacity: 1;
+}
+
+.Load.share {
+  background: url($imgurl+'/earth-haibao.jpeg') no-repeat center center;
+  background-size: 100% 100%;
+}

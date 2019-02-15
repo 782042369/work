@@ -1,0 +1,83 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-05 13:21:08
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-08 15:31:04
+ * @Description: 钥匙奖励区
+ */
+@import './mixin.scss'; // 变量
+
+.reward {
+  .noway {
+    background: #A1EAFF;
+    border-radius: 10px;
+    height: 210px;
+    font-size: 28px;
+    color: #333333;
+    line-height: 210px;
+    text-align: center;
+  }
+
+  li+li {
+    margin-top: 20px;
+  }
+
+  .has {
+    width: 100%;
+    display: flex;
+    background: url('../images/tujiaquan.png') center center no-repeat;
+    background-size: contain;
+    align-items: center;
+  }
+
+  p {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 36px 0 0 40px;
+    height: 200px;
+
+    span {
+      font-family: PingFang-SC-Bold;
+      font-size: 36px;
+      color: #000000;
+      line-height: 36px;
+      height: 36px;
+    }
+
+    em,
+    i {
+      font-size: 24px;
+      color: #666666;
+      line-height: 24px;
+    }
+
+    em {
+      margin-bottom: 42px;
+      margin-top: 10px;
+    }
+  }
+
+  button {
+    height: 52px;
+    width: 160px;
+    margin: 0 15px;
+    color: #fff;
+    background: transparent;
+    font-size: 32px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      transform-origin: 0 0;
+      transform: scale(.5);
+      border: 1px solid #FFFFFF;
+      /*no*/
+      border-radius: 70px;
+    }
+  }
+}
