@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    a {
+      color: #34538b;
+    }
+
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+
+    input {
+      outline: none;
+    }
+
+    .search-box {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .search-input {
+      width: 200px;
+      height: 20px;
+      line-height: 20px;
+      padding: 9px 39px 9px 9px;
+      border: 1px solid #ddd;
+    }
+
+    .search-btn {
+      width: 20px;
+      height: 20px;
+      border: 9px solid #fff;
+      background: #ddd;
+      position: absolute;
+      margin: 1px 0 0 -40px;
+    }
+
+    .search-datalist {
+      position: absolute;
+      width: 248px;
+      border: 1px solid #e6e8e9;
+      background-color: #fff;
+    }
+
+    .search-result {
+      display: none;
+    }
+
+    .search-datalist a {
+      display: block;
+      line-height: 36px;
+      padding-left: 12px;
+      color: #5e5e5e;
+      text-decoration: none;
+    }
+
+    .search-input:focus~.search-result {
+      display: block;
+    }
+
+    .regist-box { 
+      width: 356px; 
+      margin-left: auto; margin-right: auto; 
+    }
+    .regist-warn { 
+      padding-left: 16px; 
+      color: #be0000; 
+    }
+    .icon-warn {  
+        position: absolute; 
+        margin-left: -18px; 
+        width: 16px; height: 20px; 
+    }
+    .regist-label {
+      width: 70px;
+      padding-top: 10px;
+      float: left;
+    }
+    .regist-input {
+      height: 20px;
+      line-height: 20px;
+      width: 260px;
+      padding: 9px 5px;
+      border: 1px solid #d0d6d9;
+      vertical-align: top;
+    }
+    .regist-star { 
+      position: absolute; 
+      margin-left: -1em; 
+      font-family: simsun; 
+      color: #f30; 
+    }
+    .regist-remark { 
+      position: absolute; 
+      margin: 10px 0 0 10px;
+      color: #666;
+    }
+    .regist-btn {
+      display: block;
+      width: 160px;
+      line-height: 40px;
+      background-color: #be0000;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+    }
+    .regist-group {
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .regist-cell {
+      display: table-cell;
+      *display: inline-block;
+    }
+
+    .regist-remark {
+      position: absolute;
+      margin: 10px 0 0 10px;
+      color: #666;
+      visibility: hidden;
+    }
+    .regist-warn {
+      padding-left: 16px;
+      color: #be0000;
+    }
+    .regist-input:focus + .regist-remark, .focus + .regist-remark {
+      visibility: visible;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="search-box">
+    <input class="search-input" placeholder="搜索"><a href="javascript:" class="search-btn"></a>
+    <div class="search-result">
+      <div class="search-datalist">
+        <a href>搜索结果1</a>
+        <a href>搜索结果2</a>
+        <a href>搜索结果3</a>
+        <a href>搜索结果4</a>
+        <a href>搜索结果5</a>
+      </div>
+    </div>
+  </div>
+  <div class="regist-box">
+    <div class="regist-group">
+      <label class="regist-label"><span class="regist-star">*</span>邮箱</label>
+      <div class="regist-cell">
+        <input type="email" class="regist-input"><span class="regist-remark regist-warn">
+          <i class="icon-warn"></i>邮箱格式不准确（示意）
+        </span>
+      </div>
+    </div>
+    <div class="regist-group">
+      <label class="regist-label"><span class="regist-star">*</span>密码</label>
+      <div class="regist-cell">
+        <input type="password" class="regist-input"><span class="regist-remark">
+          请输入6-16位密码，不能使用空格
+        </span>
+      </div>
+    </div>
+    <div class="regist-group">
+      <label class="regist-label">手机号码</label>
+      <div class="regist-cell">
+        <input type="tel" class="regist-input">
+      </div>
+    </div>
+    <div class="regist-group">
+      <i class="regist-label"></i>
+      <div class="regist-cell">
+        <a href="javascript:" class="regist-btn">立即注册</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
