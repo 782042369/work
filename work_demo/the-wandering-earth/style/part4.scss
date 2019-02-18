@@ -1,0 +1,55 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-17 10:44:21
+ * @Description: part4
+ */
+$imgurl: 'https://static.ruubypay.com/activities-v2/images/the-wandering-earth';
+
+.part:nth-of-type(4) {
+	display: flex;
+	align-items: center;
+	width: 200vw;
+
+	.ani-item:nth-of-type(1) {
+		padding-top: 366px;
+	}
+
+	.ani-item:nth-of-type(2) {
+		padding-top: 766px;
+		transition: all 1s;
+	}
+}
+
+.plane {
+	position: absolute;
+	background: url($imgurl+'/earth-4.png') no-repeat center center;
+	background-size: contain;
+	width: 700px;
+	height: 1160px;
+	transform: scale(0.47);
+	animation: partcommonkey2 5.2s cubic-bezier(0.33, 0, 0.67, 1);
+
+}
+
+.planend {
+	transform: rotate(10deg);
+	top: -70px;
+	left: 960px;
+	width: 220px;
+	animation: partcommonkey1 2s cubic-bezier(0.33, 0, 0.67, 1);
+	opacity: 0;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 10px;
+		top: 420px;
+		background: url($imgurl+'/earth-3.png') no-repeat;
+		width: 198px;
+		height: 258px;
+		background-size: contain;
+		transform: rotate(-10deg);
+	}
+}

@@ -1,0 +1,24 @@
+.laoding {
+  z-index: 11111;
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  flex-direction: column;
+
+  img {
+    width: 200px;
+    height:
+      200px;
+    animation: partcommonkey5 1.96s cubic-bezier(0.33, 0, 0.67, 1) infinite;
+    transform-origin: 50%, 50%;
+  }
+
+  em {
+    margin-top: 20px;
+  }
+}

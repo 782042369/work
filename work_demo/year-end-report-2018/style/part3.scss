@@ -1,0 +1,77 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2018-12-29 11:29:57
+ * @Description: part3
+ */
+.section:nth-of-type(3) {
+  .fp-tableCell {
+    &>img:nth-of-type(1) {
+      height: 228px;
+      top: 610px;
+    }
+
+    .txtbox {
+      padding-top: 190px;
+    }
+
+    &>img:nth-of-type(2) {
+      height: 360px;
+      right: 90px;
+      top: 540px;
+      opacity: 0;
+    }
+
+    &>img:nth-of-type(3) {
+      width: 180px;
+      left: 80px;
+      top: 360px;
+    }
+
+    .icon-box {
+      opacity: 0.6;
+    }
+
+    .icon-box:nth-of-type(1) {
+      background-image: url(../images/common/icon-yun3.png);
+      height: 50px;
+      width: 116px;
+      top: 94px;
+      left: 219px;
+    }
+
+    .icon-box:nth-of-type(2) {
+      background-image: url(../images/common/icon-yun2.png);
+      height: 124px;
+      width: 386px;
+      top: 380px;
+      right: -120px;
+    }
+
+    .icon-box:nth-of-type(3) {
+      background-image: url(../images/common/icon-yun5.png);
+      height: 40px;
+      width: 150px;
+      top: 510px;
+      left: 220px;
+    }
+
+    .icon-box:nth-of-type(4) {
+      background-image: url(../images/common/icon-yun4.png);
+      height: 78px;
+      width: 244px;
+      top: 230px;
+      left: -168px;
+    }
+  }
+}
+
+.fp-completely.section:nth-of-type(3) {
+  .fp-tableCell {
+    &>img:nth-of-type(2) {
+      animation: part3key1 1s ease-in-out;
+      opacity: 1;
+    }
+  }
+}

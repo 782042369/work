@@ -1,0 +1,81 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2018-12-29 11:32:02
+ * @Description: part4
+ */
+.section:nth-of-type(4) {
+  .fp-tableCell {
+    background-image: url(../images/part4/1.png);
+    background-size: 788px 314px;
+    background-position: 0 440px;
+
+    .txtbox {
+      padding-top: 144px;
+      margin-left: 60px;
+      text-align: left;
+    }
+
+    &>img:nth-of-type(1) {
+      height: 86px;
+      left: -804px;
+      top: 736px;
+      z-index: 1000;
+    }
+
+    hr {
+      margin: 0;
+      top: 820px;
+      z-index: 100;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 18px;
+      border: solid #BC4A4A;
+      border-top-width: 12px;
+      border-bottom-width: 4px;
+      border-left-width: 0;
+      border-right-width: 0;
+      background: #FFF7EF;
+      padding: 2px 0;
+    }
+
+    .icon-box {
+      opacity: 0.8;
+    }
+
+    .icon-box:nth-of-type(1) {
+      background-image: url(../images/common/icon-yun4.png);
+      height: 36px;
+      width: 112px;
+      top: 530px;
+      left: 32px;
+    }
+
+    .icon-box:nth-of-type(2) {
+      background-image: url(../images/common/icon-yun1.png);
+      height: 40px;
+      width: 112px;
+      top: 388px;
+      right: 124px;
+    }
+
+    .icon-box:nth-of-type(3) {
+      background-image: url(../images/common/icon-yun3.png);
+      height: 22px;
+      width: 54px;
+      top: 450px;
+      left: 260px;
+    }
+  }
+}
+
+.fp-completely.section:nth-of-type(4) {
+  .fp-tableCell {
+    &>img:nth-of-type(1) {
+      animation: part4key1 5s linear infinite;
+    }
+  }
+}
+// 适配x

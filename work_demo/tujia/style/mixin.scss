@@ -1,0 +1,14 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-04 13:14:21
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-04 15:40:21
+ * @Description: 常用
+ */
+
+@mixin center($top:-50%) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, $top, 0);
+}
