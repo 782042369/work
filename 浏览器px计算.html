@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      height: 20px;
+      background: red;
+    }
+
+    .box:nth-child(1) {
+      width: 20.1px;
+    }
+
+    .box:nth-child(2) {
+      width: 20.2px;
+
+    }
+
+    .box:nth-child(3) {
+      width: 20.3px;
+
+    }
+
+    .box:nth-child(4) {
+      width: 20.4px;
+
+    }
+
+    .box:nth-child(5) {
+      width: 20.5px;
+
+    }
+
+    .box:nth-child(6) {
+      width: 20.6px;
+
+    }
+
+    .box:nth-child(7) {
+      width: 20.7px;
+
+    }
+
+    .box:nth-child(8) {
+      width: 20.8px;
+
+    }
+
+    .box:nth-child(9) {
+      width: 20.9px;
+
+    }
+
+    img {
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+  <div class="box">6</div>
+  <div class="box">7</div>
+  <div class="box">8</div>
+  <div class="box">9</div>
+  <div>
+    <img src="./img/火狐.jpg" alt="">
+    火狐
+  </div>
+  <div>
+    <img src="./img/谷歌.jpg" alt="">
+    谷歌
+  </div>
+  <div>
+    <img src="./img/ios微信.jpeg" alt="">
+    ios微信
+  </div>
+</body>
+
+</html>
+<script>
+  let a = document.getElementsByClassName('box');
+  for (let i in a) {
+    console.log('a ' + i, a[i].offsetWidth);
+  }
+  // a.forEach(function (element, index, array) {
+  //   console.log(element, index, array);
+  // });
+</script>

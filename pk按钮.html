@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pk-progress {
+      width: 670px;
+      min-height: 60px;
+      border-radius: 100px;
+      padding: 14px 45px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 12px rgba(255, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    .pk {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    .pk.pk-our {
+      right: 50%;
+      background: linear-gradient(0deg, #ee0037 2%, #ff355d 100%) 0 0, linear-gradient(0deg, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0) 100%) 100% 0;
+      background-repeat: no-repeat;
+      background-size: calc(110% - 80px) 100%, 160px 100%;
+      z-index: 3;
+      border-radius: 100px 0 0 100px;
+    }
+
+    .pk.pk-our::before {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: -2px;
+      bottom: -2px;
+      width: 160px;
+      background: linear-gradient(0deg, #ee0037 2%, #ff355d 100%) no-repeat;
+      transform: skew(-26deg);
+    }
+
+    .pk.pk-opposite {
+      left: 20%;
+      background: linear-gradient(-180deg, #3f9ffc 0%, #2f3ffc 100%) 100% 0, linear-gradient(0deg, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0) 100%) 0 0;
+      background-repeat: no-repeat;
+      background-size: calc(110% - 80px) 100%, 160px 100%;
+      z-index: 2;
+      border-radius: 0 100px 100px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pk-progress">
+    <div class="pk pk-our"></div>
+    <div class="pk pk-opposite"></div>
+  </div>
+</body>
+
+</html>
