@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 50px;
+      height: 40px;
+      background: pink;
+      position: absolute;
+      right: 0;
+      top: 40px;
+      animation: ani 2s ease-in-out;
+    }
+
+    @keyframes ani {
+
+      0%,
+      80% {
+        right: 20px;
+        top: 40px;
+        transform: rotate(0);
+        transform-origin: center center;
+      }
+
+      50% {
+        top: 100px;
+        transform: rotate(90deg);
+        transform-origin: center center;
+      }
+
+      100% {
+        right: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+
+</html>
