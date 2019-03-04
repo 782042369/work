@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // function foo() {
+  //   // 返回一个箭头函数 
+  //   console.log('this: ', this);
+  //   return (a) => {
+  //     //this 继承自 foo()
+  //     console.log(this.a);
+  //   };
+  // }
+  // var obj1 = {
+  //   a: 2
+  // };
+  // var obj2 = {
+  //   a: 3
+  // };
+  // var bar = foo.call(obj1);
+  // bar.call(obj2); // 2, 不是 3 !
+  /************************/
+
+  function foo() {
+    setTimeout(() => {
+      // 这里的 this 在此法上继承自 foo()
+      console.log(this.a);
+    }, 100);
+  }
+  var obj = {
+    a: 2
+  };
+  foo.call(obj); // 2
+</script>
