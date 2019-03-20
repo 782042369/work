@@ -14,27 +14,21 @@
 
 </html>
 <script>
-  // let count = 1000;
-  // let array = new Array();
-  // const suiji = (count) => {
-  //   let rand = parseInt(Math.random() * count);
-  //   for (let i = 0; i < array.length; i++) {
-  //     if (array[i] === rand) return false;
-  //   }
-  //   array.push(rand);
-  // }
-  // for (let i = 0;; i++) {
-  //   if (array.length < count) {
-  //     suiji(count)
-  //   } else {
-  //     break;
-  //   }
-  // }
-  // console.log('array: ', array);
-  for (let i = 0; i < 5; i++) {
-    setTimeout(function () {
-      console.log(i)
-    }, 1)
+  let count = 1000;
+  let array = new Array();
+  const suiji = (count) => {
+    let rand = parseInt(Math.random() * count);
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === rand) return false;
+    }
+    array.push(rand);
   }
-  console.log(i)
+  for (let i = 0;; i++) {
+    if (array.length < count) {
+      suiji(count)
+    } else {
+      break;
+    }
+  }
+  console.log('array: ', array);
 </script>
