@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // function add(xPromise, yPromise) {
+  //   console.log('yPromise: ', yPromise);
+  //   console.log('xPromise: ', xPromise);
+  //   // Promise.all([ .. ])接受一个promise数组并返回一个新的promise， // 这个新promise等待数组中的所有promise完成
+  //   return Promise.all([xPromise, yPromise])
+  //     // 这个promise决议之后，我们取得收到的X和Y值并加在一起 
+  //     .then(function (values) {
+  //       // values是来自于之前决议的promisei的消息数组
+  //       return values[0] + values[1];
+  //     });
+  // }
+  // // fetchX()和fetchY()返回相应值的promise，可能已经就绪， // 也可能以后就绪
+  // add(fetchX(), fetchY())
+  //   // 我们得到一个这两个数组的和的promise
+  //   // 现在链式调用 then(..)来等待返回promise的决议 
+  //   .then(function (sum) {
+  //     console.log(sum); // 这更简单! 
+  //   });
+
+
+  // var p3 = new Promise(function (resolve, reject) {
+  //   resolve("B");
+  // });
+  // var p1 = new Promise(function (resolve, reject) {
+  //   resolve(p3);
+  // });
+  // p2 = new Promise(function (resolve, reject) {
+  //   resolve("A");
+  // });
+  // p1.then(function (v) {
+  //   console.log(v);
+  // });
+  // p2.then(function (v) {
+  //   console.log(v);
+  // });
+
+  // var p = new Promise(function (resolve, reject) {
+  //   foo.bar(); // foo未定义，所以会出错! 
+  //   resolve(42); // 永远不会到达这里 :(
+  // });
+  // p.then(
+  //   function fulfilled(res) {
+  //     console.log('res: ', res);
+  //     // 永远不会到达这里 :( 
+  //   },
+  //   function rejected(err) {
+  //     console.log('err: ', err);
+  //     // err将会是一个TypeError异常对象来自foo.bar()这一行
+  //   });
+
+  // var p1 = new Promise(function (resolve, reject) {
+  //   resolve(42);
+  // });
+  // var p2 = Promise.resolve(42);
+  // console.log('p1: ', p1);
+  // console.log(' p2: ', p2);
+
+  // function delay(time) {
+  //   return new Promise(function (resolve, reject) {
+  //     setTimeout(resolve, time);
+  //   });
+  // }
+  // delay(100) // 步骤1
+  //   .then(function STEP2() {
+  //     console.log("step 2 (after 100ms)");
+  //     return delay(200);
+  //   })
+  //   .then(function STEP3() {
+  //     console.log("step 3 (after another 200ms)");
+  //   })
+  //   .then(function STEP4() {
+  //     console.log("step 4 (next Job)");
+  //     return delay(50);
+  //   })
+  //   .then(function STEP5() {
+  //     console.log("step 5 (after another 50ms)");
+  //   })
+  var p = Promise.resolve( 42 );
+  p.then(
+    function fulfilled(msg){
+// 数字没有string函数，所以会抛出错误
+      console.log( msg.toLowerCase() );
+    })
+    .done( null, handleErrors );
+</script>

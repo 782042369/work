@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  function foo(a = 42, b = a + 1) {
+    console.log('.........');
+    console.log('arguments.length: ', arguments.length);
+    console.log('a: ', a);
+    console.log('b: ', b);
+    console.log('arguments: ', arguments);
+    console.log('.........');
+  }
+  foo();
+  foo(10);
+  foo(10, undefined);
+  foo(10, null);
+  // 0 42 43 undefined undefined
+  // 1 10 11 10 undefined
+  // 2 10 11 10 undefined
+  // 2 10 null 10 null
+</script>
