@@ -93,6 +93,7 @@
     }
   };
   Bar = Object.create(Foo);
+  console.log('Bar: ', Bar);
   Bar.speak = function () {
     console.log("Hello, " + this.identify() + ".");
   };
@@ -102,4 +103,6 @@
   b2.init("b2");
   b1.speak();
   b2.speak();
+
+  
 </script>
