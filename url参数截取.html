@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  function getParameterByName(name, urlparams) {
+    let url = urlparams || window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    let results = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)").exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+  getParmas = (URL = window.location.href) => {
+    const params = URL.split('?')[1].split('&');
+    const paramJson = {};
+    params.forEach(item => {
+      const value = item.split('=');
+      paramJson[value[0]] = value[1];
+    });
+    return paramJson;
+  }
+</script>

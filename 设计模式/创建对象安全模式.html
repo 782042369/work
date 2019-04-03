@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // 忘记new
+  // let Book = function (title, time, type) {
+  //   this.title = title;
+  //   this.time = time;
+  //   this.type = type;
+  // }
+  // let book = Book('javascript', '2019', 'js');
+  // console.log('book: ', book);
+  // console.log('book: ', window.title);
+  // console.log('book: ', window.time);
+  // console.log('book: ', window.type);
+
+  let Book = function (title, time, type) {
+    if (this instanceof Book) {
+      this.title = title;
+      this.time = time;
+      this.type = type;
+    } else {
+      return new Book(title, time, type);
+    }
+  }
+  let book = Book('javascript', '2019', 'js');
+  console.log('book: ', book);
+  console.log('window: ', window.title);
+  console.log('window: ', window.time);
+  console.log('window: ', window.type);
+  console.log('book: ', book.title);
+  console.log('book: ', book.time);
+  console.log('book: ', book.type);
+
+  
+</script>

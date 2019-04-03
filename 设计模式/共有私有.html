@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // let Book = function (id, name, price) {
+  //   // 私有属性
+  //   let num = 1;
+  //   // 私有方法
+  //   function checkid() {
+
+  //   };
+  //   // 特权方法
+  // this.setName = function (name) {
+  //   console.log('name: ', name);
+  // };
+  // this.setPrice = function (price) {
+  //   console.log('price: ', price);
+  // };
+  //   // 对象公有属性
+  //   this.id = id;
+  //   // 对象公有方法
+  //   this.copy = function () {};
+  //   // 构造器
+  //   this.setName(name);
+  //   this.setPrice(price);
+  // }
+  // Book.prototype = {
+  //   isJsbook: false,
+  //   display() {}
+  // }
+
+  // 闭包
+  let Book = (function () {
+    // 静态私有变量
+    let booknum = 0;
+    // 静态私有方法
+    function checkbook() {};
+
+    function _book(nweId, newName, newPrice) {
+      // 私有变量
+      let name, price;
+      // 私有方法
+      function checkId(id) {};
+      // 特权方法
+      this.setName = function (name) {
+        console.log('setName: ', name);
+      };
+      this.setPrice = function (price) {
+        console.log('setPrice: ', price);
+      };
+      // 对象公有属性
+      this.id = nweId;
+      // 对象公有方法
+      this.copy = function () {};
+      // 构造器
+      this.setName(newName);
+      this.setPrice(newPrice);
+    }
+    _book.prototype = {
+      // 静态公有变量
+      isJsbook: false,
+      // 静态公有方法
+      display() {}
+    }
+    return _book;
+  })()
+  // 私有
+  Book.isChinese = true;
+  Book.resetTime = function () {
+    console.log('Book.resetTime: ', new Date());
+  };
+  console.log('Book.isChinese: ', Book.isChinese);
+  Book.resetTime();
+  let jsbook = new Book(1, 'js', 30);
+  console.log('jsbooknum', jsbook.num);
+  console.log('jsbookisJsbook: ', jsbook.isJsbook);
+  console.log('jsbookid', jsbook.id);
+  console.log('jsbookisChinese', jsbook.isChinese);
+</script>
