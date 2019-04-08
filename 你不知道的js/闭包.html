@@ -6,10 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    div:nth-child(3n+1) {
+      background: red;
+    }
+  </style>
 </head>
 
 <body>
-
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
 </body>
 
 </html>
@@ -161,48 +175,68 @@
   // foo.change();
   // foo.identify(); // FOO MODULE
   /************************/
-  var MyModules = (function Manager() {
-    var modules = {};
+  //   var MyModules = (function Manager() {
+  //     var modules = {};
 
-    function define(name, deps, impl) {
-      for (var i = 0; i < deps.length; i++) {
-        deps[i] = modules[deps[i]];
-      }
-      modules[name] = impl.apply(impl, deps);
-    }
+  //     function define(name, deps, impl) {
+  //       for (var i = 0; i < deps.length; i++) {
+  //         deps[i] = modules[deps[i]];
+  //       }
+  //       modules[name] = impl.apply(impl, deps);
+  //     }
 
-    function get(name) {
-      return modules[name];
-    }
-    return {
-      define: define,
-      get: get
+  //     function get(name) {
+  //       return modules[name];
+  //     }
+  //     return {
+  //       define: define,
+  //       get: get
+  //     };
+  //   })();
+
+  //   MyModules.define("bar", [], function () {
+  //     function hello(who) {
+  //       return "Let me introduce: " + who;
+  //     }
+  //     return {
+  //       hello: hello
+  //     };
+  //   });
+  //   MyModules.define("foo", ["bar"], function (bar) {
+  //     var hungry = "hippo";
+
+  //     function awesome() {
+  //       console.log(bar.hello(hungry).toUpperCase());
+  //     }
+  //     return {
+  //       awesome: awesome
+  //     };
+  //   });
+  //   var bar = MyModules.get("bar");
+  //   console.log('bar: ', bar);
+  //   var foo = MyModules.get("foo");
+  //   console.log('foo: ', foo);
+  //   console.log(
+  //     bar.hello("hippo")
+  //   ); // Let me introduce: hippo foo.awesome(); // LET ME INTRODUCE: HIPPO
+
+  let a1 = 1;
+  let b1 = 1;
+
+  function sample() {
+    let a = {
+      a: a1++
     };
-  })();
-
-  MyModules.define("bar", [], function () {
-    function hello(who) {
-      return "Let me introduce: " + who;
-    }
-    return {
-      hello: hello
+    let b = {
+      b: b1++
     };
-  });
-  MyModules.define("foo", ["bar"], function (bar) {
-    var hungry = "hippo";
-
-    function awesome() {
-      console.log(bar.hello(hungry).toUpperCase());
-    }
+    a.prop = b;
+    b.prop = a;
     return {
-      awesome: awesome
-    };
-  });
-  var bar = MyModules.get("bar");
-  console.log('bar: ', bar);
-  var foo = MyModules.get("foo");
-  console.log('foo: ', foo);
-  console.log(
-    bar.hello("hippo")
-  ); // Let me introduce: hippo foo.awesome(); // LET ME INTRODUCE: HIPPO
+      a: a,
+      b: b
+    }
+  }
+  let ads = sample();
+  console.log('ads: ', ads);
 </script>

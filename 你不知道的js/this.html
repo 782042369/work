@@ -141,4 +141,14 @@
   // [1, 2, 3].forEach(foo, obj);
   // 调用 foo(..) 时把 this 绑定到 obj 
   // 1 awesome 2 awesome 3 awesome
+
+  function foo() {
+    var a = 2;
+    this.bar();
+  }
+
+  function bar() {
+    console.log(this.a);
+  }
+  foo(); // ReferenceError: a is not defined
 </script>
