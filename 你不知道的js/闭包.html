@@ -220,18 +220,13 @@
   //     bar.hello("hippo")
   //   ); // Let me introduce: hippo foo.awesome(); // LET ME INTRODUCE: HIPPO
 
-  let a1 = 1;
-  let b1 = 1;
-
   function sample() {
     let a = {
-      a: a1++
+      a: '1'
     };
     let b = {
-      b: b1++
+      b: '2'
     };
-    a.prop = b;
-    b.prop = a;
     return {
       a: a,
       b: b
@@ -239,4 +234,5 @@
   }
   let ads = sample();
   console.log('ads: ', ads);
+  
 </script>
