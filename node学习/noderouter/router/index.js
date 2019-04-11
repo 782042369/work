@@ -1,24 +1,21 @@
-const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-// const MimeModel = require('./extname');
 const MimeModel = require('./extnameall');
-http.createServer(function (req, res) {
-
+exports.router = function (req, res, staticname) {
+  console.log('staticname: ', staticname);
   res.writeHead(200, {
     "Content-Type": "text/html;charset=utf-8"
   });
-  let pathname = url.parse(req.url).pathname;
-  console.log('pathname: ', pathname);
+  let pathname = url.parse(req.url).pathname; // 后缀名
   if (pathname === '/') {
-    pathname = 'index.html'
+    pathname = '/index.html'
   }
   let extname = path.extname(pathname);
   if (pathname !== '/favicon.ico') {
-    fs.readFile('static/' + pathname, (err, data) => {
+    fs.readFile(staticname + '/' + pathname, (err, data) => {
       if (err) { // 读取不到
-        fs.readFile('static/404.html', (err, data) => {
+        fs.readFile(staticname + '/404.html', (err, data) => {
           res.writeHead(200, {
             "Content-Type": "text/html;charset=utf-8"
           });
@@ -35,6 +32,4 @@ http.createServer(function (req, res) {
       }
     })
   }
-
-
-}).listen(8001);
+}

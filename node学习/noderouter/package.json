@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "supervisor server2.js"
+  },
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "ejs": "^2.6.1"
+  }
+}
