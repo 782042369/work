@@ -10,22 +10,20 @@ function _connectDB(callback) {
       console.log('err: ', err);
       return;
     }
-    // 关闭数据库
-    db.close()
     // db链接
     callback(err, db);
+    // 关闭数据库
+    db.close()
   })
 }
 // 查找数据
-exports.find = function (collectionname, json, callback) {
-  console.log('json: ', json);
-  console.log('collectionname: ', collectionname);
+export function _connectDBfind(collectionname, json, callback) {
   _connectDB((err, db) => {
     if (err) {
       console.log('err: ', err);
       return;
     }
-    let data = db.collectionname.find(json);
+    let data = db.collection(collectionname).find(json);
     data.toArray((error, data) => {
       callback(error, data);
     })

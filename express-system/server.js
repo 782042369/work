@@ -9,7 +9,9 @@ import {
 	md5model
 } from './tool/Md5';
 // db封装
-const _connectDB = require('./tool/db');
+import {
+	_connectDBfind
+} from './tool/db';
 // bodyparser设置
 const jsonParser = bodyparser.json();
 // create application/x-www-form-urlencoded parser
@@ -61,7 +63,7 @@ app.get('/login', (req, res) => {
 app.post('/dologin', (req, res) => {
 	const password = md5model(req.body.password)
 	const username = req.body.username
-	_connectDB['find']('user', {
+	_connectDBfind('user', {
 		username,
 		password
 	}, (error, data) => {
@@ -95,7 +97,7 @@ app.get('/loginout', (req, res) => {
 })
 // 商品
 app.get('/product', (req, res) => {
-	_connectDB['find']('productlist', {}, (error, data) => {
+	_connectDBfind('productlist', {}, (error, data) => {
 		if (error) {
 			console.log('数据错误', error)
 			return
