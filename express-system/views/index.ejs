@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <title></title>
-</head>
-
-<body>
-  <!--The content below is only a placeholder and can be replaced.-->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.css" /> <%-include public/header.ejs%>
+  <%-include public/header.ejs%>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-2">
-        <a href="#" class="list-group-item active">商品管理</a>
-        <a href="/" class="list-group-item"> 商品列表</a>
-        <a href="/add" class="list-group-item"> 增加商品</a>
-        <a href="#" class="list-group-item active">分类管理</a>
-        <a href="/" class="list-group-item"> 商品分类列表</a>
-        <a href="/add" class="list-group-item"> 增加商品分类</a>
-      </div>
+      <%-include public/leftmenu.ejs%>
       <div class="col-sm-10">
         <ol class="breadcrumb">
           <li class="active">商品管理 </li>
@@ -47,45 +30,29 @@
           <table class="table table-striped ">
             <thead>
               <tr>
-                <th>编号</th>
-                <th>图标</th>
                 <th>名称</th>
                 <th>价格</th>
+                <th>图片</th>
                 <th>邮费</th>
                 <th class="text-center">操作</th>
               </tr>
             </thead>
             <tbody>
+              <% for(var i in list) { %>
               <tr>
-                <td>1</td>
-                <td>图标</td>
-                <td>背包1111111</td>
-                <td>20元</td>
-                <td>10元</td>
+                <td><%=list[i].title%></td>
+                <td><%=list[i].price%></td>
+                <td><%=list[i].pic%></td>
+                <td><%=list[i].fee%></td>
                 <td class="text-center">修改 删除</td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>图标</td>
-                <td>thinpad笔记本电脑</td>
-                <td>20元</td>
-                <td>10元</td>
-                <td class="text-center">修改 删除</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>图标</td>
-                <td>iphone7</td>
-                <td>20元</td>
-                <td>10元</td>
-                <td class="text-center">修改 删除</td>
-              </tr>
+              <% } %>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-</body>
+  </body>
 
-</html>
+  </html>
