@@ -10,7 +10,10 @@ import {
 } from './tool/Md5';
 // db封装
 import {
-	_connectDBfind
+	ConnectDbFind,
+	ConnectDbAdd,
+	ConnectDbEdit,
+	ConnectDbDeleteOne
 } from './tool/db';
 // bodyparser设置
 const jsonParser = bodyparser.json();
@@ -63,18 +66,17 @@ app.get('/login', (req, res) => {
 app.post('/dologin', (req, res) => {
 	const password = md5model(req.body.password)
 	const username = req.body.username
-	_connectDBfind('user', {
+	ConnectDbFind('user', {
 		username,
 		password
 	}, (error, data) => {
 		if (error) {
-			console.log('d', error)
+			console.log('error', error)
 			return
 		}
 		if (data.length > 0) {
 			// 用户登陆信息
 			req.session.userinfo = data[0]
-			console.log('data[0]: ', data[0])
 			app.locals['userinfo'] = data[0].username // 全局ejs模版
 			// 登陆成功跳转
 			res.redirect('/product')
@@ -97,7 +99,7 @@ app.get('/loginout', (req, res) => {
 })
 // 商品
 app.get('/product', (req, res) => {
-	_connectDBfind('productlist', {}, (error, data) => {
+	ConnectDbFind('productlist', {}, (error, data) => {
 		if (error) {
 			console.log('数据错误', error)
 			return
@@ -117,7 +119,16 @@ app.get('/productedit', (req, res) => {
 })
 // 删除商品列表
 app.get('/productdelete', (req, res) => {
-	res.render('delete')
+	ConnectDbDeleteOne('productlist', {
+		'title': 'apple'
+	}, (error, data) => {
+		if (error) {
+			console.log('数据错误', error)
+			return
+		}
+		res.send('删除数据成功');
+	})
+	// res.render('delete')
 })
 // 监听端口
 app.listen(3000, '127.0.0.1')

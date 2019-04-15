@@ -23,9 +23,7 @@
             </form>
           </div>
         </div>
-        <!--
-                列表展示
-            -->
+        <!-- 列表展示 -->
         <div class="table-responsive">
           <table class="table table-striped ">
             <thead>
@@ -42,9 +40,10 @@
               <tr>
                 <td><%=list[i].title%></td>
                 <td><%=list[i].price%></td>
-                <td><%=list[i].pic%></td>
+                <td>图片/td>
                 <td><%=list[i].fee%></td>
-                <td class="text-center">修改 删除</td>
+                <td class="text-center">修改
+                  <a href="/productdelete">删除</a></td>
               </tr>
               <% } %>
             </tbody>
