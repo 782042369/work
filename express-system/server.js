@@ -1,9 +1,11 @@
 import express from 'express';
-import bodyparser from 'body-parser';
-
+// import bodyparser from 'body-parser';
 // session
 import session from 'express-session';
-
+// 图片上传 也可以 获取表单数据
+import multiparty from 'multiparty';
+// 删除文件
+import fs from 'fs';
 // 密码加密
 import {
 	md5model
@@ -13,14 +15,15 @@ import {
 	ConnectDbFind,
 	ConnectDbAdd,
 	ConnectDbEdit,
+	ObjectId,
 	ConnectDbDeleteOne
 } from './tool/db';
 // bodyparser设置
-const jsonParser = bodyparser.json();
+// const jsonParser = bodyparser.json();
 // create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyparser.urlencoded({
-	extended: false
-});
+// const urlencodedParser = bodyparser.urlencoded({
+// 	extended: false
+// });
 // 实列
 const app = new express();
 app.locals['userinfo'] = '124' // 全局ejs模版
@@ -29,9 +32,10 @@ app.locals['userinfo'] = '124' // 全局ejs模版
 app.set('view engine', 'ejs')
 // 静态资源目录
 app.use(express.static('public'));
+app.use('/upload', express.static('upload'));
 // 使用中间件
-app.use(jsonParser);
-app.use(urlencodedParser);
+// app.use(jsonParser);
+// app.use(urlencodedParser);
 // 使用中间件session
 app.use(
 	session({
@@ -113,20 +117,95 @@ app.get('/product', (req, res) => {
 app.get('/productadd', (req, res) => {
 	res.render('add')
 })
+// 获取增加商品列表
+app.post('/doproductadd', (req, res) => {
+	var form = new multiparty.Form();
+	form.uploadDir = 'upload'; // 上传图片保存地址 必须存在
+	form.parse(req, function (err, fields, files) {
+		// files // 上传成功地址
+		// fields // 表单数据
+		let {
+			title,
+			price,
+			fee,
+			description
+		} = fields;
+		let pic = files.pic[0].path;
+		ConnectDbAdd('productlist', {
+			title,
+			price,
+			fee,
+			description,
+			pic
+		}, (err, data) => {
+			if (err) {
+				console.log('err: ', err);
+			} else {
+				res.redirect('/product')
+			}
+		})
+	});
+})
 // 编辑商品列表
 app.get('/productedit', (req, res) => {
-	res.render('edit')
-})
-// 删除商品列表
-app.get('/productdelete', (req, res) => {
-	ConnectDbDeleteOne('productlist', {
-		'title': 'apple'
+	ConnectDbFind('productlist', {
+		"_id": new ObjectId(req.query.id)
 	}, (error, data) => {
 		if (error) {
 			console.log('数据错误', error)
 			return
 		}
-		res.send('删除数据成功');
+		res.render('edit', {
+			list: data
+		})
+	});
+})
+// 修改商品
+app.post('/doproductedit', (req, res) => {
+	let form = new multiparty.Form();
+	form.uploadDir = 'upload'; // 上传图片保存地址 必须存在
+	form.parse(req, function (err, fields, files) {
+		// files // 上传成功地址
+		// fields // 表单数据
+		let id = fields._id[0]
+		let {
+			title,
+			price,
+			fee,
+			description
+		} = fields;
+		let arr = {
+			title,
+			price,
+			fee,
+			description,
+		};
+		if (files.pic[0].originalFilename !== '') {
+			arr.pic = files.pic[0].path
+		} else {
+			fs.unlink(files.pic[0].path)
+		}
+		ConnectDbEdit('productlist', {
+			"_id": new ObjectId(id)
+		}, arr, (err, data) => {
+			if (err) {
+				console.log('err: ', err);
+			} else {
+				res.redirect('/product')
+			}
+		})
+	});
+})
+// 删除商品列表
+app.get('/productdelete', (req, res) => {
+	ConnectDbDeleteOne('productlist', {
+		"_id": new ObjectId(req.query.id)
+	}, (error, data) => {
+		if (error) {
+			console.log('数据错误', error)
+			return
+		}
+		res.redirect('/product')
 	})
 	// res.render('delete')
 })

@@ -1,20 +1,28 @@
-ul{
+ul {
     list-style-type: none;
 }
-.input-form li{
+
+.input-form li {
     margin: 5px 0px;
 }
-.navbar-header{
+
+.navbar-header {
     width: 180px;
     text-align: center;
 }
-.navbar-inverse .navbar-nav>li>a{
-    color:#f9f9f9;
-}
-.navbar-inverse{
-    background:#46473F;
-}
-input[type=file]{
- display: inline !important;
 
+.navbar-inverse .navbar-nav>li>a {
+    color: #f9f9f9;
+}
+
+.navbar-inverse {
+    background: #46473F;
+}
+
+input[type=file] {
+    display: inline !important;
+}
+
+img {
+    width: 4vw;
 }

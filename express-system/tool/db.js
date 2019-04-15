@@ -2,6 +2,7 @@
 import mongodb from 'mongodb';
 // mongodburl 设置
 const MongoClient = mongodb.MongoClient;
+const ObjectId = mongodb.ObjectID;
 const dburl = 'mongodb://127.0.0.1:27017/productmanage';
 
 function _connectDB(callback) {
@@ -54,4 +55,8 @@ export function ConnectDbDeleteOne(collectionname, json, callback) {
       callback(error, data);
     });
   })
+}
+// 暴露 ObjectID
+export {
+  ObjectId
 }
