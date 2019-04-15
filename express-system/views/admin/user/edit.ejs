@@ -4,24 +4,22 @@
       <%-include ../../public/leftmenu.ejs%>
       <div class="col-sm-10">
         <ol class="breadcrumb">
-          <li class="active">商品管理 </li>
-          <li class="active">商品列表 </li>
+          <li class="active">用户管理 </li>
+          <li class="active">用户列表 </li>
         </ol>
         <div class="panel panel-default">
           <div class="panel-heading">
-            编辑商品
+            编辑用户
           </div>
           <div class="panel-body">
             <div class="table-responsive input-form">
-              <form action="/admin/product//doedit" enctype="multipart/form-data" method="post">
+              <form action="/admin/user/doedit" enctype="multipart/form-data" method="post">
                 <ul>
                   <input type="hidden" value='<%=list[0]._id%>' name='_id'>
-                  <li> 商品名称: <input type="text" name="product" value="<%=list[0].product%>" /></li>
-                  <li> 商品图片: <img src="/<%=list[0].pic%>" alt=""></li>
+                  <li> 用户名称: <input type="text" name="username" value='<%=list[0].username%>' /></li>
+                  <li> 用户图片: <img src="/<%=list[0].pic%>" alt=""></li>
                   <li> 上传图片: <input type="file" name="pic" value="<%=list[0].pic%>" /></li>
-                  <li> 商品价格: <input type="text" name="price" value="<%=list[0].price%>" /></li>
-                  <li> 商品邮费: <input type="text" name="fee" value="<%=list[0].fee%>" /></li>
-                  <li> 商品描述: <textarea name="description" id="" cols="60" rows="8"><%=list[0].description%></textarea>
+                  <li> 用户描述: <textarea name="description" id="" cols="60" rows="8"><%=list[0].description%></textarea>
                   </li>
                   <li> <br /> <button type="submit" class="btn btn-default">提交</button> </li>
                 </ul>

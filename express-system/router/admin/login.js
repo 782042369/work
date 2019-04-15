@@ -17,10 +17,23 @@ import {
 import {
   ConnectDbFind,
 } from '../../tool/db';
+import session from 'express-session';
+router.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 6 * 30
+    },
+    rolling: true
+  })
+)
+
 router.get('/', (req, res) => {
   res.render('admin/login')
 })
-
+// 自定义判断登陆状态
 router.post('/dologin', (req, res) => {
   const password = md5model(req.body.password)
   const username = req.body.username
@@ -34,9 +47,8 @@ router.post('/dologin', (req, res) => {
     }
     if (data.length > 0) {
       // 用户登陆信息
-      console.log('req.session: ', req.session);
-      // req.session.userinfo = data[0]
-      // app.locals['userinfo'] = data[0].username // 全局ejs模版
+      req.session.userinfo = data[0]
+      req.app.locals['userinfo'] = data[0].username // 全局ejs模版
       // 登陆成功跳转
       res.redirect('/admin/product')
     } else {
@@ -52,7 +64,7 @@ router.get('/loginout', (req, res) => {
       console.log('err: ', err)
       return
     } else {
-      res.redirect('/login')
+      res.redirect('/admin/login')
     }
   })
 })

@@ -24,8 +24,8 @@ router.get('/', (req, res) => {
   })
 })
 // 增加商品列表
-router.get('/productadd', (req, res) => {
-  res.render('add')
+router.get('/add', (req, res) => {
+  res.render('admin/product/add')
 })
 // 获取增加商品列表
 router.post('/doproductadd', (req, res) => {
@@ -51,13 +51,13 @@ router.post('/doproductadd', (req, res) => {
       if (err) {
         console.log('err: ', err);
       } else {
-        res.redirect('/product')
+        res.redirect('/admin/product')
       }
     })
   });
 })
 // 编辑商品列表
-router.get('/productedit', (req, res) => {
+router.get('/edit', (req, res) => {
   ConnectDbFind('productlist', {
     "_id": new ObjectId(req.query.id)
   }, (error, data) => {
@@ -65,13 +65,13 @@ router.get('/productedit', (req, res) => {
       console.log('数据错误', error)
       return
     }
-    res.render('edit', {
+    res.render('admin/product/edit', {
       list: data
     })
   });
 })
 // 修改商品
-router.post('/doproductedit', (req, res) => {
+router.post('/doedit', (req, res) => {
   let form = new multiparty.Form();
   form.uploadDir = 'upload'; // 上传图片保存地址 必须存在
   form.parse(req, function (err, fields, files) {
@@ -101,13 +101,13 @@ router.post('/doproductedit', (req, res) => {
       if (err) {
         console.log('err: ', err);
       } else {
-        res.redirect('/product')
+        res.redirect('/admin/product')
       }
     })
   });
 })
 // 删除商品列表
-router.get('/productdelete', (req, res) => {
+router.get('/delete', (req, res) => {
   ConnectDbDeleteOne('productlist', {
     "_id": new ObjectId(req.query.id)
   }, (error, data) => {
@@ -115,7 +115,7 @@ router.get('/productdelete', (req, res) => {
       console.log('数据错误', error)
       return
     }
-    res.redirect('/product')
+    res.redirect('/admin/product')
   })
 })
 export default router;
