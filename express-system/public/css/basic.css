@@ -23,6 +23,6 @@ input[type=file] {
     display: inline !important;
 }
 
-img {
+tr img {
     width: 4vw;
 }

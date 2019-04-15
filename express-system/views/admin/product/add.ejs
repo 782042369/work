@@ -1,7 +1,7 @@
-  <%-include public/header.ejs%>
+  <%-include ../../public/header.ejs%>
   <div class="container-fluid">
     <div class="row">
-      <%-include public/leftmenu.ejs%>
+      <%-include ../../public/leftmenu.ejs%>
       <div class="col-sm-10">
         <ol class="breadcrumb">
           <li class="active">商品管理 </li>
@@ -9,11 +9,11 @@
         </ol>
         <div class="panel panel-default">
           <div class="panel-heading">
-            删除商品
+            增加商品
           </div>
           <div class="panel-body">
             <div class="table-responsive input-form">
-              <form action="/doAdd" method="post">
+              <form action="/doproductadd" enctype="multipart/form-data" method="post">
                 <ul>
                   <li> 商品名称: <input type="text" name="title" /></li>
                   <li> 商品图片: <input type="file" name="pic" /></li>
