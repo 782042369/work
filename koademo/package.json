@@ -1,0 +1,21 @@
+{
+	"name": "koademo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"serve": "supervisor app10.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"art-template": "^4.13.2",
+		"ejs": "^2.6.1",
+		"koa": "^2.7.0",
+		"koa-art-template": "^1.1.1",
+		"koa-bodyparser": "^4.2.1",
+		"koa-router": "^7.4.0",
+		"koa-views": "^6.2.0"
+	}
+}
