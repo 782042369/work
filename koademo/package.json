@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"serve": "supervisor app11.js"
+		"serve": "supervisor app15.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -17,6 +17,7 @@
 		"koa-bodyparser": "^4.2.1",
 		"koa-router": "^7.4.0",
 		"koa-session": "^5.10.1",
-		"koa-views": "^6.2.0"
+		"koa-views": "^6.2.0",
+		"mongodb": "^3.2.3"
 	}
 }
