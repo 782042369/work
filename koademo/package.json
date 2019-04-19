@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"serve": "supervisor app10.js"
+		"serve": "supervisor app11.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -16,6 +16,7 @@
 		"koa-art-template": "^1.1.1",
 		"koa-bodyparser": "^4.2.1",
 		"koa-router": "^7.4.0",
+		"koa-session": "^5.10.1",
 		"koa-views": "^6.2.0"
 	}
 }
