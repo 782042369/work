@@ -1,14 +1,83 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+li {
+  list-style: none;
+  line-height: 4vw;
+}
+
+[data-flex] {
+  display: flex
+}
+
+[data-flex]>* {
+  display: block
+}
+
+[data-flex]>[data-flex] {
+  display: flex
+}
+
+[data-flex~="dir:left"] {
+  flex-direction: row
+}
+
+[data-flex~="dir:right"] {
+  -webkit-box-pack: end
+}
+
+[data-flex~="dir:top"] {
+  flex-direction: column
+}
+
+[data-flex~="dir:bottom"] {
+  flex-direction: column-reverse;
+}
+
+[data-flex~="main:left"] {
+  justify-content: flex-start
+}
+
+[data-flex~="main:right"] {
+  justify-content: flex-end
+}
+
+[data-flex~="main:justify"] {
+  justify-content: space-between
+}
+
+[data-flex~="main:center"] {
+  justify-content: center
+}
+
+[data-flex~="cross:top"] {
+  align-items: flex-start
+}
+
+[data-flex~="cross:bottom"] {
+  align-items: flex-end
+}
+
+[data-flex~="cross:center"] {
+  align-items: center
+}
+
+[data-flex~="cross:baseline"] {
+  align-items: baseline
+}
+
+[data-flex~="warp:warp"] {
+  flex-wrap: wrap;
+}
+
+[data-flex~="cross:stretch"] {
+  align-items: stretch
+}
+
+[data-flex-box="1"] {
+  flex-grow: 1;
+  flex-shrink: 1
 }
