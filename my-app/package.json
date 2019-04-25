@@ -64,7 +64,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node test --env=jsdom"
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
