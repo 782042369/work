@@ -11,20 +11,21 @@
       >
     </div>
     <ul class="todolist">
-      <li :key="item.id" v-for="item in list">
-        <button @click="handleDelList(item)" class="deletebtn">-</button>
-        <input
-          :class="{'edit':!item.readonly}"
-          :readonly="item.readonly"
-          @blur="item.readonly=true"
-          @dblclick="item.readonly = !item.readonly"
-          @keyup="handleEditList(todo)"
-          class="listinput"
-          placeholder="请修改todolsit"
-          type="text"
-          v-model="item.text"
-        >
-      </li>
+      <transition-group appear tag="ul">
+        <li :key="item.id" v-for="item in list">
+          <button @click="handleDelList(item)" class="deletebtn">-</button>
+          <input
+            :class="{'edit':!item.readonly}"
+            :readonly="item.readonly"
+            @blur="item.readonly=true"
+            @dblclick="item.readonly = !item.readonly"
+            class="listinput"
+            placeholder="请修改todolsit"
+            type="text"
+            v-model="item.text"
+          >
+        </li>
+      </transition-group>
     </ul>
   </div>
 </template>
@@ -34,29 +35,27 @@ export default {
   data() {
     return {
       todoval: '',
-      // todoval: '',
-      list: [
-        {
-          id: Math.random(),
-          text: 'css',
-          readonly: true
-        },
-        {
-          id: Math.random(),
-          text: 'js',
-          readonly: true
-        }
-      ]
+      list: []
     };
+  },
+  created() {
+    if (localStorage.getItem('todolist')) {
+      this.list = JSON.parse(localStorage.getItem('todolist'));
+    }
   },
   methods: {
     // 增加数据
     handleAddList(e) {
       if (e.keyCode === 13) {
+        if (this.todoval === '') {
+          return alert('请输入你想干哈！！');
+        }
         this.list.push({
-          id: Math.random(),
-          text: this.todoval
+          id: new Date().getTime(),
+          text: this.todoval,
+          readonly: true
         });
+        localStorage.setItem('todolist', JSON.stringify(this.list));
         this.todoval = '';
       }
     },
@@ -76,13 +75,32 @@ ul {
 li {
   list-style: none;
   height: 40px;
+  display: flex;
+  align-items: center;
 }
 [readonly] {
   outline-color: red;
 }
-input {
+li input {
   margin-left: 20px;
   border: none;
   outline-color: yellowgreen;
+}
+.v-enter,
+.v-lerve-to {
+  opacity: 0;
+  transform: translateY(80px);
+}
+.v-enter-active,
+.v-lerve-active {
+  transition: all 0.2s ease;
+}
+/*添加进场效果*/
+
+.v-move {
+  transition: all 0.4s ease;
+}
+.v-leave-active {
+  position: absolute;
 }
 </style>
