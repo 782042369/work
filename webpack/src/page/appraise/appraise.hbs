@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+	<div class="content">
+        {{{header}}}
+        {{{mainnav}}}
+		<div class="interactive_con ">
+			<div class="con content80">
+				<p class="interactive_title">
+					<span>关于张小墨申请粮食收购资格许可</span>
+				</p>
+				<div class="remind clearfix">
+					<span id="close" class="close"></span>
+					<dl>
+						<dt>
+							<img src="../../common/images/portal/suona.png" alt="" />温馨提示：</dt>
+						<dd>
+							<ol>
+								<li>在这里，您可以对泸州市办事事项进行评价，同一办件只能评价一次。</li>
+								<li>若您对我们的服务不满意或非常不满意时，请您填写不满意的具体内容，以便我们改善服务质量。</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+				<div class="appraise_con">
+					<dl class="clearfix"> 
+						<dt>
+							<img src="../../common/images/portal/star.png" alt="" />该事项跑窗口的次数</dt>
+						<dd id="times">
+							<label for="zero" data-times="0">
+								<input type="radio" name="times" id="zero" />
+								<span class="radio"></span>0次</label>
+							<label for="one" data-times="1">
+								<input type="radio" name="times" id="one" />
+								<span class="radio"></span>1次</label>
+							<label for="two" data-times="2">
+								<input type="radio" name="times" id="two" />
+								<span class="radio"></span>2次</label>
+							<label for="three" data-times="3">
+								<input type="radio" name="times" id="three" />
+								<span class="radio"></span>3次</label>
+							<label for="four" data-times="4">
+								<input type="radio" name="times" id="four" />
+								<span class="radio"></span>4次及更多</label>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<img src="../../common/images/portal/star.png" alt="" />服务评分</dt>
+						<dd id="gradee">
+							<img src="../../common/images/portal/grade_gray.png" alt="" />
+							<img src="../../common/images/portal/grade_gray.png" alt="" />
+							<img src="../../common/images/portal/grade_gray.png" alt="" />
+							<img src="../../common/images/portal/grade_gray.png" alt="" />
+							<img src="../../common/images/portal/grade_gray.png" alt="" />
+							<span class="grade_four" id="rating"></span>
+						</dd>
+						<div class="clea"></div>
+					</dl>
+					<dl class="clearfix">
+						<dt>评价内容</dt>
+						<dd class="appraise_content">
+							<div>
+								<textarea id="appraise_txt" name="appraise_cont" placeholder="若您对我们的服务不满意或非常不满意时，请您填写不满意的具体内容，以便我们改善服务质量。" rows="7"
+								 cols="95"></textarea>
+								<a class="words_num">
+									<span id="words_current">0</span>/500</a>
+							</div>
+						</dd>
+					</dl>
+					<dl class="clearfix"> 
+						<dt>上传图片</dt>
+						<dd id="push_img">
+							<div class="img_wrap">
+							</div>
+							<div class="add">
+								<label for="">
+									<input id="push" type="file" title=" " />
+									<img src="../../common/images/portal/select.png" alt="" />
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl class="btn_wrap clearfix">
+						<dt>&nbsp;</dt>
+						<dd>
+							<a href="" id="sub">提交</a>
+							<a href="" onClick="javascript :history.go(-2);" id="return">返回</a>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+        {{{footer}}}
+	</div>
+</body>
+
+</html>

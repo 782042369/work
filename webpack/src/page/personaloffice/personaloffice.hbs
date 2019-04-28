@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+  <div></div>
+  <div class="content">
+    {{{header}}}
+    {{{mainnav}}}
+    <div class="content80">
+        <div class="clearfix">
+          {{{infolist}}}
+          <div class="width15 height100"></div>
+          <div class="info_detail width85">
+            <div class="office_head">
+              <font class="user"></font>欢迎你，您上次登陆的时间是
+              <font class="tim"></font>
+            </div>
+            <div class="office_search">
+              <form action="">
+                <div class="clearfix">
+                  <div class="office_one">
+                    <label for="">事项名称</label>
+                    <div class="office_inpu">
+                      <input type="text" id="affairName" />
+                    </div>
+                  </div>
+                  <div class="office_two ">
+                    <label for="">申报时间</label>
+                    <div class="office_inpu configurator">
+                      <div class="input-group">
+                        <input type="text" id="startDate" placeholder="请选择开始日期" />
+                      </div>
+                      <span class="date_xian"> —— </span>
+                      <div class="input-group">
+                        <input type="text" id="endDate" placeholder="请选择结束日期" />
+                      </div>
+                      <div class="clea"></div>
+                    </div>
+                    <div class="clea"></div>
+                  </div>
+                  <div class="office_three"></div>
+                </div>
+                <div>
+                  <div class="office_one clearfix">
+                    <label for="">办理状态</label>
+                    <div class="office_inpu downselect-wrap">
+                      <span class="downselect-btn"></span>
+                      <input type="text" id="status" class="downselect-inpu" readonly="readonly" />
+                      <ul id="status_list" class="downselect-selectwrap">
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="office_two">
+                    <label for="">主管部门</label>
+                    <div class="office_inpu downselect-wrap">
+                      <span class="downselect-btn"></span>
+                      <input type="text" id="deptId" class="downselect-inpu" readonly="readonly" />
+                      <ul id="dept_list" class="downselect-selectwrap">
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="office_three ">
+                    <input type="button" value="查询" id="find" />
+                    <input type="button" value="清除" id="clear" class="margin_left3" />
+                  </div>
+                </div>
+                <!--申报时间展示-->
+                <!--<textarea id="config-text" style="height: 300px; width: 100%; padding: 10px"></textarea>-->
+              </form>
+            </div>
+            <div class="common_table">
+              <table cellspacing="0">
+                <thead>
+                  <tr>
+                    <td>序号</td>
+                    <td>事项名称</td>
+                    <td>申请时间</td>
+                    <td>受理单位</td>
+                    <td>办理状态</td>
+                    <td>操作</td>
+                  </tr>
+                </thead>
+                <tbody id="office_list"></tbody>
+              </table>
+            </div>
+            <div class="page_wrap">
+              <div class="page" id="page" style="margin-left: -1%;">
+              </div>
+            </div>
+            <div class="nodata">
+              <img src="../../common/images/portal/404.png" alt="暂无数据">
+              <p>暂无数据</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    {{{footer}}}
+  </div>
+</body>
+
+</html>

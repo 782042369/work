@@ -1,0 +1,358 @@
+$color: #3f94fc;
+$border: 1px solid #eaedf1;
+$padding: 20px 0;
+$font-color:#2B3642;
+$white-color:#FFFFFF;
+$head-color:#C3C4C5;
+$atuo:0 auto;
+$count: 6;
+ul {
+    margin-bottom: 0 !important;
+}
+
+.mask {
+    display: none;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    position: fixed;
+    /* 利用固定定位的好处：页面还可以上下翻动，但是始终处于灰色背景下 */
+}
+
+.portal_index {
+    width: 100%;
+    .banner_main {
+        background: url(../../common/images/new_banner.jpg) no-repeat center 0;
+        background-size: cover;
+        height: 400px;
+        width: 100%;
+        .meau {
+            position: absolute;
+            bottom: 0%;
+            .meau_ul {
+                float: left;
+                li {
+                    width: 100px;
+                    height: 58px;
+                    background: rgba(4, 15, 59, 0.40);
+                    border-radius: 2px 0 0 0;
+                    margin-bottom: 1px;
+                    margin-right: 1px;
+                    transition: 0.1s;
+                    a {
+                        text-align: center;
+                        display: block;
+                        color: #FFFFFF;
+                        line-height: 58px;
+                        font-size: 16px;
+                        height: 58px;
+                        cursor: default !important;
+                    }
+                }
+                .active {
+                    border-left: 3px #FFFFFF solid;
+                }
+            }
+            .meaulist {
+                height: 295px;
+                width: 344px;
+                float: left;
+                background: rgba(4, 15, 59, 0.45);
+                .inlist {
+                    display: none;
+                    overflow: hidden;
+                    height: 245px;
+                    list-style: none;
+                    li {
+                        width: 33%;
+                        padding-left: 16px;
+                        padding-top: 18px;
+                        float: left;
+                        img {
+                            margin-right: 5px;
+                            margin-bottom: 1.5px;
+                        }
+                        a {
+                            font-size: 14px;
+                            color: #FFFFFF;
+                            letter-spacing: 0;
+                            line-height: 14px;
+                            cursor: pointer;
+                            opacity: 0.8;
+                        }
+                    }
+                }
+                .jiahao {
+                    position: absolute;
+                    bottom: 27px;
+                    right: 30px;
+                    border: 1px solid rgba(255, 255, 255, 0.6);
+                    height: 16px;
+                    width: 16px;
+                    padding: 2px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .search {
+            height: 295px;
+            width: 360px;
+            background: rgba(4, 15, 59, 0.45);
+            border-radius: 2px;
+            float: right;
+            position: absolute;
+            right: 40px;
+            bottom: 0;
+            .top_head {
+                height: 48px;
+                border-bottom: 0.5px solid #8B9FBB;
+                line-height: 48px;
+                ul {
+                    text-align: center;
+                    .top_p {
+                        float: left;
+                        font-family: PingFangSC-Regular;
+                        font-size: 16px;
+                        color: #FFFFFF;
+                        width: 50%;
+                        a {
+                            color: #FFFFFF;
+                            padding-bottom: 12px;
+                            transition: 0.1s;
+                        }
+                    }
+                    .active a {
+                        border-bottom: 2px #FFFFFF solid;
+                    }
+                }
+            }
+            .chaxun {
+                font-family: PingFangSC-Regular;
+                font-size: 14px;
+                color: #FFFFFF;
+                display: none;
+                position: relative;
+                ul {
+                    margin-top: 41px;
+                    li {
+                        margin-bottom: 20px;
+                        label {
+                            display: inline-block;
+                            width: 86px;
+                            text-align: right;
+                            margin-right: 9px;
+                        }
+                        .select {
+                            border-radius: 2px;
+                            border: none;
+                            width: 233px;
+                            height: 35px;
+                            padding-left: 15px;
+                            color: black;
+                        }
+                        input {
+                            border-radius: 2px;
+                            border: none;
+                            width: 208px;
+                            height: 15px;
+                            padding-left: 15px;
+                        }
+                    }
+                    a {
+                        display: block;
+                        background-image: url(../../common/images/portal/input.png);
+                        width: 233px;
+                        height: 34px;
+                        text-align: center;
+                        line-height: 34px;
+                        color: #FFFFFF;
+                        border: none;
+                        background: #F44B00;
+                        border-radius: 2px;
+                        margin-left: 99px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .banner_help {
+            position: fixed;
+            right: 0.8%;
+            top: 215px;
+            height: 190px;
+            width: 60px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10);
+            border-radius: 2px;
+            z-index: 1000;
+            a {
+                font-size: 12px;
+                color: #808080;
+                letter-spacing: 0;
+                line-height: 12px;
+                display: block;
+                width: 60px;
+                height: 57px;
+                padding-top: 45px;
+                box-sizing: border-box;
+                text-align: center;
+                &:nth-of-type(1) {
+                    background: url(../../common/images/portal/onlineanswer.png) center center no-repeat;
+                }
+                &:nth-of-type(2) {
+                    background: url(../../common/images/portal/wozixun.png) center center no-repeat;
+                }
+                &:nth-of-type(3) {
+                    background: url(../../common/images/portal/shoucang.png) center center no-repeat;
+                }
+            }
+        }
+    }
+    .main {
+        background: $white-color;
+        width: 100%;
+        padding-top: 60px;
+        height: 170px;
+        ul {
+            width: 884px;
+            margin: $atuo;
+            li {
+                float: left;
+                width: 64px;
+                height: 96px; // cursor: pointer;
+                i {
+                    display: block;
+                    width: 60px;
+                    height: 60px;
+                    margin: $atuo;
+                    margin-bottom: 20px;
+                    background: url("../../common/images/portal/pic_jihe.png") no-repeat;
+                    -webkit-transition: 0.5s;
+                    transition: 0.5s;
+                }
+                a {
+                    display: block;
+                    font-size: 16px;
+                    color: #2B3642;
+                    letter-spacing: 0;
+                    -webkit-transition: 0.5s;
+                    transition: 0.5s;
+                    line-height: 16px;
+                }
+                &:hover a {
+                    color: #3395FF;
+                }
+            }
+            @for $i from 1 through $count {
+                $pos: (($i - 1) * -60px);
+                .item#{$i} {
+                    i {
+                        background-position: $pos 0;
+                    }
+                    &:hover i {
+                        background-position: $pos -60px;
+                    }
+                }
+            }
+            li+li {
+                margin-left: 141px;
+            }
+        }
+    }
+    .banner_help {
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        height: 190px;
+        width: 60px;
+        background: #FFFFFF;
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10);
+        border-radius: 2px;
+        z-index: 99999;
+        a {
+            font-size: 12px;
+            color: #808080;
+            letter-spacing: 0;
+            line-height: 12px;
+            display: block;
+            width: 60px;
+            height: 57px;
+            padding-top: 45px;
+            box-sizing: border-box;
+            text-align: center;
+            &:nth-of-type(1) {
+                background: url(../../common/images/portal/onlineanswer.png) center center no-repeat;
+            }
+            &:nth-of-type(2) {
+                background: url(../../common/images/portal/wozixun.png) center center no-repeat;
+            }
+            &:nth-of-type(3) {
+                background: url(../../common/images/portal/shoucang.png) center center no-repeat;
+            }
+        }
+    }
+    .login_pop {
+        display: none;
+        background: #FFFFFF;
+        color: #424754;
+        border-radius: 2px;
+        width: 360px;
+        height: 190px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-left: -180px;
+        margin-top: -80px;
+        z-index: 99999;
+        .pop_top {
+            padding: 20px 30px;
+            .close_login {
+                cursor: pointer;
+                float: right;
+            }
+            .hint {
+                color: #424754;
+                float: left;
+            }
+        }
+        .pop_content {
+            width: 131px;
+            font-size: 14px;
+            margin: 33px auto 35px;
+            margin-top: 33px;
+            a {
+                color: #3395FF;
+            }
+        }
+        .pop_bottom {
+            height: 30px;
+            line-height: 30px;
+            .fl {
+                margin-left: 90px;
+            }
+            .fr {
+                margin-right: 90px;
+            }
+            .zhuce {
+                display: inline-block;
+                width: 80px;
+                height: 30px;
+                background: #3395FF;
+                border-radius: 2px;
+                font-size: 14px;
+                color: #FFFFFF;
+                line-height: 30px;
+                .persondo {
+                    margin-left: 12px;
+                }
+            }
+        }
+    }
+    .fl {
+        float: left;
+    }
+    .fr {
+        float: right;
+    }
+}

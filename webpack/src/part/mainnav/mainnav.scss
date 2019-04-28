@@ -1,0 +1,48 @@
+.header_nav {
+    height: 60px;background: #3179D3; -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.05); box-shadow: 0 2px 8px 0 rgba(0,0,0,0.05);
+    &::after {content: "";width: 0;height: 0;clear: both;}
+    .header_tl .internet {margin-left: 5%;color: #fff; }
+    &>.container {padding: 0 !important;}
+    .header_maincont {
+        padding-left: 2%;height: 60px;
+        &:after{content: "";clear: both;width: 0;height: 0;}
+        li {
+            float: left;width: 124px;text-align: left;padding-top: 22px;
+            a {display: inline-block;margin: 0 auto;line-height: 16px;color: #acc9ed;padding-bottom: 10px;cursor: pointer;}
+            &.main_sele>a {border-bottom: 2px solid #fff;color: #fff; }
+            &.main_sele1>a {color: #fff; }
+
+         }
+    }
+    .denglu {
+        padding: 0;height: 75px;
+        #loading {
+            display: none;padding-left: 1%;width: 100%;
+            &>span {
+                display: inline-block;margin-top: 18px;width: 80px;height: 40px;border-radius: 2px;background: #8BC34A;text-align: center;line-height: 40px; 
+                a { color: #fff;}
+            }
+            .registered { background: #47caf7;}
+        }
+        #landing {
+             display: none;padding: 0 !important;width:100% ;height: 75px; 
+            .unified {
+                float: left;width: 25%;height: 75px;text-align: left; 
+            }
+            .personal {
+                padding-left: 16%;width: 75%;height: 75px;line-height: 30px; 
+                a {
+                float:left;
+                &.head_portrait {padding-top: 21px;padding-left: 16%;width: 50%; }
+                &.personal_info {float: right;margin-right: 3px;padding-top: 23px;width: 40%;color: #fff;font-size: 14px;line-height: 16px; }
+                &.personal_info span {display: block; }
+                }
+            }   
+            .info_sele {
+                margin-top: 27px; 
+                a {display: inline-block;width: 44%;text-align: center; }
+                .info_sele_1 {text-align: right; }
+            }
+        }
+    }
+}

@@ -1,0 +1,214 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w,$h){
+    width: $w;
+    height: $h;
+}
+.content{
+    width: 100%;
+    .cont_detail{
+        background: #F7F7F7;
+        height:50px;
+        line-height: 50px;
+        .third_detail{
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            letter-spacing: 0;
+            a{
+                color: #777E8C;
+            }
+            img{
+                margin-top: -3px;
+            }
+        }
+    }
+    .yuyue_con{
+        margin-top: 30px;
+        padding-bottom: 50px;
+        .main_title{
+            text-align: center;
+            height: 90px;
+            line-height: 90px;
+            margin: 0;
+            font-size: 24px;
+            color: #2B3642;
+        }
+        .con{
+            border: 1px solid #E8EAEB;
+            height: 636px;
+            padding-top:100px;
+            .process_con{
+                width: 485px;
+                margin: 0 auto;
+                font-size: 16px;
+                color: #424754;
+                ul{
+                    width: 100%;
+                    li{
+                        height: 24px;
+                        line-height: 25px;
+                        padding-left: 3%;
+                        margin-bottom: 10px;
+                        &>img{
+                            margin-right: 6px;
+                            margin-top: -3px;
+                        }
+                        a{
+                            color:#5EABFF;
+                        }
+                    }
+                }
+                .inpu{
+                    padding-top: 50px;
+                    height: auto;
+                    &>div{
+                        margin-bottom: 20px;
+                        .inpu_text{
+                            line-height: 35px;
+                            padding: 0 !important;
+                            float: left;
+                            width: 12%;
+                            text-align: right;
+                            color: #777E8C;
+                            font-weight: 400;
+                        }
+                        .inpu_inpu{
+                            float: left;
+                            padding-left: 10px;
+                            height: 40px;
+                            width: 87%;
+                            input{
+                                width: 100%;
+                                height: 40px;
+                                background: #FFFFFF;
+                                border: 1px solid #DDDEE3;
+                                border-radius: 2px;
+                                padding-left: 10px;
+                            }
+                        }
+                    }
+                    .tishi{
+                        height: 18px;
+                        opacity: 0;
+                        filter: alpha(opacity=0);
+                        label,.warning{
+                            float: left;
+                        }
+                        label{
+                            width: 12%;
+                        }
+                        .warning{
+                            padding-left: 10px;
+                            font-size: 14px;
+                            color: #FB6041;
+                            letter-spacing: 0;
+                            line-height: 14px;
+                        }
+                    }
+                }
+                .find{
+                    @include wh(100%,70px);
+                    a{
+                        display: block;
+                        width: 100px;
+                        height: 40px;
+                        line-height: 40px;
+                        font-size: 16px;
+                        text-align: center;
+                        background: #8BC34A;
+                        border-radius: 2px;
+                        color: #fff;
+                        margin: 0 auto;
+                        margin-top: 26px;
+                    }
+                }
+            }
+            .go_suggest_con{
+                width: 646px;
+                margin: 0 auto;
+                font-size: 16px;
+                color: #424754;
+                ul{
+                    width: 100%;
+                    li{
+                        height: 24px;
+                        line-height: 25px;
+                        list-style-position: inside;
+                        margin-bottom: 10px;
+                        &>img{
+                            margin-right: 6px;
+                            margin-top: -3px;
+                        }
+                        a{
+                            color:#5EABFF;
+                        }
+                    }
+                }
+                .inpu{
+                    padding-top: 50px;
+                    &>div{
+                        margin-bottom: 20px;
+                        height: 35px;
+                        .inpu_text{
+                            line-height: 35px;
+                            padding: 0 !important;
+                            float: left;
+                            width: 12%;
+                            text-align: right;
+                            font-weight: 400;
+                        }
+                        .inpu_inpu{
+                            float: left;
+                            padding-left: 10px;
+                            height: 40px;
+                            width: 437px;
+                            input{
+                                width: 100%;
+                                height: 40px;
+                                background: #FFFFFF;
+                                border: 1px solid #DDDEE3;
+                                border-radius: 2px;
+                                padding-left: 10px;
+                            }
+                        }
+                    }
+                    .tishi{
+                        height: 18px;
+                        opacity: 0;
+                        filter: alpha(opacity=0);
+                        label,.warning{
+                            float: left;
+                        }
+                        label{
+                            width: 12%;
+                        }
+                        .warning{
+                            padding-left: 10px;
+                            font-size: 14px;
+                            color: #FB6041;
+                            letter-spacing: 0;
+                            line-height: 14px;
+                        }
+                    }
+                }
+                .find{
+                    @include wh(100%,70px);
+                    a{
+                        display: block;
+                        width: 100px;
+                        height: 40px;
+                        line-height: 40px;
+                        font-size: 16px;
+                        text-align: center;
+                        background: #8BC34A;
+                        border-radius: 2px;
+                        color: #fff;
+                        margin-left: 35%;
+                        margin-top: 26px;
+                    }
+                }
+            }
+        }
+    }
+}

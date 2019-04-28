@@ -1,0 +1,76 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w, $h) {
+    width: $w; 
+    height: $h;
+}
+
+body {
+    position: relative;
+}
+
+//清除bootstrap的focus outline效果
+a:focus {
+    outline: none !important;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    outline: none !important;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+    outline: 0 !important;
+}
+
+.content {
+    width: 100%;
+    .nav {
+        margin-top: 30px;
+        height: 37px;
+        border-bottom: 2px solid #E8EAEB;
+        ul {
+            height: 37px;
+            li {
+                height: 34px;
+                line-height: 18px;
+                font-size: 18px;
+                font-weight: 400;
+                width: 72px;
+                float: left;
+                text-align: center;
+                color: #777E8C;
+                margin-top: 2px;
+                cursor: pointer;
+                a {
+                    color: #777e8c;
+                }
+                &.nav_margin {
+                    margin-right: 55px;
+                }
+                &.active {
+                    border-bottom: 3px solid #3395FF;
+                    color: #3395FF;
+                }
+            }
+        }
+    }
+    .cont {
+        width: 100%;
+        padding-top: 21px;
+    }
+    
+}
+
+a {
+    color: #2B3642;
+}
+
+.tan_qt{
+    text-align: left;
+    padding-left: 12%;
+}

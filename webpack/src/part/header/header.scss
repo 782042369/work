@@ -1,0 +1,118 @@
+/*header信息*/
+.portal{
+    width: 100%;
+    .header {
+        width: 100%;background: #37393B;
+        .handle {
+            font-size: 14px; width: 1200px; margin: 0 auto; height: 40px;color: #C3C4C5; 
+            .mobile:hover > .qrcode {
+                display: block;
+                background: url(../../common/images/portal/mobile.png) center left no-repeat;
+            }
+            .qrcode {
+                position: relative;
+                z-index: 1111111111111111;
+                display: none;
+                width: 160px;
+                height: 194px;
+                -webkit-box-shadow: 0 3px 8px 3px rgba(0, 0, 0, 0.05);
+                box-shadow: 0 3px 8px 3px rgba(0, 0, 0, 0.05);
+                img {
+                    width: 100%;
+                    height: 100%;
+                  }
+            }
+            .mobile {
+                cursor: pointer;width: 94px;height: 40px;line-height: 40px;float: left;text-align: right;background: url("../../common/images/portal/mobile.png") center left no-repeat; 
+            }
+            .user {
+                float: right;color: #C3C4C5;line-height: 40px; 
+                em {float: left;width: 14px; }
+                a {display: block;color: #C3C4C5;float: left;margin: 0 2px;height: 14px;line-height: 14px;margin-top: 13px;position: relative; }
+                .login {
+                    margin-right: 9px; 
+                    &:before {position: absolute;content: '「';width: 1px;top: 0;left: -20px; }
+                    &:after {position: absolute;content: '';width: 1px;height: 14px;background: #C3C4C5;top: 0;right: -9px; pointer-events: none;}
+
+                }
+                .register {
+                    margin-left: 9px; 
+                    &:after {position: absolute;content: '」';width: 1px;top: 0;right: -9px; }
+                }
+                .help {
+                    width: 80px;margin-left: 20px;text-align: right; 
+                    &:after {position: absolute;content: '';width: 18px;height: 18px;top: -2px;left: 0;background: url("../../common/images/portal/help.png") center left no-repeat; }
+                }
+                .personalinfos{
+                    float: left;position: relative;padding-left:37px;font-size: 14px;
+                    &:hover > #heade_infolist {display: block; }
+                    .userheadePortrait{
+                        display: inline-block;width: 30px;height: 30px;position: absolute;top: 5px;left: 0px;margin-top: 0px;
+                        img{width:100%;height: auto;  }
+                    }
+                    .usergrade{vertical-align: middle;margin-left: 8px;margin-right: 10px;}
+                    .usermessagesnum{
+                        vertical-align: middle;margin-left: 3px;margin-right: 7px;
+                        .messagesnum{position: absolute;top:-8px;left: 10px;font-size:12px;width: 16px;height: 16px;background: url("../../common/images/portal/newxx4.png") no-repeat center center;color: #fff;font-size: 12px;line-height: 16px;}
+                    }
+                    #heade_infolist {
+                        position: absolute;top:40px;left: 5px;z-index: 16111311;display: none;width: 160px;background: #fff;-webkit-box-shadow: 0 3px 8px 3px rgba(0, 0, 0, 0.05);box-shadow: 0 3px 8px 3px rgba(0, 0, 0, 0.05); 
+                        ul {
+                            width: 100%;font-size: 14px; 
+                            li {
+                                padding-left: 10px;width: 100%;height: 30px;
+                                &.last_time {
+                                    padding-top:7px; padding-bottom: 7px;height: 48px;border-top: 1px solid #F6F6F6;border-bottom: 1px solid #F6F6F6; 
+                                    p {height: 18px;line-height: 18px; }
+                                    .gray {color: #AEAEAE;font-size: 12px; }
+                                }
+                                a {
+                                    display: inline-block;width: 100%;color:#2b3642;margin-top: 0px;height: 20px;line-height: 30px; 
+                                    img {margin-right: 12px;vertical-align: middle; }
+                                    span{font-size: 14px;}
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .station {
+        width: 100%;background: #FFFFFF;-webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05); 
+        &:after{content: "";width: 0;height: 0;clear: both;}
+        .platform {
+            width: 1200px;margin: 0 auto;height: 70px; 
+            .logo {
+                float: left;
+                img {padding-top: 7px;margin-right: 10px;position: relative;; z-index: 101;}
+                img,.txt,.cut{float: left; }
+                .txt {
+                    margin-right: 20px;position: relative;z-index: 101; 
+                    h1 {margin-top: 16px;margin-bottom:0px;font-size: 18px;color: #2B3642;letter-spacing: 0;font-weight: 600;height: 24px;line-height: 24px; }
+                    h2 {margin-top: 6px;margin-bottom:0px;font-size: 14px;color: #2B3642;letter-spacing: 0;line-height: 14px;font-weight: 600; }
+                }
+                .cut {
+                    margin-top: 20px;width: 100px;height: 28px;line-height: 28px;font-size: 12px;color: #2B3642;letter-spacing: 0;padding-left: 38px;background: #FAFAFA;border: 1px solid #eaedf1;border-radius: 2px;background: url("../../common/images/portal/cut.png") 14px 5px no-repeat;cursor: pointer;position: relative; 
+                    &:hover #sele {display: block; }
+                    a{color: #777E8C;}
+                    .txt {float: left;width: 80px;text-align: right;margin-right: 10px; }
+                    // 城县街道
+                    .sele {padding:22px 0 0 0 ;position: absolute;top: 27px;left: -233px;background: #fff;z-index: 10; width: 1200px;display: none;}
+                    .sele > div {height: 40px;border-bottom: 1px solid #f6f6f6;color: #2B3642;font-size: 16px;line-height: 40px; }
+                    .sele ul { height: 40px;}
+                    .sele .ceshi{width: 1200px;height: 30px;background:#000;opacity:0;position: relative;}
+                    .sele ul li {float: left;overflow: hidden;margin: 0 25px 0 0;padding-top: 9px;width: 70px;height: 40px;text-align: left;text-overflow: ellipsis;white-space: nowrap;}
+                    .sele ul li a {display: block;padding: 0 10px;width: auto;height: 22px;color: #777E8C;text-align: center;font-size: 16px;line-height: 22px;}
+
+                    .txt {float: left;width: 80px;text-align: right;margin: 0px 35px 0 50px;;position: relative;}
+                }
+             }
+             .search {
+                 float: right;margin-top: 18px;border: 1px solid #E8EAEB;border-radius: 2px;width: 400px;height: 34px;overflow: hidden;background: #FFFFFF url("../../common/images/portal/index_search.png") 369px 9px no-repeat;position: relative;z-index: 101; 
+                 input {width: 88%;font-size: 14px;color: #AEAEAE;letter-spacing: 0;margin-left: 15px;line-height: 34px;padding: 0;border: none; }
+            }
+        }
+    }
+}

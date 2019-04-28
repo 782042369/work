@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+	<div class="content">
+        {{{header}}}
+        {{{mainnav}}}
+		<div class="interactive_con">
+			<div class="con content80">
+				<div class="remind">
+					<span id="close" class="close"></span>
+					<img src="../../common/images/portal/suona.png" alt="" /> 温馨提示：在这里，您可以对泸州市政务大厅服务、办事事项等进行投诉，我们会通过您预留的方式尽快回复您。同时，建议您不要就同一问题反复投诉。
+				</div>
+				<div class="suggest_con">
+					<dl class="clearfix">
+						<dt>
+							<img src="../../common/images/portal/star.png" alt="" />所属地区</dt>
+						<dd class="suggest_type downselect-wrap">
+							<span class="downselect-btn"></span>
+							<input type="text" id="complants_area" class="downselect-inpu" placeholder="请选择" list="area_list" />
+							<ul id="area_list" class="downselect-selectwrap">
+							</ul>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<img src="../../common/images/portal/star.png" alt="" />投诉部门</dt>
+						<dd class="suggest_type downselect-wrap">
+							<span class="downselect-btn"></span>
+							<input type="text" id="complants_department" class="downselect-inpu" placeholder="请选择" list="depart_list" />
+							<ul id="depart_list" class="downselect-selectwrap">
+								<li class="disabled">请先选择地区</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<img src="../../common/images/portal/star.png" alt="" />投诉标题</dt>
+						<dd class="suggest_title">
+							<input type="text" id="complants_title" class="title_" name="appraise_cont" placeholder="请填写少于30个字">
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<img src="../../common/images/portal/star.png" alt="" />投诉内容</dt>
+						<dd class="suggest_cont">
+							<div>
+								<textarea id="complants_txt" name="appraise_cont" placeholder="若您对我们的服务不满意或非常不满意时，请您填写不满意的具体内容，以便我们改善服务质量。" rows="6" cols="96"></textarea>
+								<a class="words_num">
+									<span id="words_current">0</span>/500</a>
+							</div>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<img src="../../common/images/portal/star.png" alt="" />是否公开</dt>
+						<dd class="suggest_public">
+							<label for="yes">
+								<input type="radio" name="yn" id="yes" checked="checked" />
+								<span class="radio"></span>是</label>
+							<label for="no">
+								<input type="radio" name="yn" id="no" />
+								<span class="radio"></span>否</label>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>上传图片</dt>
+						<dd id="push_img">
+							<div class="img_wrap"></div>
+							<div class="add">
+								<label for="">
+									<input id="push" type="file" title=" " />
+									<img src="../../common/images/portal/select.png" alt="" />
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl class="btn_wrap clearfix">
+						<dt>&nbsp;</dt>
+						<dd>
+							<a href="" id="sub">提交</a>
+							<a href="javascript:history.back(-1)" id="return">取消</a>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+        {{{footer}}}
+	</div>
+	</div>
+</body>
+
+</html>

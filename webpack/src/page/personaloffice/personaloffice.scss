@@ -1,0 +1,188 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+body {
+    position: relative;
+}
+
+//清除bootstrap的focus outline效果
+a:focus {
+    outline: none !important;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    outline: none !important;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+    outline: 0 !important;
+}
+
+.content {
+    width: 100%;
+    position: relative;
+    .info_detail {
+        &>div {
+            margin-top: 16px;
+        }
+        .office_head {
+            margin-top: 26px;
+            height: 56px;
+            line-height: 56px;
+            margin-bottom:30px; 
+            border: 1px solid #E8EAEB;
+            .tim {
+                color: #FB6041;
+            }
+            .user {
+                padding-left: 20px;
+            }
+            span {
+                text-align: center;
+                border-left: 4px solid #0099FF;
+                padding-left: 10px;
+                font-size: 19px;
+            }
+        }
+        .office_search {
+            width: 100%;
+            form {
+                width: 100%;
+                &>div {
+                    width: 100%;
+                    height: 53px;
+                    // margin-bottom: 30px;
+                    &>div {
+                        float: left;
+                        font-size: 16px;
+                        color: #777E8C;
+                        label {
+                            float: left;
+                            line-height: 40px;
+                            font-weight: 400 !important;
+                        }
+                        &>div {
+                            margin-left: 15px;
+                            float: left;
+                        }
+                        input {
+                            padding-left: 10px;
+                        }
+                    }
+                    .office_one {
+                        width: 35%;
+                        .office_inpu {
+                            width: 65% !important;
+                            height: 40px;
+                            position: relative;
+                            input {
+                                width: 100%;
+                                height: 40px;
+                                border: 1px solid #DDDEE3;
+                            }
+                            img {
+                                width: 10px;
+                                height: 5px;
+                                position: absolute;
+                                right: 10px;
+                                top: 18px;
+                            }
+                            #status_list {
+                                background: #fff;
+                                display: none;
+                                width: 100%;
+                                border: 1px solid #dddee3;
+                                li {
+                                    height: 38px;
+                                    line-height: 38px;
+                                    padding-left: 10px;
+                                }
+                            }
+                        }
+                    }
+                    .office_two {
+                        width: 45%;
+                        .office_inpu {
+                            width: 80% !important;
+                            height: 40px;
+                            color: #424754;
+                            position: relative;
+                            &>div {
+                                width: 42%;
+                                float: left;
+                                input {
+                                    width: 100%;
+                                    height: 40px;
+                                    border: 1px solid #DDDEE3;
+                                    
+                                }
+                            }
+                            .date_xian {
+                                color: #424754;
+                                float: left;
+                                line-height: 40px;
+                                margin: 0 5px;
+                            }
+                        }
+                    }
+                    .dept_sele {
+                        background: #3F94FC;
+                        color: #fff;
+                    }
+                    .office_three {
+                        width: 20%;
+                        input[type="button"]:nth-of-type(1){
+                            background: #8BC34A;
+                            padding: 0;
+                            border-radius: 2px;
+                            color: #fff;
+                            border: none;
+                            width: 80px;
+                            height: 40px;
+                            text-align: center;
+                        }
+                        input[type="button"]:nth-of-type(2){
+                            background: #3395FF;
+                            padding: 0;
+                            border-radius: 2px;
+                            color: #fff;
+                            border: none;
+                            width: 80px;
+                            height: 40px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+        .office_table {
+            width: 100%;
+        }
+    }   
+    .td_padding{
+        a+a{
+            margin-left: 15px;
+        }   
+    }
+}
+.table-condensed{
+    tbody td{
+        cursor: pointer;
+    }
+}
+a {
+    color: #2B3642;
+}
+
+input{
+    box-sizing: border-box;
+}

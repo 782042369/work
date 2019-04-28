@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+</head>
+<body>
+  <div id="mask" class="mask"></div>
+    <div class="portal_index">
+      {{{header}}}
+      <!-- banner -->
+      <div class="banner_main">
+          <div class="hmain clearfix" style="position: relative;width:1200px;margin:0 auto;height: 400px;">
+              <div class="meau">
+                  <ul class="meau_ul">
+                      <li class="active clearfix">
+                          <a href="javascript:;">个人办事</a>
+                      </li>
+                      <li>
+                          <a href="javascript:;">法人办事</a>
+                      </li>
+                      <li>
+                          <a href="javascript:;">部门服务</a>
+                      </li>
+                      <li>
+                          <a href="javascript:;">行政审批</a>
+                      </li>
+                      <li>
+                          <a href="javascript:;">公共服务</a>
+                      </li>
+                  </ul>
+                  <div class="meaulist">
+                      <div class="inlist" id="inlist1" style="display:block;">
+                          <ul>
+                              <li>
+                                  <img src="../../common/images/portal/new_yuandian.png" alt="">
+                                  <a>1公共服务</a>
+                              </li>
+                          </ul>
+                          <img src="../../common/images/portal/new_more.png" alt="" class="jiahao">
+                      </div>
+                      <div class="inlist" id="inlist2">
+                          <ul>
+                              <li>
+                                  <img src="../../common/images/portal/new_yuandian.png" alt="">
+                                  <a>2公共服务</a>
+                              </li>
+                          </ul>
+                          <img src="../../common/images/portal/new_more.png" alt="" class="jiahao">
+                      </div>
+                      <div class="inlist" id="inlist3">
+                          <ul>
+                              <li>
+                                  <img src="../../common/images/portal/new_yuandian.png" alt="">
+                                  <a>3公共服务</a>
+                              </li>
+                          </ul>
+                          <img src="../../common/images/portal/new_more.png" alt="" class="jiahao">
+                      </div>
+                      <div class="inlist" id="inlist4">
+                          <ul>
+                              <li>
+                                  <img src="../../common/images/portal/new_yuandian.png" alt="">
+                                  <a>4公共服务</a>
+                              </li>
+                          </ul>
+                          <img src="../../common/images/portal/new_more.png" alt="" class="jiahao">
+                      </div>
+                      <div class="inlist" id="inlist5">
+                          <ul>
+                              <li>
+                                  <img src="../../common/images/portal/new_yuandian.png" alt="">
+                                  <a>5公共服务</a>
+                              </li>
+                          </ul>
+                          <img src="../../common/images/portal/new_more.png" alt="" class="jiahao">
+                      </div>
+                  </div>
+              </div>
+              <div class="search">
+                  <div class="top_head">
+                      <ul>
+                          <li class="top_p active">
+                              <a class="p_line">办件查询</a>
+                          </li>
+                          <li class="top_p">
+                              <a>快递查询</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="chaxun" style="display:block">
+                      <ul>
+                          <li>
+                              <label for="numb">申报号：</label>
+                              <input type="text" placeholder="请输入申报号" id="numb">
+                          </li>
+                          <li>
+                              <label for="pas">查询密码：</label>
+                              <input type="text" placeholder="请输入查询密码" id="pas">
+                          </li>
+                          <!-- <a href="html/page/apply.html" class="sub" id="sub">查&nbsp&nbsp询</a> -->
+                          <a href="javascript:;" class="sub" id="sub">查&nbsp&nbsp询</a>
+                      </ul>
+                  </div>
+                  <div class="chaxun">
+                      <ul>
+                          <li>
+                              <label>公司名称：</label>
+                              <select id="company" class="select">
+                                  <option value="中通快递">中通快递</option>
+                                  <option value="申通快递">申通快递</option>
+                                  <option value="顺丰速运">顺丰速运</option>
+                              </select>
+                          </li>
+                          <li>
+                              <label>快递单号：</label>
+                              <input type="text" placeholder="请输入快递单号">
+                          </li>
+                          <a>查&nbsp&nbsp询</a>
+                  </div>
+              </div>
+              <div class="banner_help">
+                  <a href="" onclick="javascript:alert('敬请期待!')">在线咨询</a>
+                  <a href="" onclick="javascript:alert('敬请期待!')">信函咨询</a>
+                  <a href="">我要收藏</a>
+              </div>
+          </div>
+      </div>
+      <div class="main">
+          <ul class="clearfix">
+              <li class="item1">
+                  <a href="../page/goappraise.html">
+                      <i></i>
+                      我要评价</a>
+              </li>
+              <li class="item2">
+                  <a href="../page/gosuggest.html">
+                      <i></i>
+                      我要建议</a>
+              </li>
+              <li class="item3">
+                  <a href="../page/gocomplaints.html">
+                      <i></i>
+                      我要投诉</a>
+              </li>
+              <li class="item4">
+                  <a href="../page/suggest.html?personalportal=5">
+                      <i></i>
+                      建议公开</a>
+              </li>
+              <li class="item5">
+                  <a href="../page/suggest.html?personalportal=6">
+                      <i></i>
+                      投诉公开</a>
+              </li>
+          </ul>
+      </div>
+
+      <!-- 底部 -->
+      {{{footer}}}
+      <!-- 注册弹窗 -->
+      <div id="login" class="login_pop" cstyle="border-radius:3px">
+          <div class="pop_top">
+              <!-- <span id="close_login">×</span> -->
+              <img src="../../common/images/portal/close_large.png" id="close_login" class="close_login" alt="">
+              <p class="hint">
+                  提示
+              </p>
+          </div>
+          <div class="pop_content">
+              已有账户，请先
+              <a href="javascript:;">登录</a>
+          </div>
+          <div class="pop_bottom">
+              <a href="javascript:;" class="zhuce fl">
+                  <span class="persondo">个人注册</span>
+              </a>
+              <a href="javascript:;" class="zhuce fr">
+                  <span class="persondo">法人注册</span>
+              </a>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

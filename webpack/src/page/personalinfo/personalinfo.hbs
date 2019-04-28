@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+  <div class="content">
+    {{{header}}}
+    {{{mainnav}}}
+    <div class="content80 clearfix">
+        {{{infolist}}}
+        <div class="width15 height100"></div>
+        <div class="info_detail width85">
+
+        <div class="info_1">
+            <div class="info_head">
+            <font class="user">张小墨</font>欢迎你，您上次登陆的时间是
+            <font class="tim"></font>
+            </div>
+            <div class="process">
+            <span class="inprocess">
+                <a href="javascript:;">办理中(
+                <font id="inProcess">0</font> )</a>
+            </span>
+            <span class="draft">
+                <a href="javascript:;">草稿(
+                <font id="draft">0</font> )</a>
+            </span>
+            <span class="havegone">
+                <a href="javascript:;">已办结(
+                <font id="through">0</font> )</a>
+            </span>
+            </div>
+        </div>
+        <div class="info_2">
+            <div class="info_head">
+            <span>办理中事项</span>
+            <a href="./myoffice.html">更多&nbsp;
+                <img src="../../common/images/portal/right_arrow.png" /> </a>
+            </div>
+            <div class="common_table">
+            <table cellspacing="0">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>事项名称</td>
+                    <td>申请时间</td>
+                    <td>受理单位</td>
+                    <td>办理状态</td>
+                    <td style="padding-left: 20px;width: 120px;">操作</td>
+                </tr>
+                </thead>
+                <tbody id="process"></tbody>
+            </table>
+            </div>
+        </div>
+        <div class="info_3">
+            <div class="info_head">
+            <span>保存草稿事项</span>
+            <a href="./myoffice.html">更多&nbsp;
+                <img src="../../common/images/portal/right_arrow.png" /> </a>
+            </div>
+            <div class="common_table">
+            <table cellspacing="0">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>事项名称</td>
+                    <td>申请时间</td>
+                    <td>办理单位</td>
+                    <td>办理状态</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody id="caogaoxiang"></tbody>
+            </table>
+            </div>
+        </div>
+        <div class="info_4">
+            <div class="info_head clearfix" >
+            <span>已办结事项</span>
+            <font class="info_prompt">办结温馨提示：以下是当前已办结的所有事项。</font>
+            <a href="../page/personaloffice.html">更多&nbsp;
+                <img src="../../common/images/portal/right_arrow.png" /> </a>
+            </div>
+            <div class="common_table">
+            <table cellspacing="0">
+                <thead>
+                <tr>
+                    <td class="td_xuhao">序号</td>
+                    <td>事项名称</td>
+                    <td>申请时间</td>
+                    <td>办理单位</td>
+                    <td>办理状态</td>
+                    <td style="width: 140px;padding-left: 53px;box-sizing: border-box;">操作</td>
+                </tr>
+                </thead>
+                <tbody id="over"></tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    {{{footer}}}
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+.info_detail{
+    margin-top: 26px;
+    h1{
+        font-size: 20px;
+        color: #2B3642;
+        line-height: 20px;
+        margin-bottom: 30px;
+        position: relative;
+        padding-left: 14px;
+    }
+    h1::after{
+        position: absolute;
+        top:0;    
+        height:20px;    
+        left:0;    
+        content: '';    
+        width:4px;
+        background: #3F94FC;
+    }
+    li {
+        font-size: 16px;
+        margin-bottom: 30px;
+        img,span,.grade_content,em,h5{
+            float: left;
+        }
+        span{
+            color: #777E8C;
+            width: 144px;
+            text-align: right;
+            margin-right: 10px;
+        }
+        .grade_content{
+            letter-spacing: 0;
+            line-height: 24px;
+        }
+        em{
+            color: #2B3642;
+            width: 84%;
+        }
+        .appraiseimg{
+            margin-top: 30px;
+            img{
+                width: 80px;
+                height: 80px;
+                margin-right: 30px;
+                cursor: pointer;
+            }
+        }
+        .grade_main{
+            img{
+                margin-right: 10px;
+                width: 22px;
+                height: 22px;
+            }
+            h5{
+                color: #F5A623;
+                line-height: 22px;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+        }
+    } 
+} 

@@ -1,0 +1,160 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+body {
+    position: relative;
+}
+
+.content {
+    .info_detail {
+        padding-top: 26px;
+        font-size: $fontSize;
+        &>div {
+            margin-top: 30px;
+            width: 100%;
+            .info_head {
+                height: 50px;
+                line-height: 50px;
+                border-bottom: none;
+                .user {
+                    padding-left: 20px;
+                }
+                span {
+                    text-align: center;
+                    // border-left: 4px solid #0099FF;
+                    padding-left: 10px;
+                    font-size: 20px;
+                    display: inline-block;
+                    line-height: 20px;
+                    position: relative;
+                }
+                span::after{
+                    position: absolute;
+                    content: '';
+                    background:#0099FF;
+                    width: 4px;
+                    height: 20px;
+                    border-radius: 100px;
+                    top: 0;
+                    left: 0;
+                }
+                a {
+                    float: right;
+                    margin-right: 20px;
+                    color: #45A2FF;
+                }
+            }
+            .info_pd {
+                p {
+                    img {
+                        margin-top: -5px;
+                    }
+                }
+            }
+        }
+        .info_1 {
+            margin-top: 0 !important;
+            height: 99px;
+            border: 1px solid #E8EAEB;
+            img {
+                margin-top: -3px;
+                margin-left: 14px;
+            }
+            .tim {
+                color: #FB6041;
+            }
+            .process {
+                padding-left: 14px;
+                height: 42px;
+                line-height: 42px;
+                span {
+                    display: inline-block;
+                    width: 100px;
+                    height: 30px;
+                    line-height: 30px;
+                    border-width: 1px;
+                    border-style: solid;
+                    text-align: center;
+                    margin-right: 13px;
+                    border-radius: 2px;
+                    &.inprocess {
+                        background: #FFF4E3;
+                        border-color: #FFCE7E;
+                        a {
+                            color: #F7BB5D;
+                        }
+                    }
+                    &.draft {
+                        background: #DCEDFF;
+                        border-color: #ABD4FF;
+                        a {
+                            color: #5AA9FF;
+                        }
+                    }
+                    &.havegone {
+                        border-color: #abd4ff;
+                        background: #dcedff;
+                        a {
+                            color: #72AF2B;
+                        }
+                    }
+                }
+            }
+        }
+        .info_2 {
+            table {
+                td {
+                    a {
+                        color: #0099FF;
+                        text-align: right;
+                    }
+                    .look {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        .info_4 {
+            .info_head {
+                .info_prompt {
+                    font-size: 16px;
+                    color: #F39C12;
+                    padding-left: 10px;
+                }
+            }
+            .info_pd {
+                td {
+                    width: 120px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 100px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    a {
+                        display: inline-block;
+                        width: 31%;
+                        text-align: right;
+                    }
+                }
+                .a_padding {
+                    padding-left: 0;
+                    a {
+                        text-align: center;
+                        padding-left: 6%;
+                        width: 26%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+a:focus {
+    outline: 0 !important;
+}

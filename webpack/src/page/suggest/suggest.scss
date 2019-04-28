@@ -1,0 +1,25 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w,$h){
+    width: $w;
+    height: $h;
+}
+
+.content{
+    width: 100%;
+    min-height: 600px;
+    .suggest_cont{
+        .suggest_title{
+            padding-top: 51px;
+            padding-bottom: 30px;
+            &>h3{
+                font-size: 20px;
+                color: #2B3642;
+                img{
+                    margin-top: -3px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

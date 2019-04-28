@@ -1,0 +1,421 @@
+$fontSize:16px;
+$bordercolor:#E8EAEB;
+@mixin wh($w, $h) {
+    width: $w;
+    height: $h;
+}
+body {
+    position: relative;
+}
+ul,ol{list-style: none;}
+.portal {
+    width: 100%;
+    &:after{content: "";width: 0; height: 0;clear: both;}
+}
+.active{
+    border-bottom: 3px solid #fff;
+    color: #fff;
+}  
+ 
+//数据没有时显示的img
+.nothing {
+    margin-left: 21%;
+    margin-top: 60px;
+}
+
+//城县街道字符长度超出一定长度 用省略号显示
+#city,
+#city_1 {
+    li {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-left: 10px;
+    }
+}
+.bgc{
+    background: #3179D3;
+    height: 60px;
+}
+.search_all{
+    border:1px;
+    padding-top: 30px;
+    width: 80%;
+    min-height: 600px;
+    margin:0 auto; 
+    &:after{content: "";width: 0; height: 0;clear: both;display: block;}
+    .search_left{
+        float: left;
+        border:1px;
+        width: 25%;
+        .ztbm_wrap{
+            height: 34px;
+            line-height: 34px;
+            &:after{content: "";width: 0;height: 0;clear: both;display: block;}
+            li{
+                float: left;
+                width: 50%;
+                text-align: center;
+                cursor: pointer; 
+                background: #F8F8F8;
+                color: #4A4A4A;
+                border: 1px solid $bordercolor;
+                &.ztbmsele{
+                    background: #3395ff;
+                    color: #fff;
+                    border-radius: 2px;
+                    border: none;
+                    border: 1px solid #3395ff;
+                }
+            }
+        }
+        .search_condition {
+            height: auto;
+            &:after{content: "";width: 0;height: 0;clear: both;display: block;}
+            &>ol{
+                width: 100%;
+                float: left;
+                font-size: 14px;
+                color: #808080;
+                &#zt{border: 1px solid $bordercolor;border-top: 0px;}
+                &#bm{border: 1px solid $bordercolor;border-top: 0px;display: none;}
+                &#lb{border: 1px solid $bordercolor;border-top: 0px;display: none;}
+                li{
+                    text-align: center;
+                    width: 50%;
+                    float: left;
+                    height: 34px;
+                    line-height: 34px;
+                    border-bottom: 1px solid $bordercolor;
+                    a:link{color: #808080;}
+                    &.select_con {
+                        background: #B8DFFE; //改成图片格式的背景
+                        a {color: #666;}
+                    }
+                    &.select_click {
+                        background: #B8DFFE; //改成图片格式的背景
+                        a {color: #666;}
+                    }
+                    a:visited{color: #2B3642;}
+                }
+            }
+            
+            .select_ztbm {
+                a {
+                    padding: 0 10px;
+                    display: inline-block;
+                    background: #26A2FF; //改成图片格式的背景
+                    color: #fff;
+                    border-radius: 2px;
+                }
+            }
+        }
+    }
+    .search_right{
+        float:right;
+        width: 72%;
+        .search {
+            padding: 0px;
+            width: 100%;
+            .inpu_wrap{
+              position: relative; 
+              display: inline-block;
+              width: 80%;
+              max-width: 500px;
+              .search_inpu {
+                  width: 100%;
+                  height: 34px;
+                  border-radius: 0px;
+                  border:1px solid $bordercolor;
+                  font-size: 14px;
+                  padding-left: 15px;
+              }
+            }
+            .btn_wrap {
+                display: inline-block;
+                width: 80px;
+                height: 34px;
+                line-height: 32px;
+                text-align: center;
+                background: #3395ff;
+                border-radius: 2px;
+                padding-left: -3px;
+                cursor: pointer;
+                margin-left: -5px;
+                a {
+                    color: #fff;
+                }
+            }
+            #qxsousuo {
+                display: block;
+                width: 20px;
+                height: 20px;
+                background: url(../../common/images/portal/quxiao.png) no-repeat center 0;
+                background-size: cover;
+                position: absolute;
+                right: 6px;
+                top: 10px;
+                display: none;
+                cursor:pointer;
+            }
+            .btn {
+                background: #3395FF;
+                color: #fff;
+                width: 100%;
+            }
+        }
+        .show_select {
+            margin-top: 20px;
+            padding-left: 0;
+            padding-right: 0;
+            &:after{content: "";width: 0;height: 0;clear: both;display: block;}
+            .select_condition {
+                float: left;
+                height: 30px;
+                color: #fff;
+                line-height: 30px;
+                padding-left: 0 !important;
+                .select_themedep {
+                    display: inline-block;
+                    height: 30px;
+                    padding:0 15px;
+                    background: #26A2FF; 
+                    position: relative;
+                    border-top-left-radius:2px;
+                    border-bottom-left-radius:2px;
+                    a{color: #fff}
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        right: -15px;
+                        z-index: 3;
+                        top: 0;
+                        border-top: 15px solid  transparent;
+                        border-left: 15px solid #26A2FF;
+                        border-bottom: 15px solid transparent;
+                    }
+                }
+            }
+            @media only screen and (max-width: 1200px) {
+                .select_right {
+                    label {
+                        width: 100px !important;
+                        img{left: 25px !important;}
+                    }
+                }
+            }
+            .select_right {
+                float: right;
+                width: 33.9%;
+                padding-right: 0;
+                label {
+                    display: inline-block;
+                    width: 120px;
+                    font-size: 14px;
+                    color: #2B3642;
+                    line-height: 17px;
+                    background: #fff;
+                    position: relative;
+                    font-weight: 400;
+                    img {
+                        position: absolute;
+                        left: 45px;
+                        top: 2px;
+                        z-index: 1;
+                    }
+                }
+                input[type="checkbox"] {
+                    position: absolute;
+                    z-index: -10;
+                }
+            }
+        }
+        #con_list {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .content_list {
+            margin-top: 10px;
+            width: 100%;
+            &>li {
+                padding-top: 15px;
+                padding-bottom: 10px;
+                border-top: 1px solid #EFF1F2;
+                font-weight: 550;
+                color: #2B3642;
+                -webkit-transition: all 0.2s;
+                transition: all 0.2s;
+                p>img {
+                    margin-top: -5px;
+                }
+                div {
+                    height: 100%;
+                }
+                .con_con {
+                    float: left;
+                    width: 83%;
+                    line-height: 26px;
+                    padding-left: 15px;
+                    &>p {
+                        width: 100%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        &>a {
+                            font-size: 14px;
+                            line-height: 16px;
+                            &:hover{color: #26A2FF;}
+                        }
+                    }
+                }
+                .con_gongneng{
+                    width: 17%;
+                    float: right;
+                    padding-right: 20px;
+                    text-align: right;
+                }
+                .con_dropdown {
+                    display: none;
+                    -webkit-transition: all 0.3s;
+                    transition: all 0.3s;
+                    float: left;
+                    width: auto;
+                    text-align: center;
+                    margin-top: 10px;
+                    ul {
+                        opacity: 0;
+                        float: right;
+                        height: 100%;
+                        margin-top: 0 !important;
+                        padding-left: 16px;
+                        li {
+                            display: block;
+                            float: left;
+                            width: 75px;
+                            position: relative;
+                            top: -2px;
+                            font-size: 14px;
+                            font-weight: 400 !important;
+                            margin-right: 20px;
+                            text-align:left;
+                            img{
+                                vertical-align:bottom;
+                            }
+                            a{
+                                line-height: 20px;color: #3395FF;position: relative;display: inline-block;width: 100%;padding-left:19px;
+                                &>img{position: absolute;left: 0px;top: 1px;}
+                            }
+                            .online_tishi {
+                                width: 187px;
+                                height: 40px;
+                                line-height: 46px;
+                                background: url(../../common/images/portal/kuang.png) no-repeat center 0;
+                                position: absolute;
+                                left: -180%;
+                                z-index: 11;
+                                color: #5B646D;
+                                display: none;
+                            }
+                        }
+                        .gn_3:hover {
+                            .online_tishi {
+                                display: block;
+                            }
+                        }
+                    }
+                    .data_down {
+                        width: 20px;
+                        float: right;
+                        padding-right: 26px;
+                    }
+                }
+                .con_list_detail {
+                    width: 100%;
+                    display: none;
+                    &>ul {
+                        padding-left: 0px;
+                        border-top: 1px solid #EFF1F2;
+                        width: 100%;
+                        &>li {
+                            padding-bottom:10px ;
+                            &>.con_con {
+                                padding-top: 7px;
+                                &>img {
+                                    margin-right: 5px;
+                                    position: relative;
+                                }
+                                img {
+                                    margin-top: -2px;
+                                }
+                            }
+                            &>.con_dropdown{
+                                a{font-size: 14px;color: #26A2FF}
+                            }
+                            a {
+                                font-size: 14px;
+                                color: #777E8C;
+                                letter-spacing: 0;
+                                line-height: 21px;
+
+                            }
+                        }
+                    }
+                }
+            }
+            .event_show:hover {
+                -webkit-transition: all 0.2s;
+                transition: all 0.2s;
+                background: #eef5fd;
+                .con_dropdown {
+                    -webkit-transition: all 0.3s;
+                    transition: all 0.3s;
+                    display: block;
+                    ul {
+                        opacity: 1;
+                    }
+                }
+            }
+            .event_wrap {
+                padding-bottom: 0 !important;
+            }
+        }
+        .page {
+            line-height: 70px;
+            font-size: 16px;
+            color: #777E8C;
+            letter-spacing: 0;
+            .prev_page,
+            .next_page {
+                display: inline-block;
+                width: 60px;
+                text-align: center;
+                height: 35px;
+                line-height: 35px;
+                border: 1px solid #DCDCDC;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.search_left{
+    .search_one{
+        ul{
+            li{
+                width: 140px;
+                height: 34px;
+                display: block;
+                float: left;
+            }
+        }
+    }
+    .search_two{
+        ul{
+            li{
+                display: block;
+                width: 33.3%;
+            }
+        }
+    }
+}
+    

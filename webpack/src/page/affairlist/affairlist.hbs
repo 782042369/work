@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+</head>
+
+<body>
+	<div class="content mything">
+		{{{header}}}
+		<!--导航栏-->
+		{{{mainnav}}}
+		<div class="search_all">
+			<div class="search_left">
+				<ul class="ztbm_wrap">
+				</ul>
+				<div class="search_condition" id="search_condition">
+					<ol id="zt" class="zt"></ol>
+					<ol id="bm" class="bm"></ol>
+					<ol id="lb" class="lb"></ol>
+				</div>
+			</div>
+			<div class="search_right" >
+				<div class="search" id="search_con">
+					<div class="inpu_wrap">
+						<input type="text" class="search_inpu" id="search_1" placeholder="请输入关键字" />
+						<span id="qxsousuo"></span>
+					</div>
+					<div class="btn_wrap " id="search_btn">
+						<a href="javascript:;" class="search_btn">搜索</a>
+					</div>
+				</div>
+				<div class="show_select " id="show_select">
+					<div class="select_condition ">
+						<span id="show_ztbm" class="select_themedep">不限</span>
+					</div>
+					<div class="select_right text-right">
+						<label for="online_do">
+							<input type="checkbox" id="online_do" />
+							<img src="../../common/images/portal/wxz.png" alt="" />网上申请</label>
+						<label for="order_do">
+							<input type="checkbox" id="order_do" />
+							<img src="../../common/images/portal/wxz.png" alt="" />网上预约</label>
+					</div>
+				</div>
+				<div class=" heigh145">
+					<div class="clearfix">
+						<div class="col-md-12 col-sm-12 col-lg-12" id="con_list"></div>
+					</div>
+				</div>
+				<div class="">
+					<div class="row clearfix">
+						<div class="page text-right" id="page">
+							<!--共<span class="all_data">43</span>条数据  &nbsp;&nbsp;<span class="prev_page dis" id="prev_page">上一页</span>&nbsp;&nbsp; 第<span class="curren_page" id="curren_page">1</span>页 / 共<span class="all_page" id="all_page">3</span>页  &nbsp;&nbsp;<span class="next_page" id="next_page">下一页</span>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{{footer}}}
+</body>
+
+</html>

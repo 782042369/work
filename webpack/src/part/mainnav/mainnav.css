@@ -1,0 +1,148 @@
+.header_nav {
+  height: 60px;
+  background: #3179D3;
+  -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+}
+
+.header_nav::after {
+  content: "";
+  width: 0;
+  height: 0;
+  clear: both;
+}
+
+.header_nav .header_tl .internet {
+  margin-left: 5%;
+  color: #fff;
+}
+
+.header_nav > .container {
+  padding: 0 !important;
+}
+
+.header_nav .header_maincont {
+  padding-left: 2%;
+  height: 60px;
+}
+
+.header_nav .header_maincont:after {
+  content: "";
+  clear: both;
+  width: 0;
+  height: 0;
+}
+
+.header_nav .header_maincont li {
+  float: left;
+  width: 124px;
+  text-align: left;
+  padding-top: 22px;
+}
+
+.header_nav .header_maincont li a {
+  display: inline-block;
+  margin: 0 auto;
+  line-height: 16px;
+  color: #acc9ed;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.header_nav .header_maincont li.main_sele > a {
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+
+.header_nav .header_maincont li.main_sele1 > a {
+  color: #fff;
+}
+
+.header_nav .denglu {
+  padding: 0;
+  height: 75px;
+}
+
+.header_nav .denglu #loading {
+  display: none;
+  padding-left: 1%;
+  width: 100%;
+}
+
+.header_nav .denglu #loading > span {
+  display: inline-block;
+  margin-top: 18px;
+  width: 80px;
+  height: 40px;
+  border-radius: 2px;
+  background: #8BC34A;
+  text-align: center;
+  line-height: 40px;
+}
+
+.header_nav .denglu #loading > span a {
+  color: #fff;
+}
+
+.header_nav .denglu #loading .registered {
+  background: #47caf7;
+}
+
+.header_nav .denglu #landing {
+  display: none;
+  padding: 0 !important;
+  width: 100%;
+  height: 75px;
+}
+
+.header_nav .denglu #landing .unified {
+  float: left;
+  width: 25%;
+  height: 75px;
+  text-align: left;
+}
+
+.header_nav .denglu #landing .personal {
+  padding-left: 16%;
+  width: 75%;
+  height: 75px;
+  line-height: 30px;
+}
+
+.header_nav .denglu #landing .personal a {
+  float: left;
+}
+
+.header_nav .denglu #landing .personal a.head_portrait {
+  padding-top: 21px;
+  padding-left: 16%;
+  width: 50%;
+}
+
+.header_nav .denglu #landing .personal a.personal_info {
+  float: right;
+  margin-right: 3px;
+  padding-top: 23px;
+  width: 40%;
+  color: #fff;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.header_nav .denglu #landing .personal a.personal_info span {
+  display: block;
+}
+
+.header_nav .denglu #landing .info_sele {
+  margin-top: 27px;
+}
+
+.header_nav .denglu #landing .info_sele a {
+  display: inline-block;
+  width: 44%;
+  text-align: center;
+}
+
+.header_nav .denglu #landing .info_sele .info_sele_1 {
+  text-align: right;
+}

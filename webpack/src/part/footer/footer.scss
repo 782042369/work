@@ -1,0 +1,11 @@
+/* footer公共样式*/
+.bg{
+    margin-bottom: 0px; padding:25px 0 35px;background:#f8f8f8;position: absolute; bottom:-142px; width: 100%;
+    p{text-align:center;line-height:15px;}
+    .footer_list{
+        padding-bottom:19px;font-size:16px;
+        a{display:inline-block;margin-right:-3px;color:#4a4a4a;font-size:16px;}
+        a+a{margin-left:70px;}
+    }
+    .address{color:grey;font-size:12px;line-height:24px;}
+ }

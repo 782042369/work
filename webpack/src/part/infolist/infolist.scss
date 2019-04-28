@@ -1,0 +1,39 @@
+/*个人信息左侧菜单栏*/
+.info_list {
+    position: fixed;
+    margin-top: 26px;
+    margin-left: 0%;
+    width: 170px;
+    font-size: 16px;
+    ul {
+        background: #F7F7F7;
+        li {
+            margin-top: -1px;
+            text-align: center;
+            line-height: 50px;
+            a{
+                color: #3d464d;
+            }
+            &.info_onselect {
+                background: #3395FF;
+                transition: all .5s;
+                a {
+                    color: #fff;
+                }
+            }
+            &.li_wrap {
+                padding: 0;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                width: 170px;
+                background: #f0f0f0;
+                text-align: center;
+                p {
+                    margin-top: 14px;
+                    margin-bottom: 0;
+                    line-height: 18px;
+                }
+            }
+        }
+    }
+  }

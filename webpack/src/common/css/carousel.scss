@@ -1,0 +1,77 @@
+%wh100{
+    width: 100%;
+    height: 100%;
+}
+.carousel_wrap{
+    width: 900px;
+    height: 550px;
+    margin: 0 auto;
+    margin-top: 9%;
+    position: relative;
+    overflow: hidden;
+    .close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+        background: url(../images/portal/close.png) no-repeat;
+        z-index: 1112;
+        cursor: pointer;
+    }
+    a{
+        position: absolute;
+        width: 62px;
+        height: 62px;
+        &.carousel_left{
+            top: 50%;
+            left:0px;
+            margin-top: -31px;
+            z-index: 11;
+            background: url(../images/portal/larrow.png) no-repeat;
+            background-size: contain;
+        }
+        &.carousel_right{
+            top: 50%;
+            right:0px;
+            margin-top: -31px;
+            background: url(../images/portal/rarrow.png) no-repeat;
+            background-size: contain;
+        }
+    }
+    p{
+        height: 12px;
+        width: auto;
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        margin-left:-25px;
+        span{
+            display: inline-block;
+            width: 12px;
+            height: 12px;;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            background: #fff;
+            &.active{
+                background: none;
+            }
+            &+span{
+                margin-left: 5px;
+            }
+        }
+    }
+    .carouselInner{
+        position: absolute;
+        left: 0;
+        transition: all .5s;
+        li{
+            width: 900px;
+            height: 100%;
+            float: left;
+            img{
+                @extend %wh100;
+            }
+        }
+    }
+}

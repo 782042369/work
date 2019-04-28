@@ -1,0 +1,169 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w,$h){
+    width: $w;
+    height: $h;
+}
+
+.content{
+    width: 100%;
+    .cont_detail{
+        background: #F7F7F7;
+        height:50px;
+        line-height: 50px;
+        .third_detail{
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            letter-spacing: 0;
+            a{
+                color: #777E8C;
+            }
+            img{
+                margin-top: -3px;
+            }
+        }
+    }
+    .yuyue_con{
+        padding-bottom: 270px;
+        .main_title{
+            text-align: center;
+            height: 90px;
+            line-height: 90px;
+            margin: 0;
+            #tit{
+                display: inline-block;
+                width: 96px;
+                height: 24px;
+                line-height: 24px;
+                background: url(../../common/images/portal/notice2.png);
+                background-size:auto ;
+                font-size: 16px;
+                color:#fff;
+            }
+        }
+        .remind{
+            height: 82px;
+            padding: 20px;
+            font-size: 16px;
+            color: #424754;
+            background: #FCFCFC;
+            border: 1px solid #E8EAEB;
+        }
+        .cont{
+            margin-top: 32px;
+            &>div{float: left;}
+            .rili_left{
+                width: 65%;
+                padding: 0 !important;
+            }
+            .rili_right{
+                width: 35%;
+            }
+            .duan{
+                height: 56px !important;
+            }
+            .tim{
+                height: 112px !important;
+            }
+            .sele{
+                width: 100%;
+                height: 57px;
+                border: 1px solid #E8EAEB;
+                border-left: 0;
+                line-height: 56px;
+                font-size: 16px;
+                text-align: center;
+                color: #2B3642;
+            }
+            .select_time{
+                text-align: center;
+                height: 223px;
+                border-bottom: 1px solid #E8EAEB;
+                border-right: 1px solid #E8EAEB;
+                margin-left: 1px;
+                padding-top: 40px;
+                .yuyue_dat{
+                    color: #fb6041;
+                    font-size: 24px;
+                    text-align: center;
+                    margin-bottom: 20px !important;
+                }
+                #go_yuyue{
+                    display: block;
+                    width: 100px;height: 40px;
+                    line-height: 40px;
+                    margin: 0 auto;
+                    margin-top: 33px;
+                    background: #3395FF;
+                    border-radius: 2px;
+                    color: #fff;
+                }
+            }
+            .all {
+                width: 100%;
+                border-top: 1px solid #E8EAEB;
+                border-right: 1px solid #E8EAEB;
+                &>div{
+                    width: 50%;
+                    -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                    border-left: 1px solid #E8EAEB;
+                    float: left;
+                }
+                .half{
+                    height: 55px;
+                    line-height: 55px;
+                    text-align: center;
+                }
+                .half2{
+                    height: 111px;
+                    &>p{
+                        height: 55px;
+                        line-height: 55px;
+                        position: relative;
+                        padding-left: 25px;
+                        width: 100%;
+                        margin: 0 !important;
+                        span{
+                            position: absolute;
+                            left: 14px;
+                            top: 11px;
+                        }
+                        .radio,.radioed{
+                            top: 23px;
+                            left:25px;
+                        }
+                        input[type="radio"]{
+                            opacity: 0;
+                            filter: alpha(opacity=0);
+                        }
+                        label{
+                            width: 88%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                    }
+                }
+                #date_time{
+                    border-left: none;
+                }
+            }
+        }
+    }
+}
+
+/*日历*/
+.rili_left #calendar{width: 100%;border-left: 1px solid #E8EAEB;}
+#calendar td,#calendar th{text-align:center;vertical-align:middle;color:#3C3C3C;height:55px; line-height:55px; width:120px;}
+#calendar th{padding: 0 50px;background: #EBF4FE !important;border-top: 1px solid #E8EAEB !important;}
+#calendar td{border: 1px solid #E8EAEB;border-top: none;border-left: none;}
+#calendar th p{height: 22px;width: 11px;}
+#calendar th p img{width: 100%;height: 100%;margin-top: 16px;}
+#calendar div{width:100%; text-align: center; float:left; margin:0 auto;line-height:55px;color:#ccc;font-size:14px;}
+#calendar .c_today{color:#333;font-weight:bold;}
+#calendar .has{background:#8BC34A;color:#fff;cursor: pointer;}
+#calendar .current{background:#F39C12;color:#fff;width: 100%;height: 100%;}
+#calendar p{cursor:pointer;color:#fff;font-size:12px;padding:0;margin:0;}
+#calendar .prev,#calendar .next{width:15px;}
+#calendar #calendar_title{cursor:pointer;text-align:center;width:294px;}

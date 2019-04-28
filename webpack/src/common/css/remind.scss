@@ -1,0 +1,29 @@
+.remind{
+    font-size: 16px;
+    height: 48px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    background: #F9F9F9;
+    position: relative;
+    padding-left: 10px;
+    margin-bottom: 30px;
+    color: #F39C12;
+    border-left: 4px solid #e6e6e6;
+    img{
+        position: relative;
+        top: 2px;
+    }
+    .close{
+        position: absolute;
+        right: 20px;
+        top: 14px;
+        width:20px;
+        height: 20px;
+        background:url(../../common/images/portal/close_large.png) no-repeat center 0;
+        background-size: contain;
+        cursor: pointer;
+        font-weight: 800;
+        color: #AEAEAE;
+        font-size: 26px;
+    }
+}

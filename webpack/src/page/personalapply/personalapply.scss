@@ -1,0 +1,417 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w,$h){
+    width: $w;
+    height: $h;
+}
+
+.content{
+    width: 100%;
+    min-height: 600px;
+    padding-bottom: 30px;
+    .yuyue_con{
+        .main_title{
+            text-align: center;
+            height: 90px;
+            line-height: 90px;
+            margin: 0;
+            font-size: 24px;
+            color: #2B3642;
+        }
+        .nav{
+            height: 60px;
+            line-height: 60px;
+            ul{
+                width: 50%;
+                height: 60px;
+                margin: 0 auto;
+                li{
+                    height: 60px;
+                    width: 25%;
+                    float: left;
+                    text-align: center;
+                    padding-top:21px ;
+                    &:last-child{
+                        p{
+                            border:none;
+                            }
+                        }
+                    p{
+                        height: 25px;
+                        border-right: 1px solid #d6d6d6;
+                        a{ 
+                            font-size: 18px;
+                            color: #777E8C;
+                            display: inline-block;
+                            width: auto;
+                            height: 28px;
+                            line-height: 25px;
+                            &.sele{
+                                color: #3395FF;
+                                position: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .cont{
+            margin-top: 10px;
+            td,th{
+                border: 1px solid #E8EAEB;
+            }
+            .cont1{
+                display: block;
+                table{
+                    width: 100%;
+                    border:1px solid #E8EAEB;
+                    tr{
+                        height: 53px;
+                        td,th{
+                            line-height: 53px;
+                            padding-left: 50px;
+                        }
+                        th{
+                            background: #FCFCFC;
+                            font-size: 16px;
+                            color: #2B3642;
+                            font-weight: 500;
+                        }
+                        td{
+                            font-size: 16px;
+                            color: #777E8C;
+                        }
+                    }
+                }
+            }
+            .cont2{
+                display: none;
+                table{
+                    width: 100%;
+                    font-size: 16px;
+                    tr{
+                        height:55px ;
+                        width: 100%;
+                        td{
+                            padding-left: 30px;
+                        }
+                    }
+                    thead{
+                        color: #2B3642;
+                        background: #EBF4FE;
+                    }
+                    tbody{
+                        color: #777E8C;
+                        tr{
+                            border-bottom: 1px solid #E8EAEB;
+                        }
+                    }
+                }
+            }
+            .cont3{
+                display: none;
+                margin-top: 19px;
+                &>div{
+                    width: 62%;
+                    margin: 0 auto;
+                    .tree{
+                        width: 62px;
+                        float: left;
+                        dl{
+                            margin-bottom: 0px;
+                            dt{
+                                margin-top: -5px;
+                                font-size: 16px;
+                                color: #777E8C;
+                                letter-spacing: 0;
+                                img{
+                                    margin-top: -2px;
+                                    margin-left: 3px;
+                                }
+                            }
+                            dd{
+                                height: 56px;
+                                width: 10px;
+                                border-right: 1px solid #DDDEE3;
+                                margin-top: -4px !important;
+                            }
+                            &.yes{
+                                img{
+                                    margin-left: 0 !important;
+                                }
+                                dd{
+                                    width: 10px;
+                                }
+                            }
+                        }
+                    }
+                    .shenpi_process{
+                        margin-top: -5px;
+                        width: 600px;
+                        margin-left: 16px;
+                        float: left;
+                        font-size: 16px;
+                        color: #000000;
+                        ul{
+                            width: 100%;
+                            &>li{
+                                width: 100%;
+                                padding-top: 23px;
+                                padding-bottom: 23px;
+                                border-bottom:1px solid #DDDEE3 ;
+                            }
+                        }
+                    }
+                }
+                    
+                #tongguo{
+                    display: none;
+                    .tree>.yess{
+                        dd{
+                            height: 296px;
+                        }
+                    }
+                    .shenpi_process>ul>li{
+                        span{
+                            float: right;
+                            color: #7cc86f;
+                        }
+                        &>ol{
+                            width: 87.5%;
+                            font-size: 14px;
+                            color: #777E8C;
+                            margin-top: 20px;
+                            
+                            &>li{
+                                line-height: 18px;
+                                width: 100%;
+                                dl{
+                                    margin: 0;
+                                    dt{
+                                        float: left;
+                                        width: 19%;
+                                        letter-spacing: 0;
+                                        font-weight: 400;
+                                    }
+                                    .letter{
+                                        letter-spacing: 1.96px;
+                                    }
+                                    dd{
+                                        float: left;
+                                        width:81% ;
+                                        letter-spacing: -0.5px;
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                #guoqi{
+                    display: none;
+                    .tree>.yess{
+                        dd{
+                            height: 177px;
+                        }
+                    }
+                    .shenpi_process>ul>li{
+                        span{
+                            float: right;
+                            color: #F39C12;
+                        }
+                        &>ol{
+                            width: 87.5%;
+                            font-size: 14px;
+                            color: #777E8C;
+                            margin-top: 20px;
+                            
+                            &>li{
+                                line-height: 18px;
+                                width: 100%;
+                                dl{
+                                    margin: 0;
+                                    dt{
+                                        float: left;
+                                        width: 19%;
+                                        letter-spacing: 0;
+                                        font-weight: 400;
+                                    }
+                                    .letter{
+                                        letter-spacing: 1.96px;
+                                    }
+                                    dd{
+                                        float: left;
+                                        width:81% ;
+                                        letter-spacing: -0.5px;
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                //准予许可
+                #xuke{
+                    display: none;
+                    .tree>.yess{
+                        dd{
+                            height: 177px;
+                        }
+                    }
+                    .shenpi_process>ul>li{
+                        span{
+                            float: right;
+                            color: #F39C12;
+                        }
+                        &>ol{
+                            width: 87.5%;
+                            font-size: 14px;
+                            color: #777E8C;
+                            margin-top: 20px;
+                            
+                            &>li{
+                                line-height: 18px;
+                                width: 100%;
+                                dl{
+                                    margin: 0;
+                                    dt{
+                                        float: left;
+                                        width: 19%;
+                                        letter-spacing: 0;
+                                        font-weight: 400;
+                                    }
+                                    .letter{
+                                        letter-spacing: 1.96px;
+                                    }
+                                    dd{
+                                        float: left;
+                                        width:81% ;
+                                        letter-spacing: -0.5px;
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                #quxiaoyuyue{
+                    display: none;
+                    .tree>.yess{
+                        dd{
+                            height: 177px;
+                        }
+                    }
+                    .shenpi_process>ul>li{
+                        span{
+                            float: right;
+                            color: #00c4c4;
+                        }
+                        &>ol{
+                            width: 87.5%;
+                            font-size: 14px;
+                            color: #777E8C;
+                            margin-top: 20px;
+                            
+                            &>li{
+                                line-height: 18px;
+                                width: 100%;
+                                dl{
+                                    margin: 0;
+                                    dt{
+                                        float: left;
+                                        width: 19%;
+                                        letter-spacing: 0;
+                                        font-weight: 400;
+                                    }
+                                    .letter{
+                                        letter-spacing: 1.96px;
+                                    }
+                                    dd{
+                                        float: left;
+                                        width:81% ;
+                                        letter-spacing: -0.5px;
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .cont4{
+                display: none;
+                div{
+                    width: 80%;
+                    margin: 0 auto;
+                }
+                
+                table{
+                    width: 100%;
+                    border:1px solid #E8EAEB;
+                    &.tab{margin-top: 20px;}
+                    thead{
+                        font-size: 18px;
+                        td{
+                            color: #424754;
+                            padding-right: 20px;
+                            padding-left: 20px;
+                        }
+                        .col{
+                            color: #3395FF;
+                        }
+                        span{
+                            float: right;
+                            color: #777E8C;
+                            cursor: pointer;
+                        }
+                    }
+                    tbody{
+                        display: none;
+                        td{
+                            color: #777E8C;
+                        }
+                        td,th{
+                            padding-left: 50px;
+                        }
+                        .td_padding0{
+                            padding-left: 0px;
+                        }
+                    }
+                    tr{
+                        height: 53px;
+                        td,th{
+                            line-height: 53px;
+                        }
+                        th{
+                            background: #FCFCFC;
+                            font-size: 16px;
+                            color: #2B3642;
+                            font-weight: 500;
+                            text-align: left;
+                        }
+                        td{
+                            font-size: 16px;
+                        }
+                        .print{
+                            display: block;
+                            width: 100px;
+                            height: 40px;
+                            font-size: 16px;
+                            line-height: 40px;
+                            text-align: center;
+                            color: #fff;
+                            background: #3395FF;
+                            border-radius: 2px;
+                            margin: 0 auto;
+                            margin-top: 21px;
+                            margin-bottom: 19px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

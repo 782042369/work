@@ -1,0 +1,21 @@
+/* 下拉 */
+.downselect-wrap{ 
+    position: relative;
+    width: auto !important;
+    .downselect-inpu { 
+        width: 100%;height: 40px;box-sizing: border-box;border: 1px solid #DDDEE3;padding-left: 10px;outline: none;
+    }
+    .downselect-btn {
+        position: absolute;right: 15px;top: 18px;width: 10px;height: 6px;background: url(../images/portal/littlesanjiao.png) no-repeat;
+    }
+    .downselect-btn2 {
+        position: absolute;right: 15px;top: 18px;width: 10px;height: 6px;background: url(../images/portal/little2.png) no-repeat;
+    }
+    .downselect-selectwrap {
+        background: #fff;display: none;width: 100%; height: auto; border: 1px solid #dddee3;border-top: none; position: absolute;z-index: 1121312;
+    }
+    .downselect-selectwrap li { 
+        height: 38px; line-height: 38px; padding-left: 10px;font-size: 13px;
+        &.select-true {background: #3F94FC;color: #fff;}
+    }
+}

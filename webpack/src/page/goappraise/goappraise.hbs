@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+	<div class="content">
+        {{{header}}}
+		<!--导航栏-->
+        {{{mainnav}}}
+		<div class="yuyue_con">
+			<div class="con content80">
+				<h3 class="main_title">我要评价</h3>
+				<div class="go_suggest_con">
+					<ul>
+						<li>
+							<img src="../../common/images/portal/blue.png" />可评价在龙马潭区服务中心办理事项的服务感受，请输入申报号及对应的密码进行评价。</li>
+						<li id="load_info">
+							<img src="../../common/images/portal/blue.png" />您也可以
+							<a href="http://172.28.6.162:8111/portal/UnifiedAuthentication/login">登录</a> →【个人中心】→【我的办件】查看办件进度信息 。</li>
+					</ul>
+					<div class="inpu">
+						<div class="clearfix">
+							<label for="shenbao" class="inpu_text">申报号</label>
+							<div class="inpu_inpu">
+								<input type="text" placeholder="您的办件申报号" name="" id="affair" />
+							</div>
+						</div>
+						<div class="clearfix">
+							<label for="shenbao" class="inpu_text">密码</label>
+							<div class="inpu_inpu">
+								<input type="password" placeholder="您的办件密码" name="" id="pas" />
+							</div>
+						</div>
+						<div class="tishi clearfix" id="tishi">
+							<label for="">&nbsp;</label>
+							<div class="warning">
+								<img src="../../common/images/portal/prompting.png" alt="" />&nbsp;你输入的密码和账户名不匹配，请核对正确后再试！</div>
+						</div>
+					</div>
+					<div class="find">
+						<a href="./appraise.html" id="sub">提交</a>
+					</div>
+				</div>
+			</div>
+		</div>
+        {{{footer}}}
+		</div>
+	</div>
+</body>
+
+</html>

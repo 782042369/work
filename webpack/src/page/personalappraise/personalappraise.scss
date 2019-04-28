@@ -1,0 +1,29 @@
+@charset "utf-8";
+$fontSize:16px;
+@mixin wh($w, $h) {
+    width: $w; 
+    height: $h;
+}
+
+body {
+    position: relative;
+}
+
+//清除bootstrap的focus outline效果
+a:focus {
+    outline: none !important;
+}
+
+.content {
+    width: 100%;
+    padding-bottom: 30px;
+    .cont {
+        width: 100%;
+        padding-top: 21px;
+    }
+    
+}
+
+a {
+    color: #2B3642;
+}
