@@ -14,18 +14,34 @@ module.exports = appInfo => {
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1555663231382_6385';
-
+  config.session = {
+    key: 'EGG_SESS',
+    maxAge: 24 * 3600 * 1000, // 1 天
+    httpOnly: true,
+    encrypt: true,
+  };
   // add your middleware config here
   config.middleware = [
-    'printdate',
+    // 'printdate',
+    'compress',
+    'authAdmin'
     // 'forbidip',
-    'auth'
+    // 'auth'
   ];
+  config.authAdmin = {
+    match: '/admin'
+  }
+  config.compress = {
+    threshold: 1024 // body大于配置的threshold才会压缩
+  }
   config.forbidip = {
     forbidips: [
       '127.0.0.1',
       '192.168.58.45'
     ]
+  }
+  config.auth = {
+    title: 'this title'
   }
   // 配置模版引擎
   config.view = {

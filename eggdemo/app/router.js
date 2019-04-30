@@ -8,10 +8,16 @@ module.exports = app => {
     router,
     controller
   } = app;
-  router.get('/', controller.home.index);
-  router.post('/add', controller.home.add);
-  router.get('/news', controller.news.index);
-  router.get('/newscontent', controller.news.content);
-  router.get('/newslist/:id', controller.news.list);
-  router.get('/admin', controller.admin.index);
+  /**
+   * 后台
+   */
+  require('./routes/admin')(app)
+  /**
+   * api
+   */
+  require('./routes/api')(app)
+  /**
+   * 前台
+   */
+  require('./routes/index')(app)
 };
