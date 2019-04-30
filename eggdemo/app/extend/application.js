@@ -1,6 +1,6 @@
+const ObjectID = require('mongodb').ObjectID
 module.exports = {
-  foo(param) {
-    console.log('1111111');
-    console.log(this);
+  getObjectID(param) {
+    return ObjectID(param)
   }
 }

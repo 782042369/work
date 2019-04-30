@@ -20,4 +20,5 @@ module.exports = app => {
    * 前台
    */
   require('./routes/index')(app)
+
 };

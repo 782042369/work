@@ -7,10 +7,13 @@
     "declarations": true
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "egg": "^2.21.1",
+    "egg-mongo-native": "^3.4.3",
     "egg-scripts": "^2.11.0",
     "egg-view-ejs": "^2.0.0",
-    "koa-compress": "^3.0.0"
+    "koa-compress": "^3.0.0",
+    "mongoose": "^5.5.4"
   },
   "devDependencies": {
     "autod": "^3.1.0",

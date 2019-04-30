@@ -24,7 +24,7 @@ module.exports = appInfo => {
   config.middleware = [
     // 'printdate',
     'compress',
-    'authAdmin'
+    // 'authAdmin'
     // 'forbidip',
     // 'auth'
   ];
@@ -40,6 +40,16 @@ module.exports = appInfo => {
       '192.168.58.45'
     ]
   }
+  config.mongo = {
+    client: {
+      host: '127.0.0.1',
+      port: '27017',
+      name: 'egg',
+      user: '',
+      password: '',
+      options: {},
+    },
+  };
   config.auth = {
     title: 'this title'
   }
