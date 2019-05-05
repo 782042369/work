@@ -15,3 +15,7 @@ exports.mongoose = {
   enable: true,
   package: 'egg-mongoose'
 };
+exports.mysql = {
+  enable: true,
+  package: 'egg-mysql',
+};
