@@ -3,11 +3,12 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-05 16:53:16
+ * @LastEditTime: 2019-05-05 17:16:56
  */
 import React, { Component } from 'react'
-import { Table, Divider, Tag, Button } from 'antd'
-
+import { Table, Divider, Button } from 'antd'
+import { nodeList } from '../api/access'
+console.log('nodeList: ', nodeList)
 const { Column } = Table
 const data = [
 	{
@@ -40,11 +41,20 @@ class access extends Component {
 		super(props)
 		this.state = {}
 	}
+	componentWillMount() {
+		nodeList()
+			.then((res) => {
+				console.log(res)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}
 
 	render() {
 		return (
 			<div>
-				<Button type="primary">增加</Button>
+				<Button type="primary">增加权限</Button>
 				<Table dataSource={data}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />

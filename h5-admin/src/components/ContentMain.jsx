@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 //引入路由
-import { Route, Switch } from 'react-router-dom'
-import access from '../views/access'
-import manager from '../views/manager'
-import role from '../views/role'
+import { Switch } from 'react-router-dom'
+import PrivateRoute from '../tool/privateRoute'
+import Access from '../views/Access'
+import Manager from '../views/Manager'
+import Role from '../views/Role'
 class ContentMain extends Component {
 	render() {
 		return (
 			<div>
 				<Switch>
-					<Route exact path="/" component={access} />
-					<Route exact path="/manager" component={manager} />
-					<Route exact path="/role" component={role} />
+					<PrivateRoute exact path="/" component={Access} />
+					<PrivateRoute exact path="/manager" component={Manager} />
+					<PrivateRoute exact path="/role" component={Role} />
 				</Switch>
 			</div>
 		)

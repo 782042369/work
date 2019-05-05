@@ -3,12 +3,14 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-05 16:51:37
+ * @LastEditTime: 2019-05-05 18:21:27
  */
 import React from 'react'
 import { Layout } from 'antd'
 import '../assets/css/index.scss'
 import MenuList from '../components/MenuList'
+import { Route, Switch } from 'react-router-dom'
+import Login from './Login'
 import ContentMain from '../components/ContentMain'
 import { BrowserRouter } from 'react-router-dom'
 const { Header, Content, Sider } = Layout
@@ -16,6 +18,9 @@ function App() {
 	const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 	return (
 		<BrowserRouter>
+			<Switch>
+				<Route exact path="/login" component={Login} />
+			</Switch>
 			<Layout>
 				<Header className="header">
 					<div className="logo" />

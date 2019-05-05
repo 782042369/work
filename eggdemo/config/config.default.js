@@ -24,6 +24,17 @@ module.exports = appInfo => {
   config.middleware = [
     'compress',
   ];
+  config.security = {
+    csrf: {
+      enable: false,
+      ignoreJSON: true
+    },
+    domainWhiteList: ['http://localhost:8080']
+  };
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+  };
   config.compress = {
     threshold: 1024 // body大于配置的threshold才会压缩
   }

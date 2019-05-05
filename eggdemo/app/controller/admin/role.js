@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-05 14:38:09
+ * @LastEditTime: 2019-05-05 17:18:08
  */
 'use strict';
 
@@ -11,7 +11,9 @@ const Controller = require('egg').Controller;
 
 class RoleController extends Controller {
   async index() {
-    this.ctx.body = '角色列表'
+    this.ctx.body = {
+      data: '111'
+    }
   }
   async add() {
     this.ctx.body = '增加角色'
