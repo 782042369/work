@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 //引入路由
-import { Switch } from 'react-router-dom'
+import {  Switch } from 'react-router-dom'
 import PrivateRoute from '../tool/privateRoute'
-import AsyncComponent from './asyncComponent.jsx'
-const Login = AsyncComponent(() => import(/* webpackChunkName: "Login" */ '../views/login/index'))
+import AsyncComponent from './AsyncComponent'
 const Access = AsyncComponent(() => import(/* webpackChunkName: "Home" */ '../views/access/index'))
 const AddAccess = AsyncComponent(() => import(/* webpackChunkName: "AddAccess" */ '../views/access/AddAccess'))
 const Manager = AsyncComponent(() => import(/* webpackChunkName: "Manager" */ '../views/manager/index'))
@@ -15,7 +14,6 @@ class ContentMain extends Component {
 		return (
 			<div>
 				<Switch>
-					<PrivateRoute exact path="/login" component={Login} />
 					<PrivateRoute exact path="/" component={Access} />
 					<PrivateRoute exact path="/addaccess" component={AddAccess} />
 					<PrivateRoute exact path="/manager" component={Manager} />
