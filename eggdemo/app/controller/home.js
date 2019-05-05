@@ -2,7 +2,7 @@
 
 const Controller = require('egg').Controller;
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1:27017')
+mongoose.connect('mongodb://127.0.0.1:27017/egg')
 class HomeController extends Controller {
   async index() {
     const {

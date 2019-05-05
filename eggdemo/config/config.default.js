@@ -50,6 +50,12 @@ module.exports = appInfo => {
       options: {},
     },
   };
+  exports.mongoose = {
+    client: {
+      url: 'mongodb://127.0.0.1/egg',
+      options: {},
+    },
+  };
   config.auth = {
     title: 'this title'
   }

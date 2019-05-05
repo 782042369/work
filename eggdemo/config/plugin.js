@@ -6,7 +6,12 @@ exports.ejs = {
   enable: true,
   package: 'egg-view-ejs',
 };
-exports.mongo = {
+// exports.mongo = {
+//   enable: true,
+//   package: 'egg-mongo-native',
+// }
+//配置egg-mongoose插件
+exports.mongoose = {
   enable: true,
-  package: 'egg-mongo-native',
-}
+  package: 'egg-mongoose'
+};
