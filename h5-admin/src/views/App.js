@@ -10,7 +10,6 @@ import { Layout } from 'antd'
 import '../assets/css/index.scss'
 import MenuList from '../components/MenuList'
 import { Route, Switch } from 'react-router-dom'
-import Login from './Login'
 import ContentMain from '../components/ContentMain'
 import { BrowserRouter } from 'react-router-dom'
 const { Header, Content, Sider } = Layout
@@ -19,7 +18,6 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route exact path="/login" component={Login} />
 			</Switch>
 			<Layout>
 				<Header className="header">

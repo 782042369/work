@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../assets/css/login.scss'
+import './login.scss'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
 class NormalLoginForm extends React.Component {
 	handleSubmit = (e) => {

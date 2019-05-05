@@ -7,7 +7,7 @@
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
-import roleapi from '../api/role'
+import roleapi from '../../api/role'
 const { Column } = Table
 const data = [
 	{

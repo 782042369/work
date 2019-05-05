@@ -5,7 +5,9 @@ import {
   Route,
   withRouter
 } from 'react-router-dom';
-
+import {
+  message
+} from 'antd';
 class PrivateRoute extends Component {
   constructor(props) {
     super(props);
@@ -41,9 +43,11 @@ class PrivateRoute extends Component {
             /> 
           )
         }
-        /> ) : (<p style = {{"width": "100%", "textAlign": "center", "fontSize": "20px", "lineHeight": "50px"}}>请登录...</p > )
+        /> ) : (message.error(
+        '请登录...'
+      ))
 
-  }
+}
 }
 
 export default withRouter(PrivateRoute);

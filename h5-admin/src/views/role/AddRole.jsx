@@ -1,14 +1,13 @@
 /*
  * @Author: 杨宏旋
  * @LastEditors: 杨宏旋
- * @Description: 管理员
- * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-05 17:33:08
+ * @Description: 角色
+ * @Date: 2019-05-05 15:48:46
+ * @LastEditTime: 2019-05-05 17:12:27
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
-import managerapi from '../api/manager'
-
+import roleapi from '../../api/role'
 const { Column } = Table
 const data = [
 	{
@@ -36,7 +35,7 @@ const data = [
 		tags: [ 'cool', 'teacher' ]
 	}
 ]
-class manager extends Component {
+class role extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
@@ -45,7 +44,7 @@ class manager extends Component {
 	render() {
 		return (
 			<div>
-				<Button type="primary">增加管理员</Button>
+				<Button type="primary">增加角色</Button>
 				<Table dataSource={data}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />
@@ -83,4 +82,4 @@ class manager extends Component {
 	}
 }
 
-export default manager
+export default role

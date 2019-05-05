@@ -3,13 +3,12 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-05 16:32:54
+ * @LastEditTime: 2019-05-05 18:34:06
  */
 import React, { Component } from 'react'
 import menus from '../router/routers'
 import { Menu, Icon } from 'antd'
 import { Link } from 'react-router-dom'
-console.log('menus: ', menus)
 class menu extends Component {
 	constructor(props) {
 		super(props)

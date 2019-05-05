@@ -3,12 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-05 17:16:56
+ * @LastEditTime: 2019-05-05 18:34:20
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
-import { nodeList } from '../api/access'
-console.log('nodeList: ', nodeList)
+import { nodeList } from '../../api/access'
 const { Column } = Table
 const data = [
 	{
