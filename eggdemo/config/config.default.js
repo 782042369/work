@@ -22,34 +22,11 @@ module.exports = appInfo => {
   };
   // add your middleware config here
   config.middleware = [
-    // 'printdate',
     'compress',
-    // 'authAdmin'
-    // 'forbidip',
-    // 'auth'
   ];
-  config.authAdmin = {
-    match: '/admin'
-  }
   config.compress = {
     threshold: 1024 // body大于配置的threshold才会压缩
   }
-  config.forbidip = {
-    forbidips: [
-      '127.0.0.1',
-      '192.168.58.45'
-    ]
-  }
-  config.mongo = {
-    client: {
-      host: '127.0.0.1',
-      port: '27017',
-      name: 'egg',
-      user: '',
-      password: '',
-      options: {},
-    },
-  };
   config.mysql = {
     // database configuration
     client: {
@@ -75,9 +52,6 @@ module.exports = appInfo => {
       options: {},
     },
   };
-  config.auth = {
-    title: 'this title'
-  }
   // 配置模版引擎
   config.view = {
     mapping: {
