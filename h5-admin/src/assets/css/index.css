@@ -1,0 +1,20 @@
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, .2);
+  margin: 16px 28px 16px 0;
+  float: left;
+}
+
+.ant-layout-header {
+  height: 65px;
+  line-height: 65px;
+}
+
+.ant-layout {
+  height: calc(100vh - 65px);
+}
+
+.ant-layout-sider-children .ant-menu-inline {
+  border-right: none;
+}

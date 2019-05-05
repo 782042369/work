@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由
  * @Date: 2019-04-29 15:37:12
- * @LastEditTime: 2019-05-05 14:39:19
+ * @LastEditTime: 2019-05-05 14:43:43
  */
 'use strict';
 /**
@@ -21,6 +21,6 @@ module.exports = app => {
   /**
    * 前台
    */
-  // require('./routes/index')(app)
+  require('./routes/index')(app)
 
 };

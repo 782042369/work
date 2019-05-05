@@ -52,12 +52,6 @@ module.exports = appInfo => {
       options: {},
     },
   };
-  // 配置模版引擎
-  config.view = {
-    mapping: {
-      '.ejs': 'ejs',
-    },
-  };
   // 配置 公共url 
   config.url = 'www.phonegap100.com/';
   // add your user config here
