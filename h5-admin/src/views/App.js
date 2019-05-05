@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-05 16:30:16
+ * @LastEditTime: 2019-05-05 16:51:37
  */
 import React from 'react'
 import { Layout } from 'antd'
-import '../assets/css/index.css'
+import '../assets/css/index.scss'
 import MenuList from '../components/MenuList'
 import ContentMain from '../components/ContentMain'
 import { BrowserRouter } from 'react-router-dom'
@@ -29,9 +29,9 @@ function App() {
 							className="App-contentMain"
 							style={{
 								background: '#fff',
-								margin: 20,
+								margin: 25,
 								height: screenHeight,
-								padding: 10
+								padding: 25
 							}}
 						>
 							<ContentMain />
