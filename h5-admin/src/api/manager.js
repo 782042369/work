@@ -3,25 +3,40 @@
  * @LastEditors: 杨宏旋
  * @Description: manger
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-06 18:27:50
+ * @LastEditTime: 2019-05-06 20:40:02
  */
 
 import request from '../tool/request'
-
-export function mangerlist(data) {
-  // 分页列表
+export function rolelist(data) {
+  // 列表
   return request({
-    url: '/admin/mangerlist',
-    method: 'get',
+    url: 'adminManagerlist',
+    method: 'post',
     data
   })
 }
 
-export function addmanger(data) {
-  // 分页列表
+export function addrole(data) {
+  // 增加
   return request({
-    url: 'admin/manger/add',
+    url: 'adminAddManager',
     method: 'put',
+    data
+  })
+}
+export function editrole(data) {
+  // 修改
+  return request({
+    url: 'adminEditManager',
+    method: 'put',
+    data
+  })
+}
+export function deleterole(data) {
+  // 删除
+  return request({
+    url: 'adminDeleteManager',
+    method: 'delete',
     data
   })
 }
