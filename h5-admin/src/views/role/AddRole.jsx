@@ -3,52 +3,18 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-06 17:39:50
+ * @LastEditTime: 2019-05-06 20:04:53
  */
 import React, { Component } from 'react'
-import { addrole } from '../../api/role'
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd'
-const { Option } = Select
-const AutoCompleteOption = AutoComplete.Option
-const residences = [
-	{
-		value: 'zhejiang',
-		label: 'Zhejiang',
-		children: [
-			{
-				value: 'hangzhou',
-				label: 'Hangzhou',
-				children: [
-					{
-						value: 'xihu',
-						label: 'West Lake'
-					}
-				]
-			}
-		]
-	},
-	{
-		value: 'jiangsu',
-		label: 'Jiangsu',
-		children: [
-			{
-				value: 'nanjing',
-				label: 'Nanjing',
-				children: [
-					{
-						value: 'zhonghuamen',
-						label: 'Zhong Hua Men'
-					}
-				]
-			}
-		]
-	}
-]
-class role extends Component {
+import { addrole, editrole, rolelist } from '../../api/role'
+import getUrlParam from '../../tool/getUrlParam'
+import { Form, Input, Button, message } from 'antd'
+class WrappedRegistrationForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			confirmDirty: false,
+			title: '',
 			autoCompleteResult: []
 		}
 	}
@@ -57,20 +23,57 @@ class role extends Component {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
-				addrole(values)
-					.then((res) => {
-						console.log(res)
-					})
-					.catch((err) => {
-						console.log(err)
-					})
+				if (getUrlParam('id')) {
+					let arr = { id: getUrlParam('id') }
+					editrole(Object.assign(values, arr))
+						.then((res) => {
+							console.log(res)
+							message.success(res.msg)
+						})
+						.catch((err) => {
+							message.error(err)
+							console.log(err)
+						})
+				} else {
+					addrole(values)
+						.then((res) => {
+							console.log(res)
+							message.success(res.msg)
+						})
+						.catch((err) => {
+							console.log(err)
+							message.error(err)
+						})
+				}
 			}
 		})
+	}
+	componentDidMount() {
+		if (getUrlParam('id')) {
+			this.setState({
+				title: '修改'
+			})
+			rolelist({
+				id: getUrlParam('id')
+			})
+				.then((res) => {
+					this.props.form.setFieldsValue({
+						title: res[0].title,
+						description: res[0].description
+					})
+				})
+				.catch((err) => {
+					console.log('err: ', err)
+				})
+		} else {
+			this.setState({
+				title: '增加'
+			})
+		}
 	}
 
 	render() {
 		const { getFieldDecorator } = this.props.form
-		const { autoCompleteResult } = this.state
 
 		const formItemLayout = {
 			labelCol: {
@@ -94,9 +97,9 @@ class role extends Component {
 				}
 			}
 		}
-
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
+				<h1>{this.state.title}角色</h1>
 				<Form.Item label="角色名称">
 					{getFieldDecorator('title', {
 						rules: [
@@ -119,12 +122,12 @@ class role extends Component {
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">
-						Register
+						提交
 					</Button>
 				</Form.Item>
 			</Form>
 		)
 	}
 }
-const WrappedRegistrationForm = Form.create({ name: 'register' })(role)
-export default WrappedRegistrationForm
+const role = Form.create({ name: 'register' })(WrappedRegistrationForm)
+export default role

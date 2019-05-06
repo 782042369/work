@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-06 17:47:52
+ * @LastEditTime: 2019-05-06 18:51:04
  */
 'use strict';
 
@@ -22,7 +22,11 @@ class RoleController extends BaseController {
     }
   }
   async edit() {
-    this.ctx.body = '编辑角色'
+    await this.service.role.edit();
+    this.ctx.body = {
+      status: 1,
+      msg: '修改角色成功'
+    }
   }
   async delete() {
     this.ctx.body = '删除角色'

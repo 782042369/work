@@ -3,12 +3,14 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-06 16:37:13
+ * @LastEditTime: 2019-05-06 18:31:14
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
-import { nodeList } from '../../api/access'
+import { accesslist } from '../../api/access'
+import { Link } from 'react-router-dom'
 const { Column } = Table
+
 const data = [
 	{
 		key: '1',
@@ -25,7 +27,7 @@ class access extends Component {
 		this.state = {}
 	}
 	componentWillMount() {
-		nodeList()
+		accesslist()
 			.then((res) => {
 				console.log(res)
 			})
@@ -37,7 +39,9 @@ class access extends Component {
 	render() {
 		return (
 			<div>
-				<Button type="primary">增加权限</Button>
+				<Link to={'/addaccess'}>
+					<Button type="primary">增加权限</Button>
+				</Link>
 				<Table dataSource={data}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />

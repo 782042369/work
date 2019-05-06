@@ -3,76 +3,91 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-06 15:38:50
+ * @LastEditTime: 2019-05-06 18:28:23
  */
 import React, { Component } from 'react'
-import { Table, Divider, Button } from 'antd'
-import { nodeList } from '../../api/access'
-const { Column } = Table
-const data = [
-	{
-		key: '1',
-		firstName: 'John',
-		lastName: 'Brown',
-		age: 32,
-		address: 'New York No. 1 Lake Park1',
-		tags: [ 'nice', 'developer' ]
-	}
-]
-class access extends Component {
+import { addaccess } from '../../api/access'
+import { Form, Input, Button } from 'antd'
+class WrappedRegistrationForm extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			confirmDirty: false,
+			autoCompleteResult: []
+		}
 	}
-	componentWillMount() {
-		nodeList()
-			.then((res) => {
-				console.log(res)
-			})
-			.catch((err) => {
-				console.log(err)
-			})
+
+	handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.form.validateFieldsAndScroll((err, values) => {
+			if (!err) {
+				addaccess(values)
+					.then((res) => {
+						console.log(res)
+					})
+					.catch((err) => {
+						console.log(err)
+					})
+			}
+		})
 	}
 
 	render() {
+		const { getFieldDecorator } = this.props.form
+
+		const formItemLayout = {
+			labelCol: {
+				xs: { span: 24 },
+				sm: { span: 8 }
+			},
+			wrapperCol: {
+				xs: { span: 24 },
+				sm: { span: 16 }
+			}
+		}
+		const tailFormItemLayout = {
+			wrapperCol: {
+				xs: {
+					span: 24,
+					offset: 0
+				},
+				sm: {
+					span: 16,
+					offset: 8
+				}
+			}
+		}
+
 		return (
-			<div>
-				<Button type="primary">增加权限</Button>
-				<Table dataSource={data}>
-					<Column title="年龄" dataIndex="age" key="age" />
-					<Column title="名称" dataIndex="address" key="address" />
-					{/* <Column
-						title="Tags"
-						dataIndex="tags"
-						key="tags"
-						render={(tags) => (
-							<span>
-								{tags.map((tag) => (
-									<Tag color="blue" key={tag}>
-										{tag}
-									</Tag>
-								))}
-							</span>
-						)}
-					/> */}
-					<Column title="时间" dataIndex="lastName" key="lastName" />
-					<Column
-						title="操作"
-						key="action"
-						render={(text, record) => (
-							<span>
-								<Button type="primary">查看</Button>
-								<Divider type="vertical" />
-								<Button type="primary">修改</Button>
-								<Divider type="vertical" />
-								<Button type="danger">删除</Button>
-							</span>
-						)}
-					/>
-				</Table>
-			</div>
+			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
+				<Form.Item label="角色名称">
+					{getFieldDecorator('title', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your title!'
+							}
+						]
+					})(<Input />)}
+				</Form.Item>
+				<Form.Item label="角色描述">
+					{getFieldDecorator('description', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<Input type="textarea" />)}
+				</Form.Item>
+				<Form.Item {...tailFormItemLayout}>
+					<Button type="primary" htmlType="submit">
+						Register
+					</Button>
+				</Form.Item>
+			</Form>
 		)
 	}
 }
-
+const access = Form.create({ name: 'register' })(WrappedRegistrationForm)
 export default access

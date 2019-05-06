@@ -3,11 +3,12 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-06 15:37:22
+ * @LastEditTime: 2019-05-06 18:31:50
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
-// import managerapi from '../../api/manager'
+import { Link } from 'react-router-dom'
+// import mangerlist from '../../api/manager'
 
 const { Column } = Table
 const data = [
@@ -29,7 +30,9 @@ class manager extends Component {
 	render() {
 		return (
 			<div>
-				<Button type="primary">增加管理员</Button>
+				<Link to={'/addmanger'}>
+					<Button type="primary">增加管理员</Button>
+				</Link>
 				<Table dataSource={data}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />
