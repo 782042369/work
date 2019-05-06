@@ -25,10 +25,9 @@ module.exports = app => {
       type: Number
     },
     status: {
-      type: String,
+      type: Number,
       default: 1
-    },
+    }
   });
-
   return mongoose.model('User', UserSchema, 'user');
 }

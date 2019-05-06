@@ -24,7 +24,8 @@ function App() {
 				<Route exact path="/" component={Login} />
 				<Layout>
 					<Header className="header">
-						<div className="logo" />
+					123
+						{/* <Fragment className="logo" /> */}
 					</Header>
 					<Layout>
 						<Sider width={200} style={{ background: '#fff' }}>

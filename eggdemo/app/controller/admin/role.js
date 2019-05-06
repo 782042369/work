@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-06 10:00:54
+ * @LastEditTime: 2019-05-06 17:47:52
  */
 'use strict';
 
@@ -11,12 +11,15 @@ const BaseController = require('./base');
 
 class RoleController extends BaseController {
   async index() {
-    this.ctx.body = {
-      data: '111'
-    }
+    const result = await this.service.role.find();
+    this.ctx.body = result
   }
   async add() {
-    this.ctx.body = '增加角色'
+    await this.service.role.addrole();
+    this.ctx.body = {
+      status: 1,
+      msg: '增加角色成功'
+    }
   }
   async edit() {
     this.ctx.body = '编辑角色'

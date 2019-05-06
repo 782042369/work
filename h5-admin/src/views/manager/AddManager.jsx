@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-06 10:15:55
+ * @LastEditTime: 2019-05-06 15:37:16
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
@@ -16,24 +16,8 @@ const data = [
 		firstName: 'John',
 		lastName: 'Brown',
 		age: 32,
-		address: 'New York No. 1 Lake Park',
+		address: 'New York No. 1 Lake Park1',
 		tags: [ 'nice', 'developer' ]
-	},
-	{
-		key: '2',
-		firstName: 'Jim',
-		lastName: 'Green',
-		age: 42,
-		address: 'London No. 1 Lake Park',
-		tags: [ 'loser' ]
-	},
-	{
-		key: '3',
-		firstName: 'Joe',
-		lastName: 'Black',
-		age: 32,
-		address: 'Sidney No. 1 Lake Park',
-		tags: [ 'cool', 'teacher' ]
 	}
 ]
 class manager extends Component {
@@ -63,7 +47,7 @@ class manager extends Component {
 							</span>
 						)}
 					/> */}
-					<Column title="时间" dataIndex="address" key="address" />
+					<Column title="时间" dataIndex="lastName" key="lastName" />
 					<Column
 						title="操作"
 						key="action"

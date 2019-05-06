@@ -44,7 +44,7 @@ class menu extends Component {
 	}
 	render() {
 		return (
-			<Menu defaultSelectedKeys={[ '/access' ]} defaultOpenKeys={[ '/access' ]} mode="inline">
+			<Menu defaultSelectedKeys={[ '/role' ]} defaultOpenKeys={[ '/role' ]} mode="inline">
 				{menus.map((item) => {
 					return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
 				})}

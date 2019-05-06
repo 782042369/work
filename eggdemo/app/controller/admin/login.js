@@ -4,31 +4,37 @@ const BaseController = require('./base');
 
 class LoginController extends BaseController {
   async index() {
-    const password = this.ctx.request.body.password
-    const username = this.ctx.request.body.userName
+    let datarr = {}
     const code = this.ctx.request.body.code
-    let msg = '';
-    let status = 0;
     if (code === this.ctx.session.code) {
-      const data = await this.ctx.model.User.find({
-        username,
-        password
-      });
-      if (data.length > 0) {
-        msg = '登录成功'
-        status = 1
+      const result = await this.service.user.finduser();
+      if (result.length > 0) {
+        this.ctx.session.userinfo = result.username
+        datarr = {
+          username: result.username,
+          msg: '登录成功',
+          status: 1
+        }
       } else {
-        msg = '用户名或密码错误'
-        status = 0
+        datarr = {
+          msg: '用户名或密码错误',
+          status: 0
+        }
       }
     } else {
-      msg = '验证码错误'
-      status = 0
+      datarr = {
+        msg: '验证码错误',
+        status: 0
+      }
     }
-
+    this.ctx.body = datarr
+  }
+  async loginout() {
+    this.ctx.session.userinfo = null;
     this.ctx.body = {
-      msg: msg,
-      status: status
+      username: result.username,
+      msg: '登录成功',
+      status: 1
     }
   }
 }

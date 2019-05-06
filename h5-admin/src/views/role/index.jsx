@@ -3,66 +3,53 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-05 17:12:27
+ * @LastEditTime: 2019-05-06 18:08:47
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
-// import roleapi from '../../api/role'
+import { rolelist } from '../../api/role'
+import datefilter from '../../tool/datefilter'
+import statusfilter from '../../tool/statusfilter'
 const { Column } = Table
-const data = [
-	{
-		key: '1',
-		firstName: 'John',
-		lastName: 'Brown',
-		age: 32,
-		address: 'New York No. 1 Lake Park',
-		tags: [ 'nice', 'developer' ]
-	},
-	{
-		key: '2',
-		firstName: 'Jim',
-		lastName: 'Green',
-		age: 42,
-		address: 'London No. 1 Lake Park',
-		tags: [ 'loser' ]
-	},
-	{
-		key: '3',
-		firstName: 'Joe',
-		lastName: 'Black',
-		age: 32,
-		address: 'Sidney No. 1 Lake Park',
-		tags: [ 'cool', 'teacher' ]
-	}
-]
 class role extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			data: []
+		}
 	}
-
+	componentDidMount() {
+		rolelist()
+			.then((res) => {
+				console.log('res: ', res)
+				this.setState({
+					data: res
+				})
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
+	}
 	render() {
 		return (
 			<div>
 				<Button type="primary">增加角色</Button>
-				<Table dataSource={data}>
-					<Column title="年龄" dataIndex="age" key="age" />
-					<Column title="名称" dataIndex="address" key="address" />
-					{/* <Column
-						title="Tags"
-						dataIndex="tags"
-						key="tags"
-						render={(tags) => (
-							<span>
-								{tags.map((tag) => (
-									<Tag color="blue" key={tag}>
-										{tag}
-									</Tag>
-								))}
-							</span>
-						)}
-					/> */}
-					<Column title="时间" dataIndex="address" key="address" />
+				<Table dataSource={this.state.data}>
+					<Column title="名称" dataIndex="title" key="title" />
+					<Column
+						title="状态"
+						dataIndex="status"
+						key="status"
+						render={(text, record) => <div type="primary">{statusfilter(text)}</div>}
+					/>
+
+					<Column title="描述" dataIndex="description" key="description" />
+					<Column
+						title="时间"
+						key="add_time"
+						dataIndex="add_time"
+						render={(text, record) => <div type="primary">{datefilter(text)}</div>}
+					/>
 					<Column
 						title="操作"
 						key="action"
