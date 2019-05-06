@@ -7,12 +7,12 @@
  */
 import React from 'react'
 import { Layout } from 'antd'
-import '../assets/css/index.scss'
 import MenuList from '../components/MenuList'
 import AsyncComponent from '../components/AsyncComponent'
 
 import { Route, Switch } from 'react-router-dom'
 import ContentMain from '../components/ContentMain'
+import '../assets/css/index.scss'
 import { BrowserRouter } from 'react-router-dom'
 const Login = AsyncComponent(() => import(/* webpackChunkName: "Login" */ '../views/login/index'))
 const { Header, Content, Sider } = Layout

@@ -4,7 +4,7 @@ import { Form, Icon, Input, Button } from 'antd'
 import { Redirect } from 'react-router'
 import { dologin } from '../../api/login'
 import md5 from 'js-md5'
-import { Alert } from 'antd'
+import { message } from 'antd'
 class NormalLoginForm extends Component {
 	constructor(props) {
 		super(props)
@@ -22,12 +22,14 @@ class NormalLoginForm extends Component {
 					.then((res) => {
 						console.log('res: ', res)
 						if (res.status === 1) {
+							message.success(res.msg)
 							sessionStorage.setItem('userId', true)
 							this.setState({
 								loginSuccess: true
 							})
 						} else {
 							this.svgcode()
+							message.error(res.msg)
 						}
 					})
 					.catch((err) => {
@@ -44,6 +46,7 @@ class NormalLoginForm extends Component {
 	componentDidMount() {}
 	render() {
 		const { getFieldDecorator } = this.props.form
+
 		if (this.state.loginSuccess) {
 			return <Redirect to="/access" />
 		} else {
