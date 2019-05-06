@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './login.scss'
 import { Form, Icon, Input, Button } from 'antd'
 import { dologin } from '../../api/login'
+import md5 from 'js-md5'
 class NormalLoginForm extends Component {
 	constructor(props) {
 		super(props)
@@ -12,8 +13,8 @@ class NormalLoginForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.form.validateFields((err, values) => {
-			console.log('values: ', values)
 			if (!err) {
+				values.password = md5(values.password)
 				dologin(values)
 					.then((res) => {
 						console.log('res: ', res)

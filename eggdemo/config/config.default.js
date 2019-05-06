@@ -15,7 +15,7 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1555663231382_6385';
   config.session = {
-    key: 'yang_ad_ms_se',
+    key: 'xiaoxiannv',
     maxAge: 1800 * 1000, // 1 天
     httpOnly: true,
     encrypt: true,
@@ -36,7 +36,8 @@ module.exports = appInfo => {
     domainWhiteList: ['http://localhost:8080']
   };
   config.cors = {
-    origin: '*',
+    origin: 'http://localhost:3000',
+    credentials: true,
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
   };
   config.compress = {
@@ -63,7 +64,7 @@ module.exports = appInfo => {
   };
   config.mongoose = {
     client: {
-      url: 'mongodb://127.0.0.1/egg',
+      url: 'mongodb://127.0.0.1/admin',
       options: {},
     },
   };

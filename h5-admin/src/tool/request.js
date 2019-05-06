@@ -1,7 +1,10 @@
 // eslint-disable-line
-import axios from 'axios'
+import axios from 'axios';
+import qs from 'qs'
 axios.defaults.retry = 4
 axios.defaults.retryDelay = 1000
+axios.defaults.withCredentials = true
+
 // 创建axios实例
 const service = axios.create({
   baseURL: 'http://127.0.0.1:7001', // api的base_url
@@ -10,6 +13,10 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(
   config => {
+    if (config.url === 'dologin') {
+      config.data = qs.stringify(config.data)
+      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+    }
     return config
   },
   error => {
