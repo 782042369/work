@@ -63,13 +63,16 @@ class access extends Component {
 					<Column
 						title="操作"
 						key="action"
+						dataIndex="_id"
 						render={(text, record) => (
 							<span>
 								<Button type="primary">查看</Button>
 								<Divider type="vertical" />
 								<Button type="primary">修改</Button>
 								<Divider type="vertical" />
-								<Button type="danger">删除</Button>
+								<Button type="danger" onClick={this.deleterole(text)}>
+									删除
+								</Button>
 							</span>
 						)}
 					/>

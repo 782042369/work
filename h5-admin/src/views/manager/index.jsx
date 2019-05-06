@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-06 18:31:50
+ * @LastEditTime: 2019-05-06 20:14:59
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
@@ -54,13 +54,16 @@ class manager extends Component {
 					<Column
 						title="操作"
 						key="action"
+						dataIndex="_id"
 						render={(text, record) => (
 							<span>
 								<Button type="primary">查看</Button>
 								<Divider type="vertical" />
 								<Button type="primary">修改</Button>
 								<Divider type="vertical" />
-								<Button type="danger">删除</Button>
+								<Button type="danger" onClick={this.deleterole(text)}>
+									删除
+								</Button>
 							</span>
 						)}
 					/>

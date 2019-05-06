@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-06 20:03:11
+ * @LastEditTime: 2019-05-06 20:20:35
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
-import { rolelist } from '../../api/role'
+import { rolelist, deleterole } from '../../api/role'
 import datefilter from '../../tool/datefilter'
 import statusfilter from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
@@ -20,13 +20,29 @@ class role extends Component {
 			data: []
 		}
 	}
-	componentDidMount() {
+	getlist() {
 		rolelist()
 			.then((res) => {
 				console.log('res: ', res)
 				this.setState({
 					data: res
 				})
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
+	}
+	componentDidMount() {
+		this.getlist()
+	}
+	deleterole(id) {
+		deleterole({
+			id
+		})
+			.then((res) => {
+				console.log('res: ', res)
+				this.getlist()
+				message.success(res.msg)
 			})
 			.catch((err) => {
 				console.log('err: ', err)
@@ -56,7 +72,7 @@ class role extends Component {
 					/>
 					<Column
 						title="操作"
-						key="action"
+						key="_id"
 						dataIndex="_id"
 						render={(text, record) => (
 							<span>
@@ -66,7 +82,9 @@ class role extends Component {
 									<Button type="primary">修改</Button>
 								</Link>
 								<Divider type="vertical" />
-								<Button type="danger">删除</Button>
+								<Button type="danger" onClick={this.deleterole.bind(this, text)}>
+									删除
+								</Button>
 							</span>
 						)}
 					/>

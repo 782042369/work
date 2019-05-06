@@ -30,11 +30,11 @@ class RoleService extends Service {
   }
   // 编辑
   async edit() {
-    const id = this.ctx.request.body.id
+    const _id = this.ctx.request.body.id
     const title = this.ctx.request.body.title
     const description = this.ctx.request.body.description
     const result = await this.ctx.model.Role.updateOne({
-      _id: id
+      _id
     }, {
       description,
       title
@@ -43,14 +43,13 @@ class RoleService extends Service {
   }
   // 删除
   async delete() {
-    const password = this.ctx.request.body.password
-    const username = this.ctx.request.body.userName
-    const result = await this.ctx.model.Role.find({
-      username,
-      password
-    });
+    const _id = this.ctx.request.body.id
+    const result = await this.ctx.model['Role'].deleteOne({
+      _id
+    })
     return result;
   }
+
 }
 
 module.exports = RoleService;

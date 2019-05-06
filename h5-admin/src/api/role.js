@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-06 18:54:50
+ * @LastEditTime: 2019-05-06 20:33:56
  */
 
 import request from '../tool/request'
@@ -11,7 +11,7 @@ import request from '../tool/request'
 export function rolelist(data) {
   // 列表
   return request({
-    url: '/admin/rolelist',
+    url: 'adminRolelist',
     method: 'post',
     data
   })
@@ -20,16 +20,24 @@ export function rolelist(data) {
 export function addrole(data) {
   // 增加
   return request({
-    url: 'admin/role/add',
+    url: 'adminAddRole',
     method: 'put',
     data
   })
 }
 export function editrole(data) {
-  // 增加
+  // 修改
   return request({
-    url: 'admin/role/edit',
+    url: 'adminEditRole',
     method: 'put',
+    data
+  })
+}
+export function deleterole(data) {
+  // 删除
+  return request({
+    url: 'adminDeleteRole',
+    method: 'delete',
     data
   })
 }
