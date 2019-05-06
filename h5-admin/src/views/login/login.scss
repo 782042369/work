@@ -29,3 +29,13 @@
 .ant-form-item-with-help {
   margin-bottom: 10px;
 }
+
+.ant-form-item:nth-child(3) {
+  .ant-input-affix-wrapper {
+    width: 50%;
+  }
+
+  img {
+    float: right;
+  }
+}

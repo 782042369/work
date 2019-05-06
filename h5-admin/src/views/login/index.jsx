@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import './login.scss'
 import { Form, Icon, Input, Button } from 'antd'
+import { Redirect } from 'react-router'
 import { dologin } from '../../api/login'
 import md5 from 'js-md5'
+import { Alert } from 'antd'
 class NormalLoginForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			loginSuccess: false,
 			codeimg: 'http://127.0.0.1:7001/captchacode?' + new Date().getTime()
 		}
 	}
@@ -18,9 +21,17 @@ class NormalLoginForm extends Component {
 				dologin(values)
 					.then((res) => {
 						console.log('res: ', res)
+						if (res.status === 1) {
+							sessionStorage.setItem('userId', true)
+							this.setState({
+								loginSuccess: true
+							})
+						} else {
+							this.svgcode()
+						}
 					})
 					.catch((err) => {
-						console.log('err: ', err)
+						this.svgcode()
 					})
 			}
 		})
@@ -33,49 +44,53 @@ class NormalLoginForm extends Component {
 	componentDidMount() {}
 	render() {
 		const { getFieldDecorator } = this.props.form
-		return (
-			<div className="login">
-				<Form onSubmit={this.handleSubmit} className="login-form">
-					<Form.Item>
-						{getFieldDecorator('userName', {
-							rules: [ { required: true, message: 'Please input your username!' } ]
-						})(
-							<Input
-								prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-								placeholder="Username"
-							/>
-						)}
-					</Form.Item>
-					<Form.Item>
-						{getFieldDecorator('password', {
-							rules: [ { required: true, message: 'Please input your Password!' } ]
-						})(
-							<Input
-								prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-								type="password"
-								placeholder="Password"
-							/>
-						)}
-					</Form.Item>
-					<Form.Item>
-						{getFieldDecorator('code', {
-							rules: [ { required: true, message: 'Please input your code!' } ]
-						})(
-							<Input
-								prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-								placeholder="code"
-							/>
-						)}
-						<img src={this.state.codeimg} alt="" onClick={this.svgcode} />
-					</Form.Item>
-					<Form.Item>
-						<Button type="primary" htmlType="submit" className="login-form-button">
-							Log in
-						</Button>
-					</Form.Item>
-				</Form>
-			</div>
-		)
+		if (this.state.loginSuccess) {
+			return <Redirect to="/access" />
+		} else {
+			return (
+				<div className="login">
+					<Form onSubmit={this.handleSubmit} className="login-form">
+						<Form.Item>
+							{getFieldDecorator('userName', {
+								rules: [ { required: true, message: 'Please input your username!' } ]
+							})(
+								<Input
+									prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+									placeholder="Username"
+								/>
+							)}
+						</Form.Item>
+						<Form.Item>
+							{getFieldDecorator('password', {
+								rules: [ { required: true, message: 'Please input your Password!' } ]
+							})(
+								<Input
+									prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+									type="password"
+									placeholder="Password"
+								/>
+							)}
+						</Form.Item>
+						<Form.Item>
+							{getFieldDecorator('code', {
+								rules: [ { required: true, message: 'Please input your code!' } ]
+							})(
+								<Input
+									prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+									placeholder="code"
+								/>
+							)}
+							<img src={this.state.codeimg} alt="" onClick={this.svgcode} />
+						</Form.Item>
+						<Form.Item>
+							<Button type="primary" htmlType="submit" className="login-form-button">
+								Log in
+							</Button>
+						</Form.Item>
+					</Form>
+				</div>
+			)
+		}
 	}
 }
 

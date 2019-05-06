@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-06 09:58:19
+ * @LastEditTime: 2019-05-06 14:45:50
  */
 import React from 'react'
 import { Layout } from 'antd'
@@ -22,30 +22,30 @@ function App() {
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={Login} />
-			</Switch>
-			{/* <Layout>
-				<Header className="header">
-					<div className="logo" />
-				</Header>
 				<Layout>
-					<Sider width={200} style={{ background: '#fff' }}>
-						<MenuList />
-					</Sider>
+					<Header className="header">
+						<div className="logo" />
+					</Header>
 					<Layout>
-						<Content
-							className="App-contentMain"
-							style={{
-								background: '#fff',
-								margin: 25,
-								height: screenHeight,
-								padding: 25
-							}}
-						>
-							<ContentMain />
-						</Content>
+						<Sider width={200} style={{ background: '#fff' }}>
+							<MenuList />
+						</Sider>
+						<Layout>
+							<Content
+								className="App-contentMain"
+								style={{
+									background: '#fff',
+									margin: 25,
+									height: screenHeight,
+									padding: 25
+								}}
+							>
+								<ContentMain />
+							</Content>
+						</Layout>
 					</Layout>
 				</Layout>
-			</Layout> */}
+			</Switch>
 		</BrowserRouter>
 	)
 }

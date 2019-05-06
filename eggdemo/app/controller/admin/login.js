@@ -8,23 +8,27 @@ class LoginController extends BaseController {
     const username = this.ctx.request.body.userName
     const code = this.ctx.request.body.code
     let msg = '';
-    const data = await this.ctx.model.User.find({
-      username,
-      password
-    });
-    console.log('this.ctx.session.code: ', this.ctx.session.code);
-    console.log('code: ', code);
+    let status = 0;
     if (code === this.ctx.session.code) {
+      const data = await this.ctx.model.User.find({
+        username,
+        password
+      });
       if (data.length > 0) {
         msg = '登录成功'
+        status = 1
+      } else {
+        msg = '用户名或密码错误'
+        status = 0
       }
     } else {
       msg = '验证码错误'
+      status = 0
     }
 
     this.ctx.body = {
       msg: msg,
-      status: 0
+      status: status
     }
   }
 }

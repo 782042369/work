@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-05 18:34:06
+ * @LastEditTime: 2019-05-06 15:11:57
  */
 import React, { Component } from 'react'
 import menus from '../router/routers'
@@ -44,7 +44,7 @@ class menu extends Component {
 	}
 	render() {
 		return (
-			<Menu defaultSelectedKeys={[ '/' ]} defaultOpenKeys={[ '/' ]} mode="inline">
+			<Menu defaultSelectedKeys={[ '/access' ]} defaultOpenKeys={[ '/access' ]} mode="inline">
 				{menus.map((item) => {
 					return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
 				})}
