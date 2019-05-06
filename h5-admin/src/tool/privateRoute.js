@@ -22,7 +22,7 @@ class PrivateRoute extends Component {
         history
       } = this.props;
       setTimeout(() => {
-        history.replace("/login");
+        history.replace("/");
       }, 1000)
     }
   }

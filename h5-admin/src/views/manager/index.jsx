@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-05 17:33:08
+ * @LastEditTime: 2019-05-06 10:16:00
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
-import managerapi from '../../api/manager'
+// import managerapi from '../../api/manager'
 
 const { Column } = Table
 const data = [

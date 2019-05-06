@@ -1,7 +1,7 @@
 const menus = [{
   title: '权限',
   icon: 'user',
-  key: '/',
+  key: '/access',
   compoent: 'access'
 }, {
   title: '管理员',

@@ -3,13 +3,13 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-05 14:37:53
+ * @LastEditTime: 2019-05-06 10:00:43
  */
 'use strict';
 
-const Controller = require('egg').Controller;
+const BaseController = require('./base');
 
-class AccessController extends Controller {
+class AccessController extends BaseController {
   async index() {
     this.ctx.body = '权限列表'
   }

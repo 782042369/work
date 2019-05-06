@@ -15,15 +15,19 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1555663231382_6385';
   config.session = {
-    key: 'EGG_SESS',
-    maxAge: 24 * 3600 * 1000, // 1 天
+    key: 'yang_ad_ms_se',
+    maxAge: 1800 * 1000, // 1 天
     httpOnly: true,
     encrypt: true,
   };
   // add your middleware config here
   config.middleware = [
     'compress',
+    'adminauth'
   ];
+  config.adminauth = {
+    match: '/admin'
+  }
   config.security = {
     csrf: {
       enable: false,

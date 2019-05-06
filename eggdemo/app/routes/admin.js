@@ -9,9 +9,11 @@ module.exports = app => {
     controller
   } = app;
   /**
-   * 管理后台
+   * 登录
    */
-  // router.get('/login', controller.admin.login.index);
+  router.post('/dologin', controller.admin.login.index);
+  router.get('/captchacode', controller.admin.base.code);
+
   /**
    * 权限
    */

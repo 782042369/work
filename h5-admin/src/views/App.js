@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-05 18:49:53
+ * @LastEditTime: 2019-05-06 09:58:19
  */
 import React from 'react'
 import { Layout } from 'antd'
@@ -21,9 +21,9 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route exact path="/login" component={Login} />
+				<Route exact path="/" component={Login} />
 			</Switch>
-			<Layout>
+			{/* <Layout>
 				<Header className="header">
 					<div className="logo" />
 				</Header>
@@ -45,7 +45,7 @@ function App() {
 						</Content>
 					</Layout>
 				</Layout>
-			</Layout>
+			</Layout> */}
 		</BrowserRouter>
 	)
 }

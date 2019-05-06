@@ -3,13 +3,13 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-05 14:38:01
+ * @LastEditTime: 2019-05-06 10:00:32
  */
 'use strict';
 
-const Controller = require('egg').Controller;
+const BaseController = require('./base');
 
-class ManagerController extends Controller {
+class ManagerController extends BaseController {
   async index() {
     this.ctx.body = '管理员列表'
   }

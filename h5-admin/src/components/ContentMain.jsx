@@ -14,7 +14,7 @@ class ContentMain extends Component {
 		return (
 			<div>
 				<Switch>
-					<PrivateRoute exact path="/" component={Access} />
+					<PrivateRoute exact path="/access" component={Access} />
 					<PrivateRoute exact path="/addaccess" component={AddAccess} />
 					<PrivateRoute exact path="/manager" component={Manager} />
 					<PrivateRoute exact path="/addmanager" component={AddManager} />
