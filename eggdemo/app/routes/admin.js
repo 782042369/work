@@ -18,23 +18,23 @@ module.exports = app => {
   /**
    * 权限
    */
-  router.post('/adminAccess', controller.admin.access.index);
-  router.post('/adminAddAccess', controller.admin.access.add);
-  router.delete('/adminDeleteAccess', controller.admin.access.delete);
-  router.put('/adminEditAccess', controller.admin.access.edit);
+  router.post('/admin/Access', controller.admin.access.index);
+  router.post('/admin/AddAccess', controller.admin.access.add);
+  router.delete('/admin/DeleteAccess', controller.admin.access.delete);
+  router.put('/admin/EditAccess', controller.admin.access.edit);
   /**
    * 管理员
    */
-  router.post('/adminManagerlist', controller.admin.manager.index);
-  router.post('/adminAddManager', controller.admin.manager.add);
-  router.delete('/adminDeleteManager', controller.admin.manager.delete);
-  router.put('/adminEditManager', controller.admin.manager.edit);
+  router.post('/admin/Managerlist', controller.admin.manager.index);
+  router.post('/admin/AddManager', controller.admin.manager.add);
+  router.delete('/admin/DeleteManager', controller.admin.manager.delete);
+  router.put('/admin/EditManager', controller.admin.manager.edit);
   /**
    * 角色
    */
-  router.post('/adminRolelist', controller.admin.role.index);
-  router.post('/adminAddRole', controller.admin.role.add);
-  router.delete('/adminDeleteRole', controller.admin.role.delete);
-  router.put('/adminEditRole', controller.admin.role.edit);
+  router.post('/admin/Rolelist', controller.admin.role.index);
+  router.post('/admin/AddRole', controller.admin.role.add);
+  router.delete('/admin/DeleteRole', controller.admin.role.delete);
+  router.put('/admin/EditRole', controller.admin.role.edit);
 
 };

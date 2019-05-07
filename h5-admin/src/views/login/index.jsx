@@ -51,7 +51,7 @@ class NormalLoginForm extends Component {
 			return <Redirect to="/access" />
 		} else {
 			return (
-				<div className="login">
+				<div className="login" id="login">
 					<Form onSubmit={this.handleSubmit} className="login-form">
 						<Form.Item>
 							{getFieldDecorator('userName', {

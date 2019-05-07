@@ -9,35 +9,35 @@
 import request from '../tool/request'
 
 export function rolelist(data) {
-  // 列表
-  return request({
-    url: 'adminRolelist',
-    method: 'post',
-    data
-  })
+	// 列表
+	return request({
+		url: 'admin/Rolelist',
+		method: 'post',
+		data
+	})
 }
 
 export function addrole(data) {
-  // 增加
-  return request({
-    url: 'adminAddRole',
-    method: 'post',
-    data
-  })
+	// 增加
+	return request({
+		url: 'admin/AddRole',
+		method: 'post',
+		data
+	})
 }
 export function editrole(data) {
-  // 修改
-  return request({
-    url: 'adminEditRole',
-    method: 'put',
-    data
-  })
+	// 修改
+	return request({
+		url: 'admin/EditRole',
+		method: 'put',
+		data
+	})
 }
 export function deleterole(data) {
-  // 删除
-  return request({
-    url: 'adminDeleteRole',
-    method: 'delete',
-    data
-  })
+	// 删除
+	return request({
+		url: 'admin/DeleteRole',
+		method: 'delete',
+		data
+	})
 }

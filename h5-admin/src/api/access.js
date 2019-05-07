@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: access
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-07 09:46:46
+ * @LastEditTime: 2019-05-07 12:11:47
  */
 
 import request from '../tool/request'
@@ -11,7 +11,7 @@ import request from '../tool/request'
 export function accesslist(data) {
   // 列表
   return request({
-    url: 'adminAccesslist',
+    url: 'admin/Accesslist',
     method: 'post',
     data
   })
@@ -20,7 +20,7 @@ export function accesslist(data) {
 export function addaccess(data) {
   // 增加
   return request({
-    url: 'adminAddAccess',
+    url: 'admin/AddAccess',
     method: 'put',
     data
   })
@@ -28,7 +28,7 @@ export function addaccess(data) {
 export function editaccess(data) {
   // 修改
   return request({
-    url: 'adminEditAccess',
+    url: 'admin/EditAccess',
     method: 'put',
     data
   })
@@ -36,7 +36,7 @@ export function editaccess(data) {
 export function deleteaccess(data) {
   // 删除
   return request({
-    url: 'adminDeleteAccess',
+    url: 'admin/DeleteAccess',
     method: 'delete',
     data
   })
