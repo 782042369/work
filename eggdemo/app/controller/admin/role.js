@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-07 13:22:41
+ * @LastEditTime: 2019-05-07 14:39:02
  */
 'use strict';
 
@@ -13,7 +13,8 @@ class RoleController extends BaseController {
   async index() {
     try {
       const result = await this.service.role.find();
-      this.success(1, '角色列表请求成功', result);
+      const data = await this.sortdata(result)
+      this.success(1, '角色列表请求成功', data);
     } catch (error) {
       this.error(0, '角色列表请求失败', error);
     }

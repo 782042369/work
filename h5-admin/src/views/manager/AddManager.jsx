@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 13:34:40
+ * @LastEditTime: 2019-05-07 14:12:49
  */
 import React, { Component } from 'react'
 import { addmanager, editmanager, managerlist } from '../../api/manager'
@@ -27,12 +27,6 @@ class WrappedRegistrationForm extends Component {
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
 				values.password = md5(values.password)
-				this.state.roledata.map((e) => {
-					if (values.role_id === e._id) {
-						values.role = e.title
-						return
-					}
-				})
 				if (getUrlParam('id')) {
 					let arr = { id: getUrlParam('id') }
 					editmanager(Object.assign(values, arr))

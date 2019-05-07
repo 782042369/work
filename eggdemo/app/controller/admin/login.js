@@ -6,8 +6,6 @@ class LoginController extends BaseController {
   async index() {
     try {
       const code = this.ctx.request.body.code;
-      console.log('code: ', code);
-      console.log('this.ctx.session.code: ', this.ctx.session.code);
       if (code === this.ctx.session.code) {
         const result = await this.service.user.finduser();
         if (result.length > 0) {

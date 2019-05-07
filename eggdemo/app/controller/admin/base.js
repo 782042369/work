@@ -9,7 +9,6 @@ class BaseController extends Controller {
    * @param {*} data 
    */
   async success(status, message, data = []) {
-    // this.ctx.body='成功';
     this.ctx.body = {
       status,
       data,
@@ -23,7 +22,6 @@ class BaseController extends Controller {
    * @param {*} data 
    */
   async error(status, message, data = []) {
-    // this.ctx.body='成功';
     this.ctx.status = 200
     this.ctx.body = ({
       status,
@@ -39,6 +37,14 @@ class BaseController extends Controller {
     this.ctx.response.type = 'image/svg+xml'; // 指定返回类型
     this.ctx.body = captcha.data; // 返回验证码
   }
+  async sortdata(res) {
+    console.log('res: ', res);
+    /**
+     * 数组倒序
+     */
+    return res.sort((a, b) => b.add_time - a.add_time);
+  }
+
 }
 
 module.exports = BaseController;

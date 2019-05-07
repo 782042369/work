@@ -18,9 +18,6 @@ module.exports = app => {
     role_id: {
       type: Schema.Types.ObjectId,
     },
-    role: {
-      type: String,
-    },
     add_time: {
       type: Number,
       default: new Date().getTime(),

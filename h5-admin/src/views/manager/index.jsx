@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 12:56:29
+ * @LastEditTime: 2019-05-07 14:28:25
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -22,12 +22,13 @@ class manager extends Component {
 	getlist() {
 		managerlist()
 			.then((res) => {
+				console.log('res: ', res)
 				if (res.status === 1) {
 					this.setState({
 						managerdata: res.data
 					})
 				}
-				console.log(this.state.managerdata)
+				// console.log(this.state.managerdata)
 			})
 			.catch((err) => {
 				console.log('err: ', err)
@@ -56,7 +57,7 @@ class manager extends Component {
 					<Column title="名称" dataIndex="userName" key="userName" />
 					<Column title="手机" dataIndex="mobile" key="mobile" />
 					<Column title="邮箱" dataIndex="email" key="email" />
-					<Column title="角色名称" dataIndex="role" key="role" />
+					<Column title="角色名称" dataIndex="role[0].title" key="role[0].title" />
 					<Column
 						title="时间"
 						key="add_time"

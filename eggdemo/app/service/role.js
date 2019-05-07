@@ -14,7 +14,6 @@ class RoleService extends Service {
       arr = {};
     }
     result = await this.ctx.model.Role.find(arr);
-
     return result;
   }
   // 增加
@@ -44,6 +43,7 @@ class RoleService extends Service {
     }, {
       description,
       title,
+      add_time: new Date().getTime()
     });
     return result;
   }

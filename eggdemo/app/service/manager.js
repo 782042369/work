@@ -4,16 +4,21 @@ class ManagerService extends Service {
   // 查找
   async find() {
     const _id = this.ctx.request.body.id;
-    let result = '';
-    let arr = {};
+    let result = ''
     if (_id) {
-      arr = {
-        _id,
-      };
+      result = await this.ctx.model.User.find({
+        _id
+      });
     } else {
-      arr = {};
+      result = await this.ctx.model.User.aggregate([{
+        $lookup: {
+          from: 'role',
+          localField: 'role_id',
+          foreignField: '_id',
+          as: 'role'
+        }
+      }])
     }
-    result = await this.ctx.model.User.find(arr);
     return result;
   }
   // 增加
@@ -22,7 +27,6 @@ class ManagerService extends Service {
     const email = this.ctx.request.body.email;
     const mobile = this.ctx.request.body.mobile;
     const role_id = this.ctx.request.body.role_id;
-    const role = this.ctx.request.body.role;
     const password = this.ctx.request.body.password;
     let result = await this.ctx.model.User.find({
       userName,
@@ -33,8 +37,7 @@ class ManagerService extends Service {
         email,
         userName,
         mobile,
-        role_id,
-        role,
+        role_id
       });
       result = rolearr.save();
     }
@@ -47,7 +50,6 @@ class ManagerService extends Service {
     const email = this.ctx.request.body.email;
     const mobile = this.ctx.request.body.mobile;
     const role_id = this.ctx.request.body.role_id;
-    const role = this.ctx.request.body.role;
     const password = this.ctx.request.body.password;
     const result = await this.ctx.model.User.updateOne({
       _id,
@@ -57,7 +59,7 @@ class ManagerService extends Service {
       userName,
       mobile,
       role_id,
-      role,
+      add_time: new Date().getTime()
     });
     return result;
   }
