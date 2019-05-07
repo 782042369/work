@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-07 12:56:14
+ * @LastEditTime: 2019-05-07 18:56:25
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -52,9 +52,6 @@ class role extends Component {
 	render() {
 		return (
 			<div>
-				{/* <Link to={'/addrole'}>
-					<Button type="primary">增加角色</Button>
-				</Link> */}
 				<Table dataSource={this.state.data}>
 					<Column title="名称" dataIndex="title" key="title" />
 					<Column

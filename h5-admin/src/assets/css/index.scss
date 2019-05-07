@@ -33,3 +33,8 @@
     padding: 15px;
   }
 }
+
+.ant-table .ant-table-thead>tr>th,
+.ant-table .ant-table-tbody>tr>td {
+  padding: 10px;
+}

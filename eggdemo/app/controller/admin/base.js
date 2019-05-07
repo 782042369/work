@@ -38,9 +38,8 @@ class BaseController extends Controller {
     this.ctx.body = captcha.data; // 返回验证码
   }
   async sortdata(res) {
-    console.log('res: ', res);
     /**
-     * 数组倒序
+     * 输出倒序 json
      */
     return res.sort((a, b) => b.add_time - a.add_time);
   }

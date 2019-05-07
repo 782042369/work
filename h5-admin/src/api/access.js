@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: access
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-07 12:11:47
+ * @LastEditTime: 2019-05-07 18:42:29
  */
 
 import request from '../tool/request'
@@ -21,7 +21,7 @@ export function addaccess(data) {
   // 增加
   return request({
     url: 'admin/AddAccess',
-    method: 'put',
+    method: 'post',
     data
   })
 }

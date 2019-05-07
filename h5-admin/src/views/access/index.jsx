@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-07 12:57:18
+ * @LastEditTime: 2019-05-07 18:56:17
  */
 import React, { Component } from 'react'
-import { Table, Divider, Button } from 'antd'
-import { accesslist } from '../../api/access'
+import { Table, Divider, Button, message } from 'antd'
+import { accesslist, deleteaccess } from '../../api/access'
 import datefilter from '../../tool/datefilter'
 import { Link } from 'react-router-dom'
 const { Column } = Table
@@ -25,17 +25,19 @@ const data = [
 class access extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			accessdata: []
+		}
 	}
 	getlist() {
 		accesslist()
 			.then((res) => {
+				console.log('res: ', res)
 				if (res.status === 1) {
 					this.setState({
-						managerdata: res.data
+						accessdata: res.data
 					})
 				}
-				console.log(this.state.managerdata)
 			})
 			.catch((err) => {
 				console.log('err: ', err)
@@ -44,26 +46,23 @@ class access extends Component {
 	componentDidMount() {
 		this.getlist()
 	}
-	deleterole(id) {
-		// deleterole({
-		// 	id
-		// })
-		// 	.then((res) => {
-		// 		console.log('res: ', res)
-		// 		this.getlist()
-		// 		message.success(res.message)
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log('err: ', err)
-		// 	})
+	deleteaccess(id) {
+		deleteaccess({
+			id
+		})
+			.then((res) => {
+				console.log('res: ', res)
+				this.getlist()
+				message.success(res.message)
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
 	}
 	render() {
 		return (
 			<div>
-				{/* <Link to={'/addaccess'}>
-					<Button type="primary">增加权限</Button>
-				</Link> */}
-				<Table dataSource={data}>
+				<Table dataSource={this.state.accessdata}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />
 					<Column
@@ -82,7 +81,7 @@ class access extends Component {
 								<Divider type="vertical" />
 								<Button type="primary">修改</Button>
 								<Divider type="vertical" />
-								<Button type="danger" onClick={this.deleterole(text)}>
+								<Button type="danger" onClick={this.deleteaccess.bind(this, text)}>
 									删除
 								</Button>
 							</span>

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-07 13:03:18
+ * @LastEditTime: 2019-05-07 18:50:47
  */
 'use strict';
 
@@ -27,6 +27,7 @@ class AccessController extends BaseController {
         this.success(1, '增加权限成功', result);
       }
     } catch (error) {
+      console.log('error: ', error);
       this.error(0, '增加权限失败', error);
     }
   }

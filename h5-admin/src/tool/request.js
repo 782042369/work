@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: axios请求
  * @Date: 2019-05-05 17:05:38
- * @LastEditTime: 2019-05-07 13:55:01
+ * @LastEditTime: 2019-05-07 17:59:11
  */
 import axios from 'axios';
 import qs from 'qs'

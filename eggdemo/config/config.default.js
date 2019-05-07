@@ -43,25 +43,25 @@ module.exports = appInfo => {
   config.compress = {
     threshold: 1024, // body大于配置的threshold才会压缩
   };
-  config.mysql = {
-    // database configuration
-    client: {
-      // host
-      host: 'localhost',
-      // port
-      port: '3306',
-      // username
-      user: 'root',
-      // password
-      password: '521yhx521',
-      // database
-      database: 'egg',
-    },
-    // load into app, default is open
-    app: true,
-    // load into agent, default is close
-    agent: false,
-  };
+  // config.mysql = {
+  //   // database configuration
+  //   client: {
+  //     // host
+  //     host: 'localhost',
+  //     // port
+  //     port: '3306',
+  //     // username
+  //     user: 'root',
+  //     // password
+  //     password: '521yhx521',
+  //     // database
+  //     database: 'egg',
+  //   },
+  //   // load into app, default is open
+  //   app: true,
+  //   // load into agent, default is close
+  //   agent: false,
+  // };
   config.mongoose = {
     client: {
       url: 'mongodb://127.0.0.1/admin',

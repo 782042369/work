@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-07 13:31:10
+ * @LastEditTime: 2019-05-07 14:52:46
  */
 import React, { Component } from 'react'
 import { addrole, editrole, rolelist } from '../../api/role'
@@ -37,8 +37,7 @@ class WrappedRegistrationForm extends Component {
 				} else {
 					addrole(values)
 						.then((res) => {
-							console.log(res)
-							if (res.status == 1) {
+							if (res.status === 1) {
 								message.success(res.message)
 							} else {
 								message.error(res.message)

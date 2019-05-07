@@ -10,7 +10,7 @@ class NormalLoginForm extends Component {
 		super(props)
 		this.state = {
 			loginSuccess: false,
-			codeimg: 'http://127.0.0.1:7001/captchacode?' + new Date().getTime()
+			codeimg: 'captchacode?' + new Date().getTime()
 		}
 	}
 	handleSubmit = (e) => {
@@ -40,7 +40,7 @@ class NormalLoginForm extends Component {
 	}
 	svgcode = () => {
 		this.setState({
-			codeimg: 'http://127.0.0.1:7001/captchacode?' + new Date().getTime()
+			codeimg: 'captchacode?' + new Date().getTime()
 		})
 	}
 	componentDidMount() {}
