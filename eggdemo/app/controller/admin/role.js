@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-06 20:37:16
+ * @LastEditTime: 2019-05-07 13:22:41
  */
 'use strict';
 
@@ -11,28 +11,40 @@ const BaseController = require('./base');
 
 class RoleController extends BaseController {
   async index() {
-    const result = await this.service.role.find();
-    this.ctx.body = result
+    try {
+      const result = await this.service.role.find();
+      this.success(1, '角色列表请求成功', result);
+    } catch (error) {
+      this.error(0, '角色列表请求失败', error);
+    }
   }
   async add() {
-    await this.service.role.addrole();
-    this.ctx.body = {
-      status: 1,
-      msg: '增加角色成功'
+    try {
+      const result = await this.service.role.addrole();
+      if (result.length > 0) {
+        this.success(0, '角色已经存在', result);
+
+      } else {
+        this.success(1, '增加角色成功', result);
+      }
+    } catch (error) {
+      this.error(0, '增加角色失败', error);
     }
   }
   async edit() {
-    await this.service.role.edit();
-    this.ctx.body = {
-      status: 1,
-      msg: '修改角色成功'
+    try {
+      const result = await this.service.role.edit();
+      this.success(1, '修改角色成功', result);
+    } catch (error) {
+      this.error(0, '修改角色失败', error);
     }
   }
   async delete() {
-    await this.service.role.delete();
-    this.ctx.body = {
-      status: 1,
-      msg: '删除角色成功'
+    try {
+      const result = await this.service.role.delete();
+      this.success(1, '删除角色成功', result);
+    } catch (error) {
+      this.error(0, '删除角色失败', error);
     }
   }
 }

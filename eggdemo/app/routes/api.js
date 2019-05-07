@@ -6,7 +6,7 @@
 module.exports = app => {
   const {
     router,
-    controller
+    controller,
   } = app;
   /**
    * api

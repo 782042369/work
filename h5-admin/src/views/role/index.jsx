@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-07 11:26:15
+ * @LastEditTime: 2019-05-07 12:56:14
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -23,10 +23,11 @@ class role extends Component {
 	getlist() {
 		rolelist()
 			.then((res) => {
-				console.log('res: ', res)
-				this.setState({
-					data: res
-				})
+				if (res.status === 1) {
+					this.setState({
+						data: res.data
+					})
+				}
 			})
 			.catch((err) => {
 				console.log('err: ', err)
@@ -42,7 +43,7 @@ class role extends Component {
 			.then((res) => {
 				console.log('res: ', res)
 				this.getlist()
-				message.success(res.msg)
+				message.success(res.message)
 			})
 			.catch((err) => {
 				console.log('err: ', err)

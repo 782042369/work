@@ -22,14 +22,14 @@ class NormalLoginForm extends Component {
 					.then((res) => {
 						console.log('res: ', res)
 						if (res.status === 1) {
-							message.success(res.msg)
+							message.success(res.message)
 							sessionStorage.setItem('userId', true)
 							this.setState({
 								loginSuccess: true
 							})
 						} else {
 							this.svgcode()
-							message.error(res.msg)
+							message.error(res.message)
 						}
 					})
 					.catch((err) => {

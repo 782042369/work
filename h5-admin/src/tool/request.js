@@ -3,24 +3,26 @@
  * @LastEditors: 杨宏旋
  * @Description: axios请求
  * @Date: 2019-05-05 17:05:38
- * @LastEditTime: 2019-05-07 12:08:54
+ * @LastEditTime: 2019-05-07 13:55:01
  */
 import axios from 'axios';
 import qs from 'qs'
 axios.defaults.retry = 4
 axios.defaults.retryDelay = 1000
-axios.defaults.withCredentials = true
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:7001', // api的base_url
+  baseURL: '', // api的base_url
   timeout: 100000 // 请求超时时间
 })
 // request拦截器
 service.interceptors.request.use(
   config => {
-    config.data = qs.stringify(config.data)
-    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+    if (config.url === 'dologin') {
+      config.data = qs.stringify(config.data)
+      axios.defaults.withCredentials = true
+      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+    }
     return config
   },
   error => {

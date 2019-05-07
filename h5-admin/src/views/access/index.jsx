@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-07 10:09:26
+ * @LastEditTime: 2019-05-07 12:57:18
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
@@ -27,14 +27,22 @@ class access extends Component {
 		super(props)
 		this.state = {}
 	}
-	componentWillMount() {
+	getlist() {
 		accesslist()
 			.then((res) => {
-				console.log(res)
+				if (res.status === 1) {
+					this.setState({
+						managerdata: res.data
+					})
+				}
+				console.log(this.state.managerdata)
 			})
 			.catch((err) => {
-				console.log(err)
+				console.log('err: ', err)
 			})
+	}
+	componentDidMount() {
+		this.getlist()
 	}
 	deleterole(id) {
 		// deleterole({
@@ -43,7 +51,7 @@ class access extends Component {
 		// 	.then((res) => {
 		// 		console.log('res: ', res)
 		// 		this.getlist()
-		// 		message.success(res.msg)
+		// 		message.success(res.message)
 		// 	})
 		// 	.catch((err) => {
 		// 		console.log('err: ', err)

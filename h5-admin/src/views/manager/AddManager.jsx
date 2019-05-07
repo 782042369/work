@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 11:59:58
+ * @LastEditTime: 2019-05-07 13:34:40
  */
 import React, { Component } from 'react'
 import { addmanager, editmanager, managerlist } from '../../api/manager'
@@ -25,7 +25,6 @@ class WrappedRegistrationForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
-			console.log('values: ', values)
 			if (!err) {
 				values.password = md5(values.password)
 				this.state.roledata.map((e) => {
@@ -39,21 +38,21 @@ class WrappedRegistrationForm extends Component {
 					editmanager(Object.assign(values, arr))
 						.then((res) => {
 							console.log(res)
-							message.success(res.msg)
+							message.success(res.message)
 						})
 						.catch((err) => {
-							message.error(err)
+							message.error(err.message)
 							console.log(err)
 						})
 				} else {
 					addmanager(values)
 						.then((res) => {
 							console.log(res)
-							message.success(res.msg)
+							message.success(res.message)
 						})
 						.catch((err) => {
 							console.log(err)
-							message.error(err)
+							message.error(err.message)
 						})
 				}
 			}
@@ -63,7 +62,7 @@ class WrappedRegistrationForm extends Component {
 		rolelist()
 			.then((res) => {
 				this.setState({
-					roledata: res
+					roledata: res.data
 				})
 			})
 			.catch((err) => {
@@ -81,11 +80,11 @@ class WrappedRegistrationForm extends Component {
 			})
 				.then((res) => {
 					this.props.form.setFieldsValue({
-						password: res[0].password,
-						email: res[0].email,
-						userName: res[0].userName,
-						mobile: res[0].mobile,
-						role_id: res[0].role_id
+						password: res.data[0].password,
+						email: res.data[0].email,
+						userName: res.data[0].userName,
+						mobile: res.data[0].mobile,
+						role_id: res.data[0].role_id
 					})
 				})
 				.catch((err) => {

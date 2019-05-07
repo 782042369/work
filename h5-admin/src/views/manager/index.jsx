@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 11:55:18
+ * @LastEditTime: 2019-05-07 12:56:29
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -22,10 +22,11 @@ class manager extends Component {
 	getlist() {
 		managerlist()
 			.then((res) => {
-				console.log('res: ', res)
-				this.setState({
-					managerdata: res
-				})
+				if (res.status === 1) {
+					this.setState({
+						managerdata: res.data
+					})
+				}
 				console.log(this.state.managerdata)
 			})
 			.catch((err) => {
@@ -42,7 +43,7 @@ class manager extends Component {
 			.then((res) => {
 				console.log('res: ', res)
 				this.getlist()
-				message.success(res.msg)
+				message.success(res.message)
 			})
 			.catch((err) => {
 				console.log('err: ', err)

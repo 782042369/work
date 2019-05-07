@@ -6,7 +6,7 @@
 module.exports = app => {
   const {
     router,
-    controller
+    controller,
   } = app;
   /**
    * 登录
@@ -18,7 +18,7 @@ module.exports = app => {
   /**
    * 权限
    */
-  router.post('/admin/Access', controller.admin.access.index);
+  router.post('/admin/Accesslist', controller.admin.access.index);
   router.post('/admin/AddAccess', controller.admin.access.add);
   router.delete('/admin/DeleteAccess', controller.admin.access.delete);
   router.put('/admin/EditAccess', controller.admin.access.edit);

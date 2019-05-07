@@ -1,37 +1,38 @@
+'use strict';
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
   const UserSchema = new Schema({
     userName: {
-      type: String
+      type: String,
     },
     password: {
-      type: String
+      type: String,
     },
     mobile: {
-      type: String
+      type: String,
     },
     email: {
-      type: String
+      type: String,
     },
     role_id: {
-      type: Schema.Types.ObjectId
+      type: Schema.Types.ObjectId,
     },
     role: {
-      type: String
+      type: String,
     },
     add_time: {
       type: Number,
-      default: new Date().getTime()
+      default: new Date().getTime(),
     },
     is_super: {
       type: Number,
-      default: 0
+      default: 0,
     },
     status: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   });
   return mongoose.model('User', UserSchema, 'user');
-}
+};

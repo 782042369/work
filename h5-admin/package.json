@@ -2,6 +2,7 @@
   "name": "h5-admin",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:7001",
   "dependencies": {
     "antd": "^3.16.6",
     "axios": "^0.18.0",

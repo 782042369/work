@@ -23,26 +23,26 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [
     'compress',
-    'adminauth'
+    'adminauth',
   ];
   config.adminauth = {
-    match: '/admin'
-  }
+    match: '/admin',
+  };
   config.security = {
     csrf: {
       enable: false,
-      ignoreJSON: true
+      ignoreJSON: true,
     },
-    domainWhiteList: ['http://localhost:8080']
+    domainWhiteList: ['http://127.0.0.1:3000'],
   };
   config.cors = {
-    origin: 'http://localhost:3000',
+    origin: 'http://127.0.0.1:3000',
     credentials: true,
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
   config.compress = {
-    threshold: 1024 // body大于配置的threshold才会压缩
-  }
+    threshold: 1024, // body大于配置的threshold才会压缩
+  };
   config.mysql = {
     // database configuration
     client: {
@@ -68,12 +68,12 @@ module.exports = appInfo => {
       options: {},
     },
   };
-  // 配置 公共url 
+  // 配置 公共url
   config.url = 'www.phonegap100.com/';
   // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
-  };
+  // const userConfig = {
+  // myAppName: 'egg',
+  // };
 
   return config;
 };

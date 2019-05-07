@@ -13,7 +13,7 @@ module.exports = app => {
   /**
    * 后台
    */
-  require('./routes/admin')(app)
+  require('./routes/admin')(app);
   /**
    * api
    */
@@ -21,6 +21,6 @@ module.exports = app => {
   /**
    * 前台
    */
-  require('./routes/index')(app)
+  require('./routes/index')(app);
 
 };

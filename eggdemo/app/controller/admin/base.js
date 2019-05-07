@@ -2,6 +2,35 @@
 const Controller = require('egg').Controller;
 
 class BaseController extends Controller {
+  /**
+   * 
+   * @param {*} status 
+   * @param {*} message 
+   * @param {*} data 
+   */
+  async success(status, message, data = []) {
+    // this.ctx.body='成功';
+    this.ctx.body = {
+      status,
+      data,
+      message,
+    };
+  }
+  /**
+   * 
+   * @param {*} status 
+   * @param {*} message 
+   * @param {*} data 
+   */
+  async error(status, message, data = []) {
+    // this.ctx.body='成功';
+    this.ctx.status = 200
+    this.ctx.body = ({
+      status,
+      data,
+      message,
+    });
+  }
   async code() {
     /**
      * 验证码
