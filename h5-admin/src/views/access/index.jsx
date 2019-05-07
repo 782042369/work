@@ -3,11 +3,12 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-07 09:53:13
+ * @LastEditTime: 2019-05-07 10:09:26
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
 import { accesslist } from '../../api/access'
+import datefilter from '../../tool/datefilter'
 import { Link } from 'react-router-dom'
 const { Column } = Table
 
@@ -36,24 +37,24 @@ class access extends Component {
 			})
 	}
 	deleterole(id) {
-		deleterole({
-			id
-		})
-			.then((res) => {
-				console.log('res: ', res)
-				this.getlist()
-				message.success(res.msg)
-			})
-			.catch((err) => {
-				console.log('err: ', err)
-			})
+		// deleterole({
+		// 	id
+		// })
+		// 	.then((res) => {
+		// 		console.log('res: ', res)
+		// 		this.getlist()
+		// 		message.success(res.msg)
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log('err: ', err)
+		// 	})
 	}
 	render() {
 		return (
 			<div>
-				<Link to={'/addaccess'}>
+				{/* <Link to={'/addaccess'}>
 					<Button type="primary">增加权限</Button>
-				</Link>
+				</Link> */}
 				<Table dataSource={data}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />

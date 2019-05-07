@@ -14,7 +14,7 @@ module.exports = app => {
     },
     add_time: {
       type: Number,
-      default: new Date()
+      default: new Date().getTime()
     }
   });
   return mongoose.model('Role', RoleSchema, 'role');

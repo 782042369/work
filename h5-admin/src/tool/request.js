@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: axios请求
  * @Date: 2019-05-05 17:05:38
- * @LastEditTime: 2019-05-07 09:55:28
+ * @LastEditTime: 2019-05-07 12:08:54
  */
 import axios from 'axios';
 import qs from 'qs'
@@ -19,10 +19,8 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(
   config => {
-    if (config.url === 'dologin') {
-      config.data = qs.stringify(config.data)
-      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
-    }
+    config.data = qs.stringify(config.data)
+    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
     return config
   },
   error => {

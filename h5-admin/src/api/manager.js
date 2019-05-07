@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: manger
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-07 09:46:57
+ * @LastEditTime: 2019-05-07 11:07:38
  */
 
 import request from '../tool/request'
@@ -20,7 +20,7 @@ export function addmanager(data) {
   // 增加
   return request({
     url: 'adminAddManager',
-    method: 'put',
+    method: 'post',
     data
   })
 }

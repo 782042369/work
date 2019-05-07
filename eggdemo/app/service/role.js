@@ -7,13 +7,15 @@ class RoleService extends Service {
   async find() {
     const _id = this.ctx.request.body.id
     let result = ''
+    let arr = {}
     if (_id) {
-      result = await this.ctx.model.Role.find({
+      arr = {
         _id
-      });
+      }
     } else {
-      result = await this.ctx.model.Role.find({});
+      arr = {}
     }
+    result = await this.ctx.model.Role.find(arr);
 
     return result;
   }

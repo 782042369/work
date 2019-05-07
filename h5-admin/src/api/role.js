@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-06 20:33:56
+ * @LastEditTime: 2019-05-07 09:58:56
  */
 
 import request from '../tool/request'
@@ -21,7 +21,7 @@ export function addrole(data) {
   // 增加
   return request({
     url: 'adminAddRole',
-    method: 'put',
+    method: 'post',
     data
   })
 }

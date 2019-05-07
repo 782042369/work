@@ -8,10 +8,12 @@ class LoginController extends BaseController {
     const code = this.ctx.request.body.code
     if (code === this.ctx.session.code) {
       const result = await this.service.user.finduser();
+      console.log('result: ', result);
       if (result.length > 0) {
-        this.ctx.session.userinfo = result.username
+        this.ctx.session.userinfo = result[0].userName
+        console.log('this.ctx.session.userinfo: ', this.ctx.session.userinfo);
         datarr = {
-          username: result.username,
+          username: result[0].userName,
           msg: '登录成功',
           status: 1
         }

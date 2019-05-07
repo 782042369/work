@@ -13,7 +13,7 @@ class ToolsService extends Service {
       background: '#cc9966' // background color of the svg images
     });
     this.ctx.session.code = captcha.text.toLowerCase(); // 验证码信息
-    this.ctx.session.maxAge = 1000 * 60 * 10
+    this.ctx.session.maxAge = 60000
     return captcha;
   }
 }

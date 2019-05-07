@@ -3,32 +3,40 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 09:53:55
+ * @LastEditTime: 2019-05-07 11:55:18
  */
 import React, { Component } from 'react'
-import { Table, Divider, Button } from 'antd'
+import { Table, Divider, Button, message } from 'antd'
 import datefilter from '../../tool/datefilter'
+import { managerlist, deletemanager } from '../../api/manager'
 import { Link } from 'react-router-dom'
-// import mangerlist from '../../api/manager'
 
 const { Column } = Table
-const data = [
-	{
-		key: '1',
-		firstName: 'John',
-		lastName: 'Brown',
-		age: 32,
-		address: 'New York No. 1 Lake Park1',
-		tags: [ 'nice', 'developer' ]
-	}
-]
 class manager extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			managerdata: []
+		}
 	}
-	deleterole(id) {
-		deleterole({
+	getlist() {
+		managerlist()
+			.then((res) => {
+				console.log('res: ', res)
+				this.setState({
+					managerdata: res
+				})
+				console.log(this.state.managerdata)
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
+	}
+	componentDidMount() {
+		this.getlist()
+	}
+	deletemanager(id) {
+		deletemanager({
 			id
 		})
 			.then((res) => {
@@ -43,12 +51,11 @@ class manager extends Component {
 	render() {
 		return (
 			<div>
-				<Link to={'/addmanger'}>
-					<Button type="primary">增加管理员</Button>
-				</Link>
-				<Table dataSource={data}>
-					<Column title="年龄" dataIndex="age" key="age" />
-					<Column title="名称" dataIndex="address" key="address" />
+				<Table dataSource={this.state.managerdata}>
+					<Column title="名称" dataIndex="userName" key="userName" />
+					<Column title="手机" dataIndex="mobile" key="mobile" />
+					<Column title="邮箱" dataIndex="email" key="email" />
+					<Column title="角色名称" dataIndex="role" key="role" />
 					<Column
 						title="时间"
 						key="add_time"
@@ -63,9 +70,11 @@ class manager extends Component {
 							<span>
 								<Button type="primary">查看</Button>
 								<Divider type="vertical" />
-								<Button type="primary">修改</Button>
+								<Link to={'/addmanager?id=' + text}>
+									<Button type="primary">修改</Button>
+								</Link>
 								<Divider type="vertical" />
-								<Button type="danger" onClick={this.deleterole(text)}>
+								<Button type="danger" onClick={this.deletemanager.bind(this, text)}>
 									删除
 								</Button>
 							</span>

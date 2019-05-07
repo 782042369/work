@@ -3,35 +3,107 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 09:47:43
+ * @LastEditTime: 2019-05-07 11:59:58
  */
 import React, { Component } from 'react'
-import { addmanager } from '../../api/manager'
-import { Form, Input, Button } from 'antd'
+import { addmanager, editmanager, managerlist } from '../../api/manager'
+import { rolelist } from '../../api/role'
+import getUrlParam from '../../tool/getUrlParam'
+import { Form, Input, Button, message, Select } from 'antd'
+import md5 from 'js-md5'
+const Option = Select.Option
+
 class WrappedRegistrationForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			confirmDirty: false,
-			autoCompleteResult: []
+			title: '',
+			roledata: []
 		}
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
+			console.log('values: ', values)
 			if (!err) {
-				addmanager(values)
-					.then((res) => {
-						console.log(res)
-					})
-					.catch((err) => {
-						console.log(err)
-					})
+				values.password = md5(values.password)
+				this.state.roledata.map((e) => {
+					if (values.role_id === e._id) {
+						values.role = e.title
+						return
+					}
+				})
+				if (getUrlParam('id')) {
+					let arr = { id: getUrlParam('id') }
+					editmanager(Object.assign(values, arr))
+						.then((res) => {
+							console.log(res)
+							message.success(res.msg)
+						})
+						.catch((err) => {
+							message.error(err)
+							console.log(err)
+						})
+				} else {
+					addmanager(values)
+						.then((res) => {
+							console.log(res)
+							message.success(res.msg)
+						})
+						.catch((err) => {
+							console.log(err)
+							message.error(err)
+						})
+				}
 			}
 		})
 	}
-
+	getlist() {
+		rolelist()
+			.then((res) => {
+				this.setState({
+					roledata: res
+				})
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
+	}
+	componentDidMount() {
+		this.getlist()
+		if (getUrlParam('id')) {
+			this.setState({
+				title: '修改'
+			})
+			managerlist({
+				id: getUrlParam('id')
+			})
+				.then((res) => {
+					this.props.form.setFieldsValue({
+						password: res[0].password,
+						email: res[0].email,
+						userName: res[0].userName,
+						mobile: res[0].mobile,
+						role_id: res[0].role_id
+					})
+				})
+				.catch((err) => {
+					console.log('err: ', err)
+				})
+		} else {
+			this.setState({
+				title: '增加'
+			})
+		}
+	}
+	renderOptions = () => {
+		return this.state.roledata.map((element) => (
+			<Option key={element._id} value={element._id}>
+				{element.title}
+			</Option>
+		))
+	}
 	render() {
 		const { getFieldDecorator } = this.props.form
 
@@ -60,9 +132,9 @@ class WrappedRegistrationForm extends Component {
 
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
-				<h1>增加</h1>
-				<Form.Item label="角色名称">
-					{getFieldDecorator('title', {
+				<h1>{this.state.title}管理员</h1>
+				<Form.Item label="管理员名称">
+					{getFieldDecorator('userName', {
 						rules: [
 							{
 								required: true,
@@ -71,15 +143,45 @@ class WrappedRegistrationForm extends Component {
 						]
 					})(<Input />)}
 				</Form.Item>
-				<Form.Item label="角色描述">
-					{getFieldDecorator('description', {
+				<Form.Item label="管理员密码">
+					{getFieldDecorator('password', {
 						rules: [
 							{
 								required: true,
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input type="textarea" />)}
+					})(<Input type="password" />)}
+				</Form.Item>
+				<Form.Item label="管理员手机号">
+					{getFieldDecorator('mobile', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<Input />)}
+				</Form.Item>
+				<Form.Item label="管理员邮箱">
+					{getFieldDecorator('email', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<Input />)}
+				</Form.Item>
+				<Form.Item label="管理员角色">
+					{getFieldDecorator('role_id', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<Select onChange={this.handleChange}>{this.renderOptions()}</Select>)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">

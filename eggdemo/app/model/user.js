@@ -17,12 +17,16 @@ module.exports = app => {
     role_id: {
       type: Schema.Types.ObjectId
     },
+    role: {
+      type: String
+    },
     add_time: {
       type: Number,
-      default: new Date()
+      default: new Date().getTime()
     },
     is_super: {
-      type: Number
+      type: Number,
+      default: 0
     },
     status: {
       type: Number,

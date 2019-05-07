@@ -26,7 +26,7 @@ module.exports = appInfo => {
     'adminauth'
   ];
   config.adminauth = {
-    match: '/admin'
+    match: '/adminRolelist'
   }
   config.security = {
     csrf: {
