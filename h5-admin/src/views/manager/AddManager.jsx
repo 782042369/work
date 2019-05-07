@@ -3,10 +3,10 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-06 18:45:23
+ * @LastEditTime: 2019-05-07 09:47:43
  */
 import React, { Component } from 'react'
-import { addmanger } from '../../api/manager'
+import { addmanager } from '../../api/manager'
 import { Form, Input, Button } from 'antd'
 class WrappedRegistrationForm extends Component {
 	constructor(props) {
@@ -21,7 +21,7 @@ class WrappedRegistrationForm extends Component {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
-				addmanger(values)
+				addmanager(values)
 					.then((res) => {
 						console.log(res)
 					})

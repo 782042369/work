@@ -3,7 +3,12 @@
  * @LastEditors: 杨宏旋
  * @Description: 时间过滤器
  * @Date: 2019-05-06 17:53:48
- * @LastEditTime: 2019-05-06 18:10:17
+ * @LastEditTime: 2019-05-07 09:54:31
+ */
+/**
+ * 
+ * @param {*} timestamp 时间
+ * @param {*} formats 输出字符
  */
 const datefilter = function (timestamp, formats) {
   let zero = function (time) {

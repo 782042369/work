@@ -1,4 +1,10 @@
-// eslint-disable-line
+/*
+ * @Author: 杨宏旋
+ * @LastEditors: 杨宏旋
+ * @Description: axios请求
+ * @Date: 2019-05-05 17:05:38
+ * @LastEditTime: 2019-05-07 09:55:28
+ */
 import axios from 'axios';
 import qs from 'qs'
 axios.defaults.retry = 4

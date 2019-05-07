@@ -3,10 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-06 20:14:59
+ * @LastEditTime: 2019-05-07 09:53:55
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
+import datefilter from '../../tool/datefilter'
 import { Link } from 'react-router-dom'
 // import mangerlist from '../../api/manager'
 
@@ -26,7 +27,19 @@ class manager extends Component {
 		super(props)
 		this.state = {}
 	}
-
+	deleterole(id) {
+		deleterole({
+			id
+		})
+			.then((res) => {
+				console.log('res: ', res)
+				this.getlist()
+				message.success(res.msg)
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
+	}
 	render() {
 		return (
 			<div>
@@ -36,21 +49,12 @@ class manager extends Component {
 				<Table dataSource={data}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />
-					{/* <Column
-						title="Tags"
-						dataIndex="tags"
-						key="tags"
-						render={(tags) => (
-							<span>
-								{tags.map((tag) => (
-									<Tag color="blue" key={tag}>
-										{tag}
-									</Tag>
-								))}
-							</span>
-						)}
-					/> */}
-					<Column title="时间" dataIndex="lastName" key="lastName" />
+					<Column
+						title="时间"
+						key="add_time"
+						dataIndex="add_time"
+						render={(text, record) => <div type="primary">{datefilter(text)}</div>}
+					/>
 					<Column
 						title="操作"
 						key="action"

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-06 18:31:14
+ * @LastEditTime: 2019-05-07 09:53:13
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button } from 'antd'
@@ -35,7 +35,19 @@ class access extends Component {
 				console.log(err)
 			})
 	}
-
+	deleterole(id) {
+		deleterole({
+			id
+		})
+			.then((res) => {
+				console.log('res: ', res)
+				this.getlist()
+				message.success(res.msg)
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
+	}
 	render() {
 		return (
 			<div>
@@ -45,21 +57,12 @@ class access extends Component {
 				<Table dataSource={data}>
 					<Column title="年龄" dataIndex="age" key="age" />
 					<Column title="名称" dataIndex="address" key="address" />
-					{/* <Column
-						title="Tags"
-						dataIndex="tags"
-						key="tags"
-						render={(tags) => (
-							<span>
-								{tags.map((tag) => (
-									<Tag color="blue" key={tag}>
-										{tag}
-									</Tag>
-								))}
-							</span>
-						)}
-					/> */}
-					<Column title="时间" dataIndex="lastName" key="lastName" />
+					<Column
+						title="时间"
+						key="add_time"
+						dataIndex="add_time"
+						render={(text, record) => <div type="primary">{datefilter(text)}</div>}
+					/>
 					<Column
 						title="操作"
 						key="action"

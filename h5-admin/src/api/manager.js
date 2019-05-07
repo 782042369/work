@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: manger
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-06 20:40:02
+ * @LastEditTime: 2019-05-07 09:46:57
  */
 
 import request from '../tool/request'
-export function rolelist(data) {
+export function managerlist(data) {
   // 列表
   return request({
     url: 'adminManagerlist',
@@ -16,7 +16,7 @@ export function rolelist(data) {
   })
 }
 
-export function addrole(data) {
+export function addmanager(data) {
   // 增加
   return request({
     url: 'adminAddManager',
@@ -24,7 +24,7 @@ export function addrole(data) {
     data
   })
 }
-export function editrole(data) {
+export function editmanager(data) {
   // 修改
   return request({
     url: 'adminEditManager',
@@ -32,7 +32,7 @@ export function editrole(data) {
     data
   })
 }
-export function deleterole(data) {
+export function deletemanager(data) {
   // 删除
   return request({
     url: 'adminDeleteManager',

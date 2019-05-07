@@ -3,7 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: url参数
  * @Date: 2019-05-06 17:53:48
- * @LastEditTime: 2019-05-06 18:44:56
+ * @LastEditTime: 2019-05-07 09:54:57
+ */
+/**
+ * 
+ * @param {*} name 获取url参数名
  */
 const getUrlParam = (name) => {
   if (window.location.search) {

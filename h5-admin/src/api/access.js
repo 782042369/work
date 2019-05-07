@@ -3,12 +3,12 @@
  * @LastEditors: 杨宏旋
  * @Description: access
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-06 20:39:50
+ * @LastEditTime: 2019-05-07 09:46:46
  */
 
 import request from '../tool/request'
 
-export function rolelist(data) {
+export function accesslist(data) {
   // 列表
   return request({
     url: 'adminAccesslist',
@@ -17,7 +17,7 @@ export function rolelist(data) {
   })
 }
 
-export function addrole(data) {
+export function addaccess(data) {
   // 增加
   return request({
     url: 'adminAddAccess',
@@ -25,7 +25,7 @@ export function addrole(data) {
     data
   })
 }
-export function editrole(data) {
+export function editaccess(data) {
   // 修改
   return request({
     url: 'adminEditAccess',
@@ -33,7 +33,7 @@ export function editrole(data) {
     data
   })
 }
-export function deleterole(data) {
+export function deleteaccess(data) {
   // 删除
   return request({
     url: 'adminDeleteAccess',
