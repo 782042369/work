@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-08 13:22:30
+ * @LastEditTime: 2019-05-08 13:40:15
  */
 import React, { Component } from 'react'
 import menus from '../router/routers'
@@ -15,23 +15,8 @@ class menu extends Component {
 		super(props)
 		this.state = {}
 	}
-	getlist() {
-		FindAccessTree()
-			.then((res) => {
-				if (res.status === 1) {
-					this.setState({
-						list: res.data
-					})
-					console.log('this.state.accessdata: ', this.state.list)
-				}
-			})
-			.catch((err) => {
-				console.log('err: ', err)
-			})
-	}
-	componentDidMount() {
-		this.getlist()
-	}
+
+	componentDidMount() {}
 	renderSubMenu = ({ key, icon, title, subs }) => {
 		return (
 			<Menu.SubMenu

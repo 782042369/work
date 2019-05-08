@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-08 12:22:48
+ * @LastEditTime: 2019-05-08 13:42:20
  */
 'use strict';
 
@@ -31,9 +31,9 @@ class AccessController extends BaseController {
       this.error(0, '增加权限失败', error);
     }
   }
-  async findtree() {
+  async findaccesslist() {
     try {
-      const result = await this.service.access.findtree();
+      const result = await this.service.access.findaccesslist();
       const data = await this.sortdata(result, 'sort');
       this.success(1, '查询权限菜单成功', data);
     } catch (error) {

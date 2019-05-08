@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: access
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-08 12:07:27
+ * @LastEditTime: 2019-05-08 13:43:42
  */
 
 import request from '../tool/request'
@@ -16,7 +16,6 @@ export function accesslist(data) {
     data
   })
 }
-
 export function addaccess(data) {
   // 增加
   return request({
@@ -41,10 +40,10 @@ export function deleteaccess(data) {
     data
   })
 }
-export function FindAccessTree(data) {
+export function findaccesslist(data) {
   // 删除
   return request({
-    url: 'admin/FindAccessTree',
+    url: 'admin/FindAccessList',
     method: 'get',
     data
   })

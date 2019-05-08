@@ -21,7 +21,7 @@ class AccessService extends Service {
     const result = await this.ctx.model.Access.find(arr);
     return result;
   }
-  async findtree() {
+  async findaccesslist() {
     // 自关联表查询
     const result = await this.ctx.model.Access.aggregate([{
         $lookup: {

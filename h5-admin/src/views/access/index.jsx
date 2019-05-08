@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-08 12:48:35
+ * @LastEditTime: 2019-05-08 14:09:26
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
-import { accesslist, deleteaccess } from '../../api/access'
+import { findaccesslist, deleteaccess } from '../../api/access'
 import datefilter from '../../tool/datefilter'
 import { typefilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
@@ -19,10 +19,10 @@ class access extends Component {
 			accessdata: []
 		}
 	}
+
 	getlist() {
-		accesslist()
+		findaccesslist()
 			.then((res) => {
-				console.log('res: ', res)
 				if (res.status === 1) {
 					this.setState({
 						accessdata: res.data
@@ -49,44 +49,52 @@ class access extends Component {
 				console.log('err: ', err)
 			})
 	}
+	columns = [
+		{ title: '模块名称', dataIndex: 'module_name', key: 'module_name' },
+		{
+			title: '节点类型',
+			dataIndex: 'type',
+			key: 'type',
+			render: (text) => <div type="primary">{typefilter(text)}</div>
+		},
+		{ title: '操作名称', dataIndex: 'action_name', key: 'action_name' },
+		{ title: '操作地址', dataIndex: 'url', key: 'url' },
+		{ title: '描述', dataIndex: 'description', key: 'description' },
+		{ title: '描述', dataIndex: 'sort', key: 'sort' },
+		{
+			title: '时间',
+			key: 'add_time',
+			dataIndex: 'add_time',
+			render: (text) => <div type="primary">{datefilter(text)}</div>
+		},
+		{
+			title: '操作',
+			dataIndex: '_id',
+			key: '_id',
+			render: (text) => (
+				<span>
+					<Link to={'/addaccess?id=' + text}>
+						<Button type="primary">修改</Button>
+					</Link>
+					<Divider type="vertical" />
+					<Button type="danger" onClick={this.deleteaccess.bind(this, text)}>
+						删除
+					</Button>
+				</span>
+			)
+		}
+	]
+	expandedRowRender = (record, index) => {
+		return <Table columns={this.columns} dataSource={this.state.accessdata[index].items} pagination={false} />
+	}
 	render() {
 		return (
 			<div>
-				<Table dataSource={this.state.accessdata}>
-					<Column title="模块名称" dataIndex="module_name" key="module_name" />
-					<Column
-						title="节点类型"
-						dataIndex="type"
-						key="type"
-						render={(text) => <div type="primary">{typefilter(text)}</div>}
-					/>
-					<Column title="操作名称" dataIndex="action_name" key="action_name" />
-					<Column title="操作地址" dataIndex="url" key="url" />
-					<Column title="描述" dataIndex="description" key="description" />
-					<Column title="排序" dataIndex="sort" key="sort" />
-					<Column
-						title="时间"
-						key="add_time"
-						dataIndex="add_time"
-						render={(text, record) => <div type="primary">{datefilter(text)}</div>}
-					/>
-					<Column
-						title="操作"
-						key="action"
-						dataIndex="_id"
-						render={(text, record) => (
-							<span>
-								<Link to={'/addaccess?id=' + text}>
-									<Button type="primary">修改</Button>
-								</Link>
-								<Divider type="vertical" />
-								<Button type="danger" onClick={this.deleteaccess.bind(this, text)}>
-									删除
-								</Button>
-							</span>
-						)}
-					/>
-				</Table>
+				<Table
+					dataSource={this.state.accessdata}
+					columns={this.columns}
+					expandedRowRender={this.expandedRowRender}
+				/>
 			</div>
 		)
 	}

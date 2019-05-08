@@ -22,7 +22,7 @@ module.exports = app => {
   router.post('/admin/AddAccess', controller.admin.access.add);
   router.delete('/admin/DeleteAccess', controller.admin.access.delete);
   router.put('/admin/EditAccess', controller.admin.access.edit);
-  router.get('/admin/FindAccessTree', controller.admin.access.findtree);
+  router.get('/admin/FindAccessList', controller.admin.access.findaccesslist);
 
   /**
    * 管理员
