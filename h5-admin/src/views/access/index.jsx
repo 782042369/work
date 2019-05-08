@@ -3,25 +3,15 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-07 18:59:14
+ * @LastEditTime: 2019-05-08 12:48:35
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { accesslist, deleteaccess } from '../../api/access'
 import datefilter from '../../tool/datefilter'
+import { typefilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 const { Column } = Table
-
-const data = [
-	{
-		key: '1',
-		firstName: 'John',
-		lastName: 'Brown',
-		age: 32,
-		address: 'New York No. 1 Lake Park1',
-		tags: [ 'nice', 'developer' ]
-	}
-]
 class access extends Component {
 	constructor(props) {
 		super(props)
@@ -64,7 +54,16 @@ class access extends Component {
 			<div>
 				<Table dataSource={this.state.accessdata}>
 					<Column title="模块名称" dataIndex="module_name" key="module_name" />
+					<Column
+						title="节点类型"
+						dataIndex="type"
+						key="type"
+						render={(text) => <div type="primary">{typefilter(text)}</div>}
+					/>
+					<Column title="操作名称" dataIndex="action_name" key="action_name" />
+					<Column title="操作地址" dataIndex="url" key="url" />
 					<Column title="描述" dataIndex="description" key="description" />
+					<Column title="排序" dataIndex="sort" key="sort" />
 					<Column
 						title="时间"
 						key="add_time"
@@ -77,9 +76,9 @@ class access extends Component {
 						dataIndex="_id"
 						render={(text, record) => (
 							<span>
-								<Button type="primary">查看</Button>
-								<Divider type="vertical" />
-								<Button type="primary">修改</Button>
+								<Link to={'/addaccess?id=' + text}>
+									<Button type="primary">修改</Button>
+								</Link>
 								<Divider type="vertical" />
 								<Button type="danger" onClick={this.deleteaccess.bind(this, text)}>
 									删除

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-08 10:02:25
+ * @LastEditTime: 2019-05-08 11:26:50
  */
 import React, { Component } from 'react'
 import { addaccess, editaccess, accesslist } from '../../api/access'
@@ -16,6 +16,7 @@ class WrappedRegistrationForm extends Component {
 		super(props)
 		this.state = {
 			title: '',
+			accessdata: [],
 			roledata: []
 		}
 	}
@@ -50,7 +51,22 @@ class WrappedRegistrationForm extends Component {
 			}
 		})
 	}
+	getlist() {
+		accesslist({ module_id: 0 })
+			.then((res) => {
+				if (res.status === 1) {
+					this.setState({
+						accessdata: res.data
+					})
+					console.log('this.state.accessdata: ', this.state.accessdata)
+				}
+			})
+			.catch((err) => {
+				console.log('err: ', err)
+			})
+	}
 	componentDidMount() {
+		this.getlist()
 		if (getUrlParam('id')) {
 			this.setState({
 				title: '修改'
@@ -60,12 +76,16 @@ class WrappedRegistrationForm extends Component {
 			})
 				.then((res) => {
 					this.props.form.setFieldsValue({
-						password: res.data[0].password,
-						email: res.data[0].email,
-						userName: res.data[0].userName,
-						mobile: res.data[0].mobile,
-						role_id: res.data[0].role_id
+						action_name: res.data[0].action_name,
+						description: res.data[0].description,
+						module_id: res.data[0].module_id,
+						module_name: res.data[0].module_name,
+						sort: res.data[0].sort,
+						status: res.data[0].status,
+						type: res.data[0].type,
+						url: res.data[0].url
 					})
+					console.log('res.data[0].module_id: ', res.data[0].module_id)
 				})
 				.catch((err) => {
 					console.log('err: ', err)
@@ -75,6 +95,14 @@ class WrappedRegistrationForm extends Component {
 				title: '增加'
 			})
 		}
+	}
+	renderOptions = () => {
+		console.log('this.state.accessdata: ', this.state.accessdata)
+		return this.state.accessdata.map((element) => (
+			<Option key={element._id} value={element._id}>
+				{element.module_name}
+			</Option>
+		))
 	}
 	render() {
 		const { getFieldDecorator } = this.props.form
@@ -150,15 +178,10 @@ class WrappedRegistrationForm extends Component {
 						]
 					})(
 						<Select onChange={this.handleChange}>
-							<Option key={1} value={1}>
-								模块
+							<Option key={0} value={0}>
+								顶级模块
 							</Option>
-							<Option key={2} value={2}>
-								菜单
-							</Option>
-							<Option key={3} value={3}>
-								操作
-							</Option>
+							{this.renderOptions()}
 						</Select>
 					)}
 				</Form.Item>

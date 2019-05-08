@@ -22,6 +22,9 @@ class BaseController extends Controller {
    * @param {*} data
    */
   async error(status, message, data = []) {
+    console.log('——————————————出错了——————————————');
+    console.log('error', data);
+    console.log('——————————————出错了——————————————');
     this.ctx.status = 200;
     this.ctx.body = ({
       status,
@@ -37,11 +40,11 @@ class BaseController extends Controller {
     this.ctx.response.type = 'image/svg+xml'; // 指定返回类型
     this.ctx.body = captcha.data; // 返回验证码
   }
-  async sortdata(res) {
+  async sortdata(res, name) {
     /**
      * 输出倒序 json
      */
-    return res.sort((a, b) => b.add_time - a.add_time);
+    return res.sort((a, b) => b[name] - a[name]);
   }
 
 }

@@ -3,13 +3,13 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-07 18:58:03
+ * @LastEditTime: 2019-05-08 12:47:42
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { rolelist, deleterole } from '../../api/role'
 import datefilter from '../../tool/datefilter'
-import statusfilter from '../../tool/statusfilter'
+import { statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 
 const { Column } = Table
@@ -74,7 +74,6 @@ class role extends Component {
 						dataIndex="_id"
 						render={(text, record) => (
 							<span>
-								<Button type="primary">查看</Button>
 								<Divider type="vertical" />
 								<Link to={'/addrole?id=' + text}>
 									<Button type="primary">修改</Button>

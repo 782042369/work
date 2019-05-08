@@ -5,21 +5,48 @@ class AccessService extends Service {
   // 查找
   async find() {
     const _id = this.ctx.request.body.id;
-    let result = '';
+    const module_id = this.ctx.request.body.module_id;
     let arr = {};
     if (_id) {
       arr = {
         _id,
       };
+    } else if (module_id !== undefined) {
+      arr = {
+        module_id,
+      };
     } else {
       arr = {};
     }
-    result = await this.ctx.model.Access.find(arr);
+    const result = await this.ctx.model.Access.find(arr);
     return result;
   }
+  async findtree() {
+    // 自关联表查询
+    const result = await this.ctx.model.Access.aggregate([{
+        $lookup: {
+          from: 'access',
+          localField: '_id',
+          foreignField: 'module_id',
+          as: 'items',
+        },
+      },
+      {
+        $match: {
+          module_id: 0,
+        },
+      },
+    ]);
+    return result;
+  }
+
   // 增加
   async addaccess() {
     const module_name = this.ctx.request.body.module_name;
+    let module_id = this.ctx.request.body.module_id;
+    if (module_id) {
+      this.ctx.request.body.module_id = this.app.mongoose.Types.ObjectId(module_id);
+    }
     let result = '';
     result = await this.ctx.model.Access.find({
       module_name,
@@ -33,25 +60,15 @@ class AccessService extends Service {
   // 编辑
   async edit() {
     const _id = this.ctx.request.body.id;
-    const description = this.ctx.request.body.description;
-    const module_id = this.ctx.request.body.module_id;
-    const module_name = this.ctx.request.body.module_name;
-    const role_id = this.ctx.request.body.role_id;
-    const sort = this.ctx.request.body.sort;
-    const url = this.ctx.request.body.url;
-    const action_name = this.ctx.request.body.action_name;
+    let module_id = this.ctx.request.body.module_id;
+    if (module_id) {
+      this.ctx.request.body.module_id = this.app.mongoose.Types.ObjectId(module_id);
+    }
     const result = await this.ctx.model.Access.updateOne({
       _id,
-    }, {
-      module_name,
-      description,
-      module_id,
-      role_id,
-      sort,
-      url,
-      action_name,
-      add_time: new Date().getTime(),
-    });
+    }, Object.assign(this.ctx.request.body, {
+      add_time: new Date().getTime()
+    }));
     return result;
   }
   // 删除

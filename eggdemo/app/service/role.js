@@ -4,7 +4,6 @@ class RoleService extends Service {
   // 查找
   async find() {
     const _id = this.ctx.request.body.id;
-    let result = '';
     let arr = {};
     if (_id) {
       arr = {
@@ -13,7 +12,7 @@ class RoleService extends Service {
     } else {
       arr = {};
     }
-    result = await this.ctx.model.Role.find(arr);
+    const result = await this.ctx.model.Role.find(arr);
     return result;
   }
   // 增加
@@ -32,15 +31,11 @@ class RoleService extends Service {
   // 编辑
   async edit() {
     const _id = this.ctx.request.body.id;
-    const title = this.ctx.request.body.title;
-    const description = this.ctx.request.body.description;
     const result = await this.ctx.model.Role.updateOne({
       _id,
-    }, {
-      description,
-      title,
-      add_time: new Date().getTime(),
-    });
+    }, Object.assign(this.ctx.request.body, {
+      add_time: new Date().getTime()
+    }));
     return result;
   }
   // 删除

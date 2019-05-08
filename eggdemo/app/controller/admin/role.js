@@ -13,7 +13,7 @@ class RoleController extends BaseController {
   async index() {
     try {
       const result = await this.service.role.find();
-      const data = await this.sortdata(result);
+      const data = await this.sortdata(result, 'add_time');
       this.success(1, '角色列表请求成功', data);
     } catch (error) {
       this.error(0, '角色列表请求失败', error);
@@ -24,7 +24,6 @@ class RoleController extends BaseController {
       const result = await this.service.role.addrole();
       if (result.length > 0) {
         this.success(0, '角色已经存在', result);
-
       } else {
         this.success(1, '增加角色成功', result);
       }

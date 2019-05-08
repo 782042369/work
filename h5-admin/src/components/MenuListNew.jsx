@@ -3,17 +3,19 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-08 13:22:30
+ * @LastEditTime: 2019-05-08 12:35:40
  */
 import React, { Component } from 'react'
-import menus from '../router/routers'
+// import menus from '../router/routers'
 import { Menu, Icon } from 'antd'
-import { Link } from 'react-router-dom'
 import { FindAccessTree } from '../api/access'
+import { Link } from 'react-router-dom'
 class menu extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			list: []
+		}
 	}
 	getlist() {
 		FindAccessTree()
@@ -32,30 +34,33 @@ class menu extends Component {
 	componentDidMount() {
 		this.getlist()
 	}
-	renderSubMenu = ({ key, icon, title, subs }) => {
+	renderSubMenu = ({ url, icon, module_name, items }) => {
 		return (
 			<Menu.SubMenu
-				key={key}
+				key={url}
 				title={
 					<span>
-						{icon && <Icon type={icon} />}
-						<span>{title}</span>
+						{/* {icon && <Icon type={icon} />} */}
+						<Icon type="user" />
+						<span>{module_name}</span>
 					</span>
 				}
 			>
-				{subs &&
-					subs.map((item) => {
-						return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
+				{items &&
+					items.map((item) => {
+						return item.items && item.items.length > 0
+							? this.renderSubMenu(item)
+							: this.renderMenuItem(item)
 					})}
 			</Menu.SubMenu>
 		)
 	}
-	renderMenuItem = ({ key, icon, title }) => {
+	renderMenuItem = ({ url, icon, module_name }) => {
 		return (
-			<Menu.Item key={key}>
-				<Link to={key}>
-					{icon && <Icon type={icon} />}
-					<span>{title}</span>
+			<Menu.Item key={url}>
+				<Link to={url}>
+					{/* {icon && <Icon type={icon} />} */}
+					<span>{module_name}</span>
 				</Link>
 			</Menu.Item>
 		)
@@ -63,8 +68,8 @@ class menu extends Component {
 	render() {
 		return (
 			<Menu defaultSelectedKeys={[ '/role' ]} defaultOpenKeys={[ '/role' ]} mode="inline">
-				{menus.map((item) => {
-					return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
+				{this.state.list.map((item) => {
+					return item.items && item.items.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
 				})}
 			</Menu>
 		)

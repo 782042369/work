@@ -13,7 +13,7 @@ const menus = [{
     }]
   },
   {
-    title: '增加角色',
+    title: '角色',
     icon: 'user',
     key: '/addrole',
     subs: [{

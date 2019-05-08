@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: access
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-07 18:42:29
+ * @LastEditTime: 2019-05-08 12:07:27
  */
 
 import request from '../tool/request'
@@ -38,6 +38,14 @@ export function deleteaccess(data) {
   return request({
     url: 'admin/DeleteAccess',
     method: 'delete',
+    data
+  })
+}
+export function FindAccessTree(data) {
+  // 删除
+  return request({
+    url: 'admin/FindAccessTree',
+    method: 'get',
     data
   })
 }

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-07 14:38:58
+ * @LastEditTime: 2019-05-08 12:18:53
  */
 'use strict';
 
@@ -13,7 +13,7 @@ class ManagerController extends BaseController {
   async index() {
     try {
       const result = await this.service.manager.find();
-      const data = await this.sortdata(result);
+      const data = await this.sortdata(result, 'add_time');
       this.success(1, '管理员列表请求成功', data);
     } catch (error) {
       this.error(0, '管理员列表请求失败', error);

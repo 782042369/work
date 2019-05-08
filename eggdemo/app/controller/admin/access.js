@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-07 18:50:47
+ * @LastEditTime: 2019-05-08 12:22:48
  */
 'use strict';
 
@@ -13,7 +13,8 @@ class AccessController extends BaseController {
   async index() {
     try {
       const result = await this.service.access.find();
-      this.success(1, '权限列表请求成功', result);
+      const data = await this.sortdata(result, 'add_time');
+      this.success(1, '权限列表请求成功', data);
     } catch (error) {
       this.error(0, '权限列表请求失败', error);
     }
@@ -27,8 +28,16 @@ class AccessController extends BaseController {
         this.success(1, '增加权限成功', result);
       }
     } catch (error) {
-      console.log('error: ', error);
       this.error(0, '增加权限失败', error);
+    }
+  }
+  async findtree() {
+    try {
+      const result = await this.service.access.findtree();
+      const data = await this.sortdata(result, 'sort');
+      this.success(1, '查询权限菜单成功', data);
+    } catch (error) {
+      this.error(0, '查询权限菜单失败', error);
     }
   }
   async edit() {

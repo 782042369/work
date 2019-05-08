@@ -36,21 +36,11 @@ class ManagerService extends Service {
   // 编辑
   async edit() {
     const _id = this.ctx.request.body.id;
-    const userName = this.ctx.request.body.userName;
-    const email = this.ctx.request.body.email;
-    const mobile = this.ctx.request.body.mobile;
-    const role_id = this.ctx.request.body.role_id;
-    const password = this.ctx.request.body.password;
     const result = await this.ctx.model.User.updateOne({
       _id,
-    }, {
-      password,
-      email,
-      userName,
-      mobile,
-      role_id,
-      add_time: new Date().getTime(),
-    });
+    }, Object.assign(this.ctx.request.body, {
+      add_time: new Date().getTime()
+    }));
     return result;
   }
   // 删除
