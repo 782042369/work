@@ -19,26 +19,13 @@ class AccessService extends Service {
   }
   // 增加
   async addaccess() {
-    const description = this.ctx.request.body.description;
-    const module_id = this.ctx.request.body.module_id;
     const module_name = this.ctx.request.body.module_name;
-    const role_id = this.ctx.request.body.role_id;
-    const sort = this.ctx.request.body.sort;
     let result = '';
     result = await this.ctx.model.Access.find({
-      module_name
+      module_name,
     });
-    console.log('result: ', result);
     if (result.length === 0) {
-      const access = new this.ctx.model.Access({
-        module_name,
-        description,
-        module_name,
-        module_id,
-        role_id,
-        sort
-      });
-      console.log('access: ', access);
+      const access = new this.ctx.model.Access(this.ctx.request.body);
       result = access.save();
     }
     return result;
@@ -46,14 +33,24 @@ class AccessService extends Service {
   // 编辑
   async edit() {
     const _id = this.ctx.request.body.id;
-    const title = this.ctx.request.body.title;
     const description = this.ctx.request.body.description;
+    const module_id = this.ctx.request.body.module_id;
+    const module_name = this.ctx.request.body.module_name;
+    const role_id = this.ctx.request.body.role_id;
+    const sort = this.ctx.request.body.sort;
+    const url = this.ctx.request.body.url;
+    const action_name = this.ctx.request.body.action_name;
     const result = await this.ctx.model.Access.updateOne({
       _id,
     }, {
+      module_name,
       description,
-      title,
-      add_time: new Date().getTime()
+      module_id,
+      role_id,
+      sort,
+      url,
+      action_name,
+      add_time: new Date().getTime(),
     });
     return result;
   }

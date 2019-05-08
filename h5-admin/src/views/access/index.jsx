@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-07 18:56:17
+ * @LastEditTime: 2019-05-07 18:59:14
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -63,8 +63,8 @@ class access extends Component {
 		return (
 			<div>
 				<Table dataSource={this.state.accessdata}>
-					<Column title="年龄" dataIndex="age" key="age" />
-					<Column title="名称" dataIndex="address" key="address" />
+					<Column title="模块名称" dataIndex="module_name" key="module_name" />
+					<Column title="描述" dataIndex="description" key="description" />
 					<Column
 						title="时间"
 						key="add_time"

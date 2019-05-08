@@ -4,10 +4,10 @@ class ManagerService extends Service {
   // 查找
   async find() {
     const _id = this.ctx.request.body.id;
-    let result = ''
+    let result = '';
     if (_id) {
       result = await this.ctx.model.User.find({
-        _id
+        _id,
       });
     } else {
       result = await this.ctx.model.User.aggregate([{
@@ -15,30 +15,20 @@ class ManagerService extends Service {
           from: 'role',
           localField: 'role_id',
           foreignField: '_id',
-          as: 'role'
-        }
-      }])
+          as: 'role',
+        },
+      }]);
     }
     return result;
   }
   // 增加
   async addmanager() {
     const userName = this.ctx.request.body.userName;
-    const email = this.ctx.request.body.email;
-    const mobile = this.ctx.request.body.mobile;
-    const role_id = this.ctx.request.body.role_id;
-    const password = this.ctx.request.body.password;
     let result = await this.ctx.model.User.find({
       userName,
     });
     if (result.length === 0) {
-      const rolearr = new this.ctx.model.User({
-        password,
-        email,
-        userName,
-        mobile,
-        role_id
-      });
+      const rolearr = new this.ctx.model.User(this.ctx.request.body);
       result = rolearr.save();
     }
     return result;
@@ -59,7 +49,7 @@ class ManagerService extends Service {
       userName,
       mobile,
       role_id,
-      add_time: new Date().getTime()
+      add_time: new Date().getTime(),
     });
     return result;
   }

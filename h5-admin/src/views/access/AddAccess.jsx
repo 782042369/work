@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 18:39:56
+ * @LastEditTime: 2019-05-08 10:02:25
  */
 import React, { Component } from 'react'
 import { addaccess, editaccess, accesslist } from '../../api/access'
@@ -23,9 +23,8 @@ class WrappedRegistrationForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
-			console.log('values: ', values)
-			console.log('err: ', err)
 			if (!err) {
+				values.sort = Number(values.sort)
 				if (getUrlParam('id')) {
 					let arr = { id: getUrlParam('id') }
 					editaccess(Object.assign(values, arr))
@@ -117,7 +116,7 @@ class WrappedRegistrationForm extends Component {
 					})(<Input />)}
 				</Form.Item>
 				<Form.Item label="节点名称">
-					{getFieldDecorator('role_id', {
+					{getFieldDecorator('type', {
 						rules: [
 							{
 								required: true,

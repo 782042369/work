@@ -13,7 +13,7 @@ class ManagerController extends BaseController {
   async index() {
     try {
       const result = await this.service.manager.find();
-      const data = await this.sortdata(result)
+      const data = await this.sortdata(result);
       this.success(1, '管理员列表请求成功', data);
     } catch (error) {
       this.error(0, '管理员列表请求失败', error);

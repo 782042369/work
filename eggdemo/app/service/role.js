@@ -19,16 +19,12 @@ class RoleService extends Service {
   // 增加
   async addrole() {
     const title = this.ctx.request.body.title;
-    const description = this.ctx.request.body.description;
     let result = '';
     result = await this.ctx.model.Role.find({
       title,
     });
     if (result.length === 0) {
-      const role = new this.ctx.model.Role({
-        description,
-        title,
-      });
+      const role = new this.ctx.model.Role(this.ctx.request.body);
       result = role.save();
     }
     return result;
@@ -43,7 +39,7 @@ class RoleService extends Service {
     }, {
       description,
       title,
-      add_time: new Date().getTime()
+      add_time: new Date().getTime(),
     });
     return result;
   }

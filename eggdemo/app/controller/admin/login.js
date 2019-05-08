@@ -11,7 +11,7 @@ class LoginController extends BaseController {
         if (result.length > 0) {
           this.ctx.session.userinfo = result[0].userName;
           this.success(1, '登录成功', {
-            userName: result[0].userName
+            userName: result[0].userName,
           });
         } else {
           this.error(0, '用户名或密码错误', result);
