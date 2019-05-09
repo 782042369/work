@@ -16,6 +16,13 @@ class ToolsService extends Service {
     this.ctx.session.maxAge = 60000;
     return captcha;
   }
+  // 数组扁平化
+  async steamroller(arr) {
+    while (arr.some(item => Array.isArray(item))) {
+      arr = [].concat(...arr)
+    }
+    return arr
+  }
 }
 
 module.exports = ToolsService;

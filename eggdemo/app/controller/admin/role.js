@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-07 14:39:02
+ * @LastEditTime: 2019-05-09 13:08:49
  */
 'use strict';
 
@@ -45,6 +45,30 @@ class RoleController extends BaseController {
       this.success(1, '删除角色成功', result);
     } catch (error) {
       this.error(0, '删除角色失败', error);
+    }
+  }
+  async auth() {
+    try {
+      const result = await this.service.role.addauth();
+      this.success(1, '权限关联成功', result);
+    } catch (error) {
+      this.error(0, '权限关联失败', error);
+    }
+  }
+  async authlist() {
+    try {
+      const result = await this.service.role.authlist();
+      this.success(1, '查询关联权限成功', result);
+    } catch (error) {
+      this.error(0, '查询关联权限失败', error);
+    }
+  }
+  async updateauth() {
+    try {
+      const result = await this.service.role.list();
+      this.success(1, '更新关联权限成功', result);
+    } catch (error) {
+      this.error(0, '更新关联权限成功', error);
     }
   }
 }

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 14:12:49
+ * @LastEditTime: 2019-05-09 12:52:38
  */
 import React, { Component } from 'react'
 import { addmanager, editmanager, managerlist } from '../../api/manager'
@@ -73,12 +73,13 @@ class WrappedRegistrationForm extends Component {
 				id: getUrlParam('id')
 			})
 				.then((res) => {
+					let { password, email, userName, mobile, role_id } = res.data[0]
 					this.props.form.setFieldsValue({
-						password: res.data[0].password,
-						email: res.data[0].email,
-						userName: res.data[0].userName,
-						mobile: res.data[0].mobile,
-						role_id: res.data[0].role_id
+						password,
+						email,
+						userName,
+						mobile,
+						role_id
 					})
 				})
 				.catch((err) => {

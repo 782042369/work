@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-08 12:47:42
+ * @LastEditTime: 2019-05-08 16:09:15
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -74,6 +74,9 @@ class role extends Component {
 						dataIndex="_id"
 						render={(text, record) => (
 							<span>
+								<Link to={'/auth?id=' + text}>
+									<Button type="primary">授权</Button>
+								</Link>
 								<Divider type="vertical" />
 								<Link to={'/addrole?id=' + text}>
 									<Button type="primary">修改</Button>

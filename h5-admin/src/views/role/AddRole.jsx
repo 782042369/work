@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-07 14:52:46
+ * @LastEditTime: 2019-05-09 13:05:08
  */
 import React, { Component } from 'react'
 import { addrole, editrole, rolelist } from '../../api/role'
@@ -60,9 +60,10 @@ class WrappedRegistrationForm extends Component {
 				id: getUrlParam('id')
 			})
 				.then((res) => {
+					let { title, description } = res.data[0]
 					this.props.form.setFieldsValue({
-						title: res[0].title,
-						description: res[0].description
+						title,
+						description
 					})
 				})
 				.catch((err) => {

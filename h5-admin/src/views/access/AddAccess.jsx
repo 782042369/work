@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-08 11:26:50
+ * @LastEditTime: 2019-05-09 12:53:50
  */
 import React, { Component } from 'react'
 import { addaccess, editaccess, accesslist } from '../../api/access'
@@ -75,17 +75,17 @@ class WrappedRegistrationForm extends Component {
 				id: getUrlParam('id')
 			})
 				.then((res) => {
+					let { action_name, description, module_id, module_name, sort, status, type, url } = res.data[0]
 					this.props.form.setFieldsValue({
-						action_name: res.data[0].action_name,
-						description: res.data[0].description,
-						module_id: res.data[0].module_id,
-						module_name: res.data[0].module_name,
-						sort: res.data[0].sort,
-						status: res.data[0].status,
-						type: res.data[0].type,
-						url: res.data[0].url
+						action_name,
+						description,
+						module_id,
+						module_name,
+						sort,
+						status,
+						type,
+						url
 					})
-					console.log('res.data[0].module_id: ', res.data[0].module_id)
 				})
 				.catch((err) => {
 					console.log('err: ', err)

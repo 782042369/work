@@ -38,5 +38,6 @@ module.exports = app => {
   router.post('/admin/AddRole', controller.admin.role.add);
   router.delete('/admin/DeleteRole', controller.admin.role.delete);
   router.put('/admin/EditRole', controller.admin.role.edit);
-
+  router.post('/admin/auth', controller.admin.role.auth);
+  router.get('/admin/authlist', controller.admin.role.authlist);
 };

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-07 09:58:56
+ * @LastEditTime: 2019-05-09 13:10:10
  */
 
 import request from '../tool/request'
@@ -39,5 +39,22 @@ export function deleterole(data) {
 		url: 'admin/DeleteRole',
 		method: 'delete',
 		data
+	})
+}
+export function auth(data) {
+	// 授权
+	return request({
+		url: 'admin/auth',
+		method: 'post',
+		data
+	})
+}
+
+export function authlist(params) {
+	// 授权
+	return request({
+		url: 'admin/authlist',
+		method: 'get',
+		params
 	})
 }
