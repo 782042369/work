@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-09 16:22:07
+ * @LastEditTime: 2019-05-09 17:43:21
  */
 import React, { Component } from 'react'
 import { Checkbox, message, Form, Button } from 'antd'
@@ -81,10 +81,12 @@ class WrappedNormalLoginForm extends Component {
 				let { checkedList } = this.state
 				let access_node = []
 				this.state.plainOptions.forEach((res, index) => {
-					access_node.push({
-						key: res._id,
-						checkedList: checkedList[index]
-					})
+					if (checkedList[index].length > 0) {
+						access_node.push({
+							key: res._id,
+							checkedList: checkedList[index]
+						})
+					}
 				})
 				auth({
 					role_id: getUrlParam('id'),
@@ -114,9 +116,10 @@ class WrappedNormalLoginForm extends Component {
 					let { checkAll, checkedList, indeterminate, boxList } = this.state
 					let map = {},
 						dest = []
+
 					for (let i = 0; i < res.data.length; i++) {
 						let ai = res.data[i]
-						if (!map[ai.pid]) {
+						if (!map[ai.pid] && ai.pid) {
 							dest.push({
 								pid: ai.pid,
 								data: [ ai.access_id ]
@@ -125,14 +128,13 @@ class WrappedNormalLoginForm extends Component {
 						} else {
 							for (let j = 0; j < dest.length; j++) {
 								let dj = dest[j]
-								if (dj.pid == ai.pid) {
+								if (ai.pid && dj.pid == ai.pid) {
 									dj.data.push(ai.access_id)
 									break
 								}
 							}
 						}
 					}
-
 					dest.forEach((element) => {
 						this.state.plainOptions.forEach((val, index) => {
 							if (val._id === element.pid) {

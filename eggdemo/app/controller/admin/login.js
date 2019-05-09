@@ -9,9 +9,11 @@ class LoginController extends BaseController {
       if (code === this.ctx.session.code) {
         const result = await this.service.user.finduser();
         if (result.length > 0) {
+          this.ctx.session.maxAge = 1800000;
           this.ctx.session.userinfo = result[0].userName;
           this.success(1, '登录成功', {
             userName: result[0].userName,
+            role_id: result[0].role_id
           });
         } else {
           this.error(0, '用户名或密码错误', result);

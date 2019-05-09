@@ -3,20 +3,46 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-08 13:40:15
+ * @LastEditTime: 2019-05-09 17:43:52
  */
 import React, { Component } from 'react'
 import menus from '../router/routers'
 import { Menu, Icon } from 'antd'
 import { Link } from 'react-router-dom'
-import { FindAccessTree } from '../api/access'
+import { authlist } from '../api/role'
 class menu extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		authlist({
+			role_id: sessionStorage.getItem('role_id')
+		}).then((res) => {
+			console.log('res: ', res)
+			// let map = {},
+			// 	dest = []
+			// for (let i = 0; i < res.data.length; i++) {
+			// 	let ai = res.data[i]
+			// 	if (!map[ai.pid] && ai.pid) {
+			// 		dest.push({
+			// 			pid: ai.pid,
+			// 			data: [ ai ]
+			// 		})
+			// 		map[ai.pid] = ai
+			// 	} else {
+			// 		for (let j = 0; j < dest.length; j++) {
+			// 			let dj = dest[j]
+			// 			if (dj.pid && dj.pid == ai.pid) {
+			// 				dj.data.push(ai)
+			// 				break
+			// 			}
+			// 		}
+			// 	}
+			// }
+		})
+	}
 	renderSubMenu = ({ key, icon, title, subs }) => {
 		return (
 			<Menu.SubMenu

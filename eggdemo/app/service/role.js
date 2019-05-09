@@ -58,26 +58,44 @@ class RoleService extends Service {
       await this.ctx.model.Addauth.deleteMany({
         role_id
       })
-
       access_node.forEach(res => {
         if (res.checkedList.length > 0) {
-          res.checkedList.forEach(val => {
-            let auth = new this.ctx.model.Addauth({
-              role_id,
-              pid: this.app.mongoose.Types.ObjectId(res.key),
-              access_id: this.app.mongoose.Types.ObjectId(val),
+          res.checkedList.forEach(element => {
+            this.ctx.model.Access.find({
+              _id: element
+            }).then(val => {
+              let {
+                module_name,
+                url
+              } = val[0]
+              let auth = new this.ctx.model.Addauth({
+                role_id,
+                pid: this.app.mongoose.Types.ObjectId(res.key),
+                access_id: this.app.mongoose.Types.ObjectId(element),
+                role_id,
+                module_name,
+                url
+              })
+              auth.save();
             })
-            auth.save();
+          })
+          this.ctx.model.Access.find({
+            _id: res.key
+          }).then(ele => {
+            let {
+              module_name,
+              url
+            } = ele[0]
+            let authpid = new this.ctx.model.Addauth({
+              role_id,
+              module_name,
+              url
+            })
+            authpid.save();
           })
         }
-        // let auth = new this.ctx.model.Addauth({
-        //   role_id,
-        //   pid: this.app.mongoose.Types.ObjectId(res.key)
-        // })
-        // auth.save();
       })
     } catch (error) {
-      console.log('error: ', error);
       return error;
     }
   }
@@ -87,10 +105,30 @@ class RoleService extends Service {
       role_id
     } = this.ctx.request.query
     const result = await this.ctx.model.Addauth.find({
-
       role_id
     });
-    return result;
+    let map = {},
+      dest = []
+    for (let i = 0; i < result.length; i++) {
+      let ai = result[i]
+      if (!map[ai.pid] && ai.pid) {
+        dest.push({
+          pid: ai.pid,
+          data: [ai]
+        })
+        map[ai.pid] = ai
+      } else {
+        for (let j = 0; j < dest.length; j++) {
+          let dj = dest[j]
+          if (dj.pid && dj.pid == ai.pid) {
+            console.log('dj.pid: ', dj.pid);
+            dj.data.push(ai)
+          }
+        }
+      }
+    }
+    console.log('dest: ', dest);
+    return dest;
   }
 }
 

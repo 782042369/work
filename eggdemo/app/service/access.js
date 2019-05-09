@@ -18,11 +18,7 @@ class AccessService extends Service {
     } else {
       arr = {};
     }
-    const result = await this.ctx.model.Access.find(arr, {
-      sort: [
-        ['add_time', -1]
-      ]
-    });
+    const result = await this.ctx.model.Access.find(arr);
     return result;
   }
   async findaccesslist() {

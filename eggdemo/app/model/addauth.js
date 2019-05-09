@@ -14,10 +14,13 @@ module.exports = app => {
       type: Schema.Types.Mixed,
       default: '',
     },
-    // cid: {
-    //   type: Schema.Types.Mixed,
-    //   default: '',
-    // },
+    module_name: {
+      type: String,
+    },
+    url: {
+      type: String,
+      default: '',
+    },
     add_time: {
       type: Number,
       default: new Date().getTime(),

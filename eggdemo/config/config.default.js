@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1555663231382_6385';
   config.session = {
     key: 'xiaoxiannv',
-    maxAge: 1800 * 1000, // 1 天
+    maxAge: 1800000, // 1 天
     httpOnly: true,
     encrypt: true,
   };
@@ -33,7 +33,7 @@ module.exports = appInfo => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: [ 'http://127.0.0.1:3000' ],
+    domainWhiteList: ['http://127.0.0.1:3000'],
   };
   config.cors = {
     origin: 'http://127.0.0.1:3000',

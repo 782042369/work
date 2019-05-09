@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-08 12:35:40
+ * @LastEditTime: 2019-05-09 17:02:35
  */
 import React, { Component } from 'react'
 // import menus from '../router/routers'
@@ -24,7 +24,6 @@ class menu extends Component {
 					this.setState({
 						list: res.data
 					})
-					console.log('this.state.accessdata: ', this.state.list)
 				}
 			})
 			.catch((err) => {
