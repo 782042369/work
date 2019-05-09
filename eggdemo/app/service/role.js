@@ -55,16 +55,27 @@ class RoleService extends Service {
       role_id
     } = this.ctx.request.body;
     try {
-      const arr = await this.service.tools.steamroller(access_node)
-      for (let i = 0; i < arr.length; i++) {
-        console.log('arr[i]: ', arr[i]);
-        let auth = new this.ctx.model.Addauth({
-          role_id,
-          access_id: arr[i]
-        })
-        console.log('auth: ', auth);
-        auth.save();
-      }
+      await this.ctx.model.Addauth.deleteMany({
+        role_id
+      })
+
+      access_node.forEach(res => {
+        if (res.checkedList.length > 0) {
+          res.checkedList.forEach(val => {
+            let auth = new this.ctx.model.Addauth({
+              role_id,
+              pid: this.app.mongoose.Types.ObjectId(res.key),
+              access_id: this.app.mongoose.Types.ObjectId(val),
+            })
+            auth.save();
+          })
+        }
+        // let auth = new this.ctx.model.Addauth({
+        //   role_id,
+        //   pid: this.app.mongoose.Types.ObjectId(res.key)
+        // })
+        // auth.save();
+      })
     } catch (error) {
       console.log('error: ', error);
       return error;
@@ -72,8 +83,13 @@ class RoleService extends Service {
   }
   // 查询关联权限
   async authlist() {
-    console.log('this.ctx.request.query: ', this.ctx.request.query);
-    const result = await this.ctx.model.Addauth.find(this.ctx.request.query);
+    let {
+      role_id
+    } = this.ctx.request.query
+    const result = await this.ctx.model.Addauth.find({
+
+      role_id
+    });
     return result;
   }
 }

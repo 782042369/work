@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-09 13:47:56
+ * @LastEditTime: 2019-05-09 16:22:07
  */
 import React, { Component } from 'react'
 import { Checkbox, message, Form, Button } from 'antd'
@@ -79,9 +79,16 @@ class WrappedNormalLoginForm extends Component {
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				let { checkedList } = this.state
+				let access_node = []
+				this.state.plainOptions.forEach((res, index) => {
+					access_node.push({
+						key: res._id,
+						checkedList: checkedList[index]
+					})
+				})
 				auth({
 					role_id: getUrlParam('id'),
-					access_node: checkedList
+					access_node: access_node
 				})
 					.then((res) => {
 						console.log('res: ', res)
@@ -105,18 +112,38 @@ class WrappedNormalLoginForm extends Component {
 			.then((res) => {
 				if (res.data.length > 0) {
 					let { checkAll, checkedList, indeterminate, boxList } = this.state
-					res.data.forEach((element) => {
-						boxList.forEach((val, index) => {
-							val.forEach((ele) => {
-								if (ele.value === element.access_id && checkedList[index].indexOf(ele.value) == -1) {
-									checkedList[index].push(element.access_id)
-								}
+					let map = {},
+						dest = []
+					for (let i = 0; i < res.data.length; i++) {
+						let ai = res.data[i]
+						if (!map[ai.pid]) {
+							dest.push({
+								pid: ai.pid,
+								data: [ ai.access_id ]
 							})
+							map[ai.pid] = ai
+						} else {
+							for (let j = 0; j < dest.length; j++) {
+								let dj = dest[j]
+								if (dj.pid == ai.pid) {
+									dj.data.push(ai.access_id)
+									break
+								}
+							}
+						}
+					}
+
+					dest.forEach((element) => {
+						this.state.plainOptions.forEach((val, index) => {
+							if (val._id === element.pid) {
+								checkedList[index] = element.data
+							}
 							checkAll[index] = checkedList[index].length === boxList[index].length
 							indeterminate[index] =
 								!!checkedList[index].length && checkedList[index].length < boxList[index].length
 						})
 					})
+
 					this.setState({
 						title: '修改',
 						checkedList,
