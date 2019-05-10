@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-09 17:43:21
+ * @LastEditTime: 2019-05-10 18:33:54
  */
 import React, { Component } from 'react'
 import { Checkbox, message, Form, Button } from 'antd'
@@ -109,7 +109,8 @@ class WrappedNormalLoginForm extends Component {
 	componentWillMount() {
 		this.getlist()
 		authlist({
-			role_id: getUrlParam('id')
+			role_id: getUrlParam('id'),
+			list: 1
 		})
 			.then((res) => {
 				if (res.data.length > 0) {

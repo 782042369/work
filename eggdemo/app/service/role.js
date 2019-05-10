@@ -84,14 +84,16 @@ class RoleService extends Service {
           }).then(ele => {
             let {
               module_name,
+              _id,
               url
             } = ele[0]
-            let authpid = new this.ctx.model.Addauth({
+            let authparent = new this.ctx.model.Addauth({
               role_id,
               module_name,
+              parent_id: _id,
               url
             })
-            authpid.save();
+            authparent.save();
           })
         }
       })
@@ -102,33 +104,33 @@ class RoleService extends Service {
   // 查询关联权限
   async authlist() {
     let {
-      role_id
+      role_id,
+      list
     } = this.ctx.request.query
-    const result = await this.ctx.model.Addauth.find({
-      role_id
-    });
-    let map = {},
-      dest = []
-    for (let i = 0; i < result.length; i++) {
-      let ai = result[i]
-      if (!map[ai.pid] && ai.pid) {
-        dest.push({
-          pid: ai.pid,
-          data: [ai]
-        })
-        map[ai.pid] = ai
-      } else {
-        for (let j = 0; j < dest.length; j++) {
-          let dj = dest[j]
-          if (dj.pid && dj.pid == ai.pid) {
-            console.log('dj.pid: ', dj.pid);
-            dj.data.push(ai)
+    let result = []
+    if (list === '1') {
+      result = await this.ctx.model.Addauth.find({
+        role_id
+      });
+    } else {
+      result = await this.ctx.model.Addauth.aggregate([{
+          $lookup: {
+            from: 'role_access',
+            localField: 'parent_id',
+            foreignField: 'pid',
+            as: 'items',
+          }
+        },
+        {
+          $match: {
+            role_id,
+            pid: ''
+
           }
         }
-      }
+      ]);
     }
-    console.log('dest: ', dest);
-    return dest;
+    return result;
   }
 }
 

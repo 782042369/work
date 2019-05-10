@@ -3,24 +3,36 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-09 17:43:52
+ * @LastEditTime: 2019-05-10 18:10:10
  */
 import React, { Component } from 'react'
 import menus from '../router/routers'
 import { Menu, Icon } from 'antd'
 import { Link } from 'react-router-dom'
 import { authlist } from '../api/role'
+import Group from 'antd/lib/input/Group'
 class menu extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
+	}
+	findkey(list) {
+		let arr = []
+		list.forEach((val) => val.pid === '' && arr.push(val))
+		arr.forEach((res) => {
+			list.map((val) => {
+				if (val.pid === res.pid) {
+					console.log('val: ', val)
+				}
+			})
+		})
 	}
 
 	componentDidMount() {
 		authlist({
 			role_id: sessionStorage.getItem('role_id')
 		}).then((res) => {
-			console.log('res: ', res)
+			this.findkey(res.data)
 			// let map = {},
 			// 	dest = []
 			// for (let i = 0; i < res.data.length; i++) {

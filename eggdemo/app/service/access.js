@@ -35,7 +35,7 @@ class AccessService extends Service {
         $match: {
           module_id: 0,
         },
-      },
+      }
     ]);
     return result;
   }

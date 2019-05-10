@@ -14,6 +14,10 @@ module.exports = app => {
       type: Schema.Types.Mixed,
       default: '',
     },
+    parent_id: {
+      type: Schema.Types.Mixed,
+      default: 0,
+    },
     module_name: {
       type: String,
     },
