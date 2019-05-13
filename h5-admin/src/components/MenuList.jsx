@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-10 18:10:10
+ * @LastEditTime: 2019-05-13 15:25:13
  */
 import React, { Component } from 'react'
 import menus from '../router/routers'
@@ -16,44 +16,11 @@ class menu extends Component {
 		super(props)
 		this.state = {}
 	}
-	findkey(list) {
-		let arr = []
-		list.forEach((val) => val.pid === '' && arr.push(val))
-		arr.forEach((res) => {
-			list.map((val) => {
-				if (val.pid === res.pid) {
-					console.log('val: ', val)
-				}
-			})
-		})
-	}
 
 	componentDidMount() {
 		authlist({
 			role_id: sessionStorage.getItem('role_id')
-		}).then((res) => {
-			this.findkey(res.data)
-			// let map = {},
-			// 	dest = []
-			// for (let i = 0; i < res.data.length; i++) {
-			// 	let ai = res.data[i]
-			// 	if (!map[ai.pid] && ai.pid) {
-			// 		dest.push({
-			// 			pid: ai.pid,
-			// 			data: [ ai ]
-			// 		})
-			// 		map[ai.pid] = ai
-			// 	} else {
-			// 		for (let j = 0; j < dest.length; j++) {
-			// 			let dj = dest[j]
-			// 			if (dj.pid && dj.pid == ai.pid) {
-			// 				dj.data.push(ai)
-			// 				break
-			// 			}
-			// 		}
-			// 	}
-			// }
-		})
+		}).then((res) => {})
 	}
 	renderSubMenu = ({ key, icon, title, subs }) => {
 		return (

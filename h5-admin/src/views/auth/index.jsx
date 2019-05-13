@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-10 18:33:54
+ * @LastEditTime: 2019-05-13 15:43:07
  */
 import React, { Component } from 'react'
 import { Checkbox, message, Form, Button } from 'antd'
@@ -109,44 +109,23 @@ class WrappedNormalLoginForm extends Component {
 	componentWillMount() {
 		this.getlist()
 		authlist({
-			role_id: getUrlParam('id'),
-			list: 1
+			role_id: getUrlParam('id')
 		})
 			.then((res) => {
 				if (res.data.length > 0) {
 					let { checkAll, checkedList, indeterminate, boxList } = this.state
-					let map = {},
-						dest = []
-
-					for (let i = 0; i < res.data.length; i++) {
-						let ai = res.data[i]
-						if (!map[ai.pid] && ai.pid) {
-							dest.push({
-								pid: ai.pid,
-								data: [ ai.access_id ]
-							})
-							map[ai.pid] = ai
-						} else {
-							for (let j = 0; j < dest.length; j++) {
-								let dj = dest[j]
-								if (ai.pid && dj.pid == ai.pid) {
-									dj.data.push(ai.access_id)
-									break
-								}
-							}
-						}
-					}
-					dest.forEach((element) => {
+					res.data.forEach((element) => {
 						this.state.plainOptions.forEach((val, index) => {
-							if (val._id === element.pid) {
-								checkedList[index] = element.data
+							if (val._id === element.parent_id) {
+								let arr = []
+								element.items.map((res) => arr.push(res.access_id))
+								checkedList[index] = arr
+								checkAll[index] = checkedList[index].length === boxList[index].length
+								indeterminate[index] =
+									!!checkedList[index].length && checkedList[index].length < boxList[index].length
 							}
-							checkAll[index] = checkedList[index].length === boxList[index].length
-							indeterminate[index] =
-								!!checkedList[index].length && checkedList[index].length < boxList[index].length
 						})
 					})
-
 					this.setState({
 						title: '修改',
 						checkedList,

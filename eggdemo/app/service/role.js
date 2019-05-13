@@ -104,32 +104,25 @@ class RoleService extends Service {
   // 查询关联权限
   async authlist() {
     let {
-      role_id,
-      list
+      role_id
     } = this.ctx.request.query
     let result = []
-    if (list === '1') {
-      result = await this.ctx.model.Addauth.find({
-        role_id
-      });
-    } else {
-      result = await this.ctx.model.Addauth.aggregate([{
-          $lookup: {
-            from: 'role_access',
-            localField: 'parent_id',
-            foreignField: 'pid',
-            as: 'items',
-          }
-        },
-        {
-          $match: {
-            role_id,
-            pid: ''
-
-          }
+    result = await this.ctx.model.Addauth.aggregate([{
+        $lookup: {
+          from: 'role_access',
+          localField: 'parent_id',
+          foreignField: 'pid',
+          as: 'items',
         }
-      ]);
-    }
+      },
+      {
+        $match: {
+          role_id,
+          pid: ''
+
+        }
+      }
+    ]);
     return result;
   }
 }
