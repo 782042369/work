@@ -25,6 +25,7 @@ module.exports = appInfo => {
     'compress',
     'adminauth',
   ];
+  config.uploadfile = 'app/public/admin/upload'
   config.adminauth = {
     match: '/admin',
   };

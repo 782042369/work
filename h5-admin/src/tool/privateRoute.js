@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-05-07 11:16:57
+ * @LastEditTime: 2019-05-13 17:34:46
  */
 import React, {
   Component
@@ -19,7 +19,7 @@ class PrivateRoute extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated: window.sessionStorage.getItem("userId") ? true : false
+      isAuthenticated: window.sessionStorage.getItem("role_id") ? true : false
     }
   }
 

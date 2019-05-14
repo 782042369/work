@@ -66,6 +66,7 @@ class RoleService extends Service {
             }).then(val => {
               let {
                 module_name,
+                sort,
                 url
               } = val[0]
               let auth = new this.ctx.model.Addauth({
@@ -73,6 +74,7 @@ class RoleService extends Service {
                 pid: this.app.mongoose.Types.ObjectId(res.key),
                 access_id: this.app.mongoose.Types.ObjectId(element),
                 role_id,
+                sort,
                 module_name,
                 url
               })
@@ -85,11 +87,13 @@ class RoleService extends Service {
             let {
               module_name,
               _id,
+              sort,
               url
             } = ele[0]
             let authparent = new this.ctx.model.Addauth({
               role_id,
               module_name,
+              sort,
               parent_id: _id,
               url
             })
@@ -106,23 +110,9 @@ class RoleService extends Service {
     let {
       role_id
     } = this.ctx.request.query
-    let result = []
-    result = await this.ctx.model.Addauth.aggregate([{
-        $lookup: {
-          from: 'role_access',
-          localField: 'parent_id',
-          foreignField: 'pid',
-          as: 'items',
-        }
-      },
-      {
-        $match: {
-          role_id,
-          pid: ''
-
-        }
-      }
-    ]);
+    const result = await this.ctx.model.Addauth.find({
+      role_id
+    })
     return result;
   }
 }

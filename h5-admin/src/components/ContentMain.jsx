@@ -10,6 +10,10 @@ const AddManager = AsyncComponent(() => import(/* webpackChunkName: "AddManager"
 const Role = AsyncComponent(() => import(/* webpackChunkName: "Role" */ '../views/role/index'))
 const AddRole = AsyncComponent(() => import(/* webpackChunkName: "AddRole" */ '../views/role/AddRole'))
 const Auth = AsyncComponent(() => import(/* webpackChunkName: "Auth" */ '../views/auth'))
+const NoAccess = AsyncComponent(() => import(/* webpackChunkName: "Auth" */ '../views/auth/noaccess'))
+const Banner = AsyncComponent(() => import(/* webpackChunkName: "Auth" */ '../views/banner'))
+const AddBanner = AsyncComponent(() => import(/* webpackChunkName: "Auth" */ '../views/banner/AddBanner'))
+
 class ContentMain extends Component {
 	render() {
 		return (
@@ -22,6 +26,9 @@ class ContentMain extends Component {
 					<PrivateRoute exact path="/addmanager" component={AddManager} />
 					<PrivateRoute exact path="/role" component={Role} />
 					<PrivateRoute exact path="/addrole" component={AddRole} />
+					<PrivateRoute exact path="/noaccess" component={NoAccess} />
+					<PrivateRoute exact path="/banner" component={Banner} />
+					<PrivateRoute exact path="/addbanner" component={AddBanner} />
 				</Switch>
 			</div>
 		)

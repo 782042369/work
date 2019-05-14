@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-08 16:09:04
+ * @LastEditTime: 2019-05-13 17:35:13
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -11,7 +11,6 @@ import { findaccesslist, deleteaccess } from '../../api/access'
 import datefilter from '../../tool/datefilter'
 import { typefilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
-const { Column } = Table
 class access extends Component {
 	constructor(props) {
 		super(props)

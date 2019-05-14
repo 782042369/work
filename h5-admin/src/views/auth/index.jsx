@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-13 15:43:07
+ * @LastEditTime: 2019-05-13 17:40:07
  */
 import React, { Component } from 'react'
 import { Checkbox, message, Form, Button } from 'antd'
@@ -114,7 +114,16 @@ class WrappedNormalLoginForm extends Component {
 			.then((res) => {
 				if (res.data.length > 0) {
 					let { checkAll, checkedList, indeterminate, boxList } = this.state
-					res.data.forEach((element) => {
+					const arr = res.data.filter((res) => res.pid === '')
+					arr.map((val) => {
+						val.items = []
+						res.data.map((res) => {
+							if (res.pid === val.parent_id) {
+								val.items.push(res)
+							}
+						})
+					})
+					arr.forEach((element) => {
 						this.state.plainOptions.forEach((val, index) => {
 							if (val._id === element.parent_id) {
 								let arr = []

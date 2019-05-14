@@ -40,4 +40,13 @@ module.exports = app => {
   router.put('/admin/EditRole', controller.admin.role.edit);
   router.post('/admin/auth', controller.admin.role.auth);
   router.get('/admin/authlist', controller.admin.role.authlist);
+  /**
+   * 轮播图管理
+   */
+  router.post('/admin/uploadimg', controller.admin.focus.uploadimg);
+  router.post('/admin/addbanner', controller.admin.focus.addbanner);
+  router.post('/admin/editbanner', controller.admin.focus.editbanner);
+  router.post('/admin/bannerlist', controller.admin.focus.bannerlist);
+  router.delete('/admin/deletebanner', controller.admin.focus.deletebanner);
+
 };

@@ -2,7 +2,9 @@
 
 const Service = require('egg').Service;
 const svgCaptcha = require('svg-captcha');
-
+const path = require('path')
+const mkdirp = require('mkdirp');
+const sd = require('silly-datetime');
 class ToolsService extends Service {
   async captcha() {
     const captcha = svgCaptcha.create({
@@ -22,6 +24,21 @@ class ToolsService extends Service {
       arr = [].concat(...arr)
     }
     return arr
+  }
+  // 数组扁平化
+  async getuploadfile(filename) {
+    try {
+      let day = sd.format(new Date(), 'YYYYMMDD');
+      let dir = path.join(this.config.uploadfile, day);
+      await mkdirp(dir);
+      const uploadDir = path.join(dir, new Date().getTime() + path.extname(filename))
+      return {
+        uploadDir: uploadDir,
+        saveDir: uploadDir.slice(3).replace(/\\/g, '/')
+      }
+    } catch (error) {
+      return error
+    }
   }
 }
 
