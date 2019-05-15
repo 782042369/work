@@ -2,19 +2,30 @@
 
 const Service = require('egg').Service;
 
-class GoodsTypeAttributeAttributeService extends Service {
+class GoodsTypeAttributeService extends Service {
   async find() {
     try {
-      const _id = this.ctx.request.body.id;
-      let arr = {};
-      if (_id) {
-        arr = {
-          _id,
-        };
+      let result = []
+      if (this.ctx.request.body._id) {
+        result = this.ctx.model.GoodsTypeAttribute.find({
+          _id: this.app.mongoose.Types.ObjectId(this.ctx.request.body._id)
+        })
       } else {
-        arr = {};
+        result = await this.ctx.model.GoodsTypeAttribute.aggregate([{
+            $lookup: {
+              from: 'goods_type',
+              localField: 'cate_id',
+              foreignField: '_id',
+              as: 'parent',
+            },
+          },
+          {
+            $match: { // 字符串
+              cate_id: this.app.mongoose.Types.ObjectId(this.ctx.request.body.id),
+            }
+          }
+        ]);
       }
-      const result = await this.ctx.model.GoodsTypeAttribute.find(arr);
       return result;
     } catch (error) {
       return error;
@@ -23,11 +34,13 @@ class GoodsTypeAttributeAttributeService extends Service {
   // 增加
   async addgoodsattribute() {
     const title = this.ctx.request.body.title;
-    console.log('this.ctx.request.body: ', this.ctx.request.body);
+    const cate_id = this.ctx.request.body.cate_id;
     let result = '';
     result = await this.ctx.model.GoodsTypeAttribute.find({
       title,
+      cate_id
     });
+    console.log('result: ', result);
     if (result.length === 0) {
       const goods = new this.ctx.model.GoodsTypeAttribute(this.ctx.request.body);
       result = goods.save();
@@ -53,4 +66,4 @@ class GoodsTypeAttributeAttributeService extends Service {
   }
 }
 
-module.exports = GoodsTypeAttributeAttributeService;
+module.exports = GoodsTypeAttributeService;

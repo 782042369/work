@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 16:15:32
+ * @LastEditTime: 2019-05-15 17:11:19
  */
 import React, { Component } from 'react'
 import { addgoodsattribute, editgoodsattribute, goodstypelist, goodstypeattributelist } from '../../api/goods'
@@ -75,7 +75,7 @@ class WrappedRegistrationForm extends Component {
 	}
 	goodstypeattributelist() {
 		goodstypeattributelist({
-			id: getUrlParam('id')
+			_id: getUrlParam('id')
 		})
 			.then((res) => {
 				console.log('res.data[0].attr_type: ', res.data[0].attr_type)

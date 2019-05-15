@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 状态过滤器
  * @Date: 2019-05-06 17:53:48
- * @LastEditTime: 2019-05-15 13:44:54
+ * @LastEditTime: 2019-05-15 16:19:03
  */
 /**
  * 
@@ -25,6 +25,18 @@ export const typefilter = (value) => {
     1: '模块',
     2: '菜单',
     3: '操作',
+  } [value]
+  return val
+}
+/**
+ * 
+ * @param {*} value 传入数字 输出属性汉子
+ */
+export const typeattributeilter = (value) => {
+  let val = {
+    1: '单行录入',
+    2: '多行录入',
+    3: '选择录入',
   } [value]
   return val
 }

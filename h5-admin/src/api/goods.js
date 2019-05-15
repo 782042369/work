@@ -3,11 +3,10 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-15 16:01:18
+ * @LastEditTime: 2019-05-15 16:24:52
  */
 
 import request from '../tool/request'
-
 /**
  * 
  * @param {*} data 商品类型

@@ -3,13 +3,13 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 15:55:48
+ * @LastEditTime: 2019-05-15 16:48:39
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { goodstypeattributelist, deletegoodstypeattribute } from '../../api/goods'
 import datefilter from '../../tool/datefilter'
-import { statusfilter } from '../../tool/statusfilter'
+import { typeattributeilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 import getUrlParam from '../../tool/getUrlParam'
 
@@ -22,7 +22,9 @@ class role extends Component {
 		}
 	}
 	getlist() {
-		goodstypeattributelist()
+		goodstypeattributelist({
+			id: getUrlParam('id')
+		})
 			.then((res) => {
 				if (res.status === 1) {
 					this.setState({
@@ -57,15 +59,19 @@ class role extends Component {
 					<Button type="primary">增加商品属性</Button>
 				</Link>
 				<Table dataSource={this.state.data}>
-					<Column title="属性名称" dataIndex="title" key="title" />
 					<Column
 						title="商品类型"
-						dataIndex="cate_id"
+						dataIndex="parent"
 						key="cate_id"
-						render={(text, record) => <div type="primary">{statusfilter(text)}</div>}
+						render={(text, record) => <div type="primary">{text[0].title}</div>}
 					/>
-
-					<Column title="属性值的录入方式" dataIndex="attr_type" key="attr_type" />
+					<Column title="属性名称" dataIndex="title" key="title" />
+					<Column
+						title="属性值的录入方式"
+						dataIndex="attr_type"
+						key="attr_type"
+						render={(text, record) => <div type="primary">{typeattributeilter(text)}</div>}
+					/>
 					<Column title="可选值列表" dataIndex="attr_value" key="attr_value" />
 					<Column
 						title="时间"
