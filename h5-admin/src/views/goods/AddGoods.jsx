@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 14:14:01
+ * @LastEditTime: 2019-05-15 14:45:08
  */
 import React, { Component } from 'react'
 import { addgoods, editgoods, goodstypelist } from '../../api/goods'
@@ -102,8 +102,8 @@ class WrappedRegistrationForm extends Component {
 		}
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
-				<h1>{this.state.title}商品</h1>
-				<Form.Item label="商品名称">
+				<h1>{this.state.title}商品类型</h1>
+				<Form.Item label="商品类型">
 					{getFieldDecorator('title', {
 						rules: [
 							{
@@ -113,7 +113,7 @@ class WrappedRegistrationForm extends Component {
 						]
 					})(<Input placeholder="请输入" />)}
 				</Form.Item>
-				<Form.Item label="商品描述">
+				<Form.Item label="商品类型描述">
 					{getFieldDecorator('description', {
 						rules: [
 							{
