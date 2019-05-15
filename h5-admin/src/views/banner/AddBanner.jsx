@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 13:38:43
+ * @LastEditTime: 2019-05-15 16:15:59
  */
 import React, { Component } from 'react'
 import { addbanner, editbanner, bannerlist } from '../../api/banner'
@@ -17,8 +17,7 @@ class WrappedRegistrationForm extends Component {
 		this.state = {
 			confirmDirty: false,
 			title: '',
-			editimgsrc: '',
-			autoCompleteResult: []
+			editimgsrc: ''
 		}
 	}
 	flatten(arr) {
@@ -159,7 +158,7 @@ class WrappedRegistrationForm extends Component {
 									message: 'Please input your title!'
 								}
 							]
-						})(<Input  placeholder='请输入' />)}
+						})(<Input placeholder="请输入" />)}
 					</Form.Item>
 
 					<Form.Item label="图片所属">
@@ -193,7 +192,7 @@ class WrappedRegistrationForm extends Component {
 									message: 'Please input your focus_img!'
 								}
 							]
-						})(<Input  placeholder='请输入' />)}
+						})(<Input placeholder="请输入" />)}
 					</Form.Item>
 					<Form.Item label="排序">
 						{getFieldDecorator('sort', {
@@ -203,7 +202,7 @@ class WrappedRegistrationForm extends Component {
 									message: 'Please input your sort!'
 								}
 							]
-						})(<Input  placeholder='请输入' />)}
+						})(<Input placeholder="请输入" />)}
 					</Form.Item>
 					{editimg}
 					<Form.Item label="上传图片">

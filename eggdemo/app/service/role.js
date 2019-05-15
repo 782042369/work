@@ -73,7 +73,6 @@ class RoleService extends Service {
                 role_id,
                 pid: this.app.mongoose.Types.ObjectId(res.key),
                 access_id: this.app.mongoose.Types.ObjectId(element),
-                role_id,
                 sort,
                 module_name,
                 url,

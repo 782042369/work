@@ -49,10 +49,16 @@ module.exports = app => {
   router.put('/admin/editbanner', controller.admin.focus.editbanner);
   router.delete('/admin/deletebanner', controller.admin.focus.deletebanner);
   /**
-   * 商品管理
+   * 商品管理类型
    */
   router.post('/admin/goodstypelist', controller.admin.goodsType.index);
   router.post('/admin/addgoods', controller.admin.goodsType.addgoods);
   router.put('/admin/editgoods', controller.admin.goodsType.editgoods);
   router.delete('/admin/deletegoodstype', controller.admin.goodsType.deletegoods);
+
+
+  router.post('/admin/goodstypeattributelist', controller.admin.goodsTypeAttribute.index);
+  router.post('/admin/addgoodsattribute', controller.admin.goodsTypeAttribute.addgoodsattribute);
+  router.put('/admin/editgoodsattribute', controller.admin.goodsTypeAttribute.editgoodsattribute);
+  router.delete('/admin/deletegoodstypeattribute', controller.admin.goodsTypeAttribute.deletegoodsattribute);
 };

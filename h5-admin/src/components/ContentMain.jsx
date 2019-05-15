@@ -15,6 +15,8 @@ const Banner = AsyncComponent(() => import(/* webpackChunkName: "Banner" */ '../
 const AddBanner = AsyncComponent(() => import(/* webpackChunkName: "AddBanner" */ '../views/banner/AddBanner'))
 const Goodslist = AsyncComponent(() => import(/* webpackChunkName: "Goodslist" */ '../views/goods'))
 const AddGoods = AsyncComponent(() => import(/* webpackChunkName: "AddGoods" */ '../views/goods/AddGoods'))
+const GoodsTypeAttribute = AsyncComponent(() => import(/* webpackChunkName: "GoodsTypeAttribute" */ '../views/goods/GoodsTypeAttribute'))
+const AddGoodsTypeAttribute = AsyncComponent(() => import(/* webpackChunkName: "AddGoodsTypeAttribute" */ '../views/goods/AddGoodsTypeAttribute'))
 
 
 
@@ -35,6 +37,8 @@ class ContentMain extends Component {
 					<PrivateRoute exact path="/addbanner" component={AddBanner} />
 					<PrivateRoute exact path="/goodslist" component={Goodslist} />
 					<PrivateRoute exact path="/addgoods" component={AddGoods} />
+					<PrivateRoute exact path="/goodstypeattribute" component={GoodsTypeAttribute} />
+					<PrivateRoute exact path="/addgoodstypeattribute" component={AddGoodsTypeAttribute} />
 					
 					
 				</Switch>

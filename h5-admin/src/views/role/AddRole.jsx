@@ -3,19 +3,20 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 14:11:42
+ * @LastEditTime: 2019-05-15 15:49:03
  */
 import React, { Component } from 'react'
 import { addrole, editrole, rolelist } from '../../api/role'
 import getUrlParam from '../../tool/getUrlParam'
 import { Form, Input, Button, message } from 'antd'
+const { TextArea } = Input
+
 class WrappedRegistrationForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			confirmDirty: false,
-			title: '',
-			autoCompleteResult: []
+			title: ''
 		}
 	}
 
@@ -121,7 +122,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input placeholder="请输入" type="textarea" />)}
+					})(<TextArea placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">
