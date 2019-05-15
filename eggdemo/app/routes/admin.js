@@ -55,10 +55,18 @@ module.exports = app => {
   router.post('/admin/addgoods', controller.admin.goodsType.addgoods);
   router.put('/admin/editgoods', controller.admin.goodsType.editgoods);
   router.delete('/admin/deletegoodstype', controller.admin.goodsType.deletegoods);
-
-
+  /**
+   * 商品属性
+   */
   router.post('/admin/goodstypeattributelist', controller.admin.goodsTypeAttribute.index);
   router.post('/admin/addgoodsattribute', controller.admin.goodsTypeAttribute.addgoodsattribute);
   router.put('/admin/editgoodsattribute', controller.admin.goodsTypeAttribute.editgoodsattribute);
   router.delete('/admin/deletegoodstypeattribute', controller.admin.goodsTypeAttribute.deletegoodsattribute);
+  /**
+   * 商品分类
+   */
+  router.post('/admin/goodscatelist', controller.admin.goodsCate.index);
+  router.post('/admin/addgoodscate', controller.admin.goodsCate.addgoodscate);
+  router.put('/admin/editgoodscate', controller.admin.goodsCate.editgoodscate);
+  router.delete('/admin/deletegoodscate', controller.admin.goodsCate.deletegoodscate);
 };

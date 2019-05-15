@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-15 16:24:52
+ * @LastEditTime: 2019-05-15 18:21:35
  */
 
 import request from '../tool/request'
@@ -79,6 +79,44 @@ export function editgoodsattribute(data) {
 	// 修改
 	return request({
 		url: 'admin/editgoodsattribute',
+		method: 'put',
+		data
+	})
+}
+/**
+ * 
+ * @param {*} data 商品分类
+ */
+export function goodscatelist(data) {
+	// 列表
+	return request({
+		url: 'admin/goodscatelist',
+		method: 'post',
+		data
+	})
+}
+
+export function deletegoodscate(data) {
+	// 删除
+	return request({
+		url: 'admin/deletegoodscate',
+		method: 'delete',
+		data
+	})
+}
+export function addgoodscate(data) {
+	// 增加
+	return request({
+		url: 'admin/addgoodscate',
+		method: 'post',
+		data
+	})
+}
+
+export function editgoodscate(data) {
+	// 修改
+	return request({
+		url: 'admin/editgoodscate',
 		method: 'put',
 		data
 	})

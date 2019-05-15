@@ -3,14 +3,15 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 18:24:38
+ * @LastEditTime: 2019-05-15 18:28:58
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
-import { goodstypelist, deletegoodstype } from '../../api/goods'
+import { goodscatelist, deletegoodscate } from '../../api/goods'
 import datefilter from '../../tool/datefilter'
-import { statusfilter } from '../../tool/statusfilter'
+import { typeattributeilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
+import getUrlParam from '../../tool/getUrlParam'
 
 const { Column } = Table
 class role extends Component {
@@ -21,7 +22,9 @@ class role extends Component {
 		}
 	}
 	getlist() {
-		goodstypelist()
+		goodscatelist({
+			id: getUrlParam('id')
+		})
 			.then((res) => {
 				if (res.status === 1) {
 					this.setState({
@@ -34,10 +37,10 @@ class role extends Component {
 			})
 	}
 	componentDidMount() {
-		this.getlist()
+		// this.getlist()
 	}
-	deletegoodstype(id) {
-		deletegoodstype({
+	deletegoodscate(id) {
+		deletegoodscate({
 			id
 		})
 			.then((res) => {
@@ -52,19 +55,24 @@ class role extends Component {
 	render() {
 		return (
 			<div>
-				<Link to={'/addgoods'}>
-					<Button type="primary">增加商品类型</Button>
+				<Link to={`/addgoodscate?id=${getUrlParam('id')}&type=0`}>
+					<Button type="primary">增加商品分类</Button>
 				</Link>
 				<Table dataSource={this.state.data}>
-					<Column title="名称" dataIndex="title" key="title" />
 					<Column
-						title="状态"
-						dataIndex="status"
-						key="status"
-						render={(text, record) => <div type="primary">{statusfilter(text)}</div>}
+						title="商品类型"
+						dataIndex="parent"
+						key="cate_id"
+						render={(text, record) => <div type="primary">{text[0].title}</div>}
 					/>
-
-					<Column title="描述" dataIndex="description" key="description" />
+					<Column title="属性名称" dataIndex="title" key="title" />
+					<Column
+						title="属性值的录入方式"
+						dataIndex="attr_type"
+						key="attr_type"
+						render={(text, record) => <div type="primary">{typeattributeilter(text)}</div>}
+					/>
+					<Column title="可选值列表" dataIndex="attr_value" key="attr_value" />
 					<Column
 						title="时间"
 						key="add_time"
@@ -77,15 +85,11 @@ class role extends Component {
 						dataIndex="_id"
 						render={(text, record) => (
 							<span>
-								<Link to={'/goodstypeattribute?id=' + text}>
-									<Button type="primary">属性列表</Button>
-								</Link>
-								<Divider type="vertical" />
-								<Link to={'/addgoods?id=' + text}>
+								<Link to={`/addgoodscate?id=${text}&type=1`}>
 									<Button type="primary">修改</Button>
 								</Link>
 								<Divider type="vertical" />
-								<Button type="danger" onClick={this.deletegoodstype.bind(this, text)}>
+								<Button type="danger" onClick={this.deletegoodscate.bind(this, text)}>
 									删除
 								</Button>
 							</span>

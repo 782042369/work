@@ -15,10 +15,14 @@ const Banner = AsyncComponent(() => import(/* webpackChunkName: "Banner" */ '../
 const AddBanner = AsyncComponent(() => import(/* webpackChunkName: "AddBanner" */ '../views/banner/AddBanner'))
 const Goodslist = AsyncComponent(() => import(/* webpackChunkName: "Goodslist" */ '../views/goods'))
 const AddGoods = AsyncComponent(() => import(/* webpackChunkName: "AddGoods" */ '../views/goods/AddGoods'))
-const GoodsTypeAttribute = AsyncComponent(() => import(/* webpackChunkName: "GoodsTypeAttribute" */ '../views/goods/GoodsTypeAttribute'))
-const AddGoodsTypeAttribute = AsyncComponent(() => import(/* webpackChunkName: "AddGoodsTypeAttribute" */ '../views/goods/AddGoodsTypeAttribute'))
-
-
+const GoodsTypeAttribute = AsyncComponent(() =>
+	import(/* webpackChunkName: "GoodsTypeAttribute" */ '../views/goods/GoodsTypeAttribute')
+)
+const AddGoodsTypeAttribute = AsyncComponent(() =>
+	import(/* webpackChunkName: "AddGoodsTypeAttribute" */ '../views/goods/AddGoodsTypeAttribute')
+)
+const GoodsCate = AsyncComponent(() => import(/* webpackChunkName: "GoodsCate" */ '../views/goods/GoodsCate'))
+const AddGoodsCate = AsyncComponent(() => import(/* webpackChunkName: "AddGoodsCate" */ '../views/goods/AddGoodsCate'))
 
 class ContentMain extends Component {
 	render() {
@@ -39,8 +43,8 @@ class ContentMain extends Component {
 					<PrivateRoute exact path="/addgoods" component={AddGoods} />
 					<PrivateRoute exact path="/goodstypeattribute" component={GoodsTypeAttribute} />
 					<PrivateRoute exact path="/addgoodstypeattribute" component={AddGoodsTypeAttribute} />
-					
-					
+					<PrivateRoute exact path="/addgoodscate" component={AddGoodsCate} />
+					<PrivateRoute exact path="/goodscate" component={GoodsCate} />
 				</Switch>
 			</div>
 		)

@@ -2,16 +2,16 @@
 
 const Service = require('egg').Service;
 
-class GoodsTypeAttributeService extends Service {
+class GoodsCateService extends Service {
   async find() {
     try {
       let result = []
       if (this.ctx.request.body._id) {
-        result = this.ctx.model.GoodsTypeAttribute.find({
+        result = this.ctx.model.GoodsCate.find({
           _id: this.app.mongoose.Types.ObjectId(this.ctx.request.body._id)
         })
       } else {
-        result = await this.ctx.model.GoodsTypeAttribute.aggregate([{
+        result = await this.ctx.model.GoodsCate.aggregate([{
             $lookup: {
               from: 'goods_type',
               localField: 'cate_id',
@@ -36,21 +36,20 @@ class GoodsTypeAttributeService extends Service {
     const title = this.ctx.request.body.title;
     const cate_id = this.ctx.request.body.cate_id;
     let result = '';
-    result = await this.ctx.model.GoodsTypeAttribute.find({
+    result = await this.ctx.model.GoodsCate.find({
       title,
       cate_id
     });
     if (result.length === 0) {
-      const goods = new this.ctx.model.GoodsTypeAttribute(this.ctx.request.body);
+      const goods = new this.ctx.model.GoodsCate(this.ctx.request.body);
       result = goods.save();
     }
     return result;
   }
   // 编辑
   async editgoodsattribute() {
-    console.log('new Date().getTime(): ', new Date().getTime());
     const _id = this.ctx.request.body.id;
-    const result = await this.ctx.model.GoodsTypeAttribute.updateOne({
+    const result = await this.ctx.model.GoodsCate.updateOne({
       _id,
     }, Object.assign(this.ctx.request.body, {
       add_time: new Date().getTime(),
@@ -59,11 +58,11 @@ class GoodsTypeAttributeService extends Service {
   }
   async deletegoodsattribute() {
     const _id = this.ctx.request.body.id;
-    const result = await this.ctx.model.GoodsTypeAttribute.deleteOne({
+    const result = await this.ctx.model.GoodsCate.deleteOne({
       _id,
     });
     return result;
   }
 }
 
-module.exports = GoodsTypeAttributeService;
+module.exports = GoodsCateService;
