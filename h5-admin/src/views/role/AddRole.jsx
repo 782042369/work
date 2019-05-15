@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-14 18:04:06
+ * @LastEditTime: 2019-05-15 14:11:42
  */
 import React, { Component } from 'react'
 import { addrole, editrole, rolelist } from '../../api/role'
@@ -111,7 +111,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your title!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item label="角色描述">
 					{getFieldDecorator('description', {
@@ -121,7 +121,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input type="textarea" />)}
+					})(<Input placeholder="请输入" type="textarea" />)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">

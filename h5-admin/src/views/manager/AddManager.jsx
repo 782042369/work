@@ -135,7 +135,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your title!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item label="管理员密码">
 					{getFieldDecorator('password', {
@@ -145,7 +145,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input type="password" />)}
+					})(<Input placeholder="请输入" type="password" />)}
 				</Form.Item>
 				<Form.Item label="管理员手机号">
 					{getFieldDecorator('mobile', {
@@ -155,7 +155,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item label="管理员邮箱">
 					{getFieldDecorator('email', {
@@ -165,7 +165,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item label="管理员角色">
 					{getFieldDecorator('role_id', {

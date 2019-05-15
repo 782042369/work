@@ -159,7 +159,7 @@ class WrappedRegistrationForm extends Component {
 									message: 'Please input your title!'
 								}
 							]
-						})(<Input />)}
+						})(<Input  placeholder='请输入' />)}
 					</Form.Item>
 
 					<Form.Item label="图片所属">
@@ -193,7 +193,7 @@ class WrappedRegistrationForm extends Component {
 									message: 'Please input your focus_img!'
 								}
 							]
-						})(<Input />)}
+						})(<Input  placeholder='请输入' />)}
 					</Form.Item>
 					<Form.Item label="排序">
 						{getFieldDecorator('sort', {
@@ -203,7 +203,7 @@ class WrappedRegistrationForm extends Component {
 									message: 'Please input your sort!'
 								}
 							]
-						})(<Input />)}
+						})(<Input  placeholder='请输入' />)}
 					</Form.Item>
 					{editimg}
 					<Form.Item label="上传图片">

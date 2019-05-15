@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 14:33:42
- * @LastEditTime: 2019-05-09 16:36:00
+ * @LastEditTime: 2019-05-15 14:23:21
  */
 'use strict';
 
@@ -23,7 +23,7 @@ class RoleController extends BaseController {
     try {
       const result = await this.service.role.addrole();
       if (result.length > 0) {
-        this.success(0, '角色已经存在', result);
+        this.error(0, '角色已经存在', result);
       } else {
         this.success(1, '增加角色成功', result);
       }

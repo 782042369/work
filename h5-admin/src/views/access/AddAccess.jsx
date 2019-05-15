@@ -141,7 +141,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your title!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item label="节点名称">
 					{getFieldDecorator('type', {
@@ -166,8 +166,8 @@ class WrappedRegistrationForm extends Component {
 						</Select>
 					)}
 				</Form.Item>
-				<Form.Item label="操作名称">{getFieldDecorator('action_name')(<Input />)}</Form.Item>
-				<Form.Item label="操作地址">{getFieldDecorator('url')(<Input />)}</Form.Item>
+				<Form.Item label="操作名称">{getFieldDecorator('action_name')(<Input placeholder="请输入" />)}</Form.Item>
+				<Form.Item label="操作地址">{getFieldDecorator('url')(<Input placeholder="请输入" />)}</Form.Item>
 				<Form.Item label="所属模块">
 					{getFieldDecorator('module_id', {
 						rules: [
@@ -193,7 +193,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item label="描述">
 					{getFieldDecorator('description', {
@@ -203,7 +203,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">

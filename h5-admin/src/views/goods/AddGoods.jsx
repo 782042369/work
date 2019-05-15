@@ -1,12 +1,12 @@
 /*
  * @Author: 杨宏旋
  * @LastEditors: 杨宏旋
- * @Description: 角色
+ * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-14 18:04:06
+ * @LastEditTime: 2019-05-15 14:14:01
  */
 import React, { Component } from 'react'
-import { addrole, editrole, rolelist } from '../../api/role'
+import { addgoods, editgoods, goodstypelist } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
 import { Form, Input, Button, message } from 'antd'
 class WrappedRegistrationForm extends Component {
@@ -25,7 +25,7 @@ class WrappedRegistrationForm extends Component {
 			if (!err) {
 				if (getUrlParam('id')) {
 					let arr = { id: getUrlParam('id') }
-					editrole(Object.assign(values, arr))
+					editgoods(Object.assign(values, arr))
 						.then((res) => {
 							console.log(res)
 							message.success(res.message)
@@ -35,7 +35,7 @@ class WrappedRegistrationForm extends Component {
 							console.log(err)
 						})
 				} else {
-					addrole(values)
+					addgoods(values)
 						.then((res) => {
 							if (res.status === 1) {
 								message.success(res.message)
@@ -56,7 +56,7 @@ class WrappedRegistrationForm extends Component {
 			this.setState({
 				title: '修改'
 			})
-			rolelist({
+			goodstypelist({
 				id: getUrlParam('id')
 			})
 				.then((res) => {
@@ -102,8 +102,8 @@ class WrappedRegistrationForm extends Component {
 		}
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
-				<h1>{this.state.title}角色</h1>
-				<Form.Item label="角色名称">
+				<h1>{this.state.title}商品</h1>
+				<Form.Item label="商品名称">
 					{getFieldDecorator('title', {
 						rules: [
 							{
@@ -111,9 +111,9 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your title!'
 							}
 						]
-					})(<Input />)}
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
-				<Form.Item label="角色描述">
+				<Form.Item label="商品描述">
 					{getFieldDecorator('description', {
 						rules: [
 							{
@@ -121,7 +121,7 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Input type="textarea" />)}
+					})(<Input placeholder="请输入" type="textarea" />)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">
@@ -132,5 +132,5 @@ class WrappedRegistrationForm extends Component {
 		)
 	}
 }
-const role = Form.create({ name: 'register' })(WrappedRegistrationForm)
-export default role
+const goods = Form.create({ name: 'register' })(WrappedRegistrationForm)
+export default goods

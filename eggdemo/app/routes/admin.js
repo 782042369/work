@@ -52,7 +52,7 @@ module.exports = app => {
    * 商品管理
    */
   router.post('/admin/goodstypelist', controller.admin.goods.index);
-  router.delete('/admin/deletegoodstype', controller.admin.goodsType.index);
-
-
+  router.post('/admin/addgoods', controller.admin.goods.addgoods);
+  router.put('/admin/editgoods', controller.admin.goods.editgoods);
+  router.delete('/admin/deletegoodstype', controller.admin.goods.deletegoods);
 };
