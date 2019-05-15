@@ -207,7 +207,7 @@ class WrappedRegistrationForm extends Component {
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">
-						Register
+						提交
 					</Button>
 				</Form.Item>
 			</Form>

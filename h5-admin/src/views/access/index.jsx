@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:17
- * @LastEditTime: 2019-05-13 17:35:13
+ * @LastEditTime: 2019-05-15 13:39:44
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -55,7 +55,6 @@ class access extends Component {
 			key: 'type',
 			render: (text) => <div type="primary">{typefilter(text)}</div>
 		},
-		,
 		{ title: '描述', dataIndex: 'description', key: 'description' },
 		{ title: '排序', dataIndex: 'sort', key: 'sort' },
 		{
@@ -90,7 +89,6 @@ class access extends Component {
 				key: 'type',
 				render: (text) => <div type="primary">{typefilter(text)}</div>
 			},
-			,
 			{ title: '描述', dataIndex: 'description', key: 'description' },
 			{ title: '排序', dataIndex: 'sort', key: 'sort' },
 			{

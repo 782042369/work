@@ -1,8 +1,8 @@
 'use strict';
 
 const Service = require('egg').Service;
-const fs = require('fs')
-const pump = require('pump')
+const fs = require('fs');
+const pump = require('pump');
 class FocusService extends Service {
   async find() {
     try {
@@ -18,7 +18,7 @@ class FocusService extends Service {
       const result = await this.ctx.model.Focus.find(arr);
       return result;
     } catch (error) {
-      return error
+      return error;
     }
   }
   // 单个文件
@@ -42,10 +42,10 @@ class FocusService extends Service {
   // 多个文件
   async uploadimg() {
     try {
-      let result = [];
+      const result = [];
       let stream;
       const parts = await this.ctx.multipart({
-        autoFields: true // 提出除了文件的图片
+        autoFields: true, // 提出除了文件的图片
       }); // 表单提交数据 多个个文件
       while ((stream = await parts()) != null) {
         if (!stream.filename) {
@@ -53,20 +53,20 @@ class FocusService extends Service {
           // 需要做出处理，例如给出错误提示消息
           break;
         }
-        let {
+        const {
           uploadDir, // 文件存放路径
-          saveDir // 数据库存放地址
-        } = await this.service.tools.getuploadfile(stream.filename)
+          saveDir, // 数据库存放地址
+        } = await this.service.tools.getuploadfile(stream.filename);
         const writestream = fs.createWriteStream(uploadDir);
-        await pump(stream, writestream)
+        await pump(stream, writestream);
         result.push({
           uploadDir,
-          saveDir
-        })
+          saveDir,
+        });
       }
-      return result
+      return result;
     } catch (error) {
-      return error
+      return error;
     }
   }
   async addbanner() {
@@ -76,21 +76,21 @@ class FocusService extends Service {
         focus_img,
         sort,
         title,
-        type
-      } = this.ctx.request.body
-      banner.fileList.map(res => {
-        const link = res.response.data[0].saveDir
-        let savearr = new this.ctx.model.Focus({
+        type,
+      } = this.ctx.request.body;
+      banner.fileList.forEach(res => {
+        const link = res.response.data[0].saveDir;
+        const savearr = new this.ctx.model.Focus({
           title,
           type,
           focus_img,
           link,
-          sort
-        })
+          sort,
+        });
         savearr.save();
-      })
+      });
     } catch (error) {
-      return error
+      return error;
     }
   }
   async editbanner() {
@@ -101,10 +101,10 @@ class FocusService extends Service {
         type,
         focus_img,
         sort,
-        id
-      } = this.ctx.request.body
+        id,
+      } = this.ctx.request.body;
       if (banner) {
-        let link = banner.file.response.data[0].saveDir
+        const link = banner.file.response.data[0].saveDir;
         const result = await this.ctx.model.Focus.updateOne({
           _id: id,
         }, {
@@ -113,21 +113,21 @@ class FocusService extends Service {
           focus_img,
           sort,
           add_time: new Date().getTime(),
-          link
-        });
-        return result;
-      } else {
-        const result = await this.ctx.model.Focus.updateOne({
-          _id,
-        }, {
-          title,
-          type,
-          focus_img,
-          sort,
-          add_time: new Date().getTime(),
+          link,
         });
         return result;
       }
+      const result = await this.ctx.model.Focus.updateOne({
+        _id: id,
+      }, {
+        title,
+        type,
+        focus_img,
+        sort,
+        add_time: new Date().getTime(),
+      });
+      return result;
+
     } catch (error) {
       return error;
     }

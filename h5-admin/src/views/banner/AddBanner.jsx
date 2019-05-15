@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-14 17:42:24
+ * @LastEditTime: 2019-05-15 13:38:43
  */
 import React, { Component } from 'react'
 import { addbanner, editbanner, bannerlist } from '../../api/banner'
@@ -137,6 +137,7 @@ class WrappedRegistrationForm extends Component {
 			editimg = (
 				<Form.Item label="原图">
 					<img
+						alt=""
 						style={{ maxWidth: '10vw', maxHeight: '10vw' }}
 						src={`http://127.0.0.1:7001${this.state.editimgsrc}`}
 					/>

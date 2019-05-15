@@ -34,7 +34,7 @@ class RoleService extends Service {
     const result = await this.ctx.model.Role.updateOne({
       _id,
     }, Object.assign(this.ctx.request.body, {
-      add_time: new Date().getTime()
+      add_time: new Date().getTime(),
     }));
     return result;
   }
@@ -50,69 +50,69 @@ class RoleService extends Service {
 
   // 关联权限
   async addauth() {
-    let {
+    const {
       access_node,
-      role_id
+      role_id,
     } = this.ctx.request.body;
     try {
       await this.ctx.model.Addauth.deleteMany({
-        role_id
-      })
+        role_id,
+      });
       access_node.forEach(res => {
         if (res.checkedList.length > 0) {
           res.checkedList.forEach(element => {
             this.ctx.model.Access.find({
-              _id: element
+              _id: element,
             }).then(val => {
-              let {
+              const {
                 module_name,
                 sort,
-                url
-              } = val[0]
-              let auth = new this.ctx.model.Addauth({
+                url,
+              } = val[0];
+              const auth = new this.ctx.model.Addauth({
                 role_id,
                 pid: this.app.mongoose.Types.ObjectId(res.key),
                 access_id: this.app.mongoose.Types.ObjectId(element),
                 role_id,
                 sort,
                 module_name,
-                url
-              })
+                url,
+              });
               auth.save();
-            })
-          })
+            });
+          });
           this.ctx.model.Access.find({
-            _id: res.key
+            _id: res.key,
           }).then(ele => {
-            let {
+            const {
               module_name,
               _id,
               sort,
-              url
-            } = ele[0]
-            let authparent = new this.ctx.model.Addauth({
+              url,
+            } = ele[0];
+            const authparent = new this.ctx.model.Addauth({
               role_id,
               module_name,
               sort,
               parent_id: _id,
-              url
-            })
+              url,
+            });
             authparent.save();
-          })
+          });
         }
-      })
+      });
     } catch (error) {
       return error;
     }
   }
   // 查询关联权限
   async authlist() {
-    let {
-      role_id
-    } = this.ctx.request.query
+    const {
+      role_id,
+    } = this.ctx.request.query;
     const result = await this.ctx.model.Addauth.find({
-      role_id
-    })
+      role_id,
+    });
     return result;
   }
 }

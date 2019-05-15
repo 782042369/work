@@ -36,17 +36,23 @@ module.exports = app => {
    */
   router.post('/admin/Rolelist', controller.admin.role.index);
   router.post('/admin/AddRole', controller.admin.role.add);
-  router.delete('/admin/DeleteRole', controller.admin.role.delete);
-  router.put('/admin/EditRole', controller.admin.role.edit);
   router.post('/admin/auth', controller.admin.role.auth);
   router.get('/admin/authlist', controller.admin.role.authlist);
+  router.put('/admin/EditRole', controller.admin.role.edit);
+  router.delete('/admin/DeleteRole', controller.admin.role.delete);
   /**
    * 轮播图管理
    */
   router.post('/admin/uploadimg', controller.admin.focus.uploadimg);
   router.post('/admin/addbanner', controller.admin.focus.addbanner);
-  router.post('/admin/editbanner', controller.admin.focus.editbanner);
   router.post('/admin/bannerlist', controller.admin.focus.bannerlist);
+  router.put('/admin/editbanner', controller.admin.focus.editbanner);
   router.delete('/admin/deletebanner', controller.admin.focus.deletebanner);
+  /**
+   * 商品管理
+   */
+  router.post('/admin/goodstypelist', controller.admin.goods.index);
+  router.delete('/admin/deletegoodstype', controller.admin.goodsType.index);
+
 
 };

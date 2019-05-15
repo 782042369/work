@@ -25,7 +25,7 @@ module.exports = appInfo => {
     'compress',
     'adminauth',
   ];
-  config.uploadfile = 'app/public/admin/upload'
+  config.uploadfile = 'app/public/admin/upload';
   config.adminauth = {
     match: '/admin',
   };
@@ -34,7 +34,7 @@ module.exports = appInfo => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: ['http://127.0.0.1:3000'],
+    domainWhiteList: [ 'http://127.0.0.1:3000' ],
   };
   config.cors = {
     origin: 'http://127.0.0.1:3000',

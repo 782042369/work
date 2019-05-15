@@ -39,7 +39,7 @@ class ManagerService extends Service {
     const result = await this.ctx.model.User.updateOne({
       _id,
     }, Object.assign(this.ctx.request.body, {
-      add_time: new Date().getTime()
+      add_time: new Date().getTime(),
     }));
     return result;
   }

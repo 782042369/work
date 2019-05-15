@@ -15,7 +15,7 @@ module.exports = app => {
       default: '',
     },
     sort: {
-      type: Number
+      type: Number,
     },
     parent_id: {
       type: Schema.Types.Mixed,

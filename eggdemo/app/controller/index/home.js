@@ -6,7 +6,7 @@ class HomeController extends Controller {
   async index() {
     console.log(1);
     this.ctx.body = {
-      msg: '欢迎欢迎'
+      msg: '欢迎欢迎',
     };
   }
 }

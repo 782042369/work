@@ -3,13 +3,14 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-13 17:39:56
+ * @LastEditTime: 2019-05-15 13:47:37
  */
 import React, { Component } from 'react'
 // import menus from '../router/routers'
 import { Menu, Icon } from 'antd'
 import { authlist } from '../api/role'
 import { Link } from 'react-router-dom'
+import mergefieldtojson from '../tool/mergefieldtojson'
 class menu extends Component {
 	constructor(props) {
 		super(props)
@@ -30,17 +31,9 @@ class menu extends Component {
 					} else {
 						openurl.push('/noaccess')
 					}
-					const arr = res.data.filter((res) => res.pid === '')
-					arr.map((val) => {
-						val.items = []
-						res.data.map((res) => {
-							if (res.pid === val.parent_id) {
-								val.items.push(res)
-							}
-						})
-					})
+
 					this.setState({
-						list: arr,
+						list: mergefieldtojson(res.data, 'pid', 'parent_id'),
 						openurl
 					})
 				}
@@ -53,9 +46,10 @@ class menu extends Component {
 		this.getlist()
 	}
 	renderSubMenu = ({ url, icon, module_name, items }) => {
+		console.log('url: ', url)
 		return (
 			<Menu.SubMenu
-				key={url}
+				key={url + module_name}
 				title={
 					<span>
 						{/* {icon && <Icon type={icon} />} */}
@@ -74,8 +68,9 @@ class menu extends Component {
 		)
 	}
 	renderMenuItem = ({ url, icon, module_name }) => {
+		console.log('url: ', url)
 		return (
-			<Menu.Item key={url}>
+			<Menu.Item key={url + module_name}>
 				<Link to={url}>
 					{/* {icon && <Icon type={icon} />} */}
 					<span>{module_name}</span>

@@ -24,18 +24,18 @@ class AccessService extends Service {
   async findaccesslist() {
     // 自关联表查询
     const result = await this.ctx.model.Access.aggregate([{
-        $lookup: {
-          from: 'access',
-          localField: '_id',
-          foreignField: 'module_id',
-          as: 'items',
-        },
+      $lookup: {
+        from: 'access',
+        localField: '_id',
+        foreignField: 'module_id',
+        as: 'items',
       },
-      {
-        $match: {
-          module_id: 0,
-        },
-      }
+    },
+    {
+      $match: {
+        module_id: 0,
+      },
+    },
     ]);
     return result;
   }
@@ -43,7 +43,7 @@ class AccessService extends Service {
   // 增加
   async addaccess() {
     const module_name = this.ctx.request.body.module_name;
-    let module_id = this.ctx.request.body.module_id;
+    const module_id = this.ctx.request.body.module_id;
     if (module_id) {
       this.ctx.request.body.module_id = this.app.mongoose.Types.ObjectId(module_id);
     }
@@ -60,14 +60,14 @@ class AccessService extends Service {
   // 编辑
   async edit() {
     const _id = this.ctx.request.body.id;
-    let module_id = this.ctx.request.body.module_id;
+    const module_id = this.ctx.request.body.module_id;
     if (module_id) {
       this.ctx.request.body.module_id = this.app.mongoose.Types.ObjectId(module_id);
     }
     const result = await this.ctx.model.Access.updateOne({
       _id,
     }, Object.assign(this.ctx.request.body, {
-      add_time: new Date().getTime()
+      add_time: new Date().getTime(),
     }));
     return result;
   }

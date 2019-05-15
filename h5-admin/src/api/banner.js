@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 轮播图
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-14 16:17:34
+ * @LastEditTime: 2019-05-14 17:47:23
  */
 import request from '../tool/request'
 
@@ -19,7 +19,7 @@ export function editbanner(data) {
   // 修改banner
   return request({
     url: 'admin/editbanner',
-    method: 'post',
+    method: 'put',
     data
   })
 }
