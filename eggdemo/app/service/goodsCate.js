@@ -5,29 +5,7 @@ const Service = require('egg').Service;
 class GoodsCateService extends Service {
   async find() {
     try {
-      let result = [];
-      if (this.ctx.request.body._id) {
-        result = this.ctx.model.GoodsCate.find({
-          _id: this.app.mongoose.Types.ObjectId(this.ctx.request.body._id),
-        });
-      } else {
-        result = await this.ctx.model.GoodsCate.aggregate([
-          {
-            $lookup: {
-              from: 'goods_type',
-              localField: 'cate_id',
-              foreignField: '_id',
-              as: 'parent',
-            },
-          },
-          {
-            $match: {
-              // 字符串
-              cate_id: this.app.mongoose.Types.ObjectId(this.ctx.request.body.id),
-            },
-          },
-        ]);
-      }
+      const result = await this.ctx.model.GoodsCate.find(this.ctx.request.body);
       return result;
     } catch (error) {
       console.log('error: ', error);
@@ -44,6 +22,7 @@ class GoodsCateService extends Service {
       cate_id,
     });
     if (result.length === 0) {
+      this.ctx.request.body.cate_img = this.ctx.request.body.cate_img.fileList[0].response.data[0].saveDir;
       const goods = new this.ctx.model.GoodsCate(this.ctx.request.body);
       result = goods.save();
     }
@@ -51,16 +30,24 @@ class GoodsCateService extends Service {
   }
   // 编辑
   async editgoodsattribute() {
-    const _id = this.ctx.request.body.id;
-    const result = await this.ctx.model.GoodsCate.updateOne(
-      {
-        _id,
-      },
-      Object.assign(this.ctx.request.body, {
-        add_time: new Date().getTime(),
-      })
-    );
-    return result;
+    try {
+      const _id = this.ctx.request.body.id;
+      if (this.ctx.request.body.cate_img) {
+        this.ctx.request.body.cate_img = this.ctx.request.body.cate_img.fileList[0].response.data[0].saveDir;
+      }
+      const result = await this.ctx.model.GoodsCate.updateOne({
+          _id,
+        },
+        Object.assign(this.ctx.request.body, {
+          add_time: new Date().getTime(),
+        })
+      );
+      return result;
+    } catch (error) {
+      console.log('error: ', error);
+      return error;
+
+    }
   }
   async deletegoodsattribute() {
     const _id = this.ctx.request.body.id;

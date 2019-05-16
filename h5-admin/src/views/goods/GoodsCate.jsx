@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-16 09:43:52
+ * @LastEditTime: 2019-05-16 12:57:51
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -22,9 +22,7 @@ class role extends Component {
 		}
 	}
 	getlist() {
-		goodscatelist({
-			id: getUrlParam('id')
-		})
+		goodscatelist()
 			.then((res) => {
 				if (res.status === 1) {
 					this.setState({
@@ -37,7 +35,7 @@ class role extends Component {
 			})
 	}
 	componentDidMount() {
-		// this.getlist()
+		this.getlist()
 	}
 	deletegoodscate(id) {
 		deletegoodscate({
@@ -55,24 +53,11 @@ class role extends Component {
 	render() {
 		return (
 			<div>
-				<Link to={`/addgoodscate?id=${getUrlParam('id')}&type=0`}>
+				<Link to={`/addgoodscate`}>
 					<Button type="primary">增加商品分类</Button>
 				</Link>
 				<Table dataSource={this.state.data}>
-					<Column
-						title="商品类型"
-						dataIndex="parent"
-						key="cate_id"
-						render={(text, record) => <div type="primary">{text[0].title}</div>}
-					/>
-					<Column title="属性名称" dataIndex="title" key="title" />
-					<Column
-						title="属性值的录入方式"
-						dataIndex="attr_type"
-						key="attr_type"
-						render={(text, record) => <div type="primary">{typeattributeilter(text)}</div>}
-					/>
-					<Column title="可选值列表" dataIndex="attr_value" key="attr_value" />
+					<Column title="分类名称" dataIndex="title" key="title" />
 					<Column
 						title="时间"
 						key="add_time"

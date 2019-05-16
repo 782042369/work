@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 16:15:59
+ * @LastEditTime: 2019-05-16 13:19:53
  */
 import React, { Component } from 'react'
 import { addbanner, editbanner, bannerlist } from '../../api/banner'
@@ -69,6 +69,7 @@ class WrappedRegistrationForm extends Component {
 			})
 				.then((res) => {
 					let { title, description, sort, focus_img, type, link } = res.data[0]
+					type = Number(type)
 					this.props.form.setFieldsValue({
 						title,
 						description,

@@ -22,14 +22,12 @@ class UploadimgService extends Service {
           saveDir, // 数据库存放地址
         } = await this.service.tools.getuploadfile(stream.filename);
         const writestream = fs.createWriteStream(uploadDir);
-        console.log('writestream: ', writestream);
         await pump(stream, writestream);
         result.push({
           uploadDir,
           saveDir,
         });
       }
-      console.log('result: ', result);
       return result;
     } catch (error) {
       console.log('error: ', error);

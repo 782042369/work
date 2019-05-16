@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-15 13:47:37
+ * @LastEditTime: 2019-05-16 12:12:58
  */
 import React, { Component } from 'react'
 // import menus from '../router/routers'
@@ -46,7 +46,6 @@ class menu extends Component {
 		this.getlist()
 	}
 	renderSubMenu = ({ url, icon, module_name, items }) => {
-		console.log('url: ', url)
 		return (
 			<Menu.SubMenu
 				key={url + module_name}
@@ -68,7 +67,6 @@ class menu extends Component {
 		)
 	}
 	renderMenuItem = ({ url, icon, module_name }) => {
-		console.log('url: ', url)
 		return (
 			<Menu.Item key={url + module_name}>
 				<Link to={url}>

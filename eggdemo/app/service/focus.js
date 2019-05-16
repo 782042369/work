@@ -43,7 +43,13 @@ class FocusService extends Service {
 
   async addbanner() {
     try {
-      const { banner, focus_img, sort, title, type } = this.ctx.request.body;
+      const {
+        banner,
+        focus_img,
+        sort,
+        title,
+        type
+      } = this.ctx.request.body;
       banner.fileList.forEach(res => {
         const link = res.response.data[0].saveDir;
         const savearr = new this.ctx.model.Focus({
@@ -62,35 +68,19 @@ class FocusService extends Service {
   }
   async editbanner() {
     try {
-      const { banner, title, type, focus_img, sort, id } = this.ctx.request.body;
+      const {
+        banner,
+        id
+      } = this.ctx.request.body;
       if (banner) {
-        const link = banner.file.response.data[0].saveDir;
-        const result = await this.ctx.model.Focus.updateOne(
-          {
-            _id: id,
-          },
-          {
-            title,
-            type,
-            focus_img,
-            sort,
-            add_time: new Date().getTime(),
-            link,
-          }
-        );
-        return result;
+        this.ctx.request.body.link = banner.fileList[0].response.data[0].saveDir;
       }
-      const result = await this.ctx.model.Focus.updateOne(
-        {
-          _id: id,
+      const result = await this.ctx.model.Focus.updateOne({
+          _id: id
         },
-        {
-          title,
-          type,
-          focus_img,
-          sort,
+        Object.assign(this.ctx.request.body, {
           add_time: new Date().getTime(),
-        }
+        })
       );
       return result;
     } catch (error) {

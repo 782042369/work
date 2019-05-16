@@ -19,7 +19,7 @@ module.exports = app => {
       type: String,
     },
     pid: {
-      type: String,
+      type: Schema.Types.Mixed,
     },
     sub_title: { // seo
       type: String,
@@ -33,6 +33,9 @@ module.exports = app => {
     status: {
       type: Number,
       default: 1,
+    },
+    sort: {
+      type: Number,
     },
     add_time: {
       type: Number,

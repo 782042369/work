@@ -3,10 +3,10 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-16 11:47:49
+ * @LastEditTime: 2019-05-16 13:11:12
  */
 import React, { Component } from 'react'
-import { addgoodscate, editgoodscate, goodstypelist, goodscatelist } from '../../api/goods'
+import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
 import { Form, Input, Button, message, Select, Icon, Upload } from 'antd'
 const Option = Select.Option
@@ -17,7 +17,8 @@ class WrappedRegistrationForm extends Component {
 		super(props)
 		this.state = {
 			confirmDirty: false,
-			goodstype: [],
+			goodscatetype: [],
+			editimgsrc: '',
 			radiovalue: null,
 			distextarea: true // 可选列表禁用
 		}
@@ -57,40 +58,40 @@ class WrappedRegistrationForm extends Component {
 		})
 	}
 	// 获取类型
-	goodstypelist() {
-		goodstypelist()
+	goodscatelist(arr) {
+		goodscatelist(arr)
 			.then((res) => {
-				console.log('res: ', res)
-				this.setState({
-					goodstype: res.data
-				})
-				if (getUrlParam('type') !== '1') {
-					this.props.form.setFieldsValue({
-						cate_id: getUrlParam('id')
+				if (arr.pid === 0) {
+					this.setState({
+						goodscatetype: res.data
 					})
-				}
-			})
-			.catch((err) => {
-				console.log('err: ', err)
-			})
-	}
-	goodscatelist() {
-		goodscatelist({
-			_id: getUrlParam('id')
-		})
-			.then((res) => {
-				console.log('res.data[0].attr_type: ', res.data[0].attr_type)
-				this.props.form.setFieldsValue({
-					cate_id: res.data[0].cate_id,
-					title: res.data[0].title,
-					attr_type: Number(res.data[0].attr_type)
-				})
-				if (Number(res.data[0].attr_type) === 3) {
+				} else {
+					console.log('res.data[0].title: ', res.data[0].title)
+					const {
+						cate_img,
+						description,
+						filter_attr,
+						keywords,
+						link,
+						pid,
+						sub_title,
+						template,
+						title,
+						sort
+					} = res.data[0]
 					this.props.form.setFieldsValue({
-						attr_value: res.data[0].attr_value
+						description,
+						filter_attr,
+						keywords,
+						link,
+						pid,
+						sub_title,
+						template,
+						title,
+						sort
 					})
 					this.setState({
-						distextarea: false
+						editimgsrc: cate_img
 					})
 				}
 			})
@@ -100,19 +101,23 @@ class WrappedRegistrationForm extends Component {
 	}
 
 	renderOptions = () => {
-		return this.state.goodstype.map((element) => (
+		return this.state.goodscatetype.map((element) => (
 			<Option key={element._id} value={element._id}>
 				{element.title}
 			</Option>
 		))
 	}
 	componentDidMount() {
-		this.goodstypelist()
-		if (getUrlParam('type') === '1') {
+		this.goodscatelist({
+			pid: 0
+		})
+		if (getUrlParam('id')) {
 			this.setState({
 				title: '修改'
 			})
-			this.goodscatelist()
+			this.goodscatelist({
+				_id: getUrlParam('id')
+			})
 		} else {
 			this.setState({
 				title: '增加'
@@ -142,6 +147,22 @@ class WrappedRegistrationForm extends Component {
 					offset: 8
 				}
 			}
+		}
+		let editimg = ''
+		let editrequired = ''
+		if (this.state.editimgsrc !== '') {
+			editimg = (
+				<Form.Item label="原图">
+					<img
+						alt=""
+						style={{ maxWidth: '10vw', maxHeight: '10vw' }}
+						src={`http://127.0.0.1:7001${this.state.editimgsrc}`}
+					/>
+				</Form.Item>
+			)
+			editrequired = false
+		} else {
+			editrequired = true
 		}
 		const props = {
 			name: 'file',
@@ -179,13 +200,22 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your title!'
 							}
 						]
-					})(<Select>{this.renderOptions()}</Select>)}
+					})(
+						<Select>
+							<Option key={0} value={0}>
+								顶级模块
+							</Option>
+							{this.renderOptions()}
+						</Select>
+					)}
 				</Form.Item>
+				{editimg}
+
 				<Form.Item label="分类图片">
 					{getFieldDecorator('cate_img', {
 						rules: [
 							{
-								required: true,
+								required: editrequired,
 								message: 'Please input your description!'
 							}
 						]
@@ -210,7 +240,14 @@ class WrappedRegistrationForm extends Component {
 								message: 'Please input your title!'
 							}
 						]
-					})(<Select>{this.renderOptions()}</Select>)}
+					})(
+						<Select>
+							<Option key={0} value={0}>
+								顶级模块
+							</Option>
+							{this.renderOptions()}
+						</Select>
+					)}
 				</Form.Item>
 				<Form.Item label="跳转地址">
 					{getFieldDecorator('link', {
