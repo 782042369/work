@@ -4,16 +4,7 @@ const Service = require('egg').Service;
 class GoodsService extends Service {
   async find() {
     try {
-      const _id = this.ctx.request.body.id;
-      let arr = {};
-      if (_id) {
-        arr = {
-          _id,
-        };
-      } else {
-        arr = {};
-      }
-      const result = await this.ctx.model.GoodsType.find(arr);
+      const result = await this.ctx.model.GoodsType.find(this.ctx.request.body);
       return result;
     } catch (error) {
       console.log('error: ', error);

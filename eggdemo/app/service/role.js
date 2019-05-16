@@ -3,16 +3,7 @@ const Service = require('egg').Service;
 class RoleService extends Service {
   // 查找
   async find() {
-    const _id = this.ctx.request.body.id;
-    let arr = {};
-    if (_id) {
-      arr = {
-        _id,
-      };
-    } else {
-      arr = {};
-    }
-    const result = await this.ctx.model.Role.find(arr);
+    const result = await this.ctx.model.Role.find(this.ctx.request.body);
     return result;
   }
   // 增加

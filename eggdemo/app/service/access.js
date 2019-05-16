@@ -4,38 +4,24 @@ const Service = require('egg').Service;
 class AccessService extends Service {
   // 查找
   async find() {
-    const _id = this.ctx.request.body.id;
-    const module_id = this.ctx.request.body.module_id;
-    let arr = {};
-    if (_id) {
-      arr = {
-        _id,
-      };
-    } else if (module_id !== undefined) {
-      arr = {
-        module_id,
-      };
-    } else {
-      arr = {};
-    }
-    const result = await this.ctx.model.Access.find(arr);
+    const result = await this.ctx.model.Access.find(this.ctx.request.body);
     return result;
   }
   async findaccesslist() {
     // 自关联表查询
     const result = await this.ctx.model.Access.aggregate([{
-      $lookup: {
-        from: 'access',
-        localField: '_id',
-        foreignField: 'module_id',
-        as: 'items',
+        $lookup: {
+          from: 'access',
+          localField: '_id',
+          foreignField: 'module_id',
+          as: 'items',
+        },
       },
-    },
-    {
-      $match: {
-        module_id: 0,
+      {
+        $match: {
+          module_id: 0,
+        },
       },
-    },
     ]);
     return result;
   }

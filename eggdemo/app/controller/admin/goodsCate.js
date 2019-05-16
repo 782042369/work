@@ -6,7 +6,8 @@ class GoodsController extends BaseController {
 	async index() {
 		try {
 			const result = await this.service.goodsCate.find()
-			this.success(1, '商品分类列表读取成功', result)
+			const data = await this.sortdata(result, 'sort');
+			this.success(1, '商品分类列表读取成功', data)
 		} catch (error) {
 			this.error(0, '商品分类列表读取失败', error)
 		}

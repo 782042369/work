@@ -5,16 +5,7 @@ const Service = require('egg').Service;
 class FocusService extends Service {
   async find() {
     try {
-      const _id = this.ctx.request.body.id;
-      let arr = {};
-      if (_id) {
-        arr = {
-          _id,
-        };
-      } else {
-        arr = {};
-      }
-      const result = await this.ctx.model.Focus.find(arr);
+      const result = await this.ctx.model.Focus.find(this.ctx.request.body);
       return result;
     } catch (error) {
       console.log('error: ', error);

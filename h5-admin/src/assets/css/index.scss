@@ -32,3 +32,13 @@
     margin: 20px 0;
   }
 }
+
+.App-contentMain {
+  overflow: auto;
+}
+
+.ant-form {
+  .ant-form-item:nth-last-child(1) {
+    margin-bottom: 0;
+  }
+}

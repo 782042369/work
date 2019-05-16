@@ -14,15 +14,18 @@ class GoodsCateService extends Service {
   }
   // 增加
   async addgoodsattribute() {
+    const {
+      title,
+      pid
+    } = this.ctx.request.body
     const title = this.ctx.request.body.title;
-    const cate_id = this.ctx.request.body.cate_id;
     let result = '';
     result = await this.ctx.model.GoodsCate.find({
       title,
-      cate_id,
     });
     if (result.length === 0) {
       this.ctx.request.body.cate_img = this.ctx.request.body.cate_img.fileList[0].response.data[0].saveDir;
+      this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid)
       const goods = new this.ctx.model.GoodsCate(this.ctx.request.body);
       result = goods.save();
     }
@@ -31,12 +34,18 @@ class GoodsCateService extends Service {
   // 编辑
   async editgoodsattribute() {
     try {
-      const _id = this.ctx.request.body.id;
+      const {
+        id,
+        pid
+      } = this.ctx.request.body
       if (this.ctx.request.body.cate_img) {
         this.ctx.request.body.cate_img = this.ctx.request.body.cate_img.fileList[0].response.data[0].saveDir;
       }
+      if (pid !== 0) {
+        this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid)
+      }
       const result = await this.ctx.model.GoodsCate.updateOne({
-          _id,
+          _id: id,
         },
         Object.assign(this.ctx.request.body, {
           add_time: new Date().getTime(),
