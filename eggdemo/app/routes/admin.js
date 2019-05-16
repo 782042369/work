@@ -9,6 +9,11 @@ module.exports = app => {
     controller,
   } = app;
   /**
+   * 通用方法
+   */
+  router.post('/admin/uploadimg', controller.admin.uploadimg.uploadimg);
+
+  /**
    * 登录
    */
   router.post('/dologin', controller.admin.login.index);
@@ -43,7 +48,6 @@ module.exports = app => {
   /**
    * 轮播图管理
    */
-  router.post('/admin/uploadimg', controller.admin.focus.uploadimg);
   router.post('/admin/addbanner', controller.admin.focus.addbanner);
   router.post('/admin/bannerlist', controller.admin.focus.bannerlist);
   router.put('/admin/editbanner', controller.admin.focus.editbanner);

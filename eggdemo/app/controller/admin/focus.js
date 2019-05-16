@@ -11,14 +11,6 @@ class FocusController extends BaseController {
       this.error(0, '图片列表读取失败', error);
     }
   }
-  async uploadimg() {
-    try {
-      const result = await this.service.focus.uploadimg();
-      this.success(1, '图片上传成功', result);
-    } catch (error) {
-      this.error(0, '管图片上传失败', error);
-    }
-  }
   async addbanner() {
     try {
       const result = await this.service.focus.addbanner();

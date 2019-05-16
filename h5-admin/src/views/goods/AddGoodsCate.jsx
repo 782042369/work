@@ -3,15 +3,15 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 18:21:08
+ * @LastEditTime: 2019-05-16 11:47:49
  */
 import React, { Component } from 'react'
 import { addgoodscate, editgoodscate, goodstypelist, goodscatelist } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message, Select, Radio } from 'antd'
+import { Form, Input, Button, message, Select, Icon, Upload } from 'antd'
 const Option = Select.Option
-const RadioGroup = Radio.Group
 const { TextArea } = Input
+const Dragger = Upload.Dragger
 class WrappedRegistrationForm extends Component {
 	constructor(props) {
 		super(props)
@@ -26,6 +26,7 @@ class WrappedRegistrationForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
+			console.log('values: ', values)
 			if (!err) {
 				if (getUrlParam('type') === '1') {
 					let arr = { id: getUrlParam('id') }
@@ -118,12 +119,6 @@ class WrappedRegistrationForm extends Component {
 			})
 		}
 	}
-	radiochange = (e) => {
-		// 单选框
-		this.setState({
-			distextarea: e.target.value !== 3 ? true : false
-		})
-	}
 	render() {
 		const { getFieldDecorator } = this.props.form
 		const formItemLayout = {
@@ -148,10 +143,25 @@ class WrappedRegistrationForm extends Component {
 				}
 			}
 		}
+		const props = {
+			name: 'file',
+			action: '/admin/uploadimg',
+			onChange(info) {
+				const status = info.file.status
+				if (status !== 'uploading') {
+					console.log(info.file, info.fileList)
+				}
+				if (status === 'done') {
+					message.success(`${info.file.name} file uploaded successfully.`)
+				} else if (status === 'error') {
+					message.error(`${info.file.name} file upload failed.`)
+				}
+			}
+		}
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
 				<h1>{this.state.title}商品属性</h1>
-				<Form.Item label="属性名称">
+				<Form.Item label="分类名称">
 					{getFieldDecorator('title', {
 						rules: [
 							{
@@ -161,41 +171,106 @@ class WrappedRegistrationForm extends Component {
 						]
 					})(<Input placeholder="请输入" />)}
 				</Form.Item>
-				<Form.Item label="所属类型">
-					{getFieldDecorator('cate_id', {
-						rules: [
-							{
-								required: true,
-								message: 'Please input your description!'
-							}
-						]
-					})(<Select>{this.renderOptions()}</Select>)}
-				</Form.Item>
-				<Form.Item label="录入方式">
-					{getFieldDecorator('attr_type', {
+				<Form.Item label="上级分类">
+					{getFieldDecorator('pid', {
 						rules: [
 							{
 								required: true,
 								message: 'Please input your title!'
 							}
 						]
-					})(
-						<RadioGroup name="radiogroup" onChange={this.radiochange} value={this.state.radiovalue}>
-							<Radio value={1}>单行录入</Radio>
-							<Radio value={2}>多行录入</Radio>
-							<Radio value={3}>从下面选择录入</Radio>
-						</RadioGroup>
-					)}
+					})(<Select>{this.renderOptions()}</Select>)}
 				</Form.Item>
-				<Form.Item label="可选值列表">
-					{getFieldDecorator('attr_value', {
+				<Form.Item label="分类图片">
+					{getFieldDecorator('cate_img', {
 						rules: [
 							{
-								required: !this.state.distextarea,
+								required: true,
 								message: 'Please input your description!'
 							}
 						]
-					})(<TextArea placeholder="请输入" disabled={this.state.distextarea} />)}
+					})(
+						<Dragger {...props}>
+							<p className="ant-upload-drag-icon">
+								<Icon type="inbox" />
+							</p>
+							<p className="ant-upload-text">Click or drag file to this area to upload</p>
+							<p className="ant-upload-hint">
+								Support for a single or bulk upload. Strictly prohibit from uploading company data or
+								other band files
+							</p>
+						</Dragger>
+					)}
+				</Form.Item>
+				<Form.Item label="筛选属性">
+					{getFieldDecorator('filter_attr', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your title!'
+							}
+						]
+					})(<Select>{this.renderOptions()}</Select>)}
+				</Form.Item>
+				<Form.Item label="跳转地址">
+					{getFieldDecorator('link', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<Input placeholder="请输入" />)}
+				</Form.Item>
+				<Form.Item label="分类模版">
+					{getFieldDecorator('template', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<Input placeholder="空为默认模版" />)}
+				</Form.Item>
+				<Form.Item label="seo标题">
+					{getFieldDecorator('sub_title', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<TextArea placeholder="请输入" />)}
+				</Form.Item>
+				<Form.Item label="seo描述">
+					{getFieldDecorator('description', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<TextArea placeholder="请输入" />)}
+				</Form.Item>
+				<Form.Item label="seo关键字">
+					{getFieldDecorator('keywords', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<TextArea placeholder="请输入" />)}
+				</Form.Item>
+				<Form.Item label="排序 ">
+					{getFieldDecorator('sort', {
+						rules: [
+							{
+								required: true,
+								message: 'Please input your description!'
+							}
+						]
+					})(<Input placeholder="请输入" />)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">

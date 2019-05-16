@@ -37,6 +37,7 @@ class ToolsService extends Service {
         saveDir: uploadDir.slice(3).replace(/\\/g, '/'),
       };
     } catch (error) {
+      console.log('error: ', error);
       return error;
     }
   }

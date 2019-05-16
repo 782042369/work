@@ -24,18 +24,18 @@ class AccessService extends Service {
   async findaccesslist() {
     // 自关联表查询
     const result = await this.ctx.model.Access.aggregate([{
-        $lookup: {
-          from: 'access',
-          localField: '_id',
-          foreignField: 'module_id',
-          as: 'items',
-        },
+      $lookup: {
+        from: 'access',
+        localField: '_id',
+        foreignField: 'module_id',
+        as: 'items',
       },
-      {
-        $match: {
-          module_id: 0,
-        },
-      }
+    },
+    {
+      $match: {
+        module_id: 0,
+      },
+    },
     ]);
     return result;
   }

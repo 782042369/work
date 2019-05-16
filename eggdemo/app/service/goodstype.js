@@ -16,6 +16,7 @@ class GoodsService extends Service {
       const result = await this.ctx.model.GoodsType.find(arr);
       return result;
     } catch (error) {
+      console.log('error: ', error);
       return error;
     }
   }
@@ -35,11 +36,14 @@ class GoodsService extends Service {
   // 编辑
   async editgoods() {
     const _id = this.ctx.request.body.id;
-    const result = await this.ctx.model.GoodsType.updateOne({
-      _id,
-    }, Object.assign(this.ctx.request.body, {
-      add_time: new Date().getTime(),
-    }));
+    const result = await this.ctx.model.GoodsType.updateOne(
+      {
+        _id,
+      },
+      Object.assign(this.ctx.request.body, {
+        add_time: new Date().getTime(),
+      })
+    );
     return result;
   }
   async deletegoods() {
