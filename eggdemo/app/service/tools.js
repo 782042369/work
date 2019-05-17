@@ -42,7 +42,7 @@ class ToolsService extends Service {
       return error;
     }
   }
-  // 缩略图 
+  // 缩略图
   async jimp(uploadDir, size) {
     Jimp.read(uploadDir)
       .then(lenna => {

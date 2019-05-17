@@ -73,4 +73,11 @@ module.exports = app => {
   router.post('/admin/addgoodscate', controller.admin.goodsCate.addgoodscate);
   router.put('/admin/editgoodscate', controller.admin.goodsCate.editgoodscate);
   router.delete('/admin/deletegoodscate', controller.admin.goodsCate.deletegoodscate);
+  /**
+   * 商品颜色
+   */
+  router.post('/admin/goodscolorlist', controller.admin.goodsColor.index);
+  router.post('/admin/addgoodscolor', controller.admin.goodsColor.addgoodscolor);
+  router.put('/admin/editgoodscolor', controller.admin.goodsColor.editgoodscolor);
+  router.delete('/admin/deletegoodscolor', controller.admin.goodsColor.deletegoodscolor);
 };

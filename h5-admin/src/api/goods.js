@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-15 18:21:35
+ * @LastEditTime: 2019-05-17 15:39:08
  */
 
 import request from '../tool/request'
@@ -118,6 +118,16 @@ export function editgoodscate(data) {
 	return request({
 		url: 'admin/editgoodscate',
 		method: 'put',
+		data
+	})
+}
+
+// 商品颜色
+export function goodscolorlist(data) {
+	// 修改
+	return request({
+		url: 'admin/goodscolorlist',
+		method: 'post',
 		data
 	})
 }

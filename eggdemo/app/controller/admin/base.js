@@ -4,9 +4,9 @@ const Controller = require('egg').Controller;
 class BaseController extends Controller {
   /**
    *
-   * @param {*} status
-   * @param {*} message
-   * @param {*} data
+   * @param {*} status 状态码
+   * @param {*} message 提示信息
+   * @param {*} data 数据
    */
   async success(status, message, data = []) {
     this.ctx.body = {
@@ -17,9 +17,9 @@ class BaseController extends Controller {
   }
   /**
    *
-   * @param {*} status
-   * @param {*} message
-   * @param {*} data
+   * @param {*} status 状态码
+   * @param {*} message 提示信息
+   * @param {*} data 数据
    */
   async error(status, message, data = []) {
     console.log('——————————————出错了——————————————');

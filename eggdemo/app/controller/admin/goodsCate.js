@@ -14,7 +14,7 @@ class GoodsController extends BaseController {
   }
   async addgoodscate() {
     try {
-      const result = await this.service.goodsCate.addgoodsattribute();
+      const result = await this.service.goodsCate.addgoodscate();
       if (result.length > 0) {
         this.success(0, '商品分类已经存在', result);
       } else {
@@ -26,7 +26,7 @@ class GoodsController extends BaseController {
   }
   async editgoodscate() {
     try {
-      const result = await this.service.goodsCate.editgoodsattribute();
+      const result = await this.service.goodsCate.editgoodscate();
       this.success(1, '商品分类修改成功', result);
     } catch (error) {
       this.error(0, '商品分类修改失败', error);
@@ -34,7 +34,7 @@ class GoodsController extends BaseController {
   }
   async deletegoodscate() {
     try {
-      const result = await this.service.goodsCate.deletegoodsattribute();
+      const result = await this.service.goodsCate.deletegoodscate();
       this.success(1, '商品分类删除成功', result);
     } catch (error) {
       this.error(0, '商品分类删除失败', error);

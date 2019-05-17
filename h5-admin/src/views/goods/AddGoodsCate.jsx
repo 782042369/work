@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-16 19:49:55
+ * @LastEditTime: 2019-05-17 15:43:04
  */
 import React, { Component } from 'react'
 import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
@@ -316,5 +316,5 @@ class WrappedRegistrationForm extends Component {
 		)
 	}
 }
-const goods = Form.create({ name: 'register' })(WrappedRegistrationForm)
-export default goods
+const goodscate = Form.create({ name: 'register' })(WrappedRegistrationForm)
+export default goodscate
