@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-16 12:12:58
+ * @LastEditTime: 2019-05-17 12:06:25
  */
 import React, { Component } from 'react'
 // import menus from '../router/routers'
@@ -11,6 +11,7 @@ import { Menu, Icon } from 'antd'
 import { authlist } from '../api/role'
 import { Link } from 'react-router-dom'
 import mergefieldtojson from '../tool/mergefieldtojson'
+import { withRouter } from 'react-router-dom'
 class menu extends Component {
 	constructor(props) {
 		super(props)
@@ -44,14 +45,16 @@ class menu extends Component {
 	}
 	componentDidMount() {
 		this.getlist()
+		console.log(this.props.path)
 	}
-	renderSubMenu = ({ url, icon, module_name, items }) => {
+	renderSubMenu = ({ url, module_name, items }) => {
+		console.log('url + module_name: ', url + module_name)
 		return (
 			<Menu.SubMenu
+				selectedKeys={[ 'goodslist' ]}
 				key={url + module_name}
 				title={
 					<span>
-						{/* {icon && <Icon type={icon} />} */}
 						<Icon type="user" />
 						<span>{module_name}</span>
 					</span>
@@ -66,11 +69,11 @@ class menu extends Component {
 			</Menu.SubMenu>
 		)
 	}
-	renderMenuItem = ({ url, icon, module_name }) => {
+	renderMenuItem = ({ url, module_name }) => {
+		console.log('url: ', url)
 		return (
-			<Menu.Item key={url + module_name}>
+			<Menu.Item key={url} selectedKeys={[ 'goodslist' ]}>
 				<Link to={url}>
-					{/* {icon && <Icon type={icon} />} */}
 					<span>{module_name}</span>
 				</Link>
 			</Menu.Item>
@@ -78,7 +81,7 @@ class menu extends Component {
 	}
 	render() {
 		return (
-			<Menu defaultSelectedKeys={[ '/noaccess' ]} defaultOpenKeys={[ '/noaccess' ]} mode="inline">
+			<Menu mode="inline" defaultOpenKeys={[ '商品管理' ]}>
 				{this.state.list.map((item) => {
 					return item.items && item.items.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
 				})}

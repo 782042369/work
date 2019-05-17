@@ -34,7 +34,7 @@ module.exports = appInfo => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: [ 'http://127.0.0.1:3000' ],
+    domainWhiteList: ['http://127.0.0.1:3000'],
   };
   config.cors = {
     origin: 'http://127.0.0.1:3000',
@@ -43,6 +43,10 @@ module.exports = appInfo => {
   };
   config.compress = {
     threshold: 1024, // body大于配置的threshold才会压缩
+  };
+  config.multipart = {
+    files: 50, // body大于配置的threshold才会压缩
+    fields: 50, // body大于配置的threshold才会压缩
   };
   // config.mysql = {
   //   // database configuration

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-09 12:53:50
+ * @LastEditTime: 2019-05-17 12:20:11
  */
 import React, { Component } from 'react'
 import { addaccess, editaccess, accesslist } from '../../api/access'
@@ -72,7 +72,7 @@ class WrappedRegistrationForm extends Component {
 				title: '修改'
 			})
 			accesslist({
-				id: getUrlParam('id')
+				_id: getUrlParam('id')
 			})
 				.then((res) => {
 					let { action_name, description, module_id, module_name, sort, status, type, url } = res.data[0]

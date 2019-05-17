@@ -3,6 +3,8 @@
 const Service = require('egg').Service;
 const fs = require('fs');
 const pump = require('pump');
+
+
 class UploadimgService extends Service {
   async uploadimg() {
     try {

@@ -13,8 +13,10 @@ const Auth = AsyncComponent(() => import(/* webpackChunkName: "Auth" */ '../view
 const NoAccess = AsyncComponent(() => import(/* webpackChunkName: "NoAccess" */ '../views/auth/noaccess'))
 const Banner = AsyncComponent(() => import(/* webpackChunkName: "Banner" */ '../views/banner'))
 const AddBanner = AsyncComponent(() => import(/* webpackChunkName: "AddBanner" */ '../views/banner/AddBanner'))
-const Goodslist = AsyncComponent(() => import(/* webpackChunkName: "Goodslist" */ '../views/goods'))
-const AddGoods = AsyncComponent(() => import(/* webpackChunkName: "AddGoods" */ '../views/goods/AddGoods'))
+const GoodsTypeList = AsyncComponent(() =>
+	import(/* webpackChunkName: "GoodsTypeList" */ '../views/goods/GoodsTypeList')
+)
+const AddGoodsType = AsyncComponent(() => import(/* webpackChunkName: "GoodsTypeList" */ '../views/goods/AddGoodsType'))
 const GoodsTypeAttribute = AsyncComponent(() =>
 	import(/* webpackChunkName: "GoodsTypeAttribute" */ '../views/goods/GoodsTypeAttribute')
 )
@@ -23,6 +25,7 @@ const AddGoodsTypeAttribute = AsyncComponent(() =>
 )
 const GoodsCate = AsyncComponent(() => import(/* webpackChunkName: "GoodsCate" */ '../views/goods/GoodsCate'))
 const AddGoodsCate = AsyncComponent(() => import(/* webpackChunkName: "AddGoodsCate" */ '../views/goods/AddGoodsCate'))
+const Goods = AsyncComponent(() => import(/* webpackChunkName: "Goods" */ '../views/goods'))
 
 class ContentMain extends Component {
 	render() {
@@ -39,12 +42,13 @@ class ContentMain extends Component {
 					<PrivateRoute exact path="/noaccess" component={NoAccess} />
 					<PrivateRoute exact path="/banner" component={Banner} />
 					<PrivateRoute exact path="/addbanner" component={AddBanner} />
-					<PrivateRoute exact path="/goodslist" component={Goodslist} />
-					<PrivateRoute exact path="/addgoods" component={AddGoods} />
+					<PrivateRoute exact path="/goodstypelist" component={GoodsTypeList} />
+					<PrivateRoute exact path="/addgoodstype" component={AddGoodsType} />
 					<PrivateRoute exact path="/goodstypeattribute" component={GoodsTypeAttribute} />
 					<PrivateRoute exact path="/addgoodstypeattribute" component={AddGoodsTypeAttribute} />
 					<PrivateRoute exact path="/addgoodscate" component={AddGoodsCate} />
 					<PrivateRoute exact path="/goodscate" component={GoodsCate} />
+					<PrivateRoute exact path="/goods" component={Goods} />
 				</Switch>
 			</div>
 		)

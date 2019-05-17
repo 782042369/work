@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-16 13:11:12
+ * @LastEditTime: 2019-05-16 19:49:55
  */
 import React, { Component } from 'react'
 import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
@@ -27,9 +27,8 @@ class WrappedRegistrationForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
-			console.log('values: ', values)
 			if (!err) {
-				if (getUrlParam('type') === '1') {
+				if (getUrlParam('id')) {
 					let arr = { id: getUrlParam('id') }
 					editgoodscate(Object.assign(values, arr))
 						.then((res) => {
@@ -66,7 +65,6 @@ class WrappedRegistrationForm extends Component {
 						goodscatetype: res.data
 					})
 				} else {
-					console.log('res.data[0].title: ', res.data[0].title)
 					const {
 						cate_img,
 						description,

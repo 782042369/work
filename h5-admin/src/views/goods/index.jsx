@@ -1,100 +1,34 @@
-/*
- * @Author: 杨宏旋
- * @LastEditors: 杨宏旋
- * @Description: 角色
- * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 18:24:38
- */
 import React, { Component } from 'react'
-import { Table, Divider, Button, message } from 'antd'
-import { goodstypelist, deletegoodstype } from '../../api/goods'
-import datefilter from '../../tool/datefilter'
-import { statusfilter } from '../../tool/statusfilter'
-import { Link } from 'react-router-dom'
-
-const { Column } = Table
-class role extends Component {
+import { Tabs } from 'antd'
+const TabPane = Tabs.TabPane
+class index extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			data: []
-		}
+		this.state = {}
 	}
-	getlist() {
-		goodstypelist()
-			.then((res) => {
-				if (res.status === 1) {
-					this.setState({
-						data: res.data
-					})
-				}
-			})
-			.catch((err) => {
-				console.log('err: ', err)
-			})
-	}
-	componentDidMount() {
-		this.getlist()
-	}
-	deletegoodstype(id) {
-		deletegoodstype({
-			id
-		})
-			.then((res) => {
-				console.log('res: ', res)
-				this.getlist()
-				message.success(res.message)
-			})
-			.catch((err) => {
-				console.log('err: ', err)
-			})
+	callback(key) {
+		console.log(key)
 	}
 	render() {
 		return (
-			<div>
-				<Link to={'/addgoods'}>
-					<Button type="primary">增加商品类型</Button>
-				</Link>
-				<Table dataSource={this.state.data}>
-					<Column title="名称" dataIndex="title" key="title" />
-					<Column
-						title="状态"
-						dataIndex="status"
-						key="status"
-						render={(text, record) => <div type="primary">{statusfilter(text)}</div>}
-					/>
-
-					<Column title="描述" dataIndex="description" key="description" />
-					<Column
-						title="时间"
-						key="add_time"
-						dataIndex="add_time"
-						render={(text, record) => <div type="primary">{datefilter(text)}</div>}
-					/>
-					<Column
-						title="操作"
-						key="_id"
-						dataIndex="_id"
-						render={(text, record) => (
-							<span>
-								<Link to={'/goodstypeattribute?id=' + text}>
-									<Button type="primary">属性列表</Button>
-								</Link>
-								<Divider type="vertical" />
-								<Link to={'/addgoods?id=' + text}>
-									<Button type="primary">修改</Button>
-								</Link>
-								<Divider type="vertical" />
-								<Button type="danger" onClick={this.deletegoodstype.bind(this, text)}>
-									删除
-								</Button>
-							</span>
-						)}
-					/>
-				</Table>
-			</div>
+			<Tabs onChange={this.callback} type="card">
+				<TabPane tab="通用信息" key="1">
+					Content of Tab Pane 1
+				</TabPane>
+				<TabPane tab="详细描述" key="2">
+					Content of Tab Pane 2
+				</TabPane>
+				<TabPane tab="商品属性" key="3">
+					Content of Tab Pane 3
+				</TabPane>
+				<TabPane tab="规格包装" key="4">
+					Content of Tab Pane 4
+				</TabPane>
+				<TabPane tab="商品相册" key="5">
+					Content of Tab Pane 5
+				</TabPane>
+			</Tabs>
 		)
 	}
 }
-
-export default role
+export default index

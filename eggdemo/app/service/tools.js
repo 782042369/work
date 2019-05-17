@@ -4,6 +4,7 @@ const Service = require('egg').Service;
 const svgCaptcha = require('svg-captcha');
 const path = require('path');
 const mkdirp = require('mkdirp');
+const Jimp = require('jimp');
 const sd = require('silly-datetime');
 class ToolsService extends Service {
   async captcha() {
@@ -25,7 +26,7 @@ class ToolsService extends Service {
     }
     return arr;
   }
-  // 数组扁平化
+  // 图片上传
   async getuploadfile(filename) {
     try {
       const day = sd.format(new Date(), 'YYYYMMDD');
@@ -40,6 +41,20 @@ class ToolsService extends Service {
       console.log('error: ', error);
       return error;
     }
+  }
+  // 缩略图 
+  async jimp(uploadDir, size) {
+    Jimp.read(uploadDir)
+      .then(lenna => {
+        return lenna
+          .resize(size, size) // resize
+          .quality(80) // set JPEG quality
+          .write(`${uploadDir}_${size}x${size}${path.extname(uploadDir)}`); // save
+      })
+      .catch(err => {
+        console.error(err);
+        return err;
+      });
   }
 }
 

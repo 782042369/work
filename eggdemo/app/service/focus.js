@@ -39,7 +39,7 @@ class FocusService extends Service {
         focus_img,
         sort,
         title,
-        type
+        type,
       } = this.ctx.request.body;
       banner.fileList.forEach(res => {
         const link = res.response.data[0].saveDir;
@@ -61,17 +61,17 @@ class FocusService extends Service {
     try {
       const {
         banner,
-        id
+        id,
       } = this.ctx.request.body;
       if (banner) {
         this.ctx.request.body.link = banner.fileList[0].response.data[0].saveDir;
       }
       const result = await this.ctx.model.Focus.updateOne({
-          _id: id
-        },
-        Object.assign(this.ctx.request.body, {
-          add_time: new Date().getTime(),
-        })
+        _id: id,
+      },
+      Object.assign(this.ctx.request.body, {
+        add_time: new Date().getTime(),
+      })
       );
       return result;
     } catch (error) {

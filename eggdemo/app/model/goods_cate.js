@@ -9,6 +9,9 @@ module.exports = app => {
     cate_img: { // 分类图片
       type: String,
     },
+    jipmimgpath: { // 缩略图
+      type: String,
+    },
     filter_attr: { // 筛选id
       type: String,
     },
