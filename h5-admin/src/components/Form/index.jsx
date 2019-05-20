@@ -1,11 +1,11 @@
 import React from 'react'
-import { Select, Form, Radio, Checkbox, Button, Input, DatePicker } from 'antd'
+import { Select, Form, Radio, Checkbox, Button, Input, DatePicker, Upload, Icon, message } from 'antd'
 import OptionList from './OptionList'
-import Uploadimg from './upload'
 import './index.scss'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
+const Dragger = Upload.Dragger
 const FormItem = Form.Item
 const { RangePicker } = DatePicker
 class BaseForm extends React.Component {
@@ -13,6 +13,7 @@ class BaseForm extends React.Component {
 		e.preventDefault()
 		const { getFieldsValue } = this.props.form
 		this.props.form.validateFieldsAndScroll((err, values) => {
+			console.log('values: ', values)
 			if (!err) {
 				let date1 = getFieldsValue()
 				this.props.formSubmit(date1) //最终输出
@@ -68,6 +69,22 @@ class BaseForm extends React.Component {
 				} else if (item.type === 'date') {
 					inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
 				} else if (item.type === 'upload') {
+					const props = {
+						name: 'file',
+						action: '/admin/uploadimg',
+						multiple: true,
+						headers: {
+							authorization: 'authorization-text'
+						},
+						onChange(info) {
+							const status = info.file.status
+							if (status === 'done') {
+								message.success(`${info.file.name} file uploaded successfully.`)
+							} else if (status === 'error') {
+								message.error(`${info.file.name} file upload failed.`)
+							}
+						}
+					}
 					if (item.setValue) {
 						let editimg = (
 							<Form.Item label="原图" key="editimg">
@@ -83,7 +100,15 @@ class BaseForm extends React.Component {
 					} else {
 						required = true
 					}
-					inputitem = <Uploadimg />
+					inputitem = (
+						<Dragger {...props}>
+							<p className="ant-upload-drag-icon">
+								<Icon type="inbox" />
+							</p>
+							<p className="ant-upload-text">点击上传</p>
+							<p className="ant-upload-hint">请选择你需要上传的图片</p>
+						</Dragger>
+					)
 				}
 				const fromitem = (
 					<FormItem label={lable} key={field}>
