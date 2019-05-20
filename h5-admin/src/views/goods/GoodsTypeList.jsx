@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-17 14:32:28
+ * @LastEditTime: 2019-05-20 20:22:04
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -81,7 +81,7 @@ class role extends Component {
 									<Button type="primary">属性列表</Button>
 								</Link>
 								<Divider type="vertical" />
-								<Link to={'/addgoods?id=' + text}>
+								<Link to={'/addgoodstype?id=' + text}>
 									<Button type="primary">修改</Button>
 								</Link>
 								<Divider type="vertical" />

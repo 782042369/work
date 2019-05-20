@@ -3,15 +3,14 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 15:48:42
+ * @LastEditTime: 2019-05-20 20:23:05
  */
 import React, { Component } from 'react'
 import { addgoods, editgoods, goodstypelist } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message } from 'antd'
-const { TextArea } = Input
-
-class WrappedRegistrationForm extends Component {
+import { message } from 'antd'
+import BashForm from '../../components/Form'
+class goodstype extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -55,14 +54,14 @@ class WrappedRegistrationForm extends Component {
 	componentDidMount() {
 		if (getUrlParam('id')) {
 			this.setState({
-				title: '修改'
+				h1title: '修改商品类型'
 			})
 			goodstypelist({
-				id: getUrlParam('id')
+				_id: getUrlParam('id')
 			})
 				.then((res) => {
 					let { title, description } = res.data[0]
-					this.props.form.setFieldsValue({
+					this.setState({
 						title,
 						description
 					})
@@ -72,66 +71,33 @@ class WrappedRegistrationForm extends Component {
 				})
 		} else {
 			this.setState({
-				title: '增加'
+				h1title: '增加商品类型'
 			})
 		}
 	}
 
 	render() {
-		const { getFieldDecorator } = this.props.form
-		const formItemLayout = {
-			labelCol: {
-				xs: { span: 24 },
-				sm: { span: 8 }
+		const formList = [
+			{
+				type: 'input',
+				lable: '角色名称',
+				setValue: this.state.title,
+				placeholder: '请输入',
+				field: 'title',
+				required: true,
+				message: 'Please input your title!'
 			},
-			wrapperCol: {
-				xs: { span: 24 },
-				sm: { span: 16 }
+			{
+				type: 'textarea',
+				lable: '角色描述',
+				setValue: this.state.description,
+				placeholder: '请输入',
+				field: 'description',
+				required: true,
+				message: 'Please input your description!'
 			}
-		}
-		const tailFormItemLayout = {
-			wrapperCol: {
-				xs: {
-					span: 24,
-					offset: 0
-				},
-				sm: {
-					span: 16,
-					offset: 8
-				}
-			}
-		}
-		return (
-			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
-				<h1>{this.state.title}商品类型</h1>
-				<Form.Item label="商品类型">
-					{getFieldDecorator('title', {
-						rules: [
-							{
-								required: true,
-								message: 'Please input your title!'
-							}
-						]
-					})(<Input placeholder="请输入" />)}
-				</Form.Item>
-				<Form.Item label="商品类型描述">
-					{getFieldDecorator('description', {
-						rules: [
-							{
-								required: true,
-								message: 'Please input your description!'
-							}
-						]
-					})(<TextArea placeholder="请输入" />)}
-				</Form.Item>
-				<Form.Item {...tailFormItemLayout}>
-					<Button type="primary" htmlType="submit">
-						提交
-					</Button>
-				</Form.Item>
-			</Form>
-		)
+		]
+		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
 	}
 }
-const goods = Form.create({ name: 'register' })(WrappedRegistrationForm)
-export default goods
+export default goodstype

@@ -8,6 +8,8 @@ moment.locale('zh-cn')
 const Dragger = Upload.Dragger
 const FormItem = Form.Item
 const { RangePicker } = DatePicker
+const { TextArea } = Input
+
 class BaseForm extends React.Component {
 	commit = (e) => {
 		e.preventDefault()
@@ -64,6 +66,9 @@ class BaseForm extends React.Component {
 				break
 			case 'date':
 				inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
+				break
+			case 'textarea':
+				inputitem = <TextArea placeholder={placeholder} />
 				break
 		}
 		return inputitem
