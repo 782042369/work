@@ -9,6 +9,10 @@ import {
 } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
 import { Form, Input, Button, message, Select, Icon, Upload, Tabs, Checkbox } from 'antd'
+import { Editor } from 'react-draft-wysiwyg'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { EditorState, convertToRaw } from 'draft-js'
+import draftToHtml from 'draftjs-to-html'
 const TabPane = Tabs.TabPane
 const Option = Select.Option
 const { TextArea } = Input
@@ -19,7 +23,8 @@ class index extends Component {
 		super(props)
 		this.state = {
 			plainOptions: [],
-			seletcoptions: []
+			seletcoptions: [],
+			editorState: EditorState.createEmpty()
 		}
 	}
 	callback(key) {
@@ -71,6 +76,16 @@ class index extends Component {
 			})
 		}
 	}
+	onEditorStateChange = (editorState) => {
+		draftToHtml(convertToRaw(editorState.getCurrentContent()))
+		console.log(
+			'draftToHtml(convertToRaw(editorState.getCurrentContent())): ',
+			draftToHtml(convertToRaw(editorState.getCurrentContent()))
+		)
+		this.setState({
+			editorState
+		})
+	}
 	renderOptions = () => {
 		return this.state.seletcoptions.map((element) => (
 			<Option key={element._id} value={element._id}>
@@ -102,7 +117,7 @@ class index extends Component {
 				}
 			}
 		}
-
+		const { editorState } = this.state
 		return (
 			<div>
 				<h1>{this.state.title}商品</h1>
@@ -131,7 +146,14 @@ class index extends Component {
 							</Form.Item>
 						</TabPane>
 						<TabPane tab="详细描述" key="2">
-							Content of Tab Pane 2
+							<Editor
+								editorState={editorState}
+								localization={{ locale: 'zh' }}
+								toolbarClassName="toolbarClassName"
+								wrapperClassName="wrapperClassName"
+								editorClassName="editorClassName"
+								onEditorStateChange={this.onEditorStateChange}
+							/>
 						</TabPane>
 						<TabPane tab="商品属性" key="3">
 							Content of Tab Pane 3

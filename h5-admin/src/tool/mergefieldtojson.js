@@ -5,9 +5,6 @@
  * @param {*} childrenid 和父过滤的字段
  */
 const mergefieldtojson = function (json, parentid, childrenid) {
-  console.log('json: ', json);
-  console.log('parentid: ', parentid);
-  console.log('childrenid: ', childrenid);
   if (!parentid) {
     throw ('缺失父亲的健', parentid);
   }
