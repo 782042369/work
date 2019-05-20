@@ -40,6 +40,38 @@ class index extends Component {
 			})
 		})
 	}
+	handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.form.validateFieldsAndScroll((err, values) => {
+			if (!err) {
+				if (getUrlParam('id')) {
+					let arr = { id: getUrlParam('id') }
+					editgoodscate(Object.assign(values, arr))
+						.then((res) => {
+							console.log(res)
+							message.success(res.message)
+						})
+						.catch((err) => {
+							message.error(err.message)
+							console.log(err)
+						})
+				} else {
+					addgoodscate(values)
+						.then((res) => {
+							if (res.status === 1) {
+								message.success(res.message)
+							} else {
+								message.error(res.message)
+							}
+						})
+						.catch((err) => {
+							console.log(err)
+							message.error(err.message)
+						})
+				}
+			}
+		})
+	}
 	goodstypelist() {
 		goodstypelist().then((res) => {
 			this.setState({
@@ -140,18 +172,16 @@ class index extends Component {
 							Content of Tab Pane 3
 						</TabPane>
 						<TabPane tab="规格包装" key="4">
-							<Form {...formItemLayout} onSubmit={this.handleSubmit}>
-								<Form.Item label="商品颜色">
-									{getFieldDecorator('seletetitle', {
-										rules: [
-											{
-												required: true,
-												message: 'Please input your title!'
-											}
-										]
-									})(<Select onChange={this.handleSelectChange}>{this.renderOptions()}</Select>)}
-								</Form.Item>
-							</Form>
+							<Form.Item label="商品颜色">
+								{getFieldDecorator('seletetitle', {
+									rules: [
+										{
+											required: true,
+											message: 'Please input your title!'
+										}
+									]
+								})(<Select onChange={this.handleSelectChange}>{this.renderOptions()}</Select>)}
+							</Form.Item>
 						</TabPane>
 						<TabPane tab="商品相册" key="5">
 							Content of Tab Pane 5

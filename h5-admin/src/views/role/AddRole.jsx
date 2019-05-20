@@ -3,66 +3,63 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 15:49:03
+ * @LastEditTime: 2019-05-20 17:51:07
  */
 import React, { Component } from 'react'
 import { addrole, editrole, rolelist } from '../../api/role'
+import BashForm from '../../components/Form'
 import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message } from 'antd'
-const { TextArea } = Input
+import { message } from 'antd'
 
-class WrappedRegistrationForm extends Component {
+class role extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			confirmDirty: false,
-			title: ''
+			title: '',
+			h1title: '',
+			description: ''
 		}
 	}
 
-	handleSubmit = (e) => {
-		e.preventDefault()
-		this.props.form.validateFieldsAndScroll((err, values) => {
-			if (!err) {
-				if (getUrlParam('id')) {
-					let arr = { id: getUrlParam('id') }
-					editrole(Object.assign(values, arr))
-						.then((res) => {
-							console.log(res)
-							message.success(res.message)
-						})
-						.catch((err) => {
-							message.error(err.message)
-							console.log(err)
-						})
-				} else {
-					addrole(values)
-						.then((res) => {
-							if (res.status === 1) {
-								message.success(res.message)
-							} else {
-								message.error(res.message)
-							}
-						})
-						.catch((err) => {
-							console.log(err)
-							message.error(err.message)
-						})
-				}
-			}
-		})
+	handleSubmit = (values) => {
+		console.log('e: ', values)
+		if (getUrlParam('id')) {
+			let arr = { id: getUrlParam('id') }
+			editrole(Object.assign(values, arr))
+				.then((res) => {
+					console.log(res)
+					message.success(res.message)
+				})
+				.catch((err) => {
+					message.error(err.message)
+					console.log(err)
+				})
+		} else {
+			addrole(values)
+				.then((res) => {
+					if (res.status === 1) {
+						message.success(res.message)
+					} else {
+						message.error(res.message)
+					}
+				})
+				.catch((err) => {
+					console.log(err)
+					message.error(err.message)
+				})
+		}
 	}
 	componentDidMount() {
 		if (getUrlParam('id')) {
 			this.setState({
-				title: '修改'
+				h1title: '修改角色'
 			})
 			rolelist({
-				id: getUrlParam('id')
+				_id: getUrlParam('id')
 			})
 				.then((res) => {
 					let { title, description } = res.data[0]
-					this.props.form.setFieldsValue({
+					this.setState({
 						title,
 						description
 					})
@@ -72,66 +69,33 @@ class WrappedRegistrationForm extends Component {
 				})
 		} else {
 			this.setState({
-				title: '增加'
+				h1title: '增加角色'
 			})
 		}
 	}
 
 	render() {
-		const { getFieldDecorator } = this.props.form
-		const formItemLayout = {
-			labelCol: {
-				xs: { span: 24 },
-				sm: { span: 8 }
+		const formList = [
+			{
+				type: 'input',
+				lable: '角色名称',
+				setValue: this.state.title,
+				placeholder: '请输入',
+				field: 'title',
+				required: true,
+				message: 'Please input your title!'
 			},
-			wrapperCol: {
-				xs: { span: 24 },
-				sm: { span: 16 }
+			{
+				type: 'input',
+				lable: '角色描述',
+				setValue: this.state.description,
+				placeholder: '请输入',
+				field: 'description',
+				required: true,
+				message: 'Please input your description!'
 			}
-		}
-		const tailFormItemLayout = {
-			wrapperCol: {
-				xs: {
-					span: 24,
-					offset: 0
-				},
-				sm: {
-					span: 16,
-					offset: 8
-				}
-			}
-		}
-		return (
-			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
-				<h1>{this.state.title}角色</h1>
-				<Form.Item label="角色名称">
-					{getFieldDecorator('title', {
-						rules: [
-							{
-								required: true,
-								message: 'Please input your title!'
-							}
-						]
-					})(<Input placeholder="请输入" />)}
-				</Form.Item>
-				<Form.Item label="角色描述">
-					{getFieldDecorator('description', {
-						rules: [
-							{
-								required: true,
-								message: 'Please input your description!'
-							}
-						]
-					})(<TextArea placeholder="请输入" />)}
-				</Form.Item>
-				<Form.Item {...tailFormItemLayout}>
-					<Button type="primary" htmlType="submit">
-						提交
-					</Button>
-				</Form.Item>
-			</Form>
-		)
+		]
+		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
 	}
 }
-const role = Form.create({ name: 'register' })(WrappedRegistrationForm)
 export default role

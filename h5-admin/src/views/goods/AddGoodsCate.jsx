@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-17 15:43:04
+ * @LastEditTime: 2019-05-20 12:13:26
  */
 import React, { Component } from 'react'
 import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
