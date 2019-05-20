@@ -21,7 +21,8 @@ class BaseForm extends React.Component {
 	reset = () => {
 		this.props.form.resetFields()
 	}
-	componentWillReceiveProps(nextProps) { // 组件初始化时不调用，组件接受新的props时调用。
+	componentWillReceiveProps(nextProps) {
+		// 组件初始化时不调用，组件接受新的props时调用。
 		if (this.props.formList !== nextProps.formList) {
 			this.formsetval(nextProps.formList)
 		}
@@ -52,67 +53,33 @@ class BaseForm extends React.Component {
 				} = item
 				list = item.list || [] //option
 				message = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
+				let inputitem = ''
 				if (item.type === 'input') {
-					const input = (
-						<FormItem label={lable} key={field}>
-							{getFieldDecorator(field, {
-								rules: [
-									{
-										required,
-										message
-									}
-								]
-							})(<Input placeholder={placeholder} />)}
-						</FormItem>
-					)
-					formItemList.push(input)
+					inputitem = <Input placeholder={placeholder} />
 				} else if (item.type === 'select') {
-					const select = (
-						<FormItem label={lable} key={field}>
-							{getFieldDecorator(field, {
-								rules: [
-									{
-										required,
-										message
-									}
-								]
-							})(
-								<Select style={{ width: width }} placeholder={placeholder}>
-									{OptionList.OptionList(list)}
-								</Select>
-							)}
-						</FormItem>
+					inputitem = (
+						<Select style={{ width: width }} placeholder={placeholder}>
+							{OptionList.OptionList(list)}
+						</Select>
 					)
-					formItemList.push(select)
 				} else if (item.type === 'checkbox') {
-					const checkbox = (
-						<FormItem label={lable} key={field}>
-							{getFieldDecorator(field, {
-								rules: [
-									{
-										required,
-										message
-									}
-								]
-							})(<Checkbox>{lable}</Checkbox>)}
-						</FormItem>
-					)
-					formItemList.push(checkbox)
+					inputitem = <Checkbox>{lable}</Checkbox>
 				} else if (item.type === 'date') {
-					const dateComponent = (
-						<FormItem label={lable} key={field}>
-							{getFieldDecorator(field, {
-								rules: [
-									{
-										required,
-										message
-									}
-								]
-							})(<DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />)}
-						</FormItem>
-					)
-					formItemList.push(dateComponent)
+					inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
 				}
+				const fromitem = (
+					<FormItem label={lable} key={field}>
+						{getFieldDecorator(field, {
+							rules: [
+								{
+									required,
+									message
+								}
+							]
+						})(inputitem)}
+					</FormItem>
+				)
+				formItemList.push(fromitem)
 			})
 		}
 		return formItemList
