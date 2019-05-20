@@ -70,6 +70,8 @@ class BaseForm extends React.Component {
 			case 'textarea':
 				inputitem = <TextArea placeholder={placeholder} />
 				break
+			default:
+				inputitem = <Input placeholder={placeholder} />
 		}
 		return inputitem
 	}
@@ -79,7 +81,7 @@ class BaseForm extends React.Component {
 		let formItemList = []
 		formList &&
 			formList.length > 0 &&
-			formList.map((item, index) => {
+			formList.forEach((item, index) => {
 				let {
 					lable, //标题
 					field, // 字段key

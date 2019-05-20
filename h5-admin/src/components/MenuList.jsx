@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-20 09:24:02
+ * @LastEditTime: 2019-05-20 20:25:15
  */
 import React, { Component } from 'react'
 // import menus from '../router/routers'
@@ -11,7 +11,7 @@ import { Menu, Icon } from 'antd'
 import { authlist } from '../api/role'
 import { Link } from 'react-router-dom'
 import mergefieldtojson from '../tool/mergefieldtojson'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 class menu extends Component {
 	constructor(props) {
 		super(props)
