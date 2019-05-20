@@ -44,5 +44,12 @@
 }
 
 .rdw-editor-wrapper {
-  height: 50vh;
+  height: 50vw;
+  margin-bottom: 20px;
+
+  .rdw-editor-main {
+    padding: 0 10px;
+    border: 1px solid #000;
+    height: calc(100% - 75px);
+  }
 }
