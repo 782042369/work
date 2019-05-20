@@ -11,27 +11,27 @@
  * @param {*} formats 输出字符
  */
 const datefilter = function (timestamp, formats) {
-  let zero = function (time) {
-    let arr = time < 10 ? '0' + time : time
-    return arr
-  }
-  let myDate = new Date(timestamp)
-  let year = myDate.getFullYear()
-  let month = zero(myDate.getMonth() + 1)
-  let day = zero(myDate.getDate())
-  let hour = zero(myDate.getHours())
-  let minite = zero(myDate.getMinutes())
-  let second = zero(myDate.getSeconds())
-  let val = formats || 'Y年m月d日 H:i'
-  return val.replace(/Y|m|d|H|i|s/ig, function (matches) {
-    return ({
-      Y: year,
-      m: month,
-      d: day,
-      H: hour,
-      i: minite,
-      s: second
-    })[matches]
-  })
-}
+	let zero = function (time) {
+		let arr = time < 10 ? '0' + time : time;
+		return arr;
+	};
+	let myDate = new Date(timestamp);
+	let year = myDate.getFullYear();
+	let month = zero(myDate.getMonth() + 1);
+	let day = zero(myDate.getDate());
+	let hour = zero(myDate.getHours());
+	let minite = zero(myDate.getMinutes());
+	let second = zero(myDate.getSeconds());
+	let val = formats || 'Y年m月d日 H:i';
+	return val.replace(/Y|m|d|H|i|s/ig, function (matches) {
+		return ({
+			Y: year,
+			m: month,
+			d: day,
+			H: hour,
+			i: minite,
+			s: second
+		})[matches];
+	});
+};
 export default datefilter;

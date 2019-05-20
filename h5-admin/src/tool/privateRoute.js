@@ -6,55 +6,55 @@
  * @LastEditTime: 2019-05-13 17:34:46
  */
 import React, {
-  Component
+	Component
 } from 'react';
 import {
-  Route,
-  withRouter
+	Route,
+	withRouter
 } from 'react-router-dom';
 import {
-  message
+	message
 } from 'antd';
 class PrivateRoute extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAuthenticated: window.sessionStorage.getItem("role_id") ? true : false
-    }
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			isAuthenticated: window.sessionStorage.getItem('role_id') ? true : false
+		};
+	}
 
-  componentWillMount() {
-    if (!this.state.isAuthenticated) {
-      const {
-        history
-      } = this.props;
-      setTimeout(() => {
-        history.replace("/");
-      }, 1000)
-    }
-  }
+	componentWillMount() {
+		if (!this.state.isAuthenticated) {
+			const {
+				history
+			} = this.props;
+			setTimeout(() => {
+				history.replace('/');
+			}, 1000);
+		}
+	}
 
-  render() {
-    let {
-      component: Component,
-      ...rest
-    } = this.props;
-    return this.state.isAuthenticated ?
-      ( < Route {
-          ...rest
-        }
-        render = {
-          (props) => ( < Component {
-              ...props
-            }
-            /> 
-          )
-        }
-        /> ) : (message.error(
-        '请登录...'
-      ))
+	render() {
+		let {
+			component: Component,
+			...rest
+		} = this.props;
+		return this.state.isAuthenticated ?
+			( < Route {
+			...rest
+			}
+				render = {
+				(props) => ( < Component {
+				...props
+				}
+				/> 
+				)
+			}
+			/> ) : (message.error(
+				'请登录...'
+			));
 
-}
+	}
 }
 
 export default withRouter(PrivateRoute);

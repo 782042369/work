@@ -5,51 +5,51 @@
  * @Date: 2019-05-05 15:48:39
  * @LastEditTime: 2019-05-17 12:20:11
  */
-import React, { Component } from 'react'
-import { addaccess, editaccess, accesslist } from '../../api/access'
-import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message, Select } from 'antd'
-const Option = Select.Option
+import React, { Component } from 'react';
+import { addaccess, editaccess, accesslist } from '../../api/access';
+import getUrlParam from '../../tool/getUrlParam';
+import { Form, Input, Button, message, Select } from 'antd';
+const Option = Select.Option;
 
 class WrappedRegistrationForm extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			title: '',
 			accessdata: [],
 			roledata: []
-		}
+		};
 	}
 
 	handleSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
-				values.sort = Number(values.sort)
+				values.sort = Number(values.sort);
 				if (getUrlParam('id')) {
-					let arr = { id: getUrlParam('id') }
+					let arr = { id: getUrlParam('id') };
 					editaccess(Object.assign(values, arr))
 						.then((res) => {
-							console.log(res)
-							message.success(res.message)
+							console.log(res);
+							message.success(res.message);
 						})
 						.catch((err) => {
-							message.error(err.message)
-							console.log(err)
-						})
+							message.error(err.message);
+							console.log(err);
+						});
 				} else {
 					addaccess(values)
 						.then((res) => {
-							console.log(res)
-							message.success(res.message)
+							console.log(res);
+							message.success(res.message);
 						})
 						.catch((err) => {
-							console.log(err)
-							message.error(err.message)
-						})
+							console.log(err);
+							message.error(err.message);
+						});
 				}
 			}
-		})
+		});
 	}
 	getlist() {
 		accesslist({ module_id: 0 })
@@ -57,25 +57,25 @@ class WrappedRegistrationForm extends Component {
 				if (res.status === 1) {
 					this.setState({
 						accessdata: res.data
-					})
-					console.log('this.state.accessdata: ', this.state.accessdata)
+					});
+					console.log('this.state.accessdata: ', this.state.accessdata);
 				}
 			})
 			.catch((err) => {
-				console.log('err: ', err)
-			})
+				console.log('err: ', err);
+			});
 	}
 	componentDidMount() {
-		this.getlist()
+		this.getlist();
 		if (getUrlParam('id')) {
 			this.setState({
 				title: '修改'
-			})
+			});
 			accesslist({
 				_id: getUrlParam('id')
 			})
 				.then((res) => {
-					let { action_name, description, module_id, module_name, sort, status, type, url } = res.data[0]
+					let { action_name, description, module_id, module_name, sort, status, type, url } = res.data[0];
 					this.props.form.setFieldsValue({
 						action_name,
 						description,
@@ -85,27 +85,27 @@ class WrappedRegistrationForm extends Component {
 						status,
 						type,
 						url
-					})
+					});
 				})
 				.catch((err) => {
-					console.log('err: ', err)
-				})
+					console.log('err: ', err);
+				});
 		} else {
 			this.setState({
 				title: '增加'
-			})
+			});
 		}
 	}
 	renderOptions = () => {
-		console.log('this.state.accessdata: ', this.state.accessdata)
+		console.log('this.state.accessdata: ', this.state.accessdata);
 		return this.state.accessdata.map((element) => (
 			<Option key={element._id} value={element._id}>
 				{element.module_name}
 			</Option>
-		))
+		));
 	}
 	render() {
-		const { getFieldDecorator } = this.props.form
+		const { getFieldDecorator } = this.props.form;
 
 		const formItemLayout = {
 			labelCol: {
@@ -116,7 +116,7 @@ class WrappedRegistrationForm extends Component {
 				xs: { span: 24 },
 				sm: { span: 16 }
 			}
-		}
+		};
 		const tailFormItemLayout = {
 			wrapperCol: {
 				xs: {
@@ -128,7 +128,7 @@ class WrappedRegistrationForm extends Component {
 					offset: 8
 				}
 			}
-		}
+		};
 
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -211,8 +211,8 @@ class WrappedRegistrationForm extends Component {
 					</Button>
 				</Form.Item>
 			</Form>
-		)
+		);
 	}
 }
-const manger = Form.create({ name: 'register' })(WrappedRegistrationForm)
-export default manger
+const manger = Form.create({ name: 'register' })(WrappedRegistrationForm);
+export default manger;

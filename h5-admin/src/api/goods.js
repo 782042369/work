@@ -6,7 +6,7 @@
  * @LastEditTime: 2019-05-17 15:39:08
  */
 
-import request from '../tool/request'
+import request from '../tool/request';
 /**
  * 
  * @param {*} data 商品类型
@@ -17,7 +17,7 @@ export function goodstypelist(data) {
 		url: 'admin/goodstypelist',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function deletegoodstype(data) {
@@ -26,7 +26,7 @@ export function deletegoodstype(data) {
 		url: 'admin/deletegoodstype',
 		method: 'delete',
 		data
-	})
+	});
 }
 export function addgoods(data) {
 	// 增加
@@ -34,7 +34,7 @@ export function addgoods(data) {
 		url: 'admin/addgoods',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function editgoods(data) {
@@ -43,7 +43,7 @@ export function editgoods(data) {
 		url: 'admin/editgoods',
 		method: 'put',
 		data
-	})
+	});
 }
 /**
  * 
@@ -55,7 +55,7 @@ export function goodstypeattributelist(data) {
 		url: 'admin/goodstypeattributelist',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function deletegoodstypeattribute(data) {
@@ -64,7 +64,7 @@ export function deletegoodstypeattribute(data) {
 		url: 'admin/deletegoodstypeattribute',
 		method: 'delete',
 		data
-	})
+	});
 }
 export function addgoodsattribute(data) {
 	// 增加
@@ -72,7 +72,7 @@ export function addgoodsattribute(data) {
 		url: 'admin/addgoodsattribute',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function editgoodsattribute(data) {
@@ -81,7 +81,7 @@ export function editgoodsattribute(data) {
 		url: 'admin/editgoodsattribute',
 		method: 'put',
 		data
-	})
+	});
 }
 /**
  * 
@@ -93,7 +93,7 @@ export function goodscatelist(data) {
 		url: 'admin/goodscatelist',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function deletegoodscate(data) {
@@ -102,7 +102,7 @@ export function deletegoodscate(data) {
 		url: 'admin/deletegoodscate',
 		method: 'delete',
 		data
-	})
+	});
 }
 export function addgoodscate(data) {
 	// 增加
@@ -110,7 +110,7 @@ export function addgoodscate(data) {
 		url: 'admin/addgoodscate',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function editgoodscate(data) {
@@ -119,7 +119,7 @@ export function editgoodscate(data) {
 		url: 'admin/editgoodscate',
 		method: 'put',
 		data
-	})
+	});
 }
 
 // 商品颜色
@@ -129,5 +129,5 @@ export function goodscolorlist(data) {
 		url: 'admin/goodscolorlist',
 		method: 'post',
 		data
-	})
+	});
 }

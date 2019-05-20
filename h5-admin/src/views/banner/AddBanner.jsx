@@ -5,77 +5,77 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-20 19:46:38
  */
-import React, { Component } from 'react'
-import { addbanner, editbanner, bannerlist } from '../../api/banner'
-import getUrlParam from '../../tool/getUrlParam'
-import { message } from 'antd'
-import BashForm from '../../components/Form'
+import React, { Component } from 'react';
+import { addbanner, editbanner, bannerlist } from '../../api/banner';
+import getUrlParam from '../../tool/getUrlParam';
+import { message } from 'antd';
+import BashForm from '../../components/Form';
 
 class editbannner extends Component {
 	constructor(props) {
-		super(props)
-		this.state = {}
+		super(props);
+		this.state = {};
 	}
 	flatten(arr) {
 		while (arr.some((item) => Array.isArray(item))) {
-			arr = [].concat(...arr)
+			arr = [].concat(...arr);
 		}
-		return arr
+		return arr;
 	}
 	handleSubmit = (values) => {
 		if (getUrlParam('id')) {
-			let arr = { id: getUrlParam('id') }
+			let arr = { id: getUrlParam('id') };
 			editbanner(Object.assign(values, arr))
 				.then((res) => {
-					console.log(res)
-					message.success(res.message)
+					console.log(res);
+					message.success(res.message);
 				})
 				.catch((err) => {
-					message.error(err.message)
-					console.log(err)
-				})
+					message.error(err.message);
+					console.log(err);
+				});
 		} else {
 			addbanner(values)
 				.then((res) => {
 					if (res.status === 1) {
-						message.success(res.message)
+						message.success(res.message);
 					} else {
-						message.error(res.message)
+						message.error(res.message);
 					}
 				})
 				.catch((err) => {
-					console.log(err)
-					message.error(err.message)
-				})
+					console.log(err);
+					message.error(err.message);
+				});
 		}
 	}
 	componentDidMount() {
 		if (getUrlParam('id')) {
 			this.setState({
 				h1title: '修改轮播图'
-			})
-			console.log(getUrlParam('id'))
+			});
+			console.log(getUrlParam('id'));
 			bannerlist({
 				_id: getUrlParam('id')
 			})
 				.then((res) => {
-					let { title, sort, focus_img, type, link } = res.data[0]
-					type = Number(type)
+					let { title, sort, focus_img, type, link } = res.data[0];
+					type = Number(type);
 					this.setState({
 						title,
 						sort,
 						focus_img,
 						type,
 						link
-					})
+					});
 				})
 				.catch((err) => {
-					console.log('err: ', err)
-				})
+					console.log('err: ', err);
+				});
 		} else {
 			this.setState({
 				h1title: '增加轮播图'
-			})
+			});
 		}
 	}
 
@@ -127,9 +127,9 @@ class editbannner extends Component {
 				required: true,
 				message: 'Please input your banner!'
 			}
-		]
-		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
+		];
+		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />;
 	}
 }
 
-export default editbannner
+export default editbannner;

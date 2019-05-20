@@ -5,20 +5,20 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-17 15:38:40
  */
-import React, { Component } from 'react'
-import { Table, Divider, Button, message } from 'antd'
-import { goodstypelist, deletegoodstype } from '../../api/goods'
-import datefilter from '../../tool/datefilter'
-import { statusfilter } from '../../tool/statusfilter'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Table, Divider, Button, message } from 'antd';
+import { goodstypelist, deletegoodstype } from '../../api/goods';
+import datefilter from '../../tool/datefilter';
+import { statusfilter } from '../../tool/statusfilter';
+import { Link } from 'react-router-dom';
 
-const { Column } = Table
+const { Column } = Table;
 class role extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			data: []
-		}
+		};
 	}
 	getlist() {
 		goodstypelist()
@@ -26,28 +26,28 @@ class role extends Component {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
-					})
+					});
 				}
 			})
 			.catch((err) => {
-				console.log('err: ', err)
-			})
+				console.log('err: ', err);
+			});
 	}
 	componentDidMount() {
-		this.getlist()
+		this.getlist();
 	}
 	deletegoodstype(id) {
 		deletegoodstype({
 			id
 		})
 			.then((res) => {
-				console.log('res: ', res)
-				this.getlist()
-				message.success(res.message)
+				console.log('res: ', res);
+				this.getlist();
+				message.success(res.message);
 			})
 			.catch((err) => {
-				console.log('err: ', err)
-			})
+				console.log('err: ', err);
+			});
 	}
 	render() {
 		return (
@@ -89,8 +89,8 @@ class role extends Component {
 					/>
 				</Table>
 			</div>
-		)
+		);
 	}
 }
 
-export default role
+export default role;

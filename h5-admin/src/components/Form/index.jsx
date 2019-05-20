@@ -1,44 +1,44 @@
-import React from 'react'
-import { Select, Form, Radio, Checkbox, Button, Input, DatePicker, Upload, Icon, message } from 'antd'
-import OptionList from './OptionList'
-import './index.scss'
-import moment from 'moment'
-import 'moment/locale/zh-cn'
-moment.locale('zh-cn')
-const Dragger = Upload.Dragger
-const FormItem = Form.Item
-const { RangePicker } = DatePicker
-const { TextArea } = Input
+import React from 'react';
+import { Select, Form, Radio, Checkbox, Button, Input, DatePicker, Upload, Icon, message } from 'antd';
+import OptionList from './OptionList';
+import './index.scss';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+moment.locale('zh-cn');
+const Dragger = Upload.Dragger;
+const FormItem = Form.Item;
+const { RangePicker } = DatePicker;
+const { TextArea } = Input;
 
 class BaseForm extends React.Component {
 	commit = (e) => {
-		e.preventDefault()
-		const { getFieldsValue } = this.props.form
+		e.preventDefault();
+		const { getFieldsValue } = this.props.form;
 		this.props.form.validateFieldsAndScroll((err, values) => {
-			console.log('values: ', values)
+			console.log('values: ', values);
 			if (!err) {
-				let date1 = getFieldsValue()
-				this.props.formSubmit(date1) //最终输出
+				let date1 = getFieldsValue();
+				this.props.formSubmit(date1); //最终输出
 			}
-		})
+		});
 	}
 	reset = () => {
-		this.props.form.resetFields()
+		this.props.form.resetFields();
 	}
 	componentWillReceiveProps(nextProps) {
 		// 组件初始化时不调用，组件接受新的props时调用。
 		if (this.props.formList !== nextProps.formList) {
-			this.formsetval(nextProps.formList)
+			this.formsetval(nextProps.formList);
 		}
 	}
 	formsetval(formList) {
-		const { setFieldsValue } = this.props.form
+		const { setFieldsValue } = this.props.form;
 		formList.map((res) => {
-			let field = res.field
-			let arr = {}
-			arr[field] = res.setValue
-			res.setValue !== '' && setFieldsValue(arr)
-		})
+			let field = res.field;
+			let arr = {};
+			arr[field] = res.setValue;
+			res.setValue !== '' && setFieldsValue(arr);
+		});
 	}
 	inputtype = (item) => {
 		let {
@@ -47,38 +47,38 @@ class BaseForm extends React.Component {
 			width,
 			type,
 			list
-		} = item
-		list = item.list || [] //option
-		let inputitem = ''
+		} = item;
+		list = item.list || []; //option
+		let inputitem = '';
 		switch (type) {
-			case 'input':
-				inputitem = <Input placeholder={placeholder} />
-				break
-			case 'select':
-				inputitem = (
-					<Select style={{ width: width }} placeholder={placeholder}>
-						{OptionList.OptionList(list)}
-					</Select>
-				)
-				break
-			case 'checkbox':
-				inputitem = <Checkbox>{lable}</Checkbox>
-				break
-			case 'date':
-				inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
-				break
-			case 'textarea':
-				inputitem = <TextArea placeholder={placeholder} />
-				break
-			default:
-				inputitem = <Input placeholder={placeholder} />
+		case 'input':
+			inputitem = <Input placeholder={placeholder} />;
+			break;
+		case 'select':
+			inputitem = (
+				<Select style={{ width: width }} placeholder={placeholder}>
+					{OptionList.OptionList(list)}
+				</Select>
+			);
+			break;
+		case 'checkbox':
+			inputitem = <Checkbox>{lable}</Checkbox>;
+			break;
+		case 'date':
+			inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />;
+			break;
+		case 'textarea':
+			inputitem = <TextArea placeholder={placeholder} />;
+			break;
+		default:
+			inputitem = <Input placeholder={placeholder} />;
 		}
-		return inputitem
+		return inputitem;
 	}
 	initFormList = () => {
-		const { getFieldDecorator } = this.props.form
-		const formList = this.props.formList
-		let formItemList = []
+		const { getFieldDecorator } = this.props.form;
+		const formList = this.props.formList;
+		let formItemList = [];
 		formList &&
 			formList.length > 0 &&
 			formList.forEach((item, index) => {
@@ -88,10 +88,10 @@ class BaseForm extends React.Component {
 					required, // 必填
 					type,
 					setValue
-				} = item
-				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
-				let inputitem = ''
-				inputitem = this.inputtype(item)
+				} = item;
+				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0'; // 校验回调信息
+				let inputitem = '';
+				inputitem = this.inputtype(item);
 				if (type === 'upload') {
 					const props = {
 						name: 'file',
@@ -101,14 +101,14 @@ class BaseForm extends React.Component {
 							authorization: 'authorization-text'
 						},
 						onChange(info) {
-							const status = info.file.status
+							const status = info.file.status;
 							if (status === 'done') {
-								message.success(`${info.file.name} file uploaded successfully.`)
+								message.success(`${info.file.name} file uploaded successfully.`);
 							} else if (status === 'error') {
-								message.error(`${info.file.name} file upload failed.`)
+								message.error(`${info.file.name} file upload failed.`);
 							}
 						}
-					}
+					};
 					if (setValue) {
 						let editimg = (
 							<Form.Item label="原图" key="editimg">
@@ -118,11 +118,11 @@ class BaseForm extends React.Component {
 									src={`http://127.0.0.1:7001${setValue}`}
 								/>
 							</Form.Item>
-						)
-						formItemList.push(editimg)
-						required = false
+						);
+						formItemList.push(editimg);
+						required = false;
 					} else {
-						required = true
+						required = true;
 					}
 					inputitem = (
 						<Dragger {...props}>
@@ -132,7 +132,7 @@ class BaseForm extends React.Component {
 							<p className="ant-upload-text">点击上传</p>
 							<p className="ant-upload-hint">请选择你需要上传的图片</p>
 						</Dragger>
-					)
+					);
 				}
 				const fromitem = (
 					<FormItem label={lable} key={field}>
@@ -145,10 +145,10 @@ class BaseForm extends React.Component {
 							]
 						})(inputitem)}
 					</FormItem>
-				)
-				formItemList.push(fromitem)
-			})
-		return formItemList
+				);
+				formItemList.push(fromitem);
+			});
+		return formItemList;
 	}
 
 	render() {
@@ -161,7 +161,7 @@ class BaseForm extends React.Component {
 				xs: { span: 24 },
 				sm: { span: 16 }
 			}
-		}
+		};
 		const tailFormItemLayout = {
 			wrapperCol: {
 				xs: {
@@ -173,7 +173,7 @@ class BaseForm extends React.Component {
 					offset: 8
 				}
 			}
-		}
+		};
 		return (
 			<Form {...formItemLayout} onSubmit={this.commit}>
 				<h1>{this.props.h1title}</h1>
@@ -184,8 +184,8 @@ class BaseForm extends React.Component {
 					</Button>
 				</FormItem>
 			</Form>
-		)
+		);
 	}
 }
 
-export default Form.create()(BaseForm)
+export default Form.create()(BaseForm);

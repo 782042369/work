@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { Tooltip } from 'antd'
-import './index.scss'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { Tooltip } from 'antd';
+import './index.scss';
 
 export default class LineWrap extends PureComponent {
 	static propTypes = {
@@ -10,13 +10,13 @@ export default class LineWrap extends PureComponent {
 	}
 
 	render() {
-		const { title, lineClampNum } = this.props
+		const { title, lineClampNum } = this.props;
 		return (
 			<Tooltip placement="topLeft" title={title}>
 				<span className="lineEllipsis" style={{ WebkitLineClamp: lineClampNum }}>
 					{title}
 				</span>
 			</Tooltip>
-		)
+		);
 	}
 }

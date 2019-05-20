@@ -5,39 +5,39 @@
  * @Date: 2019-05-05 17:09:31
  * @LastEditTime: 2019-05-14 17:47:23
  */
-import request from '../tool/request'
+import request from '../tool/request';
 
 export function addbanner(data) {
-  // 增加banner
-  return request({
-    url: 'admin/addbanner',
-    method: 'post',
-    data
-  })
+	// 增加banner
+	return request({
+		url: 'admin/addbanner',
+		method: 'post',
+		data
+	});
 }
 export function editbanner(data) {
-  // 修改banner
-  return request({
-    url: 'admin/editbanner',
-    method: 'put',
-    data
-  })
+	// 修改banner
+	return request({
+		url: 'admin/editbanner',
+		method: 'put',
+		data
+	});
 }
 
 export function bannerlist(data) {
-  // 修改banner
-  return request({
-    url: 'admin/bannerlist',
-    method: 'post',
-    data
-  })
+	// 修改banner
+	return request({
+		url: 'admin/bannerlist',
+		method: 'post',
+		data
+	});
 }
 
 export function deletebanner(data) {
-  // 修改banner
-  return request({
-    url: 'admin/deletebanner',
-    method: 'delete',
-    data
-  })
+	// 修改banner
+	return request({
+		url: 'admin/deletebanner',
+		method: 'delete',
+		data
+	});
 }

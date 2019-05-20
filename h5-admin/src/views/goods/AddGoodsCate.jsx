@@ -5,56 +5,56 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-20 12:13:26
  */
-import React, { Component } from 'react'
-import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
-import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message, Select, Icon, Upload } from 'antd'
-const Option = Select.Option
-const { TextArea } = Input
-const Dragger = Upload.Dragger
+import React, { Component } from 'react';
+import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods';
+import getUrlParam from '../../tool/getUrlParam';
+import { Form, Input, Button, message, Select, Icon, Upload } from 'antd';
+const Option = Select.Option;
+const { TextArea } = Input;
+const Dragger = Upload.Dragger;
 class WrappedRegistrationForm extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			confirmDirty: false,
 			goodscatetype: [],
 			editimgsrc: '',
 			radiovalue: null,
 			distextarea: true // 可选列表禁用
-		}
+		};
 	}
 
 	handleSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
 				if (getUrlParam('id')) {
-					let arr = { id: getUrlParam('id') }
+					let arr = { id: getUrlParam('id') };
 					editgoodscate(Object.assign(values, arr))
 						.then((res) => {
-							console.log(res)
-							message.success(res.message)
+							console.log(res);
+							message.success(res.message);
 						})
 						.catch((err) => {
-							message.error(err.message)
-							console.log(err)
-						})
+							message.error(err.message);
+							console.log(err);
+						});
 				} else {
 					addgoodscate(values)
 						.then((res) => {
 							if (res.status === 1) {
-								message.success(res.message)
+								message.success(res.message);
 							} else {
-								message.error(res.message)
+								message.error(res.message);
 							}
 						})
 						.catch((err) => {
-							console.log(err)
-							message.error(err.message)
-						})
+							console.log(err);
+							message.error(err.message);
+						});
 				}
 			}
-		})
+		});
 	}
 	// 获取类型
 	goodscatelist(arr) {
@@ -63,7 +63,7 @@ class WrappedRegistrationForm extends Component {
 				if (arr.pid === 0) {
 					this.setState({
 						goodscatetype: res.data
-					})
+					});
 				} else {
 					const {
 						cate_img,
@@ -76,7 +76,7 @@ class WrappedRegistrationForm extends Component {
 						template,
 						title,
 						sort
-					} = res.data[0]
+					} = res.data[0];
 					this.props.form.setFieldsValue({
 						description,
 						filter_attr,
@@ -87,15 +87,15 @@ class WrappedRegistrationForm extends Component {
 						template,
 						title,
 						sort
-					})
+					});
 					this.setState({
 						editimgsrc: cate_img
-					})
+					});
 				}
 			})
 			.catch((err) => {
-				console.log('err: ', err)
-			})
+				console.log('err: ', err);
+			});
 	}
 
 	renderOptions = () => {
@@ -103,27 +103,27 @@ class WrappedRegistrationForm extends Component {
 			<Option key={element._id} value={element._id}>
 				{element.title}
 			</Option>
-		))
+		));
 	}
 	componentDidMount() {
 		this.goodscatelist({
 			pid: 0
-		})
+		});
 		if (getUrlParam('id')) {
 			this.setState({
 				title: '修改'
-			})
+			});
 			this.goodscatelist({
 				_id: getUrlParam('id')
-			})
+			});
 		} else {
 			this.setState({
 				title: '增加'
-			})
+			});
 		}
 	}
 	render() {
-		const { getFieldDecorator } = this.props.form
+		const { getFieldDecorator } = this.props.form;
 		const formItemLayout = {
 			labelCol: {
 				xs: { span: 24 },
@@ -133,7 +133,7 @@ class WrappedRegistrationForm extends Component {
 				xs: { span: 24 },
 				sm: { span: 16 }
 			}
-		}
+		};
 		const tailFormItemLayout = {
 			wrapperCol: {
 				xs: {
@@ -145,9 +145,9 @@ class WrappedRegistrationForm extends Component {
 					offset: 8
 				}
 			}
-		}
-		let editimg = ''
-		let editrequired = ''
+		};
+		let editimg = '';
+		let editrequired = '';
 		if (this.state.editimgsrc !== '') {
 			editimg = (
 				<Form.Item label="原图">
@@ -157,26 +157,26 @@ class WrappedRegistrationForm extends Component {
 						src={`http://127.0.0.1:7001${this.state.editimgsrc}`}
 					/>
 				</Form.Item>
-			)
-			editrequired = false
+			);
+			editrequired = false;
 		} else {
-			editrequired = true
+			editrequired = true;
 		}
 		const props = {
 			name: 'file',
 			action: '/admin/uploadimg',
 			onChange(info) {
-				const status = info.file.status
+				const status = info.file.status;
 				if (status !== 'uploading') {
-					console.log(info.file, info.fileList)
+					console.log(info.file, info.fileList);
 				}
 				if (status === 'done') {
-					message.success(`${info.file.name} file uploaded successfully.`)
+					message.success(`${info.file.name} file uploaded successfully.`);
 				} else if (status === 'error') {
-					message.error(`${info.file.name} file upload failed.`)
+					message.error(`${info.file.name} file upload failed.`);
 				}
 			}
-		}
+		};
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
 				<h1>{this.state.title}商品属性</h1>
@@ -313,8 +313,8 @@ class WrappedRegistrationForm extends Component {
 					</Button>
 				</Form.Item>
 			</Form>
-		)
+		);
 	}
 }
-const goodscate = Form.create({ name: 'register' })(WrappedRegistrationForm)
-export default goodscate
+const goodscate = Form.create({ name: 'register' })(WrappedRegistrationForm);
+export default goodscate;

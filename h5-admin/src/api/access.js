@@ -6,45 +6,45 @@
  * @LastEditTime: 2019-05-08 13:43:42
  */
 
-import request from '../tool/request'
+import request from '../tool/request';
 
 export function accesslist(data) {
-  // 列表
-  return request({
-    url: 'admin/Accesslist',
-    method: 'post',
-    data
-  })
+	// 列表
+	return request({
+		url: 'admin/Accesslist',
+		method: 'post',
+		data
+	});
 }
 export function addaccess(data) {
-  // 增加
-  return request({
-    url: 'admin/AddAccess',
-    method: 'post',
-    data
-  })
+	// 增加
+	return request({
+		url: 'admin/AddAccess',
+		method: 'post',
+		data
+	});
 }
 export function editaccess(data) {
-  // 修改
-  return request({
-    url: 'admin/EditAccess',
-    method: 'put',
-    data
-  })
+	// 修改
+	return request({
+		url: 'admin/EditAccess',
+		method: 'put',
+		data
+	});
 }
 export function deleteaccess(data) {
-  // 删除
-  return request({
-    url: 'admin/DeleteAccess',
-    method: 'delete',
-    data
-  })
+	// 删除
+	return request({
+		url: 'admin/DeleteAccess',
+		method: 'delete',
+		data
+	});
 }
 export function findaccesslist(data) {
-  // 删除
-  return request({
-    url: 'admin/FindAccessList',
-    method: 'get',
-    data
-  })
+	// 删除
+	return request({
+		url: 'admin/FindAccessList',
+		method: 'get',
+		data
+	});
 }

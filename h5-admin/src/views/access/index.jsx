@@ -5,18 +5,18 @@
  * @Date: 2019-05-05 15:48:17
  * @LastEditTime: 2019-05-15 13:39:44
  */
-import React, { Component } from 'react'
-import { Table, Divider, Button, message } from 'antd'
-import { findaccesslist, deleteaccess } from '../../api/access'
-import datefilter from '../../tool/datefilter'
-import { typefilter } from '../../tool/statusfilter'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Table, Divider, Button, message } from 'antd';
+import { findaccesslist, deleteaccess } from '../../api/access';
+import datefilter from '../../tool/datefilter';
+import { typefilter } from '../../tool/statusfilter';
+import { Link } from 'react-router-dom';
 class access extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			accessdata: []
-		}
+		};
 	}
 
 	getlist() {
@@ -25,27 +25,27 @@ class access extends Component {
 				if (res.status === 1) {
 					this.setState({
 						accessdata: res.data
-					})
+					});
 				}
 			})
 			.catch((err) => {
-				console.log('err: ', err)
-			})
+				console.log('err: ', err);
+			});
 	}
 	componentDidMount() {
-		this.getlist()
+		this.getlist();
 	}
 	deleteaccess(id) {
 		deleteaccess({
 			id
 		})
 			.then((res) => {
-				this.getlist()
-				message.success(res.message)
+				this.getlist();
+				message.success(res.message);
 			})
 			.catch((err) => {
-				console.log('err: ', err)
-			})
+				console.log('err: ', err);
+			});
 	}
 	columns = [
 		{ title: '模块名称', dataIndex: 'module_name', key: 'module_name' },
@@ -115,16 +115,16 @@ class access extends Component {
 					</span>
 				)
 			}
-		]
+		];
 		return (
 			<Table
 				columns={arr}
 				dataSource={this.state.accessdata[index].items.sort((res, b) => {
-					return res.sort - b.sort
+					return res.sort - b.sort;
 				})}
 				pagination={false}
 			/>
-		)
+		);
 	}
 	render() {
 		return (
@@ -135,8 +135,8 @@ class access extends Component {
 					expandedRowRender={this.expandedRowRender}
 				/>
 			</div>
-		)
+		);
 	}
 }
 
-export default access
+export default access;

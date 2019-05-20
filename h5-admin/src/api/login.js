@@ -6,13 +6,13 @@
  * @LastEditTime: 2019-05-06 12:41:01
  */
 
-import request from '../tool/request'
+import request from '../tool/request';
 
 export function dologin(data) {
-  // 登录接口
-  return request({
-    url: 'dologin',
-    method: 'post',
-    data
-  })
+	// 登录接口
+	return request({
+		url: 'dologin',
+		method: 'post',
+		data
+	});
 }

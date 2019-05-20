@@ -6,14 +6,14 @@
  * @LastEditTime: 2019-05-07 11:07:38
  */
 
-import request from '../tool/request'
+import request from '../tool/request';
 export function managerlist(data) {
 	// 列表
 	return request({
 		url: 'admin/Managerlist',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function addmanager(data) {
@@ -22,7 +22,7 @@ export function addmanager(data) {
 		url: 'admin/AddManager',
 		method: 'post',
 		data
-	})
+	});
 }
 export function editmanager(data) {
 	// 修改
@@ -30,7 +30,7 @@ export function editmanager(data) {
 		url: 'admin/EditManager',
 		method: 'put',
 		data
-	})
+	});
 }
 export function deletemanager(data) {
 	// 删除
@@ -38,5 +38,5 @@ export function deletemanager(data) {
 		url: 'admin/DeleteManager',
 		method: 'delete',
 		data
-	})
+	});
 }

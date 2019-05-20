@@ -1,53 +1,53 @@
-import React, { Component } from 'react'
-import './login.scss'
-import { Form, Icon, Input, Button } from 'antd'
-import { Redirect } from 'react-router'
-import { dologin } from '../../api/login'
-import md5 from 'js-md5'
-import { message } from 'antd'
+import React, { Component } from 'react';
+import './login.scss';
+import { Form, Icon, Input, Button } from 'antd';
+import { Redirect } from 'react-router';
+import { dologin } from '../../api/login';
+import md5 from 'js-md5';
+import { message } from 'antd';
 class NormalLoginForm extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			loginSuccess: false,
 			codeimg: 'captchacode?' + new Date().getTime()
-		}
+		};
 	}
 	handleSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				values.password = md5(values.password)
+				values.password = md5(values.password);
 				dologin(values)
 					.then((res) => {
 						if (res.status === 1) {
-							message.success(res.message)
-							sessionStorage.setItem('role_id', res.data.role_id)
+							message.success(res.message);
+							sessionStorage.setItem('role_id', res.data.role_id);
 							this.setState({
 								loginSuccess: true
-							})
+							});
 						} else {
-							this.svgcode()
-							message.error(res.message)
+							this.svgcode();
+							message.error(res.message);
 						}
 					})
 					.catch((err) => {
-						this.svgcode()
-					})
+						this.svgcode();
+					});
 			}
-		})
+		});
 	}
 	svgcode = () => {
 		this.setState({
 			codeimg: 'captchacode?' + new Date().getTime()
-		})
+		});
 	}
 	componentDidMount() {}
 	render() {
-		const { getFieldDecorator } = this.props.form
+		const { getFieldDecorator } = this.props.form;
 
 		if (this.state.loginSuccess) {
-			return <Redirect to="/access" />
+			return <Redirect to="/access" />;
 		} else {
 			return (
 				<div className="login" id="login">
@@ -91,10 +91,10 @@ class NormalLoginForm extends Component {
 						</Form.Item>
 					</Form>
 				</div>
-			)
+			);
 		}
 	}
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm)
-export default WrappedNormalLoginForm
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
+export default WrappedNormalLoginForm;

@@ -5,90 +5,90 @@
  * @Date: 2019-05-05 15:48:39
  * @LastEditTime: 2019-05-09 12:52:38
  */
-import React, { Component } from 'react'
-import { addmanager, editmanager, managerlist } from '../../api/manager'
-import { rolelist } from '../../api/role'
-import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message, Select } from 'antd'
-import md5 from 'js-md5'
-const Option = Select.Option
+import React, { Component } from 'react';
+import { addmanager, editmanager, managerlist } from '../../api/manager';
+import { rolelist } from '../../api/role';
+import getUrlParam from '../../tool/getUrlParam';
+import { Form, Input, Button, message, Select } from 'antd';
+import md5 from 'js-md5';
+const Option = Select.Option;
 
 class WrappedRegistrationForm extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			title: '',
 			roledata: []
-		}
+		};
 	}
 
 	handleSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
-				values.password = md5(values.password)
+				values.password = md5(values.password);
 				if (getUrlParam('id')) {
-					let arr = { id: getUrlParam('id') }
+					let arr = { id: getUrlParam('id') };
 					editmanager(Object.assign(values, arr))
 						.then((res) => {
-							console.log(res)
-							message.success(res.message)
+							console.log(res);
+							message.success(res.message);
 						})
 						.catch((err) => {
-							message.error(err.message)
-							console.log(err)
-						})
+							message.error(err.message);
+							console.log(err);
+						});
 				} else {
 					addmanager(values)
 						.then((res) => {
-							console.log(res)
-							message.success(res.message)
+							console.log(res);
+							message.success(res.message);
 						})
 						.catch((err) => {
-							console.log(err)
-							message.error(err.message)
-						})
+							console.log(err);
+							message.error(err.message);
+						});
 				}
 			}
-		})
+		});
 	}
 	getlist() {
 		rolelist()
 			.then((res) => {
 				this.setState({
 					roledata: res.data
-				})
+				});
 			})
 			.catch((err) => {
-				console.log('err: ', err)
-			})
+				console.log('err: ', err);
+			});
 	}
 	componentDidMount() {
-		this.getlist()
+		this.getlist();
 		if (getUrlParam('id')) {
 			this.setState({
 				title: '修改'
-			})
+			});
 			managerlist({
 				id: getUrlParam('id')
 			})
 				.then((res) => {
-					let { password, email, userName, mobile, role_id } = res.data[0]
+					let { password, email, userName, mobile, role_id } = res.data[0];
 					this.props.form.setFieldsValue({
 						password,
 						email,
 						userName,
 						mobile,
 						role_id
-					})
+					});
 				})
 				.catch((err) => {
-					console.log('err: ', err)
-				})
+					console.log('err: ', err);
+				});
 		} else {
 			this.setState({
 				title: '增加'
-			})
+			});
 		}
 	}
 	renderOptions = () => {
@@ -96,10 +96,10 @@ class WrappedRegistrationForm extends Component {
 			<Option key={element._id} value={element._id}>
 				{element.title}
 			</Option>
-		))
+		));
 	}
 	render() {
-		const { getFieldDecorator } = this.props.form
+		const { getFieldDecorator } = this.props.form;
 
 		const formItemLayout = {
 			labelCol: {
@@ -110,7 +110,7 @@ class WrappedRegistrationForm extends Component {
 				xs: { span: 24 },
 				sm: { span: 16 }
 			}
-		}
+		};
 		const tailFormItemLayout = {
 			wrapperCol: {
 				xs: {
@@ -122,7 +122,7 @@ class WrappedRegistrationForm extends Component {
 					offset: 8
 				}
 			}
-		}
+		};
 
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -183,8 +183,8 @@ class WrappedRegistrationForm extends Component {
 					</Button>
 				</Form.Item>
 			</Form>
-		)
+		);
 	}
 }
-const manger = Form.create({ name: 'register' })(WrappedRegistrationForm)
-export default manger
+const manger = Form.create({ name: 'register' })(WrappedRegistrationForm);
+export default manger;

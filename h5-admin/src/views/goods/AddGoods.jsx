@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
 	addgoodscate,
 	editgoodscate,
@@ -6,82 +6,82 @@ import {
 	goodscolorlist,
 	goodstypelist,
 	goodstypeattributelist
-} from '../../api/goods'
-import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message, Select, Icon, Upload, Tabs, Checkbox } from 'antd'
-import Darft from '../../components/Darft'
-const TabPane = Tabs.TabPane
-const Option = Select.Option
-const { TextArea } = Input
-const Dragger = Upload.Dragger
-const CheckboxGroup = Checkbox.Group
+} from '../../api/goods';
+import getUrlParam from '../../tool/getUrlParam';
+import { Form, Input, Button, message, Select, Icon, Upload, Tabs, Checkbox } from 'antd';
+import Darft from '../../components/Darft';
+const TabPane = Tabs.TabPane;
+const Option = Select.Option;
+const { TextArea } = Input;
+const Dragger = Upload.Dragger;
+const CheckboxGroup = Checkbox.Group;
 class index extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			plainOptions: [],
 			seletcoptions: []
-		}
+		};
 	}
 	callback(key) {
-		console.log(key)
+		console.log(key);
 	}
 	goodscolorlist() {
 		goodscolorlist().then((res) => {
-			let arr = []
+			let arr = [];
 			res.data.forEach((element) => {
 				arr.push({
 					label: element.color_name,
 					value: element._id
-				})
-			})
+				});
+			});
 			this.setState({
 				plainOptions: arr
-			})
-		})
+			});
+		});
 	}
 	handleSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
 				if (getUrlParam('id')) {
-					let arr = { id: getUrlParam('id') }
+					let arr = { id: getUrlParam('id') };
 					editgoodscate(Object.assign(values, arr))
 						.then((res) => {
-							console.log(res)
-							message.success(res.message)
+							console.log(res);
+							message.success(res.message);
 						})
 						.catch((err) => {
-							message.error(err.message)
-							console.log(err)
-						})
+							message.error(err.message);
+							console.log(err);
+						});
 				} else {
 					addgoodscate(values)
 						.then((res) => {
 							if (res.status === 1) {
-								message.success(res.message)
+								message.success(res.message);
 							} else {
-								message.error(res.message)
+								message.error(res.message);
 							}
 						})
 						.catch((err) => {
-							console.log(err)
-							message.error(err.message)
-						})
+							console.log(err);
+							message.error(err.message);
+						});
 				}
 			}
-		})
+		});
 	}
 	goodstypelist() {
 		goodstypelist().then((res) => {
 			this.setState({
 				seletcoptions: res.data
-			})
-		})
+			});
+		});
 	}
 	handleSelectChange = (e) => {
 		goodstypeattributelist({ id: e }).then((res) => {
-			console.log('res: ', res)
+			console.log('res: ', res);
 			// let arr = []
 			// res.data.forEach((element) => {
 			// 	arr.push(element.title)
@@ -89,22 +89,22 @@ class index extends Component {
 			// this.setState({
 			// 	seletcoptions: arr
 			// })
-		})
+		});
 	}
 	editorState = (txt) => {
-		console.log('富文本编辑器内容是-->', txt)
+		console.log('富文本编辑器内容是-->', txt);
 	}
 	componentDidMount() {
-		this.goodscolorlist()
-		this.goodstypelist()
+		this.goodscolorlist();
+		this.goodstypelist();
 		if (getUrlParam('id')) {
 			this.setState({
 				title: '修改'
-			})
+			});
 		} else {
 			this.setState({
 				title: '增加'
-			})
+			});
 		}
 	}
 	renderOptions = () => {
@@ -112,10 +112,10 @@ class index extends Component {
 			<Option key={element._id} value={element._id}>
 				{element.title}
 			</Option>
-		))
+		));
 	}
 	render() {
-		const { getFieldDecorator } = this.props.form
+		const { getFieldDecorator } = this.props.form;
 		const formItemLayout = {
 			labelCol: {
 				xs: { span: 24 },
@@ -125,7 +125,7 @@ class index extends Component {
 				xs: { span: 24 },
 				sm: { span: 16 }
 			}
-		}
+		};
 		const tailFormItemLayout = {
 			wrapperCol: {
 				xs: {
@@ -137,7 +137,7 @@ class index extends Component {
 					offset: 8
 				}
 			}
-		}
+		};
 		return (
 			<div>
 				<h1>{this.state.title}商品</h1>
@@ -194,8 +194,8 @@ class index extends Component {
 					</Form.Item>
 				</Form>
 			</div>
-		)
+		);
 	}
 }
-const addgoods = Form.create({ name: 'register' })(index)
-export default addgoods
+const addgoods = Form.create({ name: 'register' })(index);
+export default addgoods;

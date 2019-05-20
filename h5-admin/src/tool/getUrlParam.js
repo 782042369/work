@@ -10,16 +10,16 @@
  * @param {*} name 获取url参数名
  */
 const getUrlParam = (name) => {
-  if (window.location.search) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    var strValue = "";
-    if (r != null) {
-      strValue = unescape(r[2]);
-    }
-    return strValue;
-  } else {
-    return false;
-  }
-}
+	if (window.location.search) {
+		var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+		var r = window.location.search.substr(1).match(reg);
+		var strValue = '';
+		if (r != null) {
+			strValue = unescape(r[2]);
+		}
+		return strValue;
+	} else {
+		return false;
+	}
+};
 export default getUrlParam;

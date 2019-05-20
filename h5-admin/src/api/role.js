@@ -6,7 +6,7 @@
  * @LastEditTime: 2019-05-09 13:10:10
  */
 
-import request from '../tool/request'
+import request from '../tool/request';
 
 export function rolelist(data) {
 	// 列表
@@ -14,7 +14,7 @@ export function rolelist(data) {
 		url: 'admin/Rolelist',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function addrole(data) {
@@ -23,7 +23,7 @@ export function addrole(data) {
 		url: 'admin/AddRole',
 		method: 'post',
 		data
-	})
+	});
 }
 export function editrole(data) {
 	// 修改
@@ -31,7 +31,7 @@ export function editrole(data) {
 		url: 'admin/EditRole',
 		method: 'put',
 		data
-	})
+	});
 }
 export function deleterole(data) {
 	// 删除
@@ -39,7 +39,7 @@ export function deleterole(data) {
 		url: 'admin/DeleteRole',
 		method: 'delete',
 		data
-	})
+	});
 }
 export function auth(data) {
 	// 授权
@@ -47,7 +47,7 @@ export function auth(data) {
 		url: 'admin/auth',
 		method: 'post',
 		data
-	})
+	});
 }
 
 export function authlist(params) {
@@ -56,5 +56,5 @@ export function authlist(params) {
 		url: 'admin/authlist',
 		method: 'get',
 		params
-	})
+	});
 }
