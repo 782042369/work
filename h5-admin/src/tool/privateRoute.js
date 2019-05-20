@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-05-13 17:34:46
+ * @LastEditTime: 2019-05-20 20:50:13
  */
 import React, {
 	Component
@@ -43,7 +43,7 @@ class PrivateRoute extends Component {
 			( < Route {
 			...rest
 			}
-				render = {
+			render = {
 				(props) => ( < Component {
 				...props
 				}
@@ -53,7 +53,6 @@ class PrivateRoute extends Component {
 			/> ) : (message.error(
 				'请登录...'
 			));
-
 	}
 }
 
