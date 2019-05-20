@@ -1,6 +1,7 @@
 import React from 'react'
 import { Select, Form, Radio, Checkbox, Button, Input, DatePicker } from 'antd'
 import OptionList from './OptionList'
+import Uploadimg from './upload'
 import './index.scss'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
@@ -66,6 +67,23 @@ class BaseForm extends React.Component {
 					inputitem = <Checkbox>{lable}</Checkbox>
 				} else if (item.type === 'date') {
 					inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
+				} else if (item.type === 'upload') {
+					if (item.setValue) {
+						let editimg = (
+							<Form.Item label="原图" key="editimg">
+								<img
+									alt="这是一张图片"
+									style={{ maxWidth: '10vw', maxHeight: '10vw' }}
+									src={`http://127.0.0.1:7001${item.setValue}`}
+								/>
+							</Form.Item>
+						)
+						formItemList.push(editimg)
+						required = false
+					} else {
+						required = true
+					}
+					inputitem = <Uploadimg />
 				}
 				const fromitem = (
 					<FormItem label={lable} key={field}>
