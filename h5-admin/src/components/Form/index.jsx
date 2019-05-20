@@ -38,37 +38,54 @@ class BaseForm extends React.Component {
 			res.setValue !== '' && setFieldsValue(arr)
 		})
 	}
+	inputtype = (item) => {
+		let {
+			lable, //标题
+			placeholder,
+			width,
+			type,
+			list
+		} = item
+		list = item.list || [] //option
+		let inputitem = ''
+		switch (type) {
+			case 'input':
+				inputitem = <Input placeholder={placeholder} />
+				break
+			case 'select':
+				inputitem = (
+					<Select style={{ width: width }} placeholder={placeholder}>
+						{OptionList.OptionList(list)}
+					</Select>
+				)
+				break
+			case 'checkbox':
+				inputitem = <Checkbox>{lable}</Checkbox>
+				break
+			case 'date':
+				inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
+				break
+		}
+		return inputitem
+	}
 	initFormList = () => {
 		const { getFieldDecorator } = this.props.form
 		const formList = this.props.formList
 		let formItemList = []
-		if (formList && formList.length > 0) {
+		formList &&
+			formList.length > 0 &&
 			formList.map((item, index) => {
 				let {
 					lable, //标题
-					placeholder,
 					field, // 字段key
-					width,
-					list,
 					required, // 必填
-					message
+					type,
+					setValue
 				} = item
-				list = item.list || [] //option
-				message = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
+				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
 				let inputitem = ''
-				if (item.type === 'input') {
-					inputitem = <Input placeholder={placeholder} />
-				} else if (item.type === 'select') {
-					inputitem = (
-						<Select style={{ width: width }} placeholder={placeholder}>
-							{OptionList.OptionList(list)}
-						</Select>
-					)
-				} else if (item.type === 'checkbox') {
-					inputitem = <Checkbox>{lable}</Checkbox>
-				} else if (item.type === 'date') {
-					inputitem = <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
-				} else if (item.type === 'upload') {
+				inputitem = this.inputtype(item)
+				if (type === 'upload') {
 					const props = {
 						name: 'file',
 						action: '/admin/uploadimg',
@@ -85,13 +102,13 @@ class BaseForm extends React.Component {
 							}
 						}
 					}
-					if (item.setValue) {
+					if (setValue) {
 						let editimg = (
 							<Form.Item label="原图" key="editimg">
 								<img
 									alt="这是一张图片"
 									style={{ maxWidth: '10vw', maxHeight: '10vw' }}
-									src={`http://127.0.0.1:7001${item.setValue}`}
+									src={`http://127.0.0.1:7001${setValue}`}
 								/>
 							</Form.Item>
 						)
@@ -116,7 +133,7 @@ class BaseForm extends React.Component {
 							rules: [
 								{
 									required,
-									message
+									message: rulemessages
 								}
 							]
 						})(inputitem)}
@@ -124,7 +141,6 @@ class BaseForm extends React.Component {
 				)
 				formItemList.push(fromitem)
 			})
-		}
 		return formItemList
 	}
 
