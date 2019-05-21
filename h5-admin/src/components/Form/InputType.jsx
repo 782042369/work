@@ -1,13 +1,10 @@
 import React from 'react'
-import { Select, Form, Radio, Checkbox, Button, Input, DatePicker, Upload, Icon, message } from 'antd'
+import { Select, Radio, Checkbox, Input, DatePicker } from 'antd'
 import { RadioList, OptionList } from './OptionList'
 import './index.scss'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
-const Dragger = Upload.Dragger
-const FormItem = Form.Item
-const { RangePicker } = DatePicker
 const { TextArea } = Input
 const RadioGroup = Radio.Group
 export const InputType = (item) => {

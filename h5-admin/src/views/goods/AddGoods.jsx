@@ -8,15 +8,9 @@ import {
 	goodstypeattributelist
 } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
-import { Form, Input, Button, message, Select, Icon, Upload, Tabs, Checkbox } from 'antd'
-import Darft from '../../components/Darft'
+import { Form, message } from 'antd'
 import TapFrom from '../../components/Form/TapFrom'
-const TabPane = Tabs.TabPane
-const Option = Select.Option
-const { TextArea } = Input
-const Dragger = Upload.Dragger
-const CheckboxGroup = Checkbox.Group
-class index extends Component {
+class addgoods extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -97,6 +91,7 @@ class index extends Component {
 		})
 	}
 	handleSelectChange = (e) => {
+		console.log('e: ', e)
 		goodstypeattributelist({ id: e }).then((res) => {
 			console.log('res: ', res)
 			// let arr = []
@@ -268,7 +263,7 @@ class index extends Component {
 							required: true,
 							list: this.state.selecttypeoptions,
 							message: 'Please input your goods_type_id!',
-							render: () => this.handleSelectChange()
+							render: (e) => this.handleSelectChange(e)
 						}
 					]
 				}
@@ -303,65 +298,6 @@ class index extends Component {
 			]
 		]
 		return <TapFrom taps={taps} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
-
-		// return (
-		// 	<div>
-		// 		<h1>{this.state.title}商品</h1>
-		// 		<Form {...formItemLayout} onSubmit={this.handleSubmit}>
-		// 			<Tabs onChange={this.callback} type="card">
-		// 				<TabPane tab="通用信息" key="1">
-		// 					<Form.Item label="商品颜色">
-		// 						{getFieldDecorator('title', {
-		// 							rules: [
-		// 								{
-		// 									required: true,
-		// 									message: 'Please input your title!'
-		// 								}
-		// 							]
-		// 						})(<CheckboxGroup options={this.state.plainOptions} />)}
-		// 					</Form.Item>
-		// 					<Form.Item label="商品名称">
-		// 						{getFieldDecorator('title', {
-		// 							rules: [
-		// 								{
-		// 									required: true,
-		// 									message: 'Please input your title!'
-		// 								}
-		// 							]
-		// 						})(<Input placeholder="请输入" />)}
-		// 					</Form.Item>
-		// 				</TabPane>
-		// 				<TabPane tab="详细描述" key="2">
-		// 					<Darft editorState={this.editorState.bind(this)} />
-		// 				</TabPane>
-		// 				<TabPane tab="商品属性" key="3">
-		// 					Content of Tab Pane 3
-		// 				</TabPane>
-		// 				<TabPane tab="规格包装" key="4">
-		// 					<Form.Item label="商品颜色">
-		// 						{getFieldDecorator('seletetitle', {
-		// 							rules: [
-		// 								{
-		// 									required: true,
-		// 									message: 'Please input your title!'
-		// 								}
-		// 							]
-		// 						})(<Select onChange={this.handleSelectChange}>{this.renderOptions()}</Select>)}
-		// 					</Form.Item>
-		// 				</TabPane>
-		// 				<TabPane tab="商品相册" key="5">
-		// 					Content of Tab Pane 5
-		// 				</TabPane>
-		// 			</Tabs>
-		// 			<Form.Item {...tailFormItemLayout}>
-		// 				<Button type="primary" htmlType="submit">
-		// 					提交
-		// 				</Button>
-		// 			</Form.Item>
-		// 		</Form>
-		// 	</div>
-		// )
 	}
 }
-const addgoods = Form.create({ name: 'register' })(index)
 export default addgoods
