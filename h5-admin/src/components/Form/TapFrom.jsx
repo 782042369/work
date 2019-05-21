@@ -2,20 +2,26 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-21 18:31:23
- * @Description: 传统
+ * @LastEditTime: 2019-05-21 18:31:43
+ * @Description: 选项卡式表单提交
  */
 import React from 'react'
-import { Form, Button, Upload, Icon, message } from 'antd'
+import { Form, Button, Upload, Icon, message, Tabs } from 'antd'
+
 import { InputType } from './InputType'
-import './index.scss'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import Darft from '../../components/Darft'
 moment.locale('zh-cn')
 const Dragger = Upload.Dragger
 const FormItem = Form.Item
+const TabPane = Tabs.TabPane
 
 class BaseForm extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {}
+	}
 	commit = (e) => {
 		e.preventDefault()
 		const { getFieldsValue } = this.props.form
@@ -28,6 +34,9 @@ class BaseForm extends React.Component {
 	}
 	reset = () => {
 		this.props.form.resetFields()
+	}
+	editorState = (txt) => {
+		console.log('富文本编辑器内容是-->', txt)
 	}
 	componentWillReceiveProps(nextProps) {
 		// 组件初始化时不调用，组件接受新的props时调用。
@@ -44,13 +53,12 @@ class BaseForm extends React.Component {
 			res.setValue !== '' && setFieldsValue(arr)
 		})
 	}
-
-	initFormList = () => {
+	initFormList = (formList) => {
 		const { getFieldDecorator } = this.props.form
-		const formList = this.props.formList
 		let formItemList = []
-		formList &&
-			formList.length > 0 &&
+		if (formList === 'dart') {
+			formItemList.push(<Darft editorState={this.editorState} key={formList} />)
+		} else {
 			formList.forEach((item, index) => {
 				let {
 					lable, //标题
@@ -118,9 +126,22 @@ class BaseForm extends React.Component {
 				)
 				formItemList.push(fromitem)
 			})
+		}
 		return formItemList
 	}
-
+	tabsinit() {
+		let Tabshtml = []
+		let card = ''
+		this.props.taps.forEach((item) => {
+			card = (
+				<TabPane tab={item[0].tap} key={item[0].key}>
+					{this.initFormList(item[1].formlist)}
+				</TabPane>
+			)
+			Tabshtml.push(card)
+		})
+		return Tabshtml
+	}
 	render() {
 		const formItemLayout = {
 			labelCol: {
@@ -147,7 +168,9 @@ class BaseForm extends React.Component {
 		return (
 			<Form {...formItemLayout} onSubmit={this.commit}>
 				<h1>{this.props.h1title}</h1>
-				{this.initFormList()}
+				<Tabs onChange={this.callback} type="card">
+					{this.tabsinit()}
+				</Tabs>
 				<FormItem {...tailFormItemLayout}>
 					<Button htmlType="submit" type="primary">
 						提交
