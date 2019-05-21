@@ -3,57 +3,57 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-07 15:07:03
+ * @LastEditTime: 2019-05-21 15:48:36
  */
-import React, { Component } from 'react';
-import { Table, Divider, Button, message } from 'antd';
-import datefilter from '../../tool/datefilter';
-import { managerlist, deletemanager } from '../../api/manager';
-import { Link } from 'react-router-dom';
-import LineWrap from '../../components/LineWrap';
-const { Column } = Table;
+import React, { Component } from 'react'
+import { Table, Divider, Button, message } from 'antd'
+import datefilter from '../../tool/datefilter'
+import { managerlist, deletemanager } from '../../api/manager'
+import { Link } from 'react-router-dom'
+import LineWrap from '../../components/LineWrap'
+const { Column } = Table
 class manager extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			managerdata: []
-		};
+		}
 	}
 	getlist() {
 		managerlist()
 			.then((res) => {
-				console.log('res: ', res);
+				console.log('res: ', res)
 				if (res.status === 1) {
 					this.setState({
 						managerdata: res.data
-					});
+					})
 				}
 				// console.log(this.state.managerdata)
 			})
 			.catch((err) => {
-				console.log('err: ', err);
-			});
+				console.log('err: ', err)
+			})
 	}
 	componentDidMount() {
-		this.getlist();
+		this.getlist()
 	}
 	deletemanager(id) {
 		deletemanager({
 			id
 		})
 			.then((res) => {
-				console.log('res: ', res);
-				this.getlist();
-				message.success(res.message);
+				console.log('res: ', res)
+				this.getlist()
+				message.success(res.message)
 			})
 			.catch((err) => {
-				console.log('err: ', err);
-			});
+				console.log('err: ', err)
+			})
 	}
 	render() {
 		return (
 			<div>
-				<Table dataSource={this.state.managerdata}>
+				<Table rowKey={(record) => record._id} dataSource={this.state.managerdata}>
 					<Column
 						title="名称"
 						dataIndex="userName"
@@ -104,8 +104,8 @@ class manager extends Component {
 					/>
 				</Table>
 			</div>
-		);
+		)
 	}
 }
 
-export default manager;
+export default manager

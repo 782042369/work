@@ -3,24 +3,24 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-16 18:51:54
+ * @LastEditTime: 2019-05-21 15:48:44
  */
-import React, { Component } from 'react';
-import { Table, Divider, Button, message } from 'antd';
-import { goodscatelist, deletegoodscate } from '../../api/goods';
-import datefilter from '../../tool/datefilter';
-import { typeattributeilter } from '../../tool/statusfilter';
-import { Link } from 'react-router-dom';
-import getUrlParam from '../../tool/getUrlParam';
-import { typefilter } from '../../tool/statusfilter';
+import React, { Component } from 'react'
+import { Table, Divider, Button, message } from 'antd'
+import { goodscatelist, deletegoodscate } from '../../api/goods'
+import datefilter from '../../tool/datefilter'
+import { typeattributeilter } from '../../tool/statusfilter'
+import { Link } from 'react-router-dom'
+import getUrlParam from '../../tool/getUrlParam'
+import { typefilter } from '../../tool/statusfilter'
 
-const { Column } = Table;
+const { Column } = Table
 class role extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			data: []
-		};
+		}
 	}
 	getlist() {
 		goodscatelist()
@@ -28,28 +28,28 @@ class role extends Component {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
-					});
+					})
 				}
 			})
 			.catch((err) => {
-				console.log('err: ', err);
-			});
+				console.log('err: ', err)
+			})
 	}
 	componentDidMount() {
-		this.getlist();
+		this.getlist()
 	}
 	deletegoodscate(id) {
 		deletegoodscate({
 			id
 		})
 			.then((res) => {
-				console.log('res: ', res);
-				this.getlist();
-				message.success(res.message);
+				console.log('res: ', res)
+				this.getlist()
+				message.success(res.message)
 			})
 			.catch((err) => {
-				console.log('err: ', err);
-			});
+				console.log('err: ', err)
+			})
 	}
 	combtn = (e) => {
 		return (
@@ -62,7 +62,7 @@ class role extends Component {
 					删除
 				</Button>
 			</span>
-		);
+		)
 	}
 	columns = [
 		{ title: '分类名称', dataIndex: 'title', key: 'title' },
@@ -120,16 +120,15 @@ class role extends Component {
 				key: '_id',
 				render: (text) => this.combtn(text)
 			}
-		];
+		]
 		return (
 			<Table
+				rowKey={(record) => record._id}
 				columns={arr}
-				dataSource={this.state.data[index].items.sort((res, b) => {
-					return res.sort - b.sort;
-				})}
+				dataSource={this.state.data[index].items}
 				pagination={false}
 			/>
-		);
+		)
 	}
 	render() {
 		return (
@@ -137,10 +136,15 @@ class role extends Component {
 				<Link to={'/addgoodscate'}>
 					<Button type="primary">增加商品分类</Button>
 				</Link>
-				<Table dataSource={this.state.data} columns={this.columns} expandedRowRender={this.expandedRowRender} />
+				<Table
+					rowKey={(record) => record._id}
+					dataSource={this.state.data}
+					columns={this.columns}
+					expandedRowRender={this.expandedRowRender}
+				/>
 			</div>
-		);
+		)
 	}
 }
 
-export default role;
+export default role

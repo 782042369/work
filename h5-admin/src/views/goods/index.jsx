@@ -55,7 +55,7 @@ class role extends Component {
 				<Link to={'/addgoods'}>
 					<Button type="primary">增加商品</Button>
 				</Link>
-				<Table dataSource={this.state.data}>
+				<Table  rowKey={(record) => record._id} dataSource={this.state.data}>
 					<Column title="名称" dataIndex="title" key="title" />
 					<Column
 						title="状态"

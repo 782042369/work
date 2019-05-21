@@ -3,23 +3,23 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 16:48:39
+ * @LastEditTime: 2019-05-21 15:48:42
  */
-import React, { Component } from 'react';
-import { Table, Divider, Button, message } from 'antd';
-import { goodstypeattributelist, deletegoodstypeattribute } from '../../api/goods';
-import datefilter from '../../tool/datefilter';
-import { typeattributeilter } from '../../tool/statusfilter';
-import { Link } from 'react-router-dom';
-import getUrlParam from '../../tool/getUrlParam';
+import React, { Component } from 'react'
+import { Table, Divider, Button, message } from 'antd'
+import { goodstypeattributelist, deletegoodstypeattribute } from '../../api/goods'
+import datefilter from '../../tool/datefilter'
+import { typeattributeilter } from '../../tool/statusfilter'
+import { Link } from 'react-router-dom'
+import getUrlParam from '../../tool/getUrlParam'
 
-const { Column } = Table;
+const { Column } = Table
 class role extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			data: []
-		};
+		}
 	}
 	getlist() {
 		goodstypeattributelist({
@@ -29,28 +29,28 @@ class role extends Component {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
-					});
+					})
 				}
 			})
 			.catch((err) => {
-				console.log('err: ', err);
-			});
+				console.log('err: ', err)
+			})
 	}
 	componentDidMount() {
-		this.getlist();
+		this.getlist()
 	}
 	deletegoodstypeattribute(id) {
 		deletegoodstypeattribute({
 			id
 		})
 			.then((res) => {
-				console.log('res: ', res);
-				this.getlist();
-				message.success(res.message);
+				console.log('res: ', res)
+				this.getlist()
+				message.success(res.message)
 			})
 			.catch((err) => {
-				console.log('err: ', err);
-			});
+				console.log('err: ', err)
+			})
 	}
 	render() {
 		return (
@@ -58,7 +58,7 @@ class role extends Component {
 				<Link to={`/addgoodstypeattribute?id=${getUrlParam('id')}&type=0`}>
 					<Button type="primary">增加商品属性</Button>
 				</Link>
-				<Table dataSource={this.state.data}>
+				<Table rowKey={(record) => record._id} dataSource={this.state.data}>
 					<Column
 						title="商品类型"
 						dataIndex="parent"
@@ -97,8 +97,8 @@ class role extends Component {
 					/>
 				</Table>
 			</div>
-		);
+		)
 	}
 }
 
-export default role;
+export default role

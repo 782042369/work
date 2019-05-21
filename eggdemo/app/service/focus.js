@@ -7,10 +7,14 @@ class FocusService extends Service {
     try {
       const pagesize = this.ctx.request.body.pagesize || 10
       const pagenum = this.ctx.request.body.pagenum || 1
+      const count = await this.ctx.model.Focus.find({}).count()
       const result = await this.ctx.model.Focus.find(this.ctx.request.body).sort({
         add_time: -1
       }).skip((pagenum - 1) * pagesize).limit(pagesize);
-      return result;
+      return {
+        pagecount: count,
+        pagelist: result
+      };
     } catch (error) {
       console.log('error: ', error);
       return error;
