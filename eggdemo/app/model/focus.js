@@ -7,7 +7,7 @@ module.exports = app => {
     title: {
       type: String,
     },
-    type: { //1、网站 2、app 3、小程序
+    type: { // 1、网站 2、app 3、小程序
       type: String,
     },
     focus_img: {
