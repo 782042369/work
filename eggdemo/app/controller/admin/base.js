@@ -40,13 +40,6 @@ class BaseController extends Controller {
     this.ctx.response.type = 'image/svg+xml'; // 指定返回类型
     this.ctx.body = captcha.data; // 返回验证码
   }
-  async sortdata(res, name) {
-    /**
-     * 输出倒序 json
-     */
-    return res.sort((a, b) => b[name] - a[name]);
-  }
-
 }
 
 module.exports = BaseController;

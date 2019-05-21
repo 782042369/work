@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-21 10:19:49
+ * @LastEditTime: 2019-05-21 14:58:40
  */
 import React, { Component } from 'react'
 import { addaccess, editaccess, accesslist } from '../../api/access'
@@ -22,30 +22,28 @@ class manger extends Component {
 	}
 
 	handleSubmit = (values) => {
-		if (!err) {
-			values.sort = Number(values.sort)
-			if (getUrlParam('id')) {
-				let arr = { id: getUrlParam('id') }
-				editaccess(Object.assign(values, arr))
-					.then((res) => {
-						console.log(res)
-						message.success(res.message)
-					})
-					.catch((err) => {
-						message.error(err.message)
-						console.log(err)
-					})
-			} else {
-				addaccess(values)
-					.then((res) => {
-						console.log(res)
-						message.success(res.message)
-					})
-					.catch((err) => {
-						console.log(err)
-						message.error(err.message)
-					})
-			}
+		values.sort = Number(values.sort)
+		if (getUrlParam('id')) {
+			let arr = { id: getUrlParam('id') }
+			editaccess(Object.assign(values, arr))
+				.then((res) => {
+					console.log(res)
+					message.success(res.message)
+				})
+				.catch((err) => {
+					message.error(err.message)
+					console.log(err)
+				})
+		} else {
+			addaccess(values)
+				.then((res) => {
+					console.log(res)
+					message.success(res.message)
+				})
+				.catch((err) => {
+					console.log(err)
+					message.error(err.message)
+				})
 		}
 	}
 	getlist() {
@@ -151,7 +149,7 @@ class manger extends Component {
 			},
 			{
 				type: 'input',
-				lable: '操作地址',
+				lable: '排序',
 				setValue: this.state.sort,
 				placeholder: '请输入',
 				field: 'sort',
