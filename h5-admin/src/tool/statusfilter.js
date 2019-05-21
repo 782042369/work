@@ -13,7 +13,7 @@ export const statusfilter = timestamp => {
 	let val = {
 		1: '启用',
 		0: '停用'
-	} [timestamp];
+	}[timestamp];
 	return val;
 };
 /**
@@ -25,7 +25,7 @@ export const typefilter = (value) => {
 		1: '模块',
 		2: '菜单',
 		3: '操作',
-	} [value];
+	}[value];
 	return val;
 };
 /**
@@ -37,6 +37,6 @@ export const typeattributeilter = (value) => {
 		1: '单行录入',
 		2: '多行录入',
 		3: '选择录入',
-	} [value];
+	}[value];
 	return val;
 };

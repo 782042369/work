@@ -33,7 +33,7 @@ class BaseForm extends React.Component {
 	}
 	formsetval(formList) {
 		const { setFieldsValue } = this.props.form;
-		formList.map((res) => {
+		formList.forEach((res) => {
 			let field = res.field;
 			let arr = {};
 			arr[field] = res.setValue;

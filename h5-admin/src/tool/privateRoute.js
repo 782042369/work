@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-05-20 20:50:13
+ * @LastEditTime: 2019-05-20 20:51:24
  */
 import React, {
 	Component
@@ -41,19 +41,19 @@ class PrivateRoute extends Component {
 		} = this.props;
 		return this.state.isAuthenticated ?
 			( < Route {
-			...rest
-			}
-			render = {
-				(props) => ( < Component {
-				...props
+					...rest
 				}
-				/> 
-				)
-			}
-			/> ) : (message.error(
+				render = {
+					(props) => ( < Component {
+							...props
+						}
+						/> 
+					)
+				}
+				/> ) : (message.error(
 				'请登录...'
 			));
-	}
+}
 }
 
 export default withRouter(PrivateRoute);
