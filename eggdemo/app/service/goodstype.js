@@ -4,11 +4,12 @@ const Service = require('egg').Service;
 class GoodsService extends Service {
   async find() {
     try {
-      const pagesize = this.ctx.request.body.pagesize || 10
-      const pagenum = this.ctx.request.body.pagenum || 1
+      const pagesize = this.ctx.request.body.pagesize || 10;
+      const pagenum = this.ctx.request.body.pagenum || 1;
       const result = await this.ctx.model.GoodsType.find(this.ctx.request.body).sort({
-        add_time: -1
-      }).skip((pagenum - 1) * pagesize).limit(pagesize);
+        add_time: -1,
+      }).skip((pagenum - 1) * pagesize)
+        .limit(pagesize);
       return result;
     } catch (error) {
       console.log('error: ', error);
@@ -32,11 +33,11 @@ class GoodsService extends Service {
   async editgoods() {
     const _id = this.ctx.request.body.id;
     const result = await this.ctx.model.GoodsType.updateOne({
-        _id,
-      },
-      Object.assign(this.ctx.request.body, {
-        add_time: new Date().getTime(),
-      })
+      _id,
+    },
+    Object.assign(this.ctx.request.body, {
+      add_time: new Date().getTime(),
+    })
     );
     return result;
   }

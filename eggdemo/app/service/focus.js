@@ -5,15 +5,16 @@ const Service = require('egg').Service;
 class FocusService extends Service {
   async find() {
     try {
-      const pagesize = this.ctx.request.body.pagesize || 10
-      const pagenum = this.ctx.request.body.pagenum || 1
-      const count = await this.ctx.model.Focus.find({}).count()
+      const pagesize = this.ctx.request.body.pagesize || 10;
+      const pagenum = this.ctx.request.body.pagenum || 1;
+      const count = await this.ctx.model.Focus.find({}).count();
       const result = await this.ctx.model.Focus.find(this.ctx.request.body).sort({
-        add_time: -1
-      }).skip((pagenum - 1) * pagesize).limit(pagesize);
+        add_time: -1,
+      }).skip((pagenum - 1) * pagesize)
+        .limit(pagesize);
       return {
         pagecount: count,
-        pagelist: result
+        pagelist: result,
       };
     } catch (error) {
       console.log('error: ', error);
@@ -75,11 +76,11 @@ class FocusService extends Service {
         this.ctx.request.body.link = banner.fileList[0].response.data[0].saveDir;
       }
       const result = await this.ctx.model.Focus.updateOne({
-          _id: id,
-        },
-        Object.assign(this.ctx.request.body, {
-          add_time: new Date().getTime(),
-        })
+        _id: id,
+      },
+      Object.assign(this.ctx.request.body, {
+        add_time: new Date().getTime(),
+      })
       );
       return result;
     } catch (error) {

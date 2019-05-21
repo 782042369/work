@@ -2,35 +2,39 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
+
   const d = new Date();
-  const UserSchema = new Schema({
-    username: {
+  const GoodsAttrSchema = new Schema({
+
+    goods_id: {
+      type: Schema.Types.ObjectId,
+    },
+    cate_id: {
+      type: Schema.Types.ObjectId,
+    },
+    attribute_id: {
+      type: Schema.Types.ObjectId,
+    },
+    attribute_type: {
       type: String,
     },
-    password: {
+    attribute_title: {
       type: String,
     },
-    mobile: {
-      type: String,
-    },
-    email: {
+    attribute_value: {
       type: String,
     },
     status: {
       type: Number,
       default: 1,
     },
-    role_id: {
-      type: Schema.Types.ObjectId,
-    }, //   角色id
     add_time: {
       type: Number,
       default: d.getTime(),
     },
-    is_super: {
-      type: Number,
-      default: 0,
-    }, // 是否是超级管理员      1表示超级管理员
+
   });
-  return mongoose.model('User', UserSchema, 'user');
+
+  return mongoose.model('GoodsAttr', GoodsAttrSchema, 'goods_attr');
+
 };
