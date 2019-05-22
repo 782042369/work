@@ -2,31 +2,32 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
+
   const GoodsCateSchema = new Schema({
     title: {
       type: String,
     },
-    cate_img: { // 分类图片
+    cate_img: {
       type: String,
     },
-    jipmimgpath: { // 缩略图
-      type: String,
-    },
-    filter_attr: { // 筛选id
+    filter_attr: {
+      // 筛选id
       type: String,
     },
     link: {
       type: String,
     },
-    template: { // 分类模版
+    template: {
+      /* 指定当前分类的模板*/
       type: String,
     },
     pid: {
-      type: Schema.Types.Mixed,
+      type: Schema.Types.Mixed, // 混合类型
     },
-    sub_title: { // seo
+    sub_title: {
       type: String,
     },
+    /* seo相关的标题  关键词  描述*/
     keywords: {
       type: String,
     },
@@ -39,6 +40,7 @@ module.exports = app => {
     },
     sort: {
       type: Number,
+      default: 100,
     },
     add_time: {
       type: Number,

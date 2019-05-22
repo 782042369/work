@@ -1,32 +1,31 @@
 'use strict';
 module.exports = app => {
-  const mongoose = app.mongoose; /* 引入建立连接的mongoose */
+  const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
-  const d = new Date();
+
   const FocusSchema = new Schema({
     title: {
       type: String,
     },
-    type: { // 1、网站 2、app 3、小程序
-      type: String,
+    type: {
+      type: Number,
     },
     focus_img: {
       type: String,
     },
     link: {
       type: String,
-      default: '',
     },
     sort: {
-      type: String,
+      type: Number,
     },
     status: {
-      type: String,
+      type: Number,
       default: 1,
     },
     add_time: {
       type: Number,
-      default: d.getTime(),
+      default: new Date().getTime(),
     },
   });
   return mongoose.model('Focus', FocusSchema, 'focus');

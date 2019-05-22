@@ -2,6 +2,7 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
+
   const GoodsTypeSchema = new Schema({
     title: {
       type: String,
@@ -18,5 +19,6 @@ module.exports = app => {
       default: new Date().getTime(),
     },
   });
+
   return mongoose.model('GoodsType', GoodsTypeSchema, 'goods_type');
 };

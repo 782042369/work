@@ -2,7 +2,7 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
-  const d = new Date();
+
   const UserSchema = new Schema({
     userName: {
       type: String,
@@ -25,7 +25,7 @@ module.exports = app => {
     }, //   角色id
     add_time: {
       type: Number,
-      default: d.getTime(),
+      default: new Date().getTime(),
     },
     is_super: {
       type: Number,

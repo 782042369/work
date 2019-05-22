@@ -3,9 +3,7 @@ module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
 
-  const d = new Date();
   const GoodsAttrSchema = new Schema({
-
     goods_id: {
       type: Schema.Types.ObjectId,
     },
@@ -30,11 +28,8 @@ module.exports = app => {
     },
     add_time: {
       type: Number,
-      default: d.getTime(),
+      default: new Date().getTime(),
     },
-
   });
-
   return mongoose.model('GoodsAttr', GoodsAttrSchema, 'goods_attr');
-
 };

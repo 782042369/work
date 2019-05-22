@@ -9,6 +9,10 @@ module.exports = app => {
     color_value: {
       type: String,
     },
+    status: {
+      type: Number,
+      default: 1,
+    },
     add_time: {
       type: Number,
       default: new Date().getTime(),

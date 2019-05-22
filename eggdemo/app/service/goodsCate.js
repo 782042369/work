@@ -18,29 +18,29 @@ class GoodsCateService extends Service {
           .limit(pagesize);
       } else {
         result = await this.ctx.model.GoodsCate.aggregate([{
-            $lookup: {
-              from: 'goods_cate',
-              localField: '_id',
-              foreignField: 'pid',
-              as: 'items',
-            },
+          $lookup: {
+            from: 'goods_cate',
+            localField: '_id',
+            foreignField: 'pid',
+            as: 'items',
           },
-          {
-            $match: {
-              pid: 0,
-            }
+        },
+        {
+          $match: {
+            pid: 0,
           },
-          {
-            $sort: {
-              add_time: -1,
-            },
+        },
+        {
+          $sort: {
+            add_time: -1,
           },
-          {
-            $skip: (pagenum - 1) * pagesize,
-          },
-          {
-            $limit: pagesize,
-          }
+        },
+        {
+          $skip: (pagenum - 1) * pagesize,
+        },
+        {
+          $limit: pagesize,
+        },
         ]);
       }
       console.log('result: ', result);
@@ -54,7 +54,7 @@ class GoodsCateService extends Service {
   async addgoodscate() {
     const {
       title,
-      pid
+      pid,
     } = this.ctx.request.body;
     let result = '';
     result = await this.ctx.model.GoodsCate.find({
@@ -63,7 +63,7 @@ class GoodsCateService extends Service {
     if (result.length === 0) {
       const {
         saveDir,
-        uploadDir
+        uploadDir,
       } = this.ctx.request.body.cate_img.fileList[0].response.data[0];
       const size = 100;
       await this.service.tools.jimp(uploadDir, size);
@@ -80,12 +80,12 @@ class GoodsCateService extends Service {
     try {
       const {
         id,
-        pid
+        pid,
       } = this.ctx.request.body;
       if (this.ctx.request.body.cate_img) {
         const {
           saveDir,
-          uploadDir
+          uploadDir,
         } = this.ctx.request.body.cate_img.fileList[0].response.data[0];
         const size = 100;
         await this.service.tools.jimp(uploadDir, size);
@@ -96,11 +96,11 @@ class GoodsCateService extends Service {
         this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid);
       }
       const result = await this.ctx.model.GoodsCate.updateOne({
-          _id: id,
-        },
-        Object.assign(this.ctx.request.body, {
-          add_time: new Date().getTime(),
-        })
+        _id: id,
+      },
+      Object.assign(this.ctx.request.body, {
+        add_time: new Date().getTime(),
+      })
       );
       return result;
     } catch (error) {

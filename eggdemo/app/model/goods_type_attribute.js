@@ -2,6 +2,7 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
+
   const GoodsTypeAttributeSchema = new Schema({
     cate_id: {
       type: Schema.Types.ObjectId,
@@ -9,12 +10,12 @@ module.exports = app => {
     title: {
       type: String,
     },
-    attr_type: { // 类型 1 input 2 textarea 3 select
+    attr_type: {
       type: String,
-    },
-    attr_value: { // 默认值 input textarea 默认值空 select 有默认值
+    }, // 类型  1 input    2  textarea    3、select
+    attr_value: {
       type: String,
-    },
+    }, // 默认值： input  textarea默认值是空     select框有默认值  多个默认值以回车隔开
     status: {
       type: Number,
       default: 1,
