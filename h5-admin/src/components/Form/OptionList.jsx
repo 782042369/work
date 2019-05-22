@@ -6,7 +6,7 @@ export const OptionList = (data) => {
 		return []
 	}
 	let OptionMap = []
-	data.forEach((item, index) => {
+	data.forEach((item) => {
 		OptionMap.push(
 			<Option value={item.id} key={item.id}>
 				{item.name}

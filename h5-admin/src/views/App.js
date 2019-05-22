@@ -3,10 +3,10 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-22 15:46:09
+ * @LastEditTime: 2019-05-22 16:24:11
  */
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Avatar } from 'antd'
 import MenuList from '../components/MenuList'
 import AsyncComponent from '../components/AsyncComponent'
 import { Route, Switch, withRouter } from 'react-router-dom'
@@ -25,8 +25,8 @@ function App() {
 			<BrowserRouter>
 				<Layout>
 					<Header className="header">
-						123
-						{/* <Fragment className="logo" /> */}
+						<Avatar size={40} icon="user" />
+						<span>{window.sessionStorage.getItem('userName')}</span>
 					</Header>
 					<Layout>
 						<Sider width={200} style={{ background: '#fff' }}>
@@ -53,7 +53,7 @@ function App() {
 		return (
 			<BrowserRouter>
 				<Switch>
-					<Route exact path="/" component={Login} />
+					<Route exact path="/login" component={Login} />
 				</Switch>
 			</BrowserRouter>
 		)

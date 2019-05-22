@@ -23,6 +23,7 @@ class NormalLoginForm extends Component {
 						if (res.status === 1) {
 							message.success(res.message)
 							sessionStorage.setItem('role_id', res.data.role_id)
+							sessionStorage.setItem('userName', res.data.userName)
 							this.setState({
 								loginSuccess: true
 							})

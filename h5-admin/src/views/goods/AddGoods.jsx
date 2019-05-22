@@ -14,7 +14,7 @@ class addgoods extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			plainOptions: [],
+			colorOptions: [],
 			specification: [], // 规格包装
 			selecttypeoptions: []
 		}
@@ -32,7 +32,7 @@ class addgoods extends Component {
 				})
 			})
 			this.setState({
-				plainOptions: arr
+				colorOptions: arr
 			})
 		})
 	}
@@ -42,7 +42,7 @@ class addgoods extends Component {
 			let arr = []
 			res.data.forEach((element) => {
 				arr.push({
-					name: element.title,
+					value: element.title,
 					id: element._id
 				})
 			})
@@ -95,49 +95,37 @@ class addgoods extends Component {
 	handleSelectChange = (id) => {
 		// 规格包装
 		goodstypeattributelist({ id }).then((res) => {
-			let arr = [
-				{
-					type: 'select',
-					lable: '商品类型',
-					setValue: this.state.goods_type_id,
-					placeholder: '请输入',
-					field: 'goods_type_id',
-					required: true,
-					list: this.state.selecttypeoptions,
-					message: 'Please input your goods_type_id!',
-					render: (e) => this.handleSelectChange(e)
-				}
-			]
+			let arr = []
 			let type = [ 'input', 'textarea', 'checkbox' ] // 1 input 2 textarea 3 checkbox
-			res.data.forEach((ele) => {
+			res.data.forEach((ele, index) => {
+				arr.push({
+					type: type[ele.attr_type - 1],
+					lable: ele.title,
+					setValue: '',
+					placeholder: '请输入',
+					field: ele.title,
+					required: false,
+					message: `Please input your ${ele.title}!`
+				})
 				if (ele.attr_type === '3') {
 					let CheckboxGroup = []
 					ele.attr_value.split('\n').forEach((element) => {
 						CheckboxGroup.push({ label: element, value: element })
 					})
-					arr.push({
-						type: type[ele.attr_type - 1],
-						lable: ele.title,
-						setValue: '',
-						placeholder: '请输入',
-						field: ele.title,
-						required: false,
-						message: `Please input your ${ele.title}!`,
-						list: CheckboxGroup
-					})
-				} else {
-					arr.push({
-						type: type[ele.attr_type - 1],
-						lable: ele.title,
-						setValue: '',
-						placeholder: '请输入',
-						field: ele.title,
-						required: false,
-						message: `Please input your ${ele.title}!`
-					})
+					arr[index].list = CheckboxGroup
 				}
 			})
-
+			arr.unshift({
+				type: 'select',
+				lable: '商品类型',
+				setValue: this.state.goods_type_id,
+				placeholder: '请输入',
+				field: 'goods_type_id',
+				required: true,
+				list: this.state.selecttypeoptions,
+				message: 'Please input your goods_type_id!',
+				render: (e) => this.handleSelectChange(e)
+			})
 			this.setState({
 				specification: arr
 			})
@@ -203,11 +191,12 @@ class addgoods extends Component {
 							placeholder: '请输入',
 							field: 'cate_id',
 							required: true,
+							list: this.state.goodscate,
 							message: 'Please input your cate_id!'
 						},
 						{
 							type: 'upload',
-							lable: '所属分类',
+							lable: '商品图片',
 							setValue: this.state.pic,
 							placeholder: '请输入',
 							field: 'pic',
@@ -222,6 +211,15 @@ class addgoods extends Component {
 							field: 'price',
 							required: true,
 							message: 'Please input your price!'
+						},
+						{
+							type: 'input',
+							lable: '商品原价',
+							setValue: this.state.old_price,
+							placeholder: '请输入',
+							field: 'old_price',
+							required: true,
+							message: 'Please input your old_price!'
 						},
 						{
 							type: 'radio',
@@ -267,22 +265,49 @@ class addgoods extends Component {
 				{
 					formlist: [
 						{
-							type: 'input',
-							lable: '角色名称',
-							setValue: this.state.title,
-							placeholder: '请输入',
-							field: 'title',
+							type: 'checkbox',
+							lable: '商品颜色',
+							setValue: this.state.goods_color,
+							field: 'goods_color',
 							required: true,
-							message: 'Please input your title!'
+							list: this.state.colorOptions,
+							message: 'Please input your goods_color!'
 						},
 						{
-							type: 'input',
-							lable: '角色描述',
-							setValue: this.state.description,
-							placeholder: '请输入',
-							field: 'description',
-							required: true,
-							message: 'Please input your description!'
+							type: 'textarea',
+							lable: '关联商品',
+							setValue: this.state.relation_goods,
+							placeholder: '填写关联商品的id 多个以逗号隔开 格式：23,24,39',
+							field: 'relation_goods',
+							required: false,
+							message: 'Please input your relation_goods!'
+						},
+						{
+							type: 'textarea',
+							lable: '关联赠品',
+							setValue: this.state.goods_gift,
+							placeholder: '可为空 格式：23-2,39-5 说明：例如23-2 中的23表示商品id,2表示商品数量',
+							field: 'goods_gift',
+							required: false,
+							message: 'Please input your goods_gift!'
+						},
+						{
+							type: 'textarea',
+							lable: '关联配件',
+							setValue: this.state.goods_fitting,
+							placeholder: '可为空 格式：23-2,39-5 说明：例如23-2 中的23表示商品id,2表示商品数量',
+							field: 'goods_fitting',
+							required: false,
+							message: 'Please input your goods_fitting!'
+						},
+						{
+							type: 'textarea',
+							lable: '更多属性',
+							setValue: this.state.goods_attr,
+							placeholder: '格式:  颜色:红色,白色,黄色 | 尺寸:41,42,43',
+							field: 'goods_attr',
+							required: false,
+							message: 'Please input your goods_attr!'
 						}
 					]
 				}
@@ -319,22 +344,13 @@ class addgoods extends Component {
 				{
 					formlist: [
 						{
-							type: 'input',
-							lable: '角色名称',
-							setValue: this.state.title,
+							type: 'upload',
+							lable: '商品相册',
+							setValue: this.state.pic,
 							placeholder: '请输入',
-							field: 'title',
+							field: 'pic',
 							required: true,
-							message: 'Please input your title!'
-						},
-						{
-							type: 'input',
-							lable: '角色描述',
-							setValue: this.state.description,
-							placeholder: '请输入',
-							field: 'description',
-							required: true,
-							message: 'Please input your description!'
+							message: 'Please input your pic!'
 						}
 					]
 				}
