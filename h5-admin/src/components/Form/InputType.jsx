@@ -8,12 +8,7 @@ const { TextArea } = Input
 const RadioGroup = Radio.Group
 const CheckboxGroup = Checkbox.Group
 export const InputType = (item) => {
-	let {
-		lable, //标题
-		placeholder,
-		width,
-		type
-	} = item
+	let { placeholder, width, type } = item
 	let list = item.list || [] //option
 	switch (type) {
 		case 'input':

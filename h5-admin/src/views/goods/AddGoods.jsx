@@ -10,7 +10,6 @@ import {
 import getUrlParam from '../../tool/getUrlParam'
 import { message } from 'antd'
 import TapFrom from '../../components/Form/TapFrom'
-import { object } from 'prop-types'
 class addgoods extends Component {
 	constructor(props) {
 		super(props)
@@ -53,7 +52,7 @@ class addgoods extends Component {
 		})
 	}
 	handleSubmit = (values) => {
-		console.log('values: ', values);
+		console.log('values: ', values)
 		if (getUrlParam('id')) {
 			let arr = { id: getUrlParam('id') }
 			editgoodscate(Object.assign(values, arr))
