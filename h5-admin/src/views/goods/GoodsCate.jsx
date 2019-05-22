@@ -3,18 +3,13 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-21 15:48:44
+ * @LastEditTime: 2019-05-22 14:55:23
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { goodscatelist, deletegoodscate } from '../../api/goods'
 import datefilter from '../../tool/datefilter'
-import { typeattributeilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
-import getUrlParam from '../../tool/getUrlParam'
-import { typefilter } from '../../tool/statusfilter'
-
-const { Column } = Table
 class role extends Component {
 	constructor(props) {
 		super(props)

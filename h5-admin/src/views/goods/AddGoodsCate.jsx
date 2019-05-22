@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-22 10:37:50
+ * @LastEditTime: 2019-05-22 11:37:51
  */
 import React, { Component } from 'react'
 import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
@@ -82,7 +82,7 @@ class WrappedRegistrationForm extends Component {
 						filter_attr,
 						keywords,
 						link,
-						pid,
+						pid: Number(pid),
 						sub_title,
 						template,
 						title,

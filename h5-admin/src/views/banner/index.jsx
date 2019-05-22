@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-21 15:48:02
+ * @LastEditTime: 2019-05-22 14:55:15
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -12,7 +12,6 @@ import datefilter from '../../tool/datefilter'
 import { statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 
-const { Column } = Table
 class role extends Component {
 	constructor(props) {
 		super(props)

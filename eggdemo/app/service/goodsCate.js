@@ -18,32 +18,31 @@ class GoodsCateService extends Service {
           .limit(pagesize);
       } else {
         result = await this.ctx.model.GoodsCate.aggregate([{
-          $lookup: {
-            from: 'goods_cate',
-            localField: '_id',
-            foreignField: 'pid',
-            as: 'items',
+            $lookup: {
+              from: 'goods_cate',
+              localField: '_id',
+              foreignField: 'pid',
+              as: 'items',
+            },
           },
-        },
-        {
-          $match: {
-            pid: 0,
+          {
+            $match: {
+              pid: '0',
+            },
           },
-        },
-        {
-          $sort: {
-            add_time: -1,
+          {
+            $sort: {
+              add_time: -1,
+            },
           },
-        },
-        {
-          $skip: (pagenum - 1) * pagesize,
-        },
-        {
-          $limit: pagesize,
-        },
+          {
+            $skip: (pagenum - 1) * pagesize,
+          },
+          {
+            $limit: pagesize,
+          },
         ]);
       }
-      console.log('result: ', result);
       return result;
     } catch (error) {
       console.log('error: ', error);
@@ -69,7 +68,9 @@ class GoodsCateService extends Service {
       await this.service.tools.jimp(uploadDir, size);
       this.ctx.request.body.jipmimgpath = `${uploadDir}_${size}x${size}${path.extname(uploadDir)}`;
       this.ctx.request.body.cate_img = saveDir;
-      pid !== 0 && (this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid));
+      if (pid !== '0') {
+        this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid);
+      }
       const goods = new this.ctx.model.GoodsCate(this.ctx.request.body);
       result = goods.save();
     }
@@ -92,15 +93,15 @@ class GoodsCateService extends Service {
         this.ctx.request.body.jipmimgpath = `${uploadDir}_${size}x${size}${path.extname(uploadDir)}`;
         this.ctx.request.body.cate_img = saveDir;
       }
-      if (pid !== 0) {
+      if (pid !== '0') {
         this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid);
       }
       const result = await this.ctx.model.GoodsCate.updateOne({
-        _id: id,
-      },
-      Object.assign(this.ctx.request.body, {
-        add_time: new Date().getTime(),
-      })
+          _id: id,
+        },
+        Object.assign(this.ctx.request.body, {
+          add_time: new Date().getTime(),
+        })
       );
       return result;
     } catch (error) {

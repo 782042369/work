@@ -1,21 +1,20 @@
 import React from 'react'
 import { Select, Radio, Checkbox, Input, DatePicker } from 'antd'
 import { RadioList, OptionList } from './OptionList'
-import './index.scss'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
 const { TextArea } = Input
 const RadioGroup = Radio.Group
+const CheckboxGroup = Checkbox.Group
 export const InputType = (item) => {
 	let {
 		lable, //标题
 		placeholder,
 		width,
-		type,
-		list
+		type
 	} = item
-	list = item.list || [] //option
+	let list = item.list || [] //option
 	switch (type) {
 		case 'input':
 			return <Input placeholder={placeholder} />
@@ -26,7 +25,7 @@ export const InputType = (item) => {
 				</Select>
 			)
 		case 'checkbox':
-			return <Checkbox>{lable}</Checkbox>
+			return <CheckboxGroup options={list} />
 		case 'date':
 			return <DatePicker showTime for-mat="YY-MM-DD HH:mm:ss" placeholder={placeholder} />
 		case 'textarea':

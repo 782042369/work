@@ -21,7 +21,11 @@ export const RadioList = (data) => {
 	}
 	let OptionMap = []
 	data.forEach((item, index) => {
-		OptionMap.push(<Radio key={item.id}>{item.name}</Radio>)
+		OptionMap.push(
+			<Radio key={item.id} value={item.id}>
+				{item.name}
+			</Radio>
+		)
 	})
 	return OptionMap
 }

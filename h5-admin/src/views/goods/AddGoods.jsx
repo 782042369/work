@@ -8,13 +8,15 @@ import {
 	goodstypeattributelist
 } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
-import { Form, message } from 'antd'
+import { message } from 'antd'
 import TapFrom from '../../components/Form/TapFrom'
+import { object } from 'prop-types'
 class addgoods extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			plainOptions: [],
+			specification: [], // 规格包装
 			selecttypeoptions: []
 		}
 	}
@@ -50,7 +52,8 @@ class addgoods extends Component {
 			})
 		})
 	}
-	handleSubmit = (e) => {
+	handleSubmit = (values) => {
+		console.log('values: ', values);
 		if (getUrlParam('id')) {
 			let arr = { id: getUrlParam('id') }
 			editgoodscate(Object.assign(values, arr))
@@ -90,17 +93,55 @@ class addgoods extends Component {
 			})
 		})
 	}
-	handleSelectChange = (e) => {
-		console.log('e: ', e)
-		goodstypeattributelist({ id: e }).then((res) => {
-			console.log('res: ', res)
-			// let arr = []
-			// res.data.forEach((element) => {
-			// 	arr.push(element.title)
-			// })
-			// this.setState({
-			// 	selecttypeoptions: arr
-			// })
+	handleSelectChange = (id) => {
+		// 规格包装
+		goodstypeattributelist({ id }).then((res) => {
+			let arr = [
+				{
+					type: 'select',
+					lable: '商品类型',
+					setValue: this.state.goods_type_id,
+					placeholder: '请输入',
+					field: 'goods_type_id',
+					required: true,
+					list: this.state.selecttypeoptions,
+					message: 'Please input your goods_type_id!',
+					render: (e) => this.handleSelectChange(e)
+				}
+			]
+			let type = [ 'input', 'textarea', 'checkbox' ] // 1 input 2 textarea 3 checkbox
+			res.data.forEach((ele) => {
+				if (ele.attr_type === '3') {
+					let CheckboxGroup = []
+					ele.attr_value.split('\n').forEach((element) => {
+						CheckboxGroup.push({ label: element, value: element })
+					})
+					arr.push({
+						type: type[ele.attr_type - 1],
+						lable: ele.title,
+						setValue: '',
+						placeholder: '请输入',
+						field: ele.title,
+						required: false,
+						message: `Please input your ${ele.title}!`,
+						list: CheckboxGroup
+					})
+				} else {
+					arr.push({
+						type: type[ele.attr_type - 1],
+						lable: ele.title,
+						setValue: '',
+						placeholder: '请输入',
+						field: ele.title,
+						required: false,
+						message: `Please input your ${ele.title}!`
+					})
+				}
+			})
+
+			this.setState({
+				specification: arr
+			})
 		})
 	}
 	editorState = (txt) => {
@@ -253,19 +294,22 @@ class addgoods extends Component {
 					key: '4'
 				},
 				{
-					formlist: [
-						{
-							type: 'select',
-							lable: '商品类型',
-							setValue: this.state.goods_type_id,
-							placeholder: '请输入',
-							field: 'goods_type_id',
-							required: true,
-							list: this.state.selecttypeoptions,
-							message: 'Please input your goods_type_id!',
-							render: (e) => this.handleSelectChange(e)
-						}
-					]
+					formlist:
+						this.state.specification.length !== 0
+							? this.state.specification
+							: [
+									{
+										type: 'select',
+										lable: '商品类型',
+										setValue: this.state.goods_type_id,
+										placeholder: '请输入',
+										field: 'goods_type_id',
+										required: true,
+										list: this.state.selecttypeoptions,
+										message: 'Please input your goods_type_id!',
+										render: (e) => this.handleSelectChange(e)
+									}
+								]
 				}
 			],
 			[

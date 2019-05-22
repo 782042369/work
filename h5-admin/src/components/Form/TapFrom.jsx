@@ -2,15 +2,15 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-21 18:31:43
+ * @LastEditTime: 2019-05-22 15:32:31
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
 import { Form, Button, Upload, Icon, message, Tabs } from 'antd'
-
 import { InputType } from './InputType'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import './TapFrom.scss'
 import Darft from '../../components/Darft'
 moment.locale('zh-cn')
 const Dragger = Upload.Dragger
