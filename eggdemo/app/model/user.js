@@ -4,7 +4,7 @@ module.exports = app => {
   const Schema = mongoose.Schema;
   const d = new Date();
   const UserSchema = new Schema({
-    username: {
+    userName: {
       type: String,
     },
     password: {

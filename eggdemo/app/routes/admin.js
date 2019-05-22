@@ -56,8 +56,8 @@ module.exports = app => {
    * 商品管理类型
    */
   router.post('/admin/goodstypelist', controller.admin.goodsType.index);
-  router.post('/admin/addgoods', controller.admin.goodsType.addgoods);
-  router.put('/admin/editgoods', controller.admin.goodsType.editgoods);
+  router.post('/admin/addgoodstype', controller.admin.goodsType.addgoods);
+  router.put('/admin/editgoodstype', controller.admin.goodsType.editgoods);
   router.delete('/admin/deletegoodstype', controller.admin.goodsType.deletegoods);
   /**
    * 商品属性

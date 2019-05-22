@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-17 15:39:08
+ * @LastEditTime: 2019-05-22 10:17:47
  */
 
 import request from '../tool/request';
@@ -28,19 +28,19 @@ export function deletegoodstype(data) {
 		data
 	});
 }
-export function addgoods(data) {
+export function addgoodstype(data) {
 	// 增加
 	return request({
-		url: 'admin/addgoods',
+		url: 'admin/addgoodstype',
 		method: 'post',
 		data
 	});
 }
 
-export function editgoods(data) {
+export function editgoodstype(data) {
 	// 修改
 	return request({
-		url: 'admin/editgoods',
+		url: 'admin/editgoodstype',
 		method: 'put',
 		data
 	});

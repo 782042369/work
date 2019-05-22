@@ -159,11 +159,11 @@ class addgoods extends Component {
 						{
 							type: 'select',
 							lable: '所属分类',
-							setValue: this.state.cid,
+							setValue: this.state.cate_id,
 							placeholder: '请输入',
-							field: 'cid',
+							field: 'cate_id',
 							required: true,
-							message: 'Please input your cid!'
+							message: 'Please input your cate_id!'
 						},
 						{
 							type: 'upload',

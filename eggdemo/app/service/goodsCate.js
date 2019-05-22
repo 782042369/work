@@ -17,8 +17,7 @@ class GoodsCateService extends Service {
           .skip((pagenum - 1) * pagesize)
           .limit(pagesize);
       } else {
-        result = await this.ctx.model.GoodsCate.aggregate([
-          {
+        result = await this.ctx.model.GoodsCate.aggregate([{
             $lookup: {
               from: 'goods_cate',
               localField: '_id',
@@ -29,7 +28,7 @@ class GoodsCateService extends Service {
           {
             $match: {
               pid: 0,
-            },
+            }
           },
           {
             $sort: {
@@ -41,9 +40,10 @@ class GoodsCateService extends Service {
           },
           {
             $limit: pagesize,
-          },
+          }
         ]);
       }
+      console.log('result: ', result);
       return result;
     } catch (error) {
       console.log('error: ', error);
@@ -52,18 +52,24 @@ class GoodsCateService extends Service {
   }
   // 增加
   async addgoodscate() {
-    const { title, pid } = this.ctx.request.body;
+    const {
+      title,
+      pid
+    } = this.ctx.request.body;
     let result = '';
     result = await this.ctx.model.GoodsCate.find({
       title,
     });
     if (result.length === 0) {
-      const { saveDir, uploadDir } = this.ctx.request.body.cate_img.fileList[0].response.data[0];
+      const {
+        saveDir,
+        uploadDir
+      } = this.ctx.request.body.cate_img.fileList[0].response.data[0];
       const size = 100;
       await this.service.tools.jimp(uploadDir, size);
       this.ctx.request.body.jipmimgpath = `${uploadDir}_${size}x${size}${path.extname(uploadDir)}`;
       this.ctx.request.body.cate_img = saveDir;
-      this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid);
+      pid !== 0 && (this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid));
       const goods = new this.ctx.model.GoodsCate(this.ctx.request.body);
       result = goods.save();
     }
@@ -72,9 +78,15 @@ class GoodsCateService extends Service {
   // 编辑
   async editgoodscate() {
     try {
-      const { id, pid } = this.ctx.request.body;
+      const {
+        id,
+        pid
+      } = this.ctx.request.body;
       if (this.ctx.request.body.cate_img) {
-        const { saveDir, uploadDir } = this.ctx.request.body.cate_img.fileList[0].response.data[0];
+        const {
+          saveDir,
+          uploadDir
+        } = this.ctx.request.body.cate_img.fileList[0].response.data[0];
         const size = 100;
         await this.service.tools.jimp(uploadDir, size);
         this.ctx.request.body.jipmimgpath = `${uploadDir}_${size}x${size}${path.extname(uploadDir)}`;
@@ -83,8 +95,7 @@ class GoodsCateService extends Service {
       if (pid !== 0) {
         this.ctx.request.body.pid = this.app.mongoose.Types.ObjectId(pid);
       }
-      const result = await this.ctx.model.GoodsCate.updateOne(
-        {
+      const result = await this.ctx.model.GoodsCate.updateOne({
           _id: id,
         },
         Object.assign(this.ctx.request.body, {

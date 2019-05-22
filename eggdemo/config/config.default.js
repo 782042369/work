@@ -34,7 +34,7 @@ module.exports = appInfo => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: [ 'http://127.0.0.1:3000' ],
+    domainWhiteList: ['http://127.0.0.1:3000'],
   };
   config.cors = {
     origin: 'http://127.0.0.1:3000',
@@ -69,7 +69,7 @@ module.exports = appInfo => {
   // };
   config.mongoose = {
     client: {
-      url: 'mongodb://127.0.0.1/admin',
+      url: 'mongodb://127.0.0.1/egg_xiaomi',
       options: {},
     },
   };
