@@ -69,7 +69,7 @@ module.exports = app => {
       type: Number,
     },
     recommend: { // 0 精品 1  热销 2 新品
-      type: String
+      type: String,
     },
     goods_type_id: {
       type: Schema.Types.Mixed, // 混合类型

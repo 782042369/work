@@ -20,30 +20,30 @@ class GoodsTypeAttributeService extends Service {
           .limit(pagesize);
       } else {
         result = await this.ctx.model.GoodsTypeAttribute.aggregate([{
-            $lookup: {
-              from: 'goods_type',
-              localField: 'cate_id',
-              foreignField: '_id',
-              as: 'parent',
-            },
+          $lookup: {
+            from: 'goods_type',
+            localField: 'cate_id',
+            foreignField: '_id',
+            as: 'parent',
           },
-          {
-            $match: {
-              // 字符串
-              cate_id: this.app.mongoose.Types.ObjectId(this.ctx.request.body.id),
-            },
+        },
+        {
+          $match: {
+            // 字符串
+            cate_id: this.app.mongoose.Types.ObjectId(this.ctx.request.body.id),
           },
-          {
-            $sort: {
-              add_time: -1,
-            },
+        },
+        {
+          $sort: {
+            add_time: -1,
           },
-          {
-            $skip: (pagenum - 1) * pagesize,
-          },
-          {
-            $limit: pagesize,
-          },
+        },
+        {
+          $skip: (pagenum - 1) * pagesize,
+        },
+        {
+          $limit: pagesize,
+        },
         ]);
       }
       return result;
@@ -72,11 +72,11 @@ class GoodsTypeAttributeService extends Service {
     const _id = this.ctx.request.body.id;
     console.log('this.ctx.request.body: ', this.ctx.request.body);
     const result = await this.ctx.model.GoodsTypeAttribute.updateOne({
-        _id,
-      },
-      Object.assign(this.ctx.request.body, {
-        add_time: new Date().getTime(),
-      })
+      _id,
+    },
+    Object.assign(this.ctx.request.body, {
+      add_time: new Date().getTime(),
+    })
     );
     return result;
   }
