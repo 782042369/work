@@ -56,7 +56,7 @@ class GoodsService extends Service {
     const link = goods_img.file.response.data[0].saveDir; // 商品主图
     this.ctx.request.body.shop_price = Number(shop_price);
     this.ctx.request.body.market_price = Number(market_price);
-    this.ctx.request.body.goods_color = goods_color.join('\n');
+    this.ctx.request.body.goods_color = goods_color.join(',');
     this.ctx.request.body.goods_img = link;
     this.ctx.request.body.goods_type_id = this.app.mongoose.Types.ObjectId(goods_type_id);
     let result = '';
@@ -85,24 +85,33 @@ class GoodsService extends Service {
       goodsimglist.save();
     });
   }
-  async findattribute(selecttypeoptions, cate_id, goods_id) {
+  async findattribute(selecttypeoptions, cate_id, goods_id, update) {
     for (const i in selecttypeoptions) {
       const res = selecttypeoptions[i];
       if (typeof res.value === 'object') {
         res.value = res.value.join('');
       }
-      const attributeresult = await this.ctx.model.GoodsTypeAttribute.find({
-        _id: res.key,
-      });
-      const goodsattr = new this.ctx.model.GoodsAttr({
-        goods_id,
-        cate_id,
-        attribute_id: res.key,
-        attribute_type: attributeresult[0].attr_type,
-        attribute_title: attributeresult[0].title,
-        attribute_value: res.value,
-      });
-      await goodsattr.save();
+      if (update) {
+        await this.ctx.model.GoodsAttr.updateOne({
+          attribute_id: res.key,
+        }, {
+          attribute_value: res.value,
+          add_time: new Date().getTime(),
+        });
+      } else {
+        const attributeresult = await this.ctx.model.GoodsTypeAttribute.find({
+          _id: res.key,
+        });
+        const goodsattr = new this.ctx.model.GoodsAttr({
+          goods_id,
+          cate_id,
+          attribute_id: res.key,
+          attribute_type: attributeresult[0].attr_type,
+          attribute_title: attributeresult[0].title,
+          attribute_value: res.value,
+        });
+        await goodsattr.save();
+      }
     }
   }
   // 编辑
@@ -110,7 +119,6 @@ class GoodsService extends Service {
     try {
       const {
         _id,
-        title,
         goods_color,
         goods_type_id,
         goods_img,
@@ -120,7 +128,7 @@ class GoodsService extends Service {
         selecttypeoptions,
         photoList,
       } = this.ctx.request.body;
-      this.ctx.request.body.goods_color = goods_color.join('\n');
+      this.ctx.request.body.goods_color = goods_color.join(',');
       let link = '';
       if (goods_img.file) {
         link = goods_img.file.response.data[0].saveDir; // 商品主图
@@ -140,7 +148,7 @@ class GoodsService extends Service {
       );
       const goods_id = this.app.mongoose.Types.ObjectId(result._id);
       this.savegoodsimg(photoList, goods_id); // 商品相册存储
-      // selecttypeoptions && this.findattribute(selecttypeoptions, cate_id, goods_id) // 商品属性存储
+      selecttypeoptions && this.findattribute(selecttypeoptions, cate_id, goods_id, 'update'); // 商品属性存储
       console.log('result: ', result);
       return result;
     } catch (error) {

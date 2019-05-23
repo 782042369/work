@@ -28,7 +28,7 @@ class index extends Component {
 			res.data.forEach((element) => {
 				arr.push({
 					label: element.color_name,
-					value: element.color_value
+					value: element._id
 				})
 			})
 			this.setState({
@@ -126,9 +126,11 @@ class index extends Component {
 			if (ele.attr_type === '3') {
 				let radioGroup = []
 				ele.attr_value.split('\n').forEach((element) => {
+					console.log('element: ', element)
 					radioGroup.push({ id: element, name: element })
 				})
 				arr[index].list = radioGroup
+				console.log('radioGroup: ', radioGroup)
 			}
 		})
 		arr.unshift({
@@ -170,11 +172,7 @@ class index extends Component {
 					res.data.selecttypeoptions.forEach((res) => {
 						if (res.attribute_value !== '') {
 							let key = 'selecttypeoptions-' + res.attribute_id
-							if (res.attribute_type === '3') {
-								selecttypeoptionsarr[key] = res.attribute_id
-							} else {
-								selecttypeoptionsarr[key] = res.attribute_value
-							}
+							selecttypeoptionsarr[key] = res.attribute_value
 						}
 					})
 					const obj = {}
@@ -197,10 +195,11 @@ class index extends Component {
 					arr.forEach((v, i) => {
 						obj[v] = res.data.goods[v]
 					})
+					console.log('...selecttypeoptionsarr: ', { ...selecttypeoptionsarr })
 					this.setState({
 						...obj,
 						...selecttypeoptionsarr,
-						goods_color: goods_color.split('\n'),
+						goods_color: goods_color.split(','),
 						goods_type_id
 					})
 				})

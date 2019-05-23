@@ -2,11 +2,11 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-23 17:17:40
+ * @LastEditTime: 2019-05-23 18:13:00
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
-import { Form, Button, Upload, Icon, message, Tabs } from 'antd'
+import { Form, Button, Upload, Icon, Tabs } from 'antd'
 import { InputType } from './InputType'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
