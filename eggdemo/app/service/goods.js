@@ -33,7 +33,7 @@ class GoodsService extends Service {
           })
           .skip((pagenum - 1) * pagesize)
           .limit(pagesize);
-        return result[0];
+        return result;
       }
     } catch (error) {
       console.log('error: ', error);

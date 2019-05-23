@@ -8,8 +8,8 @@ export const OptionList = (data) => {
 	let OptionMap = []
 	data.forEach((item) => {
 		OptionMap.push(
-			<Option value={item.id} key={item.id}>
-				{item.name}
+			<Option value={item.id || item.value} key={item.id || item.value}>
+				{item.name || item.label}
 			</Option>
 		)
 	})

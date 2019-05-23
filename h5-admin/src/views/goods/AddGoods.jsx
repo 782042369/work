@@ -213,6 +213,9 @@ class index extends Component {
 			})
 		}
 	}
+	handlephontChange = (info) => {
+		console.log('info: ', info)
+	}
 	render() {
 		const taps = [
 			[
@@ -420,7 +423,9 @@ class index extends Component {
 							setValue: this.state.photoList,
 							placeholder: '请输入',
 							field: 'photoList',
+							noupload: 1,
 							required: true,
+							render: (e) => this.handlephontChange(e),
 							message: 'Please input your photoList!'
 						}
 					]

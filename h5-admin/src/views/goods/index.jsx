@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-23 10:52:46
+ * @LastEditTime: 2019-05-23 16:04:45
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -20,6 +20,7 @@ class role extends Component {
 	getlist() {
 		goodslist()
 			.then((res) => {
+				console.log('res: ', res)
 				if (res.status === 1) {
 					this.setState({
 						data: res.data

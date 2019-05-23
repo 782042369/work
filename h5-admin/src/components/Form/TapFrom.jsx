@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-23 13:25:03
+ * @LastEditTime: 2019-05-23 17:17:40
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
@@ -50,7 +50,7 @@ class BaseForm extends React.Component {
 			let arr = {}
 			arr[field] = res.setValue
 			setTimeout(() => {
-				res.setValue !== '' && setFieldsValue(arr)
+				res.setValue && setFieldsValue(arr)
 			}, 0)
 		})
 	}
@@ -66,6 +66,7 @@ class BaseForm extends React.Component {
 					field, // 字段key
 					required, // 必填
 					type,
+					render,
 					setValue
 				} = item
 				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
@@ -79,14 +80,7 @@ class BaseForm extends React.Component {
 						headers: {
 							authorization: 'authorization-text'
 						},
-						onChange(info) {
-							const status = info.file.status
-							if (status === 'done') {
-								message.success(`${info.file.name} file uploaded successfully.`)
-							} else if (status === 'error') {
-								message.error(`${info.file.name} file upload failed.`)
-							}
-						}
+						onChange: render
 					}
 					if (setValue) {
 						let editimg = (

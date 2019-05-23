@@ -10,6 +10,7 @@ const CheckboxGroup = Checkbox.Group
 export const InputType = (item) => {
 	let { placeholder, width, type } = item
 	let list = item.list || [] //option
+	let imgpath = item.imgpath || '' // 图片路径
 	switch (type) {
 		case 'input':
 			return <Input placeholder={placeholder} />
@@ -27,6 +28,16 @@ export const InputType = (item) => {
 			return <TextArea placeholder={placeholder} />
 		case 'radio':
 			return <RadioGroup onChange={item.render}>{RadioList(list)}</RadioGroup>
+		case 'imgselect':
+			return (
+				<div key={imgpath}>
+					<img src="" alt="" />
+					<Select style={{ width: width }} onChange={item.render} placeholder={placeholder}>
+						{OptionList(list)}
+					</Select>
+				</div>
+			)
+
 		default:
 			return <Input placeholder={placeholder} />
 	}
