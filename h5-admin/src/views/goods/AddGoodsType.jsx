@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-22 10:17:31
+ * @LastEditTime: 2019-05-23 10:42:19
  */
 import React, { Component } from 'react'
 import { addgoodstype, editgoodstype, goodstypelist } from '../../api/goods'
@@ -72,26 +72,6 @@ class goodstype extends Component {
 	}
 
 	render() {
-		// <Form.Item label="商品类型">
-		// 			{getFieldDecorator('title', {
-		// 				rules: [
-		// 					{
-		// 						required: true,
-		// 						message: 'Please input your title!'
-		// 					}
-		// 				]
-		// 			})(<Input placeholder="请输入" />)}
-		// 		</Form.Item>
-		// 		<Form.Item label="商品类型描述">
-		// 			{getFieldDecorator('description', {
-		// 				rules: [
-		// 					{
-		// 						required: true,
-		// 						message: 'Please input your description!'
-		// 					}
-		// 				]
-		// 			})(<TextArea placeholder="请输入" />)}
-		// 		</Form.Item>
 		const formList = [
 			{
 				type: 'input',

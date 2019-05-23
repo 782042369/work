@@ -5,16 +5,36 @@ const Service = require('egg').Service;
 class GoodsService extends Service {
   async find() {
     try {
-      const pagesize = this.ctx.request.body.pagesize || 10;
-      const pagenum = this.ctx.request.body.pagenum || 1;
-      const result = await this.ctx.model.Goods
-        .find(this.ctx.request.body)
-        .sort({
-          add_time: -1,
+      let {
+        _id
+      } = this.ctx.request.body
+      if (_id) {
+        const goods = await this.ctx.model.Goods.find({
+          _id
         })
-        .skip((pagenum - 1) * pagesize)
-        .limit(pagesize);
-      return result;
+        const photoList = await this.ctx.model.GoodsImage.find({
+          goods_id: _id
+        })
+        const selecttypeoptions = await this.ctx.model.GoodsAttr.find({
+          goods_id: _id
+        })
+        return {
+          goods: goods[0],
+          photoList: photoList,
+          selecttypeoptions: selecttypeoptions
+        }
+      } else {
+        const pagesize = this.ctx.request.body.pagesize || 10;
+        const pagenum = this.ctx.request.body.pagenum || 1;
+        const result = await this.ctx.model.Goods
+          .find(this.ctx.request.body)
+          .sort({
+            add_time: -1,
+          })
+          .skip((pagenum - 1) * pagesize)
+          .limit(pagesize);
+        return result[0];
+      }
     } catch (error) {
       console.log('error: ', error);
       return error;
@@ -26,12 +46,16 @@ class GoodsService extends Service {
       title,
       goods_color,
       goods_type_id,
-      pic,
+      goods_img,
       cate_id,
       selecttypeoptions,
+      shop_price,
+      market_price,
       photoList
     } = this.ctx.request.body;
-    const link = pic.file.response.data[0].saveDir; // 商品主图
+    const link = goods_img.file.response.data[0].saveDir; // 商品主图
+    this.ctx.request.body.shop_price = Number(shop_price);
+    this.ctx.request.body.market_price = Number(market_price);
     this.ctx.request.body.goods_color = goods_color.join('\n');
     this.ctx.request.body.goods_img = link;
     this.ctx.request.body.goods_type_id = this.app.mongoose.Types.ObjectId(goods_type_id)
@@ -85,8 +109,28 @@ class GoodsService extends Service {
   async editgoods() {
     try {
       const {
-        _id
+        _id,
+        title,
+        goods_color,
+        goods_type_id,
+        goods_img,
+        cate_id,
+        market_price,
+        shop_price,
+        selecttypeoptions,
+        photoList
       } = this.ctx.request.body;
+      this.ctx.request.body.goods_color = goods_color.join('\n');
+      let link = ''
+      if (goods_img.file) {
+        link = goods_img.file.response.data[0].saveDir; // 商品主图
+      } else {
+        link = goods_img; // 商品主图
+      }
+      this.ctx.request.body.goods_img = link;
+      this.ctx.request.body.shop_price = Number(shop_price);
+      this.ctx.request.body.market_price = Number(market_price);
+      this.ctx.request.body.goods_type_id = this.app.mongoose.Types.ObjectId(goods_type_id)
       const result = await this.ctx.model.Goods.updateOne({
           _id,
         },
@@ -94,6 +138,10 @@ class GoodsService extends Service {
           add_time: new Date().getTime(),
         })
       );
+      let goods_id = this.app.mongoose.Types.ObjectId(result._id)
+      this.savegoodsimg(photoList, goods_id) // 商品相册存储
+      // selecttypeoptions && this.findattribute(selecttypeoptions, cate_id, goods_id) // 商品属性存储
+      console.log('result: ', result);
       return result;
     } catch (error) {
       console.log('error: ', error);

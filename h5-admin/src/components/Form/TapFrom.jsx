@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-23 10:25:43
+ * @LastEditTime: 2019-05-23 13:25:03
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
@@ -37,9 +37,11 @@ class BaseForm extends React.Component {
 	}
 	componentWillReceiveProps(nextProps) {
 		// 组件初始化时不调用，组件接受新的props时调用。
-		if (this.props.formList !== nextProps.formList) {
-			this.formsetval(nextProps.formList)
-		}
+		nextProps.taps.forEach((res, index) => {
+			if (this.props.taps[index][1].formlist !== res[1].formlist) {
+				this.formsetval(res[1].formlist)
+			}
+		})
 	}
 	formsetval(formList) {
 		const { setFieldsValue } = this.props.form
@@ -47,7 +49,9 @@ class BaseForm extends React.Component {
 			let field = res.field
 			let arr = {}
 			arr[field] = res.setValue
-			res.setValue !== '' && setFieldsValue(arr)
+			setTimeout(() => {
+				res.setValue !== '' && setFieldsValue(arr)
+			}, 0)
 		})
 	}
 	initFormList = (formList) => {

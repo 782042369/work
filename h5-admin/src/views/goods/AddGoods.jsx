@@ -5,6 +5,7 @@ import {
 	goodscatelist,
 	goodscolorlist,
 	goodstypelist,
+	goodslist,
 	goodstypeattributelist
 } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
@@ -64,7 +65,7 @@ class index extends Component {
 		values.selecttypeoptions = selecttypeoptionsarr
 		values.goods_desc = this.state.goods_desc
 		if (getUrlParam('id')) {
-			let arr = { id: getUrlParam('id') }
+			let arr = { _id: getUrlParam('id') }
 			editgoods(Object.assign(values, arr))
 				.then((res) => {
 					message.success(res.message)
@@ -105,40 +106,44 @@ class index extends Component {
 	handleSelectChange = (id) => {
 		// 规格包装
 		goodstypeattributelist({ id }).then((res) => {
-			let arr = []
-			let type = [ 'input', 'textarea', 'checkbox' ] // 1 input 2 textarea 3 checkbox
-			res.data.forEach((ele, index) => {
-				arr.push({
-					type: type[ele.attr_type - 1],
-					lable: ele.title,
-					setValue: this.state._id,
-					placeholder: '请输入',
-					field: 'selecttypeoptions-' + ele._id,
-					required: false,
-					message: `Please input your ${ele.title}!`
-				})
-				if (ele.attr_type === '3') {
-					let CheckboxGroup = []
-					ele.attr_value.split('\n').forEach((element) => {
-						CheckboxGroup.push({ label: element, value: element })
-					})
-					arr[index].list = CheckboxGroup
-				}
-			})
-			arr.unshift({
-				type: 'select',
-				lable: '商品类型',
-				setValue: this.state.goods_type_id,
+			// 规格包装dom
+			this.selecttypeoptionsdom(res.data)
+		})
+	}
+	selecttypeoptionsdom(res) {
+		let arr = []
+		let type = [ 'input', 'textarea', 'radio' ] // 1 input 2 textarea 3 checkbox
+		res.forEach((ele, index) => {
+			arr.push({
+				type: type[ele.attr_type - 1],
+				lable: ele.title,
+				setValue: this.state['selecttypeoptions-' + ele._id],
 				placeholder: '请输入',
-				field: 'goods_type_id',
-				required: true,
-				list: this.state.selecttypeoptions,
-				message: 'Please input your goods_type_id!',
-				render: (e) => this.handleSelectChange(e)
+				field: 'selecttypeoptions-' + ele._id,
+				required: false,
+				message: `Please input your ${ele.title}!`
 			})
-			this.setState({
-				specification: arr
-			})
+			if (ele.attr_type === '3') {
+				let radioGroup = []
+				ele.attr_value.split('\n').forEach((element) => {
+					radioGroup.push({ id: element, name: element })
+				})
+				arr[index].list = radioGroup
+			}
+		})
+		arr.unshift({
+			type: 'select',
+			lable: '商品类型',
+			setValue: this.state.goods_type_id,
+			placeholder: '请输入',
+			field: 'goods_type_id',
+			required: true,
+			list: this.state.selecttypeoptions,
+			message: 'Please input your goods_type_id!',
+			render: (e) => this.handleSelectChange(e)
+		})
+		this.setState({
+			specification: arr
 		})
 	}
 	editorState = (txt) => {
@@ -154,6 +159,54 @@ class index extends Component {
 			this.setState({
 				h1title: '修改商品'
 			})
+			goodslist({
+				_id: getUrlParam('id')
+			})
+				.then((res) => {
+					const { goods_color, goods_type_id } = res.data.goods
+					this.handleSelectChange(goods_type_id)
+					// photoList selecttypeoptions
+					let selecttypeoptionsarr = {}
+					res.data.selecttypeoptions.forEach((res) => {
+						if (res.attribute_value !== '') {
+							let key = 'selecttypeoptions-' + res.attribute_id
+							if (res.attribute_type === '3') {
+								selecttypeoptionsarr[key] = res.attribute_id
+							} else {
+								selecttypeoptionsarr[key] = res.attribute_value
+							}
+						}
+					})
+					const obj = {}
+					let arr = [
+						'title',
+						'sub_title',
+						'cate_id',
+						'goods_version',
+						'market_price',
+						'shop_price',
+						'goods_img',
+						'status',
+						'relation_goods',
+						'goods_gift',
+						'goods_attrs',
+						'recommend',
+						'goods_fitting'
+					]
+
+					arr.forEach((v, i) => {
+						obj[v] = res.data.goods[v]
+					})
+					this.setState({
+						...obj,
+						...selecttypeoptionsarr,
+						goods_color: goods_color.split('\n'),
+						goods_type_id
+					})
+				})
+				.catch((err) => {
+					console.log('err: ', err)
+				})
 		} else {
 			this.setState({
 				h1title: '增加商品'
@@ -209,29 +262,29 @@ class index extends Component {
 						{
 							type: 'upload',
 							lable: '商品图片',
-							setValue: this.state.pic,
+							setValue: this.state.goods_img,
 							placeholder: '请输入',
-							field: 'pic',
+							field: 'goods_img',
 							required: true,
-							message: 'Please input your pic!'
+							message: 'Please input your goods_img!'
 						},
 						{
 							type: 'input',
 							lable: '商品价格',
-							setValue: this.state.price,
+							setValue: this.state.shop_price,
 							placeholder: '请输入',
-							field: 'price',
+							field: 'shop_price',
 							required: true,
-							message: 'Please input your price!'
+							message: 'Please input your shop_price!'
 						},
 						{
 							type: 'input',
 							lable: '商品原价',
-							setValue: this.state.old_price,
+							setValue: this.state.market_price,
 							placeholder: '请输入',
-							field: 'old_price',
+							field: 'market_price',
 							required: true,
-							message: 'Please input your old_price!'
+							message: 'Please input your market_price!'
 						},
 						{
 							type: 'radio',
@@ -251,9 +304,10 @@ class index extends Component {
 							field: 'recommend',
 							required: true,
 							list: [
-								{ id: 'is_best', name: '精品' },
-								{ id: 'is_hot', name: '热销' },
-								{ id: 'is_new', name: '新品' }
+								// 0 精品 1  热销 2 新品
+								{ id: '0', name: '精品' },
+								{ id: '1', name: '热销' },
+								{ id: '2', name: '新品' }
 							],
 							message: 'Please input your recommend!'
 						}
@@ -320,11 +374,11 @@ class index extends Component {
 						{
 							type: 'textarea',
 							lable: '更多属性',
-							setValue: this.state.goods_attr,
+							setValue: this.state.goods_attrs,
 							placeholder: '格式:  颜色:红色,白色,黄色 | 尺寸:41,42,43',
-							field: 'goods_attr',
+							field: 'goods_attrs',
 							required: false,
-							message: 'Please input your goods_attr!'
+							message: 'Please input your goods_attrs!'
 						}
 					]
 				}

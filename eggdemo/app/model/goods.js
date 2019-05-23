@@ -68,17 +68,8 @@ module.exports = app => {
     is_delete: {
       type: Number,
     },
-    is_hot: {
-      type: Number,
-      default: 0,
-    },
-    is_best: {
-      type: Number,
-      default: 0,
-    },
-    is_new: {
-      type: Number,
-      default: 0,
+    recommend: { // 0 精品 1  热销 2 新品
+      type: String
     },
     goods_type_id: {
       type: Schema.Types.Mixed, // 混合类型

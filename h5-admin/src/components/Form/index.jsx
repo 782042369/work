@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-23 09:21:21
+ * @LastEditTime: 2019-05-23 13:26:17
  * @Description: 传统
  */
 import React from 'react'
@@ -41,7 +41,9 @@ class BaseForm extends React.Component {
 			let field = res.field
 			let arr = {}
 			arr[field] = res.setValue
-			res.setValue !== '' && setFieldsValue(arr)
+			setTimeout(() => {
+				res.setValue !== '' && setFieldsValue(arr)
+			}, 0)
 		})
 	}
 
