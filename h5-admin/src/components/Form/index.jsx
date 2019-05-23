@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-21 18:31:23
+ * @LastEditTime: 2019-05-23 09:21:21
  * @Description: 传统
  */
 import React from 'react'
@@ -91,8 +91,6 @@ class BaseForm extends React.Component {
 						)
 						formItemList.push(editimg)
 						required = false
-					} else {
-						required = true
 					}
 					inputitem = (
 						<Dragger {...props}>

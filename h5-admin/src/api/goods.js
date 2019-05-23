@@ -3,10 +3,48 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-22 10:17:47
+ * @LastEditTime: 2019-05-22 16:58:27
  */
 
 import request from '../tool/request';
+/**
+ * 
+ * @param {*} data 添加商品
+ */
+export function goodslist(data) {
+	// 列表
+	return request({
+		url: 'admin/goodslist',
+		method: 'post',
+		data
+	});
+}
+
+export function deletegoods(data) {
+	// 删除
+	return request({
+		url: 'admin/deletegoods',
+		method: 'delete',
+		data
+	});
+}
+export function addgoods(data) {
+	// 增加
+	return request({
+		url: 'admin/addgoods',
+		method: 'post',
+		data
+	});
+}
+
+export function editgoods(data) {
+	// 修改
+	return request({
+		url: 'admin/editgoods',
+		method: 'put',
+		data
+	});
+}
 /**
  * 
  * @param {*} data 商品类型

@@ -131,7 +131,7 @@ class index extends Component {
 				setValue: this.state.goods_type_id,
 				placeholder: '请输入',
 				field: 'goods_type_id',
-				required: true,
+				required: false,
 				list: this.state.selecttypeoptions,
 				message: 'Please input your goods_type_id!',
 				render: (e) => this.handleSelectChange(e)
@@ -173,7 +173,7 @@ class index extends Component {
 							setValue: this.state.title,
 							placeholder: '请输入',
 							field: 'title',
-							required: true,
+							required: false,
 							message: 'Please input your title!'
 						},
 						{
@@ -182,7 +182,7 @@ class index extends Component {
 							setValue: this.state.sub_title,
 							placeholder: '请输入',
 							field: 'sub_title',
-							required: true,
+							required: false,
 							message: 'Please input your sub_title!'
 						},
 						{
@@ -191,7 +191,7 @@ class index extends Component {
 							setValue: this.state.goods_version,
 							placeholder: '请输入',
 							field: 'goods_version',
-							required: true,
+							required: false,
 							message: 'Please input your goods_version!'
 						},
 						{
@@ -200,7 +200,7 @@ class index extends Component {
 							setValue: this.state.cate_id,
 							placeholder: '请输入',
 							field: 'cate_id',
-							required: true,
+							required: false,
 							list: this.state.goodscate,
 							message: 'Please input your cate_id!'
 						},
@@ -210,7 +210,7 @@ class index extends Component {
 							setValue: this.state.pic,
 							placeholder: '请输入',
 							field: 'pic',
-							required: true,
+							required: false,
 							message: 'Please input your pic!'
 						},
 						{
@@ -219,7 +219,7 @@ class index extends Component {
 							setValue: this.state.price,
 							placeholder: '请输入',
 							field: 'price',
-							required: true,
+							required: false,
 							message: 'Please input your price!'
 						},
 						{
@@ -228,7 +228,7 @@ class index extends Component {
 							setValue: this.state.old_price,
 							placeholder: '请输入',
 							field: 'old_price',
-							required: true,
+							required: false,
 							message: 'Please input your old_price!'
 						},
 						{
@@ -237,7 +237,7 @@ class index extends Component {
 							setValue: this.state.status,
 							placeholder: '请输入',
 							field: 'status',
-							required: true,
+							required: false,
 							list: [ { id: 1, name: '显示' }, { id: 2, name: '隐藏' } ],
 							message: 'Please input your status!'
 						},
@@ -247,7 +247,7 @@ class index extends Component {
 							setValue: this.state.recommend,
 							placeholder: '请输入',
 							field: 'recommend',
-							required: true,
+							required: false,
 							list: [
 								{ id: 'is_best', name: '精品' },
 								{ id: 'is_hot', name: '热销' },
@@ -279,7 +279,7 @@ class index extends Component {
 							lable: '商品颜色',
 							setValue: this.state.goods_color,
 							field: 'goods_color',
-							required: true,
+							required: false,
 							list: this.state.colorOptions,
 							message: 'Please input your goods_color!'
 						},
@@ -338,7 +338,7 @@ class index extends Component {
 										setValue: this.state.goods_type_id,
 										placeholder: '请输入',
 										field: 'goods_type_id',
-										required: true,
+										required: false,
 										list: this.state.selecttypeoptions,
 										message: 'Please input your goods_type_id!',
 										render: (e) => this.handleSelectChange(e)
@@ -359,7 +359,7 @@ class index extends Component {
 							setValue: this.state.photoList,
 							placeholder: '请输入',
 							field: 'photoList',
-							required: true,
+							required: false,
 							message: 'Please input your photoList!'
 						}
 					]

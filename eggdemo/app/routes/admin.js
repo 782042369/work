@@ -80,4 +80,11 @@ module.exports = app => {
   router.post('/admin/addgoodscolor', controller.admin.goodsColor.addgoodscolor);
   router.put('/admin/editgoodscolor', controller.admin.goodsColor.editgoodscolor);
   router.delete('/admin/deletegoodscolor', controller.admin.goodsColor.deletegoodscolor);
+  /**
+   * 商品颜色
+   */
+  router.post('/admin/goodslist', controller.admin.goods.index);
+  router.post('/admin/addgoods', controller.admin.goods.addgoods);
+  router.put('/admin/editgoods', controller.admin.goods.editgoods);
+  router.delete('/admin/deletegoods', controller.admin.goods.deletegoods);
 };
