@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-23 09:21:10
+ * @LastEditTime: 2019-05-23 10:25:43
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
@@ -35,9 +35,6 @@ class BaseForm extends React.Component {
 	reset = () => {
 		this.props.form.resetFields()
 	}
-	editorState = (txt) => {
-		console.log('富文本编辑器内容是-->', txt)
-	}
 	componentWillReceiveProps(nextProps) {
 		// 组件初始化时不调用，组件接受新的props时调用。
 		if (this.props.formList !== nextProps.formList) {
@@ -56,8 +53,8 @@ class BaseForm extends React.Component {
 	initFormList = (formList) => {
 		const { getFieldDecorator } = this.props.form
 		let formItemList = []
-		if (formList === 'dart') {
-			formItemList.push(<Darft editorState={this.editorState} key={formList} />)
+		if (formList[0].type === 'dart') {
+			formItemList.push(<Darft editorState={formList[0].render} key={formList} />)
 		} else {
 			formList.forEach((item, index) => {
 				let {

@@ -16,12 +16,11 @@ class index extends Component {
 		this.state = {
 			colorOptions: [],
 			specification: [], // 规格包装
-			selecttypeoptions: []
+			selecttypeoptions: [],
+			goods_desc: '' //商品描述
 		}
 	}
-	callback(key) {
-		console.log(key)
-	}
+
 	goodscolorlist() {
 		goodscolorlist().then((res) => {
 			let arr = []
@@ -63,6 +62,7 @@ class index extends Component {
 			}
 		}
 		values.selecttypeoptions = selecttypeoptionsarr
+		values.goods_desc = this.state.goods_desc
 		if (getUrlParam('id')) {
 			let arr = { id: getUrlParam('id') }
 			editgoods(Object.assign(values, arr))
@@ -142,7 +142,9 @@ class index extends Component {
 		})
 	}
 	editorState = (txt) => {
-		console.log('富文本编辑器内容是-->', txt)
+		this.setState({
+			goods_desc: txt
+		})
 	}
 	componentDidMount() {
 		this.goodscolorlist()
@@ -264,7 +266,12 @@ class index extends Component {
 					key: '2'
 				},
 				{
-					formlist: 'dart' // 富文本
+					formlist: [
+						{
+							type: 'dart', // 富文本
+							render: (e) => this.editorState(e)
+						}
+					]
 				}
 			],
 			[
