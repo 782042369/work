@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-21 14:58:40
+ * @LastEditTime: 2019-05-24 09:39:28
  */
 import React, { Component } from 'react'
 import { addaccess, editaccess, accesslist } from '../../api/access'
@@ -51,12 +51,12 @@ class manger extends Component {
 			.then((res) => {
 				if (res.status === 1) {
 					let list = [ { id: 0, name: '顶级模块' } ]
-					res.data.forEach((element) =>
+					res.data.forEach((element) => {
 						list.push({
 							id: element._id,
 							name: element.module_name
 						})
-					)
+					})
 					console.log('list: ', list)
 					this.setState({
 						list

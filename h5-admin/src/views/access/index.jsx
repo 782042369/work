@@ -53,7 +53,7 @@ class access extends Component {
 			title: '节点类型',
 			dataIndex: 'type',
 			key: 'type',
-			render: (text) => <div type="primary">{typefilter(text)}</div>
+			render: (text) => <div>{typefilter(text)}</div>
 		},
 		{ title: '描述', dataIndex: 'description', key: 'description' },
 		{ title: '排序', dataIndex: 'sort', key: 'sort' },
@@ -61,7 +61,7 @@ class access extends Component {
 			title: '时间',
 			key: 'add_time',
 			dataIndex: 'add_time',
-			render: (text) => <div type="primary">{datefilter(text)}</div>
+			render: (text) => <div>{datefilter(text)}</div>
 		},
 		{
 			title: '操作',
@@ -87,7 +87,7 @@ class access extends Component {
 				title: '节点类型',
 				dataIndex: 'type',
 				key: 'type',
-				render: (text) => <div type="primary">{typefilter(text)}</div>
+				render: (text) => <div>{typefilter(text)}</div>
 			},
 			{ title: '描述', dataIndex: 'description', key: 'description' },
 			{ title: '排序', dataIndex: 'sort', key: 'sort' },
@@ -95,7 +95,7 @@ class access extends Component {
 				title: '时间',
 				key: 'add_time',
 				dataIndex: 'add_time',
-				render: (text) => <div type="primary">{datefilter(text)}</div>
+				render: (text) => <div>{datefilter(text)}</div>
 			},
 			{ title: '操作名称', dataIndex: 'action_name', key: 'action_name' },
 			{ title: '操作地址', dataIndex: 'url', key: 'url' },

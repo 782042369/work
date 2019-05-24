@@ -87,4 +87,18 @@ module.exports = app => {
   router.post('/admin/addgoods', controller.admin.goods.addgoods);
   router.put('/admin/editgoods', controller.admin.goods.editgoods);
   router.delete('/admin/deletegoods', controller.admin.goods.deletegoods);
+  /**
+   * 导航
+   */
+  router.post('/admin/navlist', controller.admin.nav.index);
+  router.post('/admin/addnav', controller.admin.nav.addnav);
+  router.put('/admin/editnav', controller.admin.nav.editnav);
+  router.delete('/admin/deletenav', controller.admin.nav.deletenav);
+  /**
+   * 文章
+   */
+  router.post('/admin/articlelist', controller.admin.article.index);
+  router.post('/admin/addarticle', controller.admin.article.addarticle);
+  router.put('/admin/editarticle', controller.admin.article.editarticle);
+  router.delete('/admin/deletearticle', controller.admin.article.deletearticle);
 };

@@ -146,10 +146,9 @@ class GoodsService extends Service {
         add_time: new Date().getTime(),
       })
       );
-      const goods_id = this.app.mongoose.Types.ObjectId(result._id);
+      const goods_id = this.app.mongoose.Types.ObjectId(_id);
       this.savegoodsimg(photoList, goods_id); // 商品相册存储
-      selecttypeoptions && this.findattribute(selecttypeoptions, cate_id, goods_id, 'update'); // 商品属性存储
-      console.log('result: ', result);
+      selecttypeoptions && this.findattribute(selecttypeoptions, cate_id, goods_id); // 商品属性存储
       return result;
     } catch (error) {
       console.log('error: ', error);

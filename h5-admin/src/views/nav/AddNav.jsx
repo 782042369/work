@@ -1,17 +1,17 @@
 /*
  * @Author: 杨宏旋
  * @LastEditors: 杨宏旋
- * @Description: 导航
+ * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 10:24:11
+ * @LastEditTime: 2019-05-24 10:25:10
  */
 import React, { Component } from 'react'
-import { addrole, editrole, rolelist } from '../../api/role'
+import { addnav, editnav, navlist } from '../../api/nav'
 import getUrlParam from '../../tool/getUrlParam'
 import BashForm from '../../components/Form'
 import { message } from 'antd'
 
-class role extends Component {
+class nav extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -25,7 +25,7 @@ class role extends Component {
 		console.log('e: ', values)
 		if (getUrlParam('id')) {
 			let arr = { id: getUrlParam('id') }
-			editrole(Object.assign(values, arr))
+			editnav(Object.assign(values, arr))
 				.then((res) => {
 					console.log(res)
 					message.success(res.message)
@@ -35,7 +35,7 @@ class role extends Component {
 					console.log(err)
 				})
 		} else {
-			addrole(values)
+			addnav(values)
 				.then((res) => {
 					if (res.status === 1) {
 						message.success(res.message)
@@ -52,9 +52,9 @@ class role extends Component {
 	componentDidMount() {
 		if (getUrlParam('id')) {
 			this.setState({
-				h1title: '修改导航'
+				h1title: '修改角色'
 			})
-			rolelist({
+			navlist({
 				_id: getUrlParam('id')
 			})
 				.then((res) => {
@@ -69,7 +69,7 @@ class role extends Component {
 				})
 		} else {
 			this.setState({
-				h1title: '增加导航'
+				h1title: '增加角色'
 			})
 		}
 	}
@@ -78,7 +78,7 @@ class role extends Component {
 		const formList = [
 			{
 				type: 'input',
-				lable: '导航名称',
+				lable: '角色名称',
 				setValue: this.state.title,
 				placeholder: '请输入',
 				field: 'title',
@@ -87,7 +87,7 @@ class role extends Component {
 			},
 			{
 				type: 'input',
-				lable: '导航描述',
+				lable: '角色描述',
 				setValue: this.state.description,
 				placeholder: '请输入',
 				field: 'description',
@@ -98,4 +98,4 @@ class role extends Component {
 		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
 	}
 }
-export default role
+export default nav

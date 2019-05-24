@@ -65,7 +65,7 @@ class role extends Component {
 			title: '节点类型',
 			dataIndex: 'type',
 			key: 'type',
-			render: (text) => <div type="primary">顶级节点</div>
+			render: (text) => <div>顶级节点</div>
 		},
 		{
 			title: '缩略图',
@@ -81,7 +81,7 @@ class role extends Component {
 			title: '时间',
 			key: 'add_time',
 			dataIndex: 'add_time',
-			render: (text) => <div type="primary">{datefilter(text)}</div>
+			render: (text) => <div>{datefilter(text)}</div>
 		},
 		{
 			title: '操作',
@@ -107,7 +107,7 @@ class role extends Component {
 				title: '时间',
 				key: 'add_time',
 				dataIndex: 'add_time',
-				render: (text) => <div type="primary">{datefilter(text)}</div>
+				render: (text) => <div>{datefilter(text)}</div>
 			},
 			{
 				title: '操作',

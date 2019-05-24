@@ -63,21 +63,21 @@ class role extends Component {
 						title="商品类型"
 						dataIndex="parent"
 						key="cate_id"
-						render={(text, record) => <div type="primary">{text[0].title}</div>}
+						render={(text, record) => <div>{text[0].title}</div>}
 					/>
 					<Column title="属性名称" dataIndex="title" key="title" />
 					<Column
 						title="属性值的录入方式"
 						dataIndex="attr_type"
 						key="attr_type"
-						render={(text, record) => <div type="primary">{typeattributeilter(text)}</div>}
+						render={(text, record) => <div>{typeattributeilter(text)}</div>}
 					/>
 					<Column title="可选值列表" dataIndex="attr_value" key="attr_value" />
 					<Column
 						title="时间"
 						key="add_time"
 						dataIndex="add_time"
-						render={(text, record) => <div type="primary">{datefilter(text)}</div>}
+						render={(text, record) => <div>{datefilter(text)}</div>}
 					/>
 					<Column
 						title="操作"

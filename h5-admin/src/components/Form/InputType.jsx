@@ -8,7 +8,7 @@ const { TextArea } = Input
 const RadioGroup = Radio.Group
 const CheckboxGroup = Checkbox.Group
 export const InputType = (item) => {
-	let { placeholder, width, type } = item
+	let { placeholder, type, field } = item
 	let list = item.list || [] //option
 	let imgpath = item.imgpath || '' // 图片路径
 	switch (type) {
@@ -16,7 +16,7 @@ export const InputType = (item) => {
 			return <Input placeholder={placeholder} />
 		case 'select':
 			return (
-				<Select style={{ width: width }} onChange={item.render} placeholder={placeholder}>
+				<Select onChange={item.render} placeholder={placeholder}>
 					{OptionList(list)}
 				</Select>
 			)
@@ -32,7 +32,7 @@ export const InputType = (item) => {
 			return (
 				<div key={imgpath}>
 					<img src="" alt="" />
-					<Select style={{ width: width }} onChange={item.render} placeholder={placeholder}>
+					<Select onChange={item.render} placeholder={placeholder}>
 						{OptionList(list)}
 					</Select>
 				</div>

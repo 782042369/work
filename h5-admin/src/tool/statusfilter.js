@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 状态过滤器
  * @Date: 2019-05-06 17:53:48
- * @LastEditTime: 2019-05-15 16:19:03
+ * @LastEditTime: 2019-05-24 10:34:56
  */
 /**
  * 
@@ -13,7 +13,7 @@ export const statusfilter = timestamp => {
 	let val = {
 		1: '启用',
 		0: '停用'
-	}[timestamp];
+	} [timestamp];
 	return val;
 };
 /**
@@ -25,7 +25,7 @@ export const typefilter = (value) => {
 		1: '模块',
 		2: '菜单',
 		3: '操作',
-	}[value];
+	} [value];
 	return val;
 };
 /**
@@ -37,6 +37,18 @@ export const typeattributeilter = (value) => {
 		1: '单行录入',
 		2: '多行录入',
 		3: '选择录入',
-	}[value];
+	} [value];
+	return val;
+};
+/**
+ * 
+ * @param {*} value 传入数字 输出属性汉子
+ */
+export const positioncode = (value) => {
+	let val = {
+		1: '顶部',
+		2: '导航菜单',
+		3: '底部',
+	} [value];
 	return val;
 };

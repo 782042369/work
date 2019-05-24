@@ -58,7 +58,7 @@ class role extends Component {
 						title="状态"
 						dataIndex="status"
 						key="status"
-						render={(text, record) => <div type="primary">{statusfilter(text)}</div>}
+						render={(text, record) => <div>{statusfilter(text)}</div>}
 					/>
 
 					<Column title="描述" dataIndex="description" key="description" />
@@ -66,7 +66,7 @@ class role extends Component {
 						title="时间"
 						key="add_time"
 						dataIndex="add_time"
-						render={(text, record) => <div type="primary">{datefilter(text)}</div>}
+						render={(text, record) => <div>{datefilter(text)}</div>}
 					/>
 					<Column
 						title="操作"

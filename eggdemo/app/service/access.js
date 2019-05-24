@@ -19,8 +19,7 @@ class AccessService extends Service {
     // 自关联表查询
     const pagesize = this.ctx.request.body.pagesize || 10;
     const pagenum = this.ctx.request.body.pagenum || 1;
-    const result = await this.ctx.model.Access.aggregate([
-      {
+    const result = await this.ctx.model.Access.aggregate([{
         $lookup: {
           from: 'access',
           localField: '_id',
@@ -52,7 +51,7 @@ class AccessService extends Service {
   async addaccess() {
     const module_name = this.ctx.request.body.module_name;
     const module_id = this.ctx.request.body.module_id;
-    if (module_id) {
+    if (module_id && module_id !== '0') {
       this.ctx.request.body.module_id = this.app.mongoose.Types.ObjectId(module_id);
     }
     let result = '';
@@ -72,8 +71,7 @@ class AccessService extends Service {
     if (module_id) {
       this.ctx.request.body.module_id = this.app.mongoose.Types.ObjectId(module_id);
     }
-    const result = await this.ctx.model.Access.updateOne(
-      {
+    const result = await this.ctx.model.Access.updateOne({
         _id,
       },
       Object.assign(this.ctx.request.body, {
