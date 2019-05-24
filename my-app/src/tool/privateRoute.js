@@ -15,7 +15,7 @@ import {
 import {
 	message
 } from 'antd';
-class PrivateRoute extends Component {
+class PrivateRoute extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

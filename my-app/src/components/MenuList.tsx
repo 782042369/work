@@ -5,14 +5,14 @@
  * @Date: 2019-05-05 16:10:06
  * @LastEditTime: 2019-05-24 15:30:21
  */
-import { Component } from 'react'
+import * as React from 'react';
 // import menus from '../router/routers'
 import { Menu, Icon } from 'antd'
 import { authlist } from '../api/role'
 import { Link } from 'react-router-dom'
 import mergefieldtojson from '../tool/mergefieldtojson'
 // import { withRouter } from 'react-router-dom'
-class menu extends Component {
+class menu extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

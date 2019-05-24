@@ -1,12 +1,9 @@
-import { Component } from 'react'
+import * as React from 'react'
 
 const asyncComponent = (importComponent: any) => {
-	return class extends Component {
-		constructor() {
-			super()
-			this.state = {
-				component: null
-			}
+	return class extends React.Component {
+		state = {
+			component: null
 		}
 		componentDidMount() {
 			importComponent().then((cmp: any) => {
@@ -15,7 +12,7 @@ const asyncComponent = (importComponent: any) => {
 		}
 		render() {
 			const C = this.state.component
-			return C ? <C {...this.props} /> : null
+			return C
 		}
 	}
 }

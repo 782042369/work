@@ -5,13 +5,13 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-24 10:24:11
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { addrole, editrole, rolelist } from '../../api/role'
 import getUrlParam from '../../tool/getUrlParam'
 import BashForm from '../../components/Form'
 import { message } from 'antd'
 
-class role extends Component {
+class role extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

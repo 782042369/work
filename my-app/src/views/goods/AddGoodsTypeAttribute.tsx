@@ -5,14 +5,14 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-15 17:11:19
  */
-import { Component } from 'react';
+import * as React from 'react';;
 import { addgoodsattribute, editgoodsattribute, goodstypelist, goodstypeattributelist } from '../../api/goods';
 import getUrlParam from '../../tool/getUrlParam';
 import { Form, Input, Button, message, Select, Radio } from 'antd';
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
 const { TextArea } = Input;
-class WrappedRegistrationForm extends Component {
+class WrappedRegistrationForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

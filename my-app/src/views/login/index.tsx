@@ -1,11 +1,11 @@
-import { Component } from 'react'
+import * as React from 'react';
 import './login.scss'
 import { Form, Icon, Input, Button } from 'antd'
 import { Redirect } from 'react-router'
 import { dologin } from '../../api/login'
 import md5 from 'js-md5'
 import { message } from 'antd'
-class NormalLoginForm extends Component {
+class NormalLoginForm extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

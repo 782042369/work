@@ -5,13 +5,13 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-24 11:58:36
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { addarticle, editarticle, articlelist } from '../../api/article'
 import getUrlParam from '../../tool/getUrlParam'
 import BashForm from '../../components/Form'
 import { message } from 'antd'
 
-class article extends Component {
+class article extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

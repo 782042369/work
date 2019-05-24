@@ -5,14 +5,14 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-24 11:47:12
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { Table, Divider, Button, message } from 'antd'
 import { articlelist, deletearticle } from '../../api/article'
 import datefilter from '../../tool/datefilter'
 import { statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 
-class article extends Component {
+class article extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

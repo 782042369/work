@@ -1,13 +1,13 @@
-import React from 'react'
+import * as React from 'react'
 import { Select, Radio, Checkbox, Input, DatePicker } from 'antd'
 import { RadioList, OptionList } from './OptionList'
-import moment from 'moment'
+// import moment from 'moment'
 import 'moment/locale/zh-cn'
-moment.locale('zh-cn')
+// moment.locale('zh-cn')
 const { TextArea } = Input
 const RadioGroup = Radio.Group
 const CheckboxGroup = Checkbox.Group
-export const InputType = (item) => {
+export const InputType = (item: any) => {
 	let { placeholder, type } = item
 	let list = item.list || [] //option
 	let imgpath = item.imgpath || '' // 图片路径

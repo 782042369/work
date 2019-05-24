@@ -1,33 +1,33 @@
-import { Component } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { EditorState, convertToRaw } from 'draft-js';
-import draftToHtml from 'draftjs-to-html';
-class Darft extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			editorState: EditorState.createEmpty()
-		};
+import * as React from 'react'
+import { Editor } from 'react-draft-wysiwyg'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+// import { EditorState, convertToRaw } from 'draft-js'
+import { EditorState } from 'draft-js'
+// import draftToHtml from 'draftjs-to-html'
+class Darft extends React.Component {
+	/**
+	 * name
+	 */
+	public state = {
+		editorState: EditorState.createEmpty()
 	}
-	onEditorStateChange = (editorState) => {
-		this.props.editorState(draftToHtml(convertToRaw(editorState.getCurrentContent())));
-		this.setState({
-			editorState
-		});
-	}
+	// onEditorStateChange = (editorState: any) => {
+	// 	this.props.editorState(draftToHtml(convertToRaw(editorState.getCurrentContent())))
+	// 	this.setState({
+	// 		editorState
+	// 	})
+	// }
 	render() {
-		const { editorState } = this.state;
 		return (
 			<Editor
-				editorState={editorState}
+				editorState={this.state.editorState}
 				localization={{ locale: 'zh' }}
 				toolbarClassName="toolbarClassName"
 				wrapperClassName="wrapperClassName"
 				editorClassName="editorClassName"
-				onEditorStateChange={this.onEditorStateChange}
+				// onEditorStateChange={this.onEditorStateChange}
 			/>
-		);
+		)
 	}
 }
-export default Darft;
+export default Darft

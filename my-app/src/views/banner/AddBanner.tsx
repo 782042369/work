@@ -5,13 +5,13 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-20 19:46:38
  */
-import { Component } from 'react';
+import * as React from 'react';;
 import { addbanner, editbanner, bannerlist } from '../../api/banner';
 import getUrlParam from '../../tool/getUrlParam';
 import { message } from 'antd';
 import BashForm from '../../components/Form';
 
-class editbannner extends Component {
+class editbannner extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};

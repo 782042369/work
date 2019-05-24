@@ -5,7 +5,7 @@
  * @Date: 2019-04-23 14:57:41
  * @LastEditTime: 2019-05-24 15:17:27
  */
-import React from 'react'
+import * as React from 'react'
 import { Layout, Avatar } from 'antd'
 import MenuList from '../components/MenuList'
 import AsyncComponent from '../components/AsyncComponent'

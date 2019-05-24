@@ -389,7 +389,7 @@ For example:
 ```js
 import React, { Component } from 'react';
 
-class Button extends Component {
+class Button extends React.Component {
   render() {
     // ...
   }
@@ -405,7 +405,7 @@ export default Button; // Don’t forget to use export default!
 import React, { Component } from 'react';
 import Button from './Button'; // Import a component from another file
 
-class DangerButton extends Component {
+class DangerButton extends React.Component {
   render() {
     return <Button color="red" />;
   }
@@ -446,7 +446,7 @@ export { moduleA };
 ```js
 import React, { Component } from 'react';
 
-class App extends Component {
+class App extends React.Component {
   handleClick = () => {
     import('./moduleA')
       .then(({ moduleA }) => {
@@ -497,7 +497,7 @@ This project setup uses [Webpack](https://webpack.js.org/) for handling all asse
 import React, { Component } from 'react';
 import './Button.css'; // Tell Webpack that Button.js uses these styles
 
-class Button extends Component {
+class Button extends React.Component {
   render() {
     // You can use them as regular CSS styles
     return <div className="Button" />;
@@ -665,7 +665,7 @@ In this case, we've added several image file extensions as valid module formats.
 Now that the compiler is configured, here is an example of importing an image file:
 
 ```js
-import React from 'react';
+import * as React from 'react';
 import logo from './logo.svg'; // Tell Webpack this JS file uses this image
 
 console.log(logo); // /logo.84287d09.png

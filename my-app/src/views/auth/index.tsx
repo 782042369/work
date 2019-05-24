@@ -5,7 +5,7 @@
  * @Date: 2019-05-05 15:48:17
  * @LastEditTime: 2019-05-15 11:55:03
  */
-import { Component } from 'react';
+import * as React from 'react';;
 import { Checkbox, message, Form, Button } from 'antd';
 import { findaccesslist } from '../../api/access';
 import { auth, authlist } from '../../api/role';
@@ -13,7 +13,7 @@ import getUrlParam from '../../tool/getUrlParam';
 import mergefieldtojson from '../../tool/mergefieldtojson';
 const CheckboxGroup = Checkbox.Group;
 
-class WrappedNormalLoginForm extends Component {
+class WrappedNormalLoginForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

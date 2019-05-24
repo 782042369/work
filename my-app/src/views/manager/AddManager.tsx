@@ -5,7 +5,7 @@
  * @Date: 2019-05-05 15:48:39
  * @LastEditTime: 2019-05-09 12:52:38
  */
-import { Component } from 'react';
+import * as React from 'react';;
 import { addmanager, editmanager, managerlist } from '../../api/manager';
 import { rolelist } from '../../api/role';
 import getUrlParam from '../../tool/getUrlParam';
@@ -13,7 +13,7 @@ import { Form, Input, Button, message, Select } from 'antd';
 import md5 from 'js-md5';
 const Option = Select.Option;
 
-class WrappedRegistrationForm extends Component {
+class WrappedRegistrationForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

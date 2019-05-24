@@ -5,14 +5,14 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-22 11:37:51
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
 import { Form, Input, Button, message, Select, Icon, Upload } from 'antd'
 const Option = Select.Option
 const { TextArea } = Input
 const Dragger = Upload.Dragger
-class WrappedRegistrationForm extends Component {
+class WrappedRegistrationForm extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

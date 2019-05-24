@@ -2,43 +2,62 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-24 11:57:08
+ * @LastEditTime: 2019-05-24 16:55:17
  * @Description: 传统
  */
-import React from 'react'
+import * as React from 'react'
 import { Form, Button, Upload, Icon, message } from 'antd'
 import { InputType } from './InputType'
 import './index.scss'
-import Darft from '../../components/Darft'
-import moment from 'moment'
+// import Darft from '../../components/Darft'
+// import moment from 'moment'
 import 'moment/locale/zh-cn'
-moment.locale('zh-cn')
+// moment.locale('zh-cn')
 const Dragger = Upload.Dragger
 const FormItem = Form.Item
+//3.定义props
+type IProps = Readonly<{
+	form: any
+	formList: any
+	h1title: any
+}>
+interface MousePointProps {
+	form: any
+	formList: any
+	h1title: any
+	formSubmit: any
+	render: (
+		point: {
+			x: number | null
+			y: number | null
+		}
+	) => React.ReactElement<HTMLDivElement>
+}
 
-class BaseForm extends React.Component {
-	commit = (e) => {
+interface MOusePointState {
+	x: number | null
+}
+class BaseForm extends React.Component<MousePointProps, MOusePointState> {
+	super(props: any) {}
+	commit = (e: any) => {
 		e.preventDefault()
 		const { getFieldsValue } = this.props.form
-		this.props.form.validateFieldsAndScroll((err, values) => {
+		this.props.form.validateFieldsAndScroll((err: any) => {
 			if (!err) {
 				let date1 = getFieldsValue()
 				this.props.formSubmit(date1) //最终输出
 			}
 		})
 	}
-	reset = () => {
-		this.props.form.resetFields()
-	}
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps(nextProps: any) {
 		// 组件初始化时不调用，组件接受新的props时调用。
 		if (this.props.formList !== nextProps.formList) {
 			this.formsetval(nextProps.formList)
 		}
 	}
-	formsetval(formList) {
+	formsetval(formList: any) {
 		const { setFieldsValue } = this.props.form
-		formList.forEach((res) => {
+		formList.forEach((res: any) => {
 			let field = res.field
 			let arr = {}
 			arr[field] = res.setValue
@@ -48,13 +67,13 @@ class BaseForm extends React.Component {
 		})
 	}
 
-	initFormList = () => {
+	initFormList = (): any => {
 		const { getFieldDecorator } = this.props.form
 		const formList = this.props.formList
-		let formItemList = []
+		let formItemList: any = []
 		formList &&
 			formList.length > 0 &&
-			formList.forEach((item, index) => {
+			formList.forEach((item: any) => {
 				let {
 					lable, //标题
 					field, // 字段key
@@ -63,12 +82,12 @@ class BaseForm extends React.Component {
 					setValue
 				} = item
 				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
-				let inputitem = ''
+				let inputitem: any = ''
 				inputitem = InputType(item)
 				if (type === 'dart') {
 					formItemList.push(
 						<FormItem label={lable} key={field}>
-							<Darft editorState={formList[0].render} key={formList} />
+							{/* <Darft editorState={formList[0].render} key={formList} /> */}
 						</FormItem>
 					)
 				} else {
@@ -80,7 +99,7 @@ class BaseForm extends React.Component {
 							headers: {
 								authorization: 'authorization-text'
 							},
-							onChange(info) {
+							onChange(info: any) {
 								const status = info.file.status
 								if (status === 'done') {
 									message.success(`${info.file.name} file uploaded successfully.`)
@@ -167,4 +186,4 @@ class BaseForm extends React.Component {
 	}
 }
 
-export default Form.create()(BaseForm)
+export default Form.create<IProps>()(BaseForm)

@@ -1,5 +1,5 @@
-import { Component } from 'react'
-class index extends Component {
+import * as React from 'react';
+class index extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {}

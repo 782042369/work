@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import * as React from 'react';
 import {
 	addgoods,
 	editgoods,
@@ -11,7 +11,7 @@ import {
 import getUrlParam from '../../tool/getUrlParam'
 import { message } from 'antd'
 import TapFrom from '../../components/Form/TapFrom'
-class index extends Component {
+class index extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

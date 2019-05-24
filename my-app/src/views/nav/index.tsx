@@ -5,14 +5,14 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-24 11:03:02
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { Table, Divider, Button, message } from 'antd'
 import { navlist, deletenav } from '../../api/nav'
 import datefilter from '../../tool/datefilter'
 import { positioncode, statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 
-class nav extends Component {
+class nav extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

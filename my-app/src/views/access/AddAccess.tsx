@@ -5,13 +5,13 @@
  * @Date: 2019-05-05 15:48:39
  * @LastEditTime: 2019-05-24 15:21:59
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { addaccess, editaccess, accesslist } from '../../api/access'
 import getUrlParam from '../../tool/getUrlParam'
 import { message } from 'antd'
 import BashForm from '../../components/Form'
 
-class manger extends Component {
+class manger extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

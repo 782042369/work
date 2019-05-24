@@ -5,13 +5,13 @@
  * @Date: 2019-05-05 15:48:17
  * @LastEditTime: 2019-05-24 15:23:05
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { Table, Divider, Button, message } from 'antd'
 import { findaccesslist, deleteaccess } from '../../api/access'
 import datefilter from '../../tool/datefilter'
 import { typefilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
-class access extends Component {
+class access extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

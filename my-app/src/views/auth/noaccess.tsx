@@ -5,9 +5,9 @@
  * @Date: 2019-05-05 15:48:17
  * @LastEditTime: 2019-05-13 16:20:27
  */
-import { Component } from 'react';
+import * as React from 'react';;
 
-class NoAccess extends Component {
+class NoAccess extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};

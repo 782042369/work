@@ -5,12 +5,12 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-23 10:42:19
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { addgoodstype, editgoodstype, goodstypelist } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
 import { message } from 'antd'
 import BashForm from '../../components/Form'
-class goodstype extends Component {
+class goodstype extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

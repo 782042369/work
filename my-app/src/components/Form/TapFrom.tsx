@@ -5,7 +5,7 @@
  * @LastEditTime: 2019-05-23 18:13:00
  * @Description: 选项卡式表单提交
  */
-import React from 'react'
+import * as React from 'react'
 import { Form, Button, Upload, Icon, Tabs } from 'antd'
 import { InputType } from './InputType'
 import moment from 'moment'

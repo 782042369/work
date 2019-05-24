@@ -5,13 +5,13 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-24 11:51:46
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { addnav, editnav, navlist } from '../../api/nav'
 import getUrlParam from '../../tool/getUrlParam'
 import BashForm from '../../components/Form'
 import { message } from 'antd'
 
-class nav extends Component {
+class nav extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

@@ -5,7 +5,7 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-21 15:48:42
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { Table, Divider, Button, message } from 'antd'
 import { goodstypeattributelist, deletegoodstypeattribute } from '../../api/goods'
 import datefilter from '../../tool/datefilter'
@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 import getUrlParam from '../../tool/getUrlParam'
 
 const { Column } = Table
-class role extends Component {
+class role extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

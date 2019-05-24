@@ -5,14 +5,14 @@
  * @Date: 2019-05-05 15:48:39
  * @LastEditTime: 2019-05-21 15:48:36
  */
-import { Component } from 'react'
+import * as React from 'react';
 import { Table, Divider, Button, message } from 'antd'
 import datefilter from '../../tool/datefilter'
 import { managerlist, deletemanager } from '../../api/manager'
 import { Link } from 'react-router-dom'
 import LineWrap from '../../components/LineWrap'
 const { Column } = Table
-class manager extends Component {
+class manager extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

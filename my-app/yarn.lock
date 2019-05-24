@@ -53,6 +53,19 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@types/draft-js@*":
+  version "0.10.32"
+  resolved "https://registry.npm.taobao.org/@types/draft-js/download/@types/draft-js-0.10.32.tgz#cbfed40c500d9bb1e486813dde73125291e7517d"
+  integrity sha1-y/7UDFANm7HkhoE93nMSUpHnUX0=
+  dependencies:
+    "@types/react" "*"
+    immutable "^3.8.1"
+
+"@types/history@*":
+  version "4.7.2"
+  resolved "https://registry.npm.taobao.org/@types/history/download/@types/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
+  integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
+
 "@types/jest-diff@*":
   version "20.0.1"
   resolved "https://registry.npm.taobao.org/@types/jest-diff/download/@types/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
@@ -85,6 +98,31 @@
   resolved "https://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
   integrity sha1-f7e6NohXx6oPTkURxHEMosWhKog=
   dependencies:
+    "@types/react" "*"
+
+"@types/react-draft-wysiwyg@^1.12.2":
+  version "1.12.2"
+  resolved "https://registry.npm.taobao.org/@types/react-draft-wysiwyg/download/@types/react-draft-wysiwyg-1.12.2.tgz#60e3e897b07892ea053a36dc15241bfc6c469721"
+  integrity sha1-YOPol7B4kuoFOjbcFSQb/GxGlyE=
+  dependencies:
+    "@types/draft-js" "*"
+    "@types/react" "*"
+
+"@types/react-router-dom@^4.3.3":
+  version "4.3.3"
+  resolved "https://registry.npm.taobao.org/@types/react-router-dom/download/@types/react-router-dom-4.3.3.tgz#7837e3e9fefbc84a8f6c8a51dca004f4e83e94e3"
+  integrity sha1-eDfj6f77yEqPbIpR3KAE9Og+lOM=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*":
+  version "5.0.1"
+  resolved "https://registry.npm.taobao.org/@types/react-router/download/@types/react-router-5.0.1.tgz#9f4548c75755c55b0cffdd743080e5afa87da6dd"
+  integrity sha1-n0VIx1dVxVsM/910MIDlr6h9pt0=
+  dependencies:
+    "@types/history" "*"
     "@types/react" "*"
 
 "@types/react-slick@^0.23.3":
@@ -4106,7 +4144,7 @@ ignore-walk@^3.0.1:
   dependencies:
     minimatch "^3.0.4"
 
-immutable@^3.7.4:
+immutable@^3.7.4, immutable@^3.8.1:
   version "3.8.2"
   resolved "https://registry.npm.taobao.org/immutable/download/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
   integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
