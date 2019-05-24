@@ -3,15 +3,15 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 11:51:46
+ * @LastEditTime: 2019-05-24 11:58:36
  */
 import React, { Component } from 'react'
-import { addnav, editnav, navlist } from '../../api/nav'
+import { addarticle, editarticle, articlelist } from '../../api/article'
 import getUrlParam from '../../tool/getUrlParam'
 import BashForm from '../../components/Form'
 import { message } from 'antd'
 
-class nav extends Component {
+class article extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -23,7 +23,7 @@ class nav extends Component {
 		console.log('e: ', values)
 		if (getUrlParam('id')) {
 			let arr = { id: getUrlParam('id') }
-			editnav(Object.assign(values, arr))
+			editarticle(Object.assign(values, arr))
 				.then((res) => {
 					console.log(res)
 					message.success(res.message)
@@ -33,7 +33,7 @@ class nav extends Component {
 					console.log(err)
 				})
 		} else {
-			addnav(values)
+			addarticle(values)
 				.then((res) => {
 					if (res.status === 1) {
 						message.success(res.message)
@@ -50,9 +50,9 @@ class nav extends Component {
 	componentDidMount() {
 		if (getUrlParam('id')) {
 			this.setState({
-				h1title: '修改导航'
+				h1title: '修改文章'
 			})
-			navlist({
+			articlelist({
 				_id: getUrlParam('id')
 			})
 				.then((res) => {
@@ -65,7 +65,7 @@ class nav extends Component {
 				})
 		} else {
 			this.setState({
-				h1title: '增加导航'
+				h1title: '增加文章'
 			})
 		}
 	}
@@ -74,7 +74,7 @@ class nav extends Component {
 		const formList = [
 			{
 				type: 'input',
-				lable: '导航名称',
+				lable: '文章标题',
 				setValue: this.state.title,
 				placeholder: '请输入',
 				field: 'title',
@@ -84,26 +84,25 @@ class nav extends Component {
 
 			{
 				type: 'select',
-				lable: '导航位置',
-				setValue: this.state.position,
-				placeholder: '请输入',
-				field: 'position',
+				lable: '所属分类',
+				setValue: this.state.cate_id,
+				field: 'cate_id',
 				required: true,
-				list: [ { id: 1, name: '顶部' }, { id: 2, name: '导航菜单' }, { id: 3, name: '底部' } ],
-				message: 'Please input your position!'
+				list: [ { id: 1, name: '顶部' }, { id: 2, name: '文章菜单' }, { id: 3, name: '底部' } ],
+				message: 'Please input your cate_id!'
+			},
+			{
+				type: 'upload',
+				lable: '封面图片',
+				setValue: this.state.article_img,
+				placeholder: '请输入',
+				field: 'article_img',
+				required: true,
+				message: 'Please input your article_img!'
 			},
 			{
 				type: 'input',
-				lable: '关联商品',
-				setValue: this.state.relation,
-				placeholder: '请输入',
-				field: 'relation',
-				required: true,
-				message: 'Please input your relation!'
-			},
-			{
-				type: 'input',
-				lable: '导航连接地址',
+				lable: '跳转地址',
 				setValue: this.state.link,
 				placeholder: '请输入',
 				field: 'link',
@@ -111,14 +110,31 @@ class nav extends Component {
 				message: 'Please input your link!'
 			},
 			{
-				type: 'select',
-				lable: '新窗口打开',
-				setValue: this.state.is_opennew,
+				type: 'input',
+				lable: 'Seo关键词',
+				setValue: this.state.keywords,
 				placeholder: '请输入',
-				field: 'is_opennew',
+				field: 'keywords',
 				required: true,
-				list: [ { id: 1, name: '是' }, { id: 2, name: '否' } ],
-				message: 'Please input your is_opennew!'
+				message: 'Please input your keywords!'
+			},
+			{
+				type: 'input',
+				lable: 'Seo描述',
+				setValue: this.state.description,
+				placeholder: '请输入',
+				field: 'description',
+				required: true,
+				message: 'Please input your description!'
+			},
+			{
+				type: 'input',
+				lable: '排序',
+				setValue: this.state.sort,
+				placeholder: '请输入',
+				field: 'sort',
+				required: true,
+				message: 'Please input your sort!'
 			},
 			{
 				type: 'radio',
@@ -129,9 +145,14 @@ class nav extends Component {
 				required: true,
 				list: [ { id: 1, name: '显示' }, { id: 0, name: '隐藏' } ],
 				message: 'Please input your status!'
+			},
+			{
+				type: 'dart',
+				lable: '文章内容',
+				field: 'content'
 			}
 		]
 		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
 	}
 }
-export default nav
+export default article

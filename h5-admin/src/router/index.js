@@ -26,6 +26,8 @@ const AddGoods = AsyncComponent(() => import( /* webpackChunkName: "AddGoods" */
 const Nav = AsyncComponent(() => import( /* webpackChunkName: "nav" */ '../views/nav'))
 const AddNav = AsyncComponent(() => import( /* webpackChunkName: "AddNav" */ '../views/nav/AddNav'))
 const Home = AsyncComponent(() => import( /* webpackChunkName: "Home" */ '../views/home'))
+const Article = AsyncComponent(() => import( /* webpackChunkName: "Article" */ '../views/article'))
+const AddArticle = AsyncComponent(() => import( /* webpackChunkName: "AddArticle" */ '../views/article/AddArticle'))
 let router = [{
 		path: '/access',
 		component: Access
@@ -109,6 +111,14 @@ let router = [{
 	{
 		path: '/',
 		component: Home
-	}
+	},
+	{
+		path: '/article',
+		component: Article
+	},
+	{
+		path: '/addarticle',
+		component: AddArticle
+	},
 ]
 export default router

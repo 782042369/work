@@ -2,13 +2,14 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-23 16:02:46
+ * @LastEditTime: 2019-05-24 11:57:08
  * @Description: 传统
  */
 import React from 'react'
 import { Form, Button, Upload, Icon, message } from 'antd'
 import { InputType } from './InputType'
 import './index.scss'
+import Darft from '../../components/Darft'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
@@ -64,59 +65,67 @@ class BaseForm extends React.Component {
 				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
 				let inputitem = ''
 				inputitem = InputType(item)
-				if (type === 'upload') {
-					const props = {
-						name: 'file',
-						action: '/admin/uploadimg',
-						multiple: true,
-						headers: {
-							authorization: 'authorization-text'
-						},
-						onChange(info) {
-							const status = info.file.status
-							if (status === 'done') {
-								message.success(`${info.file.name} file uploaded successfully.`)
-							} else if (status === 'error') {
-								message.error(`${info.file.name} file upload failed.`)
+				if (type === 'dart') {
+					formItemList.push(
+						<FormItem label={lable} key={field}>
+							<Darft editorState={formList[0].render} key={formList} />
+						</FormItem>
+					)
+				} else {
+					if (type === 'upload') {
+						const props = {
+							name: 'file',
+							action: '/admin/uploadimg',
+							multiple: true,
+							headers: {
+								authorization: 'authorization-text'
+							},
+							onChange(info) {
+								const status = info.file.status
+								if (status === 'done') {
+									message.success(`${info.file.name} file uploaded successfully.`)
+								} else if (status === 'error') {
+									message.error(`${info.file.name} file upload failed.`)
+								}
 							}
 						}
-					}
-					if (setValue) {
-						let editimg = (
-							<Form.Item label="原图" key="editimg">
-								<img
-									alt="这是一张图片"
-									style={{ maxWidth: '10vw', maxHeight: '10vw' }}
-									src={`http://127.0.0.1:7001${setValue}`}
-								/>
-							</Form.Item>
+						if (setValue) {
+							let editimg = (
+								<Form.Item label="原图" key="editimg">
+									<img
+										alt="这是一张图片"
+										style={{ maxWidth: '10vw', maxHeight: '10vw' }}
+										src={`http://127.0.0.1:7001${setValue}`}
+									/>
+								</Form.Item>
+							)
+							formItemList.push(editimg)
+							required = false
+						}
+						inputitem = (
+							<Dragger {...props}>
+								<p className="ant-upload-drag-icon">
+									<Icon type="inbox" />
+								</p>
+								<p className="ant-upload-text">点击上传</p>
+								<p className="ant-upload-hint">请选择你需要上传的图片</p>
+							</Dragger>
 						)
-						formItemList.push(editimg)
-						required = false
 					}
-					inputitem = (
-						<Dragger {...props}>
-							<p className="ant-upload-drag-icon">
-								<Icon type="inbox" />
-							</p>
-							<p className="ant-upload-text">点击上传</p>
-							<p className="ant-upload-hint">请选择你需要上传的图片</p>
-						</Dragger>
+					const fromitem = (
+						<FormItem label={lable} key={field}>
+							{getFieldDecorator(field, {
+								rules: [
+									{
+										required,
+										message: rulemessages
+									}
+								]
+							})(inputitem)}
+						</FormItem>
 					)
+					formItemList.push(fromitem)
 				}
-				const fromitem = (
-					<FormItem label={lable} key={field}>
-						{getFieldDecorator(field, {
-							rules: [
-								{
-									required,
-									message: rulemessages
-								}
-							]
-						})(inputitem)}
-					</FormItem>
-				)
-				formItemList.push(fromitem)
 			})
 		return formItemList
 	}
