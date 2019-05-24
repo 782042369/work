@@ -3,52 +3,45 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-22 11:37:51
+ * @LastEditTime: 2019-05-24 17:54:10
  */
-import * as React from 'react';
+import * as React from 'react'
 import { addgoodscate, editgoodscate, goodscatelist } from '../../api/goods'
 import getUrlParam from '../../tool/getUrlParam'
 import { Form, Input, Button, message, Select, Icon, Upload } from 'antd'
 const Option = Select.Option
 const { TextArea } = Input
 const Dragger = Upload.Dragger
-class WrappedRegistrationForm extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			confirmDirty: false,
-			goodscatetype: [],
-			editimgsrc: '',
-			radiovalue: null,
-			distextarea: true // 可选列表禁用
-		}
-	}
-
-	handleSubmit = (e) => {
+interface State {
+	accessdata: any
+}
+interface Props {}
+class WrappedRegistrationForm extends React.Component<Props, State> {
+	handleSubmit = (e: any) => {
 		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
 				if (getUrlParam('id')) {
 					let arr = { id: getUrlParam('id') }
 					editgoodscate(Object.assign(values, arr))
-						.then((res:any) => {
+						.then((res: any) => {
 							console.log(res)
 							message.success(res.message)
 						})
-						.catch((err:any) => {
+						.catch((err: any) => {
 							message.error(err.message)
 							console.log(err)
 						})
 				} else {
 					addgoodscate(values)
-						.then((res:any) => {
+						.then((res: any) => {
 							if (res.status === 1) {
 								message.success(res.message)
 							} else {
 								message.error(res.message)
 							}
 						})
-						.catch((err:any) => {
+						.catch((err: any) => {
 							console.log(err)
 							message.error(err.message)
 						})
@@ -59,7 +52,7 @@ class WrappedRegistrationForm extends React.Component {
 	// 获取类型
 	goodscatelist(arr) {
 		goodscatelist(arr)
-			.then((res:any) => {
+			.then((res: any) => {
 				if (arr.pid === 0) {
 					this.setState({
 						goodscatetype: res.data
@@ -93,7 +86,7 @@ class WrappedRegistrationForm extends React.Component {
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}

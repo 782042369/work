@@ -3,99 +3,93 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-15 17:11:19
+ * @LastEditTime: 2019-05-24 17:54:18
  */
-import * as React from 'react';;
-import { addgoodsattribute, editgoodsattribute, goodstypelist, goodstypeattributelist } from '../../api/goods';
-import getUrlParam from '../../tool/getUrlParam';
-import { Form, Input, Button, message, Select, Radio } from 'antd';
-const Option = Select.Option;
-const RadioGroup = Radio.Group;
-const { TextArea } = Input;
-class WrappedRegistrationForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			confirmDirty: false,
-			goodstype: [],
-			radiovalue: null,
-			distextarea: true // 可选列表禁用
-		};
-	}
-
-	handleSubmit = (e) => {
-		e.preventDefault();
+import * as React from 'react'
+import { addgoodsattribute, editgoodsattribute, goodstypelist, goodstypeattributelist } from '../../api/goods'
+import getUrlParam from '../../tool/getUrlParam'
+import { Form, Input, Button, message, Select, Radio } from 'antd'
+const Option = Select.Option
+const RadioGroup = Radio.Group
+const { TextArea } = Input
+interface State {
+	accessdata: any
+}
+interface Props {}
+class WrappedRegistrationForm extends React.Component<Props, State> {
+	handleSubmit = (e: any) => {
+		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
 				if (getUrlParam('type') === '1') {
-					let arr = { id: getUrlParam('id') };
+					let arr = { id: getUrlParam('id') }
 					editgoodsattribute(Object.assign(values, arr))
-						.then((res:any) => {
-							console.log(res);
-							message.success(res.message);
+						.then((res: any) => {
+							console.log(res)
+							message.success(res.message)
 						})
-						.catch((err:any) => {
-							message.error(err.message);
-							console.log(err);
-						});
+						.catch((err: any) => {
+							message.error(err.message)
+							console.log(err)
+						})
 				} else {
 					addgoodsattribute(values)
-						.then((res:any) => {
+						.then((res: any) => {
 							if (res.status === 1) {
-								message.success(res.message);
+								message.success(res.message)
 							} else {
-								message.error(res.message);
+								message.error(res.message)
 							}
 						})
-						.catch((err:any) => {
-							console.log(err);
-							message.error(err.message);
-						});
+						.catch((err: any) => {
+							console.log(err)
+							message.error(err.message)
+						})
 				}
 			}
-		});
+		})
 	}
 	// 获取类型
 	goodstypelist() {
 		goodstypelist()
-			.then((res:any) => {
-				console.log('res: ', res);
+			.then((res: any) => {
+				console.log('res: ', res)
 				this.setState({
 					goodstype: res.data
-				});
+				})
 				if (getUrlParam('type') !== '1') {
 					this.props.form.setFieldsValue({
 						cate_id: getUrlParam('id')
-					});
+					})
 				}
 			})
-			.catch((err:any) => {
-				console.log('err: ', err);
-			});
+			.catch((err: any) => {
+				console.log('err: ', err)
+			})
 	}
 	goodstypeattributelist() {
 		goodstypeattributelist({
 			_id: getUrlParam('id')
 		})
-			.then((res:any) => {
-				console.log('res.data[0].attr_type: ', res.data[0].attr_type);
+			.then((res: any) => {
+				console.log('res.data[0].attr_type: ', res.data[0].attr_type)
 				this.props.form.setFieldsValue({
 					cate_id: res.data[0].cate_id,
 					title: res.data[0].title,
 					attr_type: Number(res.data[0].attr_type)
-				});
+				})
 				if (Number(res.data[0].attr_type) === 3) {
 					this.props.form.setFieldsValue({
 						attr_value: res.data[0].attr_value
-					});
+					})
 					this.setState({
 						distextarea: false
-					});
+					})
 				}
 			})
-			.catch((err:any) => {
-				console.log('err: ', err);
-			});
+			.catch((err: any) => {
+				console.log('err: ', err)
+			})
 	}
 
 	renderOptions = () => {
@@ -103,29 +97,29 @@ class WrappedRegistrationForm extends React.Component {
 			<Option key={element._id} value={element._id}>
 				{element.title}
 			</Option>
-		));
+		))
 	}
 	componentDidMount() {
-		this.goodstypelist();
+		this.goodstypelist()
 		if (getUrlParam('type') === '1') {
 			this.setState({
 				title: '修改'
-			});
-			this.goodstypeattributelist();
+			})
+			this.goodstypeattributelist()
 		} else {
 			this.setState({
 				title: '增加'
-			});
+			})
 		}
 	}
-	radiochange = (e) => {
+	radiochange = (e: any) => {
 		// 单选框
 		this.setState({
 			distextarea: e.target.value !== 3 ? true : false
-		});
+		})
 	}
 	render() {
-		const { getFieldDecorator } = this.props.form;
+		const { getFieldDecorator } = this.props.form
 		const formItemLayout = {
 			labelCol: {
 				xs: { span: 24 },
@@ -135,7 +129,7 @@ class WrappedRegistrationForm extends React.Component {
 				xs: { span: 24 },
 				sm: { span: 16 }
 			}
-		};
+		}
 		const tailFormItemLayout = {
 			wrapperCol: {
 				xs: {
@@ -147,7 +141,7 @@ class WrappedRegistrationForm extends React.Component {
 					offset: 8
 				}
 			}
-		};
+		}
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
 				<h1>{this.state.title}商品属性</h1>
@@ -203,8 +197,8 @@ class WrappedRegistrationForm extends React.Component {
 					</Button>
 				</Form.Item>
 			</Form>
-		);
+		)
 	}
 }
-const goods = Form.create({ name: 'register' })(WrappedRegistrationForm);
-export default goods;
+const goods = Form.create({ name: 'register' })(WrappedRegistrationForm)
+export default goods

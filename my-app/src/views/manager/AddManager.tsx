@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-24 17:48:39
+ * @LastEditTime: 2019-05-24 17:56:57
  */
 import * as React from 'react'
 import { addmanager, editmanager, managerlist } from '../../api/manager'
@@ -12,19 +12,21 @@ import getUrlParam from '../../tool/getUrlParam'
 import { Form, Input, Button, message, Select } from 'antd'
 import * as md5 from 'js-md5'
 const Option = Select.Option
-
-class WrappedRegistrationForm extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			title: '',
-			roledata: []
-		}
-	}
-
-	handleSubmit = (e) => {
+type IProps = Readonly<{
+	form: any
+}>
+interface State {
+	title: any
+	roledata: any
+	accessdata: any
+}
+interface Props {
+	form: any
+}
+class WrappedRegistrationForm extends React.Component<Props, State> {
+	handleSubmit = (e: any) => {
 		e.preventDefault()
-		this.props.form.validateFieldsAndScroll((err, values) => {
+		this.props.form.validateFieldsAndScroll((err: any, values: any) => {
 			if (!err) {
 				values.password = md5(values.password)
 				if (getUrlParam('id')) {
@@ -92,7 +94,7 @@ class WrappedRegistrationForm extends React.Component {
 		}
 	}
 	renderOptions = () => {
-		return this.state.roledata.map((element) => (
+		return this.state.roledata.map((element: any) => (
 			<Option key={element._id} value={element._id}>
 				{element.title}
 			</Option>
@@ -186,5 +188,5 @@ class WrappedRegistrationForm extends React.Component {
 		)
 	}
 }
-const manger = Form.create({ name: 'register' })(WrappedRegistrationForm)
+const manger = Form.create<IProps>()(WrappedRegistrationForm)
 export default manger

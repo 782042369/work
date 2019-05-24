@@ -3,18 +3,18 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-05-24 17:39:44
+ * @LastEditTime: 2019-05-24 18:30:34
  */
 import * as React from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import { message } from 'antd'
 class PrivateRoute extends React.Component {
-	// constructor(props) {
-	// 	super(props)
-	// 	this.state = {
-	// 		isAuthenticated: window.sessionStorage.getItem('role_id') ? true : false
-	// 	}
-	// }
+	constructor(props) {
+		super(props)
+		this.state = {
+			isAuthenticated: window.sessionStorage.getItem('role_id') ? true : false
+		}
+	}
 
 	componentWillMount() {
 		if (!this.state.isAuthenticated) {

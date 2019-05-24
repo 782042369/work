@@ -3,20 +3,18 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-22 14:55:23
+ * @LastEditTime: 2019-05-24 18:06:36
  */
 import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { goodscatelist, deletegoodscate } from '../../api/goods'
 import datefilter from '../../tool/datefilter'
 import { Link } from 'react-router-dom'
-class role extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: []
-		}
-	}
+interface State {
+	data: any
+}
+interface Props {}
+class index extends React.Component<Props, State> {
 	getlist() {
 		goodscatelist()
 			.then((res: any) => {
@@ -33,7 +31,7 @@ class role extends React.Component {
 	componentDidMount() {
 		this.getlist()
 	}
-	deletegoodscate(id) {
+	deletegoodscate(id: any) {
 		deletegoodscate({
 			id
 		})
@@ -46,7 +44,7 @@ class role extends React.Component {
 				console.log('err: ', err)
 			})
 	}
-	combtn = (e) => {
+	combtn = (e: any) => {
 		return (
 			<span>
 				<Link to={'/addgoodscate?id=' + e}>
@@ -130,4 +128,4 @@ class role extends React.Component {
 	}
 }
 
-export default role
+export default index

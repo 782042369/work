@@ -3,19 +3,17 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-23 18:13:06
+ * @LastEditTime: 2019-05-24 18:04:49
  */
 import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { goodslist, deletegoods } from '../../api/goods'
 import { Link } from 'react-router-dom'
-class role extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: []
-		}
-	}
+interface State {
+	data: any
+}
+interface Props {}
+class index extends React.Component<Props, State> {
 	getlist() {
 		goodslist()
 			.then((res: any) => {
@@ -33,7 +31,7 @@ class role extends React.Component {
 	componentDidMount() {
 		this.getlist()
 	}
-	deletegoods(id) {
+	deletegoods(id: any) {
 		deletegoods({
 			id
 		})
@@ -82,4 +80,4 @@ class role extends React.Component {
 	}
 }
 
-export default role
+export default index

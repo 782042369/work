@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-21 15:48:41
+ * @LastEditTime: 2019-05-24 18:05:37
  */
 import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -13,13 +13,11 @@ import { statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 
 const { Column } = Table
-class role extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: []
-		}
-	}
+interface State {
+	data: any
+}
+interface Props {}
+class index extends React.Component<Props, State> {
 	getlist() {
 		goodstypelist()
 			.then((res: any) => {
@@ -36,7 +34,7 @@ class role extends React.Component {
 	componentDidMount() {
 		this.getlist()
 	}
-	deletegoodstype(id) {
+	deletegoodstype(id: any) {
 		deletegoodstype({
 			id
 		})
@@ -97,4 +95,4 @@ class role extends React.Component {
 	}
 }
 
-export default role
+export default index

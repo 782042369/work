@@ -1,25 +1,31 @@
-import * as React from 'react';
+import * as React from 'react'
 import './login.scss'
 import { Form, Icon, Input, Button } from 'antd'
 import { Redirect } from 'react-router'
 import { dologin } from '../../api/login'
 import md5 from 'js-md5'
 import { message } from 'antd'
-class NormalLoginForm extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			loginSuccess: false,
-			codeimg: 'captchacode?' + new Date().getTime()
-		}
-	}
-	handleSubmit = (e) => {
+interface State {
+	loginSuccess: any
+	codeimg: any
+}
+interface Props {
+	form: any
+}
+type IProps = Readonly<{
+	form: any
+	formList: any
+	h1title: any
+	formSubmit: any
+}>
+class NormalLoginForm extends React.Component<Props, State> {
+	handleSubmit = (e: any) => {
 		e.preventDefault()
-		this.props.form.validateFields((err, values) => {
+		this.props.form.validateFields((err: any, values: any) => {
 			if (!err) {
 				values.password = md5(values.password)
 				dologin(values)
-					.then((res:any) => {
+					.then((res: any) => {
 						if (res.status === 1) {
 							message.success(res.message)
 							sessionStorage.setItem('role_id', res.data.role_id)
@@ -32,7 +38,7 @@ class NormalLoginForm extends React.Component {
 							message.error(res.message)
 						}
 					})
-					.catch((err:any) => {
+					.catch((err: any) => {
 						this.svgcode()
 					})
 			}
@@ -43,7 +49,9 @@ class NormalLoginForm extends React.Component {
 			codeimg: 'captchacode?' + new Date().getTime()
 		})
 	}
-	componentDidMount() {}
+	componentDidMount() {
+		this.svgcode()
+	}
 	render() {
 		const { getFieldDecorator } = this.props.form
 
@@ -97,5 +105,5 @@ class NormalLoginForm extends React.Component {
 	}
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm)
+const WrappedNormalLoginForm = Form.create<IProps>()(NormalLoginForm)
 export default WrappedNormalLoginForm

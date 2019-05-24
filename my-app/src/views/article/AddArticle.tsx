@@ -3,45 +3,49 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 11:58:36
+ * @LastEditTime: 2019-05-24 18:24:46
  */
-import * as React from 'react';
+import * as React from 'react'
 import { addarticle, editarticle, articlelist } from '../../api/article'
 import getUrlParam from '../../tool/getUrlParam'
 import BashForm from '../../components/Form'
 import { message } from 'antd'
-
-class article extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			h1title: ''
-		}
-	}
-
-	handleSubmit = (values) => {
+interface State {
+	status: string
+	title: any
+	cate_id: any
+	article_img: any
+	link: any
+	keywords: any
+	description: any
+	sort: any
+	h1title: any
+}
+interface Props {}
+class index extends React.Component<Props, State> {
+	handleSubmit = (values: any) => {
 		console.log('e: ', values)
 		if (getUrlParam('id')) {
 			let arr = { id: getUrlParam('id') }
 			editarticle(Object.assign(values, arr))
-				.then((res:any) => {
+				.then((res: any) => {
 					console.log(res)
 					message.success(res.message)
 				})
-				.catch((err:any) => {
+				.catch((err: any) => {
 					message.error(err.message)
 					console.log(err)
 				})
 		} else {
 			addarticle(values)
-				.then((res:any) => {
+				.then((res: any) => {
 					if (res.status === 1) {
 						message.success(res.message)
 					} else {
 						message.error(res.message)
 					}
 				})
-				.catch((err:any) => {
+				.catch((err: any) => {
 					console.log(err)
 					message.error(err.message)
 				})
@@ -55,12 +59,12 @@ class article extends React.Component {
 			articlelist({
 				_id: getUrlParam('id')
 			})
-				.then((res:any) => {
+				.then((res: any) => {
 					this.setState({
 						...res.data[0]
 					})
 				})
-				.catch((err:any) => {
+				.catch((err: any) => {
 					console.log('err: ', err)
 				})
 		} else {
@@ -155,4 +159,4 @@ class article extends React.Component {
 		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
 	}
 }
-export default article
+export default index

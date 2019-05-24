@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-24 17:23:55
+ * @LastEditTime: 2019-05-24 18:28:52
  * @Description: 选项卡式表单提交
  */
 import * as React from 'react'
@@ -18,13 +18,12 @@ const FormItem = Form.Item
 const TabPane = Tabs.TabPane
 type IProps = Readonly<{
 	form: any
-	formList: any
 	h1title: any
+	taps: any
 	formSubmit: any
 }>
 interface Props {
 	form: any
-	formList: any
 	h1title: any
 	taps: any
 	formSubmit: any

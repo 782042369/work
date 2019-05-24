@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-24 17:38:13
+ * @LastEditTime: 2019-05-24 17:50:46
  */
 import * as React from 'react'
 // import menus from '../router/routers'
@@ -13,9 +13,7 @@ import { Link } from 'react-router-dom'
 import mergefieldtojson from '../tool/mergefieldtojson'
 // import { withRouter } from 'react-router-dom'
 interface Props {
-	title: string
-	lineClampNum: number
-	path: any
+	path?: any
 }
 interface State {
 	list: any

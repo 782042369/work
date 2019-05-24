@@ -3,79 +3,85 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-20 19:46:38
+ * @LastEditTime: 2019-05-24 18:27:56
  */
-import * as React from 'react';;
-import { addbanner, editbanner, bannerlist } from '../../api/banner';
-import getUrlParam from '../../tool/getUrlParam';
-import { message } from 'antd';
-import BashForm from '../../components/Form';
+import * as React from 'react'
+import { addbanner, editbanner, bannerlist } from '../../api/banner'
+import getUrlParam from '../../tool/getUrlParam'
+import { message } from 'antd'
+import BashForm from '../../components/Form'
 
-class editbannner extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
-	flatten(arr) {
-		while (arr.some((item) => Array.isArray(item))) {
-			arr = [].concat(...arr);
+interface State {
+	data: any
+	title: any
+	h1title: any
+	focus_img: any
+	sort: any
+	link: any
+	type: any
+}
+interface Props {}
+class index extends React.Component<Props, State> {
+	flatten(arr: any) {
+		while (arr.some((item: any) => Array.isArray(item))) {
+			arr = [].concat(...arr)
 		}
-		return arr;
+		return arr
 	}
-	handleSubmit = (values) => {
+	handleSubmit = (values: any) => {
 		if (getUrlParam('id')) {
-			let arr = { id: getUrlParam('id') };
+			let arr = { id: getUrlParam('id') }
 			editbanner(Object.assign(values, arr))
-				.then((res:any) => {
-					console.log(res);
-					message.success(res.message);
+				.then((res: any) => {
+					console.log(res)
+					message.success(res.message)
 				})
-				.catch((err:any) => {
-					message.error(err.message);
-					console.log(err);
-				});
+				.catch((err: any) => {
+					message.error(err.message)
+					console.log(err)
+				})
 		} else {
 			addbanner(values)
-				.then((res:any) => {
+				.then((res: any) => {
 					if (res.status === 1) {
-						message.success(res.message);
+						message.success(res.message)
 					} else {
-						message.error(res.message);
+						message.error(res.message)
 					}
 				})
-				.catch((err:any) => {
-					console.log(err);
-					message.error(err.message);
-				});
+				.catch((err: any) => {
+					console.log(err)
+					message.error(err.message)
+				})
 		}
 	}
 	componentDidMount() {
 		if (getUrlParam('id')) {
 			this.setState({
 				h1title: '修改轮播图'
-			});
-			console.log(getUrlParam('id'));
+			})
+			console.log(getUrlParam('id'))
 			bannerlist({
 				_id: getUrlParam('id')
 			})
-				.then((res:any) => {
-					let { title, sort, focus_img, type, link } = res.data[0];
-					type = Number(type);
+				.then((res: any) => {
+					let { title, sort, focus_img, type, link } = res.data[0]
+					type = Number(type)
 					this.setState({
 						title,
 						sort,
 						focus_img,
 						type,
 						link
-					});
+					})
 				})
-				.catch((err:any) => {
-					console.log('err: ', err);
-				});
+				.catch((err: any) => {
+					console.log('err: ', err)
+				})
 		} else {
 			this.setState({
 				h1title: '增加轮播图'
-			});
+			})
 		}
 	}
 
@@ -127,9 +133,9 @@ class editbannner extends React.Component {
 				required: true,
 				message: 'Please input your banner!'
 			}
-		];
-		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />;
+		]
+		return <BashForm formList={formList} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
 	}
 }
 
-export default editbannner;
+export default index

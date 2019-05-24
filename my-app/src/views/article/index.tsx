@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 导航
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 17:29:17
+ * @LastEditTime: 2019-05-24 18:26:19
  */
 import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -12,13 +12,11 @@ import datefilter from '../../tool/datefilter'
 import { statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 
-class article extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: []
-		}
-	}
+interface State {
+	data: any
+}
+interface Props {}
+class index extends React.Component<Props, State> {
 	getlist() {
 		articlelist()
 			.then((res: any) => {
@@ -35,7 +33,7 @@ class article extends React.Component {
 	componentDidMount() {
 		this.getlist()
 	}
-	deletearticle(id) {
+	deletearticlec(id: any) {
 		deletearticle({
 			id
 		})
@@ -80,7 +78,7 @@ class article extends React.Component {
 						<Button type="primary">修改</Button>
 					</Link>
 					<Divider type="vertical" />
-					<Button type="danger" onClick={this.deletearticle.bind(this, text)}>
+					<Button type="danger" onClick={deletearticle.bind(this, text)}>
 						删除
 					</Button>
 				</span>
@@ -96,4 +94,4 @@ class article extends React.Component {
 	}
 }
 
-export default article
+export default index
