@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 导航
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 10:38:29
+ * @LastEditTime: 2019-05-24 11:03:02
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -49,11 +49,15 @@ class nav extends Component {
 			})
 	}
 	columns = [
-		{ title: '导航名称', dataIndex: 'title' },
+		{ title: '分类名称', dataIndex: 'title' },
 		{
 			title: '导航位置',
 			dataIndex: 'position',
 			render: (text) => <div>{positioncode(text)}</div>
+		},
+		{
+			title: '关联商品',
+			dataIndex: 'relation'
 		},
 		{
 			title: '状态',
@@ -61,7 +65,7 @@ class nav extends Component {
 			render: (text) => <div>{statusfilter(text)}</div>
 		},
 		{ title: '排序', dataIndex: 'sort' },
-		{ title: '跳转', dataIndex: 'link' },
+		{ title: '跳转地址', dataIndex: 'link' },
 		{
 			title: '时间',
 			key: 'add_time',
@@ -74,7 +78,7 @@ class nav extends Component {
 			key: '_id',
 			render: (text) => (
 				<span>
-					<Link to={'/addaccess?id=' + text}>
+					<Link to={'/addnav?id=' + text}>
 						<Button type="primary">修改</Button>
 					</Link>
 					<Divider type="vertical" />

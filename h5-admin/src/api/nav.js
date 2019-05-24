@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: nav
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-24 10:25:04
+ * @LastEditTime: 2019-05-24 11:25:38
  */
 
 import request from '../tool/request';
@@ -28,7 +28,7 @@ export function addnav(data) {
 export function editnav(data) {
 	// 修改
 	return request({
-		url: 'admin/Editnav',
+		url: 'admin/editnav',
 		method: 'put',
 		data
 	});

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-22 16:24:11
+ * @LastEditTime: 2019-05-24 10:56:30
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
@@ -26,7 +26,7 @@ function App() {
 				<Layout>
 					<Header className="header">
 						<Avatar size={40} icon="user" />
-						<span>{window.sessionStorage.getItem('userName')}</span>
+						<span className="name">欢迎光临，{window.sessionStorage.getItem('userName')}</span>
 					</Header>
 					<Layout>
 						<Sider width={200} style={{ background: '#fff' }}>
