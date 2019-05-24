@@ -3,25 +3,23 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-21 15:48:36
+ * @LastEditTime: 2019-05-24 17:44:38
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import datefilter from '../../tool/datefilter'
 import { managerlist, deletemanager } from '../../api/manager'
 import { Link } from 'react-router-dom'
 import LineWrap from '../../components/LineWrap'
 const { Column } = Table
-class manager extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			managerdata: []
-		}
-	}
+interface State {
+	managerdata: any
+}
+interface Props {}
+class manager extends React.Component<Props, State> {
 	getlist() {
 		managerlist()
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				if (res.status === 1) {
 					this.setState({
@@ -30,30 +28,30 @@ class manager extends React.Component {
 				}
 				// console.log(this.state.managerdata)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
 	componentDidMount() {
 		this.getlist()
 	}
-	deletemanager(id) {
+	deletemanager(id: string) {
 		deletemanager({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
 	render() {
 		return (
 			<div>
-				<Table rowKey={(record) => record._id} dataSource={this.state.managerdata}>
+				<Table dataSource={this.state.managerdata}>
 					<Column
 						title="名称"
 						dataIndex="userName"

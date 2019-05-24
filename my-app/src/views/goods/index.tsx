@@ -5,7 +5,7 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-23 18:13:06
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { goodslist, deletegoods } from '../../api/goods'
 import { Link } from 'react-router-dom'
@@ -18,7 +18,7 @@ class role extends React.Component {
 	}
 	getlist() {
 		goodslist()
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				if (res.status === 1) {
 					this.setState({
@@ -26,7 +26,7 @@ class role extends React.Component {
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -37,12 +37,12 @@ class role extends React.Component {
 		deletegoods({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -57,7 +57,7 @@ class role extends React.Component {
 		{
 			title: '操作',
 			dataIndex: '_id',
-			render: (text) => (
+			render: (text: any) => (
 				<span>
 					<Link to={'/addgoods?id=' + text}>
 						<Button type="primary">修改</Button>
@@ -76,7 +76,7 @@ class role extends React.Component {
 				<Link to={'/addgoods'}>
 					<Button type="primary">增加商品</Button>
 				</Link>
-				<Table rowKey={(record) => record._id} dataSource={this.state.data} columns={this.columns} />
+				<Table dataSource={this.state.data} columns={this.columns} />
 			</div>
 		)
 	}

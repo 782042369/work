@@ -2,50 +2,64 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-23 18:13:00
+ * @LastEditTime: 2019-05-24 17:23:55
  * @Description: 选项卡式表单提交
  */
 import * as React from 'react'
 import { Form, Button, Upload, Icon, Tabs } from 'antd'
 import { InputType } from './InputType'
-import moment from 'moment'
+// import moment from 'moment'
 import 'moment/locale/zh-cn'
 import './TapFrom.scss'
-import Darft from '../../components/Darft'
-moment.locale('zh-cn')
+// import Darft from '../../components/Darft'
+// moment.locale('zh-cn')
 const Dragger = Upload.Dragger
 const FormItem = Form.Item
 const TabPane = Tabs.TabPane
+type IProps = Readonly<{
+	form: any
+	formList: any
+	h1title: any
+	formSubmit: any
+}>
+interface Props {
+	form: any
+	formList: any
+	h1title: any
+	taps: any
+	formSubmit: any
+	render: (
+		point: {
+			x: number | null
+			y: number | null
+		}
+	) => React.ReactElement<HTMLDivElement>
+}
 
-class BaseForm extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
-	commit = (e) => {
+interface MOusePointState {}
+class BaseForm extends React.Component<Props, MOusePointState> {
+	commit = (e: any) => {
 		e.preventDefault()
-		const { getFieldsValue } = this.props.form
-		this.props.form.validateFieldsAndScroll((err, values) => {
+		this.props.form.validateFieldsAndScroll((err: any, value: any) => {
 			if (!err) {
-				let date1 = getFieldsValue()
-				this.props.formSubmit(date1) //最终输出
+				this.props.formSubmit(value) //最终输出
 			}
 		})
 	}
 	reset = () => {
 		this.props.form.resetFields()
 	}
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps(nextProps: any) {
 		// 组件初始化时不调用，组件接受新的props时调用。
-		nextProps.taps.forEach((res, index) => {
+		nextProps.taps.forEach((res: any, index: any) => {
 			if (this.props.taps[index][1].formlist !== res[1].formlist) {
 				this.formsetval(res[1].formlist)
 			}
 		})
 	}
-	formsetval(formList) {
+	formsetval(formList: any) {
 		const { setFieldsValue } = this.props.form
-		formList.forEach((res) => {
+		formList.forEach((res: any) => {
 			let field = res.field
 			let arr = {}
 			arr[field] = res.setValue
@@ -54,13 +68,13 @@ class BaseForm extends React.Component {
 			}, 0)
 		})
 	}
-	initFormList = (formList) => {
+	initFormList = (formList: any) => {
 		const { getFieldDecorator } = this.props.form
-		let formItemList = []
+		let formItemList: any = []
 		if (formList[0].type === 'dart') {
-			formItemList.push(<Darft editorState={formList[0].render} key={formList} />)
+			// formItemList.push(<Darft editorState={formList[0].render} key={formList} />)
 		} else {
-			formList.forEach((item, index) => {
+			formList.forEach((item: any) => {
 				let {
 					lable, //标题
 					field, // 字段key
@@ -70,7 +84,7 @@ class BaseForm extends React.Component {
 					setValue
 				} = item
 				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
-				let inputitem = ''
+				let inputitem: any = null
 				inputitem = InputType(item)
 				if (type === 'upload') {
 					const props = {
@@ -123,9 +137,9 @@ class BaseForm extends React.Component {
 		return formItemList
 	}
 	tabsinit() {
-		let Tabshtml = []
-		let card = ''
-		this.props.taps.forEach((item) => {
+		let Tabshtml: any = []
+		let card: any
+		this.props.taps.forEach((item: any) => {
 			card = (
 				<TabPane tab={item[0].tap} key={item[0].key}>
 					{this.initFormList(item[1].formlist)}
@@ -161,9 +175,7 @@ class BaseForm extends React.Component {
 		return (
 			<Form {...formItemLayout} onSubmit={this.commit}>
 				<h1>{this.props.h1title}</h1>
-				<Tabs onChange={this.callback} type="card">
-					{this.tabsinit()}
-				</Tabs>
+				<Tabs type="card">{this.tabsinit()}</Tabs>
 				<FormItem {...tailFormItemLayout}>
 					<Button htmlType="submit" type="primary">
 						提交
@@ -173,5 +185,4 @@ class BaseForm extends React.Component {
 		)
 	}
 }
-
-export default Form.create()(BaseForm)
+export default Form.create<IProps>()(BaseForm)

@@ -5,7 +5,7 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-21 15:48:41
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { goodstypelist, deletegoodstype } from '../../api/goods'
 import datefilter from '../../tool/datefilter'
@@ -22,14 +22,14 @@ class role extends React.Component {
 	}
 	getlist() {
 		goodstypelist()
-			.then((res:any) => {
+			.then((res: any) => {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -40,12 +40,12 @@ class role extends React.Component {
 		deletegoodstype({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -55,7 +55,7 @@ class role extends React.Component {
 				<Link to={'/addgoodstype'}>
 					<Button type="primary">增加商品类型</Button>
 				</Link>
-				<Table rowKey={(record) => record._id} dataSource={this.state.data}>
+				<Table dataSource={this.state.data}>
 					<Column title="名称" dataIndex="title" key="title" />
 					<Column
 						title="状态"

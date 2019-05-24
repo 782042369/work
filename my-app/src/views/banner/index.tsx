@@ -3,49 +3,45 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-22 14:55:15
+ * @LastEditTime: 2019-05-24 17:35:31
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { bannerlist, deletebanner } from '../../api/banner'
 import datefilter from '../../tool/datefilter'
 import { statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
-
-class role extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: [],
-			pagenum: 1
-		}
-	}
+interface State {
+	data: any
+}
+interface Props {}
+class role extends React.Component<Props, State> {
 	getlist() {
 		bannerlist()
-			.then((res:any) => {
+			.then((res: any) => {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
 	componentDidMount() {
 		this.getlist()
 	}
-	deletebanner(id) {
+	deletebanner(id: any) {
 		deletebanner({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -54,12 +50,12 @@ class role extends React.Component {
 		{
 			title: '状态',
 			dataIndex: 'status',
-			render: (text, record) => <div>{statusfilter(text)}</div>
+			render: (text: any) => <div>{statusfilter(text)}</div>
 		},
 		{
 			title: '图片',
 			dataIndex: 'link',
-			render: (text) => (
+			render: (text: any) => (
 				<img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`http://127.0.0.1:7001${text}`} />
 			)
 		},
@@ -67,12 +63,12 @@ class role extends React.Component {
 		{
 			title: '时间',
 			dataIndex: 'add_time',
-			render: (text) => <div>{datefilter(text)}</div>
+			render: (text: any) => <div>{datefilter(text)}</div>
 		},
 		{
 			title: '操作',
 			dataIndex: '_id',
-			render: (text) => (
+			render: (text: any) => (
 				<span>
 					<Link to={'/addgoodscate?id=' + text}>
 						<Button type="primary">修改</Button>
@@ -88,7 +84,11 @@ class role extends React.Component {
 	render() {
 		return (
 			<div>
-				<Table rowKey={(record) => record._id} columns={this.columns} dataSource={this.state.data.pagelist} />
+				<Table
+					rowKey={(record: any) => 'record._id'}
+					columns={this.columns}
+					dataSource={this.state.data.pagelist}
+				/>
 			</div>
 		)
 	}

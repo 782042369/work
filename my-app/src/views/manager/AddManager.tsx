@@ -3,92 +3,92 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理员
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-09 12:52:38
+ * @LastEditTime: 2019-05-24 17:48:39
  */
-import * as React from 'react';;
-import { addmanager, editmanager, managerlist } from '../../api/manager';
-import { rolelist } from '../../api/role';
-import getUrlParam from '../../tool/getUrlParam';
-import { Form, Input, Button, message, Select } from 'antd';
-import md5 from 'js-md5';
-const Option = Select.Option;
+import * as React from 'react'
+import { addmanager, editmanager, managerlist } from '../../api/manager'
+import { rolelist } from '../../api/role'
+import getUrlParam from '../../tool/getUrlParam'
+import { Form, Input, Button, message, Select } from 'antd'
+import * as md5 from 'js-md5'
+const Option = Select.Option
 
 class WrappedRegistrationForm extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			title: '',
 			roledata: []
-		};
+		}
 	}
 
 	handleSubmit = (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
-				values.password = md5(values.password);
+				values.password = md5(values.password)
 				if (getUrlParam('id')) {
-					let arr = { id: getUrlParam('id') };
+					let arr = { id: getUrlParam('id') }
 					editmanager(Object.assign(values, arr))
-						.then((res:any) => {
-							console.log(res);
-							message.success(res.message);
+						.then((res: any) => {
+							console.log(res)
+							message.success(res.message)
 						})
-						.catch((err:any) => {
-							message.error(err.message);
-							console.log(err);
-						});
+						.catch((err: any) => {
+							message.error(err.message)
+							console.log(err)
+						})
 				} else {
 					addmanager(values)
-						.then((res:any) => {
-							console.log(res);
-							message.success(res.message);
+						.then((res: any) => {
+							console.log(res)
+							message.success(res.message)
 						})
-						.catch((err:any) => {
-							console.log(err);
-							message.error(err.message);
-						});
+						.catch((err: any) => {
+							console.log(err)
+							message.error(err.message)
+						})
 				}
 			}
-		});
+		})
 	}
 	getlist() {
 		rolelist()
-			.then((res:any) => {
+			.then((res: any) => {
 				this.setState({
 					roledata: res.data
-				});
+				})
 			})
-			.catch((err:any) => {
-				console.log('err: ', err);
-			});
+			.catch((err: any) => {
+				console.log('err: ', err)
+			})
 	}
 	componentDidMount() {
-		this.getlist();
+		this.getlist()
 		if (getUrlParam('id')) {
 			this.setState({
 				title: '修改'
-			});
+			})
 			managerlist({
 				id: getUrlParam('id')
 			})
-				.then((res:any) => {
-					let { password, email, userName, mobile, role_id } = res.data[0];
+				.then((res: any) => {
+					let { password, email, userName, mobile, role_id } = res.data[0]
 					this.props.form.setFieldsValue({
 						password,
 						email,
 						userName,
 						mobile,
 						role_id
-					});
+					})
 				})
-				.catch((err:any) => {
-					console.log('err: ', err);
-				});
+				.catch((err: any) => {
+					console.log('err: ', err)
+				})
 		} else {
 			this.setState({
 				title: '增加'
-			});
+			})
 		}
 	}
 	renderOptions = () => {
@@ -96,10 +96,10 @@ class WrappedRegistrationForm extends React.Component {
 			<Option key={element._id} value={element._id}>
 				{element.title}
 			</Option>
-		));
+		))
 	}
 	render() {
-		const { getFieldDecorator } = this.props.form;
+		const { getFieldDecorator } = this.props.form
 
 		const formItemLayout = {
 			labelCol: {
@@ -110,7 +110,7 @@ class WrappedRegistrationForm extends React.Component {
 				xs: { span: 24 },
 				sm: { span: 16 }
 			}
-		};
+		}
 		const tailFormItemLayout = {
 			wrapperCol: {
 				xs: {
@@ -122,7 +122,7 @@ class WrappedRegistrationForm extends React.Component {
 					offset: 8
 				}
 			}
-		};
+		}
 
 		return (
 			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -175,7 +175,7 @@ class WrappedRegistrationForm extends React.Component {
 								message: 'Please input your description!'
 							}
 						]
-					})(<Select onChange={this.handleChange}>{this.renderOptions()}</Select>)}
+					})(<Select>{this.renderOptions()}</Select>)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">
@@ -183,8 +183,8 @@ class WrappedRegistrationForm extends React.Component {
 					</Button>
 				</Form.Item>
 			</Form>
-		);
+		)
 	}
 }
-const manger = Form.create({ name: 'register' })(WrappedRegistrationForm);
-export default manger;
+const manger = Form.create({ name: 'register' })(WrappedRegistrationForm)
+export default manger

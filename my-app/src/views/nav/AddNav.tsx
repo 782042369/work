@@ -3,45 +3,48 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 11:51:46
+ * @LastEditTime: 2019-05-24 17:43:57
  */
-import * as React from 'react';
+import * as React from 'react'
 import { addnav, editnav, navlist } from '../../api/nav'
 import getUrlParam from '../../tool/getUrlParam'
 import BashForm from '../../components/Form'
 import { message } from 'antd'
-
-class nav extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			h1title: ''
-		}
-	}
-
-	handleSubmit = (values) => {
+interface State {
+	data: any
+	h1title: any
+	status: any
+	title: any
+	position: any
+	relation: any
+	is_opennew: any
+	link: any
+}
+interface Props {}
+class nav extends React.Component<Props, State> {
+	handleSubmit = (values: any) => {
 		console.log('e: ', values)
 		if (getUrlParam('id')) {
 			let arr = { id: getUrlParam('id') }
 			editnav(Object.assign(values, arr))
-				.then((res:any) => {
+				.then((res: any) => {
 					console.log(res)
 					message.success(res.message)
 				})
-				.catch((err:any) => {
+				.catch((err: any) => {
 					message.error(err.message)
 					console.log(err)
 				})
 		} else {
 			addnav(values)
-				.then((res:any) => {
+				.then((res: any) => {
 					if (res.status === 1) {
 						message.success(res.message)
 					} else {
 						message.error(res.message)
 					}
 				})
-				.catch((err:any) => {
+				.catch((err: any) => {
 					console.log(err)
 					message.error(err.message)
 				})
@@ -55,12 +58,12 @@ class nav extends React.Component {
 			navlist({
 				_id: getUrlParam('id')
 			})
-				.then((res:any) => {
+				.then((res: any) => {
 					this.setState({
 						...res.data[0]
 					})
 				})
-				.catch((err:any) => {
+				.catch((err: any) => {
 					console.log('err: ', err)
 				})
 		} else {

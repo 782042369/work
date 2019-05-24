@@ -3,9 +3,9 @@
  * @LastEditors: 杨宏旋
  * @Description: 导航
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 11:47:12
+ * @LastEditTime: 2019-05-24 17:29:17
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { articlelist, deletearticle } from '../../api/article'
 import datefilter from '../../tool/datefilter'
@@ -21,14 +21,14 @@ class article extends React.Component {
 	}
 	getlist() {
 		articlelist()
-			.then((res:any) => {
+			.then((res: any) => {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -39,12 +39,12 @@ class article extends React.Component {
 		deletearticle({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -53,7 +53,7 @@ class article extends React.Component {
 		{
 			title: '文章图片',
 			dataIndex: 'article_img',
-			render: (text) => (
+			render: (text: any) => (
 				<img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`http://127.0.0.1:7001${text}`} />
 			)
 		},
@@ -62,19 +62,19 @@ class article extends React.Component {
 		{
 			title: '状态',
 			dataIndex: 'status',
-			render: (text) => <div>{statusfilter(text)}</div>
+			render: (text: any) => <div>{statusfilter(text)}</div>
 		},
 		{
 			title: '时间',
 			key: 'add_time',
 			dataIndex: 'add_time',
-			render: (text) => <div>{datefilter(text)}</div>
+			render: (text: any) => <div>{datefilter(text)}</div>
 		},
 		{
 			title: '操作',
 			dataIndex: '_id',
 			key: '_id',
-			render: (text) => (
+			render: (text: any) => (
 				<span>
 					<Link to={'/addarticle?id=' + text}>
 						<Button type="primary">修改</Button>
@@ -90,7 +90,7 @@ class article extends React.Component {
 	render() {
 		return (
 			<div>
-				<Table rowKey={(record) => record._id} columns={this.columns} dataSource={this.state.data} />
+				<Table columns={this.columns} dataSource={this.state.data} />
 			</div>
 		)
 	}

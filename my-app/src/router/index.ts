@@ -1,5 +1,4 @@
 import AsyncComponent from '../components/AsyncComponent' // 异步引入
-import Loadable from 'react-loadable'
 const Access = AsyncComponent(() => import(/* webpackChunkName: "Access" */ '../views/access/index'))
 const AddAccess = AsyncComponent(() => import(/* webpackChunkName: "AddAccess" */ '../views/access/AddAccess'))
 const Manager = AsyncComponent(() => import(/* webpackChunkName: "Manager" */ '../views/manager/index'))

@@ -3,9 +3,9 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-21 15:48:39
+ * @LastEditTime: 2019-05-24 17:40:43
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { rolelist, deleterole } from '../../api/role'
 import datefilter from '../../tool/datefilter'
@@ -13,46 +13,44 @@ import { statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
 
 const { Column } = Table
-class role extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: []
-		}
-	}
+interface State {
+	data: any
+}
+interface Props {}
+class role extends React.Component<Props, State> {
 	getlist() {
 		rolelist()
-			.then((res:any) => {
+			.then((res: any) => {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
 	componentDidMount() {
 		this.getlist()
 	}
-	deleterole(id) {
+	deleterole(id: any) {
 		deleterole({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
 	render() {
 		return (
 			<div>
-				<Table rowKey={(record) => record._id} dataSource={this.state.data}>
+				<Table dataSource={this.state.data}>
 					<Column title="名称" dataIndex="title" key="title" />
 					<Column
 						title="状态"

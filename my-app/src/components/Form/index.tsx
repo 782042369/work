@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-24 16:55:17
+ * @LastEditTime: 2019-05-24 17:23:37
  * @Description: 传统
  */
 import * as React from 'react'
@@ -20,8 +20,9 @@ type IProps = Readonly<{
 	form: any
 	formList: any
 	h1title: any
+	formSubmit: any
 }>
-interface MousePointProps {
+interface Props {
 	form: any
 	formList: any
 	h1title: any
@@ -34,18 +35,13 @@ interface MousePointProps {
 	) => React.ReactElement<HTMLDivElement>
 }
 
-interface MOusePointState {
-	x: number | null
-}
-class BaseForm extends React.Component<MousePointProps, MOusePointState> {
-	super(props: any) {}
+interface MOusePointState {}
+class BaseForm extends React.Component<Props, MOusePointState> {
 	commit = (e: any) => {
 		e.preventDefault()
-		const { getFieldsValue } = this.props.form
-		this.props.form.validateFieldsAndScroll((err: any) => {
+		this.props.form.validateFieldsAndScroll((err: any, value: any) => {
 			if (!err) {
-				let date1 = getFieldsValue()
-				this.props.formSubmit(date1) //最终输出
+				this.props.formSubmit(value) //最终输出
 			}
 		})
 	}

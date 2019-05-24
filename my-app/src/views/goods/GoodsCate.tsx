@@ -5,7 +5,7 @@
  * @Date: 2019-05-05 15:48:46
  * @LastEditTime: 2019-05-22 14:55:23
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { goodscatelist, deletegoodscate } from '../../api/goods'
 import datefilter from '../../tool/datefilter'
@@ -19,14 +19,14 @@ class role extends React.Component {
 	}
 	getlist() {
 		goodscatelist()
-			.then((res:any) => {
+			.then((res: any) => {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -37,12 +37,12 @@ class role extends React.Component {
 		deletegoodscate({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -65,13 +65,13 @@ class role extends React.Component {
 			title: '节点类型',
 			dataIndex: 'type',
 			key: 'type',
-			render: (text) => <div>顶级节点</div>
+			render: (text: any) => <div>顶级节点</div>
 		},
 		{
 			title: '缩略图',
 			key: 'cate_img',
 			dataIndex: 'cate_img',
-			render: (text) => (
+			render: (text: any) => (
 				<img alt="" style={{ maxWidth: '4vw', maxHeight: '4svw' }} src={`http://127.0.0.1:7001${text}`} />
 			)
 		},
@@ -81,13 +81,13 @@ class role extends React.Component {
 			title: '时间',
 			key: 'add_time',
 			dataIndex: 'add_time',
-			render: (text) => <div>{datefilter(text)}</div>
+			render: (text: any) => <div>{datefilter(text)}</div>
 		},
 		{
 			title: '操作',
 			dataIndex: '_id',
 			key: '_id',
-			render: (text) => this.combtn(text)
+			render: (text: any) => this.combtn(text)
 		}
 	]
 	expandedRowRender = (record, index) => {
@@ -97,7 +97,7 @@ class role extends React.Component {
 				title: '缩略图',
 				key: 'cate_img',
 				dataIndex: 'cate_img',
-				render: (text) => (
+				render: (text: any) => (
 					<img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`http://127.0.0.1:7001${text}`} />
 				)
 			},
@@ -107,23 +107,16 @@ class role extends React.Component {
 				title: '时间',
 				key: 'add_time',
 				dataIndex: 'add_time',
-				render: (text) => <div>{datefilter(text)}</div>
+				render: (text: any) => <div>{datefilter(text)}</div>
 			},
 			{
 				title: '操作',
 				dataIndex: '_id',
 				key: '_id',
-				render: (text) => this.combtn(text)
+				render: (text: any) => this.combtn(text)
 			}
 		]
-		return (
-			<Table
-				rowKey={(record) => record._id}
-				columns={arr}
-				dataSource={this.state.data[index].items}
-				pagination={false}
-			/>
-		)
+		return <Table columns={arr} dataSource={this.state.data[index].items} pagination={false} />
 	}
 	render() {
 		return (
@@ -131,12 +124,7 @@ class role extends React.Component {
 				<Link to={'/addgoodscate'}>
 					<Button type="primary">增加商品分类</Button>
 				</Link>
-				<Table
-					rowKey={(record) => record._id}
-					dataSource={this.state.data}
-					columns={this.columns}
-					expandedRowRender={this.expandedRowRender}
-				/>
+				<Table dataSource={this.state.data} columns={this.columns} expandedRowRender={this.expandedRowRender} />
 			</div>
 		)
 	}

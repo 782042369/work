@@ -3,48 +3,45 @@
  * @LastEditors: 杨宏旋
  * @Description: 导航
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-24 11:03:02
+ * @LastEditTime: 2019-05-24 17:42:28
  */
-import * as React from 'react';
+import * as React from 'react'
 import { Table, Divider, Button, message } from 'antd'
 import { navlist, deletenav } from '../../api/nav'
 import datefilter from '../../tool/datefilter'
 import { positioncode, statusfilter } from '../../tool/statusfilter'
 import { Link } from 'react-router-dom'
-
-class nav extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: []
-		}
-	}
+interface State {
+	data: any
+}
+interface Props {}
+class nav extends React.Component<Props, State> {
 	getlist() {
 		navlist()
-			.then((res:any) => {
+			.then((res: any) => {
 				if (res.status === 1) {
 					this.setState({
 						data: res.data
 					})
 				}
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
 	componentDidMount() {
 		this.getlist()
 	}
-	deletenav(id) {
+	deletenav(id: any) {
 		deletenav({
 			id
 		})
-			.then((res:any) => {
+			.then((res: any) => {
 				console.log('res: ', res)
 				this.getlist()
 				message.success(res.message)
 			})
-			.catch((err:any) => {
+			.catch((err: any) => {
 				console.log('err: ', err)
 			})
 	}
@@ -53,7 +50,7 @@ class nav extends React.Component {
 		{
 			title: '导航位置',
 			dataIndex: 'position',
-			render: (text) => <div>{positioncode(text)}</div>
+			render: (text: any) => <div>{positioncode(text)}</div>
 		},
 		{
 			title: '关联商品',
@@ -62,7 +59,7 @@ class nav extends React.Component {
 		{
 			title: '状态',
 			dataIndex: 'status',
-			render: (text) => <div>{statusfilter(text)}</div>
+			render: (text: any) => <div>{statusfilter(text)}</div>
 		},
 		{ title: '排序', dataIndex: 'sort' },
 		{ title: '跳转地址', dataIndex: 'link' },
@@ -70,13 +67,13 @@ class nav extends React.Component {
 			title: '时间',
 			key: 'add_time',
 			dataIndex: 'add_time',
-			render: (text) => <div>{datefilter(text)}</div>
+			render: (text: any) => <div>{datefilter(text)}</div>
 		},
 		{
 			title: '操作',
 			dataIndex: '_id',
 			key: '_id',
-			render: (text) => (
+			render: (text: any) => (
 				<span>
 					<Link to={'/addnav?id=' + text}>
 						<Button type="primary">修改</Button>
@@ -92,7 +89,7 @@ class nav extends React.Component {
 	render() {
 		return (
 			<div>
-				<Table rowKey={(record) => record._id} columns={this.columns} dataSource={this.state.data} />
+				<Table columns={this.columns} dataSource={this.state.data} />
 			</div>
 		)
 	}
