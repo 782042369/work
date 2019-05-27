@@ -39,6 +39,22 @@ class GoodsController extends BaseController {
       this.error(0, '商品删除失败', error);
     }
   }
+  async deletegoodsphotolist() {
+    try {
+      const result = await this.service.goods.deletegoodsphotolist();
+      this.success(1, '图片删除成功', result);
+    } catch (error) {
+      this.error(0, '图片删除失败', error);
+    }
+  }
+  async editgoodsphotocolor() {
+    try {
+      const result = await this.service.goods.editgoodsphotocolor();
+      this.success(1, '图片颜色绑定成功', result);
+    } catch (error) {
+      this.error(0, '图片颜色绑定成功失败', error);
+    }
+  }
 }
 
 module.exports = GoodsController;

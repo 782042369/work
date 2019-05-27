@@ -3,13 +3,14 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-27 18:11:39
+ * @LastEditTime: 2019-05-27 18:40:27
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
 import MenuList from '../components/MenuList'
 import { Route, Switch, withRouter, BrowserRouter } from 'react-router-dom'
 import ContentMain from '../components/ContentMain'
+import '../assets/css/index.scss'
 import '../assets/css/index.scss'
 import {} from 'react-router-dom'
 import Loadable from 'react-loadable'

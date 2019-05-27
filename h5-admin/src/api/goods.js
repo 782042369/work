@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-22 16:58:27
+ * @LastEditTime: 2019-05-27 20:10:24
  */
 
 import request from '../tool/request';
@@ -166,6 +166,24 @@ export function goodscolorlist(data) {
 	return request({
 		url: 'admin/goodscolorlist',
 		method: 'post',
+		data
+	});
+}
+
+// 商品相册删除
+export function deletegoodsphotolist(data) {
+	return request({
+		url: 'admin/deletegoodsphotolist',
+		method: 'delete',
+		data
+	});
+}
+
+// 商品相册删除
+export function editgoodsphotocolor(data) {
+	return request({
+		url: 'admin/editgoodsphotocolor',
+		method: 'put',
 		data
 	});
 }

@@ -88,6 +88,11 @@ module.exports = app => {
   router.put('/admin/editgoods', controller.admin.goods.editgoods);
   router.delete('/admin/deletegoods', controller.admin.goods.deletegoods);
   /**
+   * 删除商品相册
+   */
+  router.delete('/admin/deletegoodsphotolist', controller.admin.goods.deletegoodsphotolist);
+  router.put('/admin/editgoodsphotocolor', controller.admin.goods.editgoodsphotocolor);
+  /**
    * 导航
    */
   router.post('/admin/navlist', controller.admin.nav.index);

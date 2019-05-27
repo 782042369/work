@@ -2,16 +2,18 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-24 11:57:08
+ * @LastEditTime: 2019-05-27 19:58:44
  * @Description: 传统
  */
 import React from 'react'
-import { Form, Button, Upload, Icon, message } from 'antd'
+import { Form, Button, Upload, Icon, message, Select } from 'antd'
 import { InputType } from './InputType'
 import './index.scss'
 import Darft from '../../components/Darft'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import { OptionList } from './OptionList'
+
 moment.locale('zh-cn')
 const Dragger = Upload.Dragger
 const FormItem = Form.Item
@@ -60,16 +62,40 @@ class BaseForm extends React.Component {
 					field, // 字段key
 					required, // 必填
 					type,
-					setValue
+					setValue,
+					placeholder
 				} = item
 				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
+				let imgpath = item.imgpath || '' // 图片路径
 				let inputitem = ''
+				let list = item.list || [] //option
 				inputitem = InputType(item)
 				if (type === 'dart') {
 					formItemList.push(
 						<FormItem label={lable} key={field}>
 							<Darft editorState={formList[0].render} key={formList} />
 						</FormItem>
+					)
+				} else if (type === 'imgselect') {
+					formItemList.push(
+						<div key={field} data-flex="main:center cross:center">
+							<img src={imgpath} alt="" style={{ maxWidth: '10vw', maxHeight: '10vw',  }} />
+							<FormItem label={lable} key={field} style={{ margin: '0',flex: '1' }}>
+								{getFieldDecorator(field, {
+									rules: [
+										{
+											required,
+											message: rulemessages
+										}
+									]
+								})(
+									<Select placeholder={placeholder} width="10vw">
+										{OptionList(list)}
+									</Select>
+								)}
+							</FormItem>
+							{item.render()}
+						</div>
 					)
 				} else {
 					if (type === 'upload') {

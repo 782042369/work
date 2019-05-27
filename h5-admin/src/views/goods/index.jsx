@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-23 18:13:06
+ * @LastEditTime: 2019-05-27 18:22:22
  */
 import React, { Component } from 'react'
 import { Table, Divider, Button, message } from 'antd'
@@ -61,6 +61,10 @@ class role extends Component {
 				<span>
 					<Link to={'/addgoods?id=' + text}>
 						<Button type="primary">修改</Button>
+					</Link>
+					<Divider type="vertical" />
+					<Link to={'/goodsphotolist?id=' + text}>
+						<Button type="primary">管理商品相册</Button>
 					</Link>
 					<Divider type="vertical" />
 					<Button type="danger" onClick={this.deletegoods.bind(this, text)}>
