@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-27 18:40:27
+ * @LastEditTime: 2019-05-27 20:19:14
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
@@ -30,7 +30,7 @@ function App() {
 		return (
 			<BrowserRouter>
 				<Layout>
-					<Header className="header">
+					<Header className="header" data-flex=" cross:center">
 						<Avatar size={40} icon="user" />
 						<span className="name">欢迎光临，{User.username}</span>
 					</Header>
