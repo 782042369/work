@@ -6,9 +6,8 @@ import router from '../router'
 function roterdominit() {
 	let dom = []
 	router.forEach((res) => {
-		dom.push(<PrivateRoute exact path={res.path} key={res.path} component={res.component} />)
+		dom.push( <PrivateRoute exact path={res.path} key={res.path} component={res.component} />)
 	})
-	console.log('dom: ', dom)
 	return dom
 }
 class ContentMain extends Component {

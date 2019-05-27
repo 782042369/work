@@ -3,17 +3,21 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-27 15:56:26
+ * @LastEditTime: 2019-05-27 17:44:47
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
 import MenuList from '../components/MenuList'
-import AsyncComponent from '../components/AsyncComponent'
 import { Route, Switch, withRouter, BrowserRouter } from 'react-router-dom'
 import ContentMain from '../components/ContentMain'
 import '../assets/css/index.scss'
 import {} from 'react-router-dom'
-const Login = AsyncComponent(() => import(/* webpackChunkName: "Login" */ '../views/login/index'))
+import Loadable from 'react-loadable'
+import Loading from '../router/loading'
+const Login = Loadable({
+	loader: () => import(/* webpackChunkName: "Login" */ '../views/login/index'),
+	loading: Loading
+})
 const { Header, Content, Sider } = Layout
 function App() {
 	const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight

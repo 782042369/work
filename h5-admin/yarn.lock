@@ -3708,7 +3708,7 @@ dotenv-expand@4.2.0:
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-4.2.0.tgz#def1f1ca5d6059d24a766e587942c21106ce1275"
   integrity sha1-3vHxyl1gWdJKdm5YeULCEQbOEnU=
 
-dotenv@6.2.0, dotenv@^6.2.0:
+dotenv@6.2.0:
   version "6.2.0"
   resolved "http://nexus.ruubypay.net/repository/npm-all/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha1-lBwEEFNdlCyL7PKNPzV9vZ1HYGQ=
@@ -9128,15 +9128,6 @@ react-app-polyfill@^1.0.0:
     regenerator-runtime "0.13.2"
     whatwg-fetch "3.0.0"
 
-react-app-rewired@^2.1.3:
-  version "2.1.3"
-  resolved "http://nexus.ruubypay.net/repository/npm-all/react-app-rewired/-/react-app-rewired-2.1.3.tgz#5ae8583ecc9f9f968d40b735d2abbe871378a52f"
-  integrity sha1-WuhYPsyfn5aNQLc10qu+hxN4pS8=
-  dependencies:
-    cross-spawn "^6.0.5"
-    dotenv "^6.2.0"
-    semver "^5.6.0"
-
 react-dev-utils@^9.0.0:
   version "9.0.0"
   resolved "http://nexus.ruubypay.net/repository/npm-all/react-dev-utils/-/react-dev-utils-9.0.0.tgz#356d95db442441c5d4748e0e49f4fd1e71aecbbd"
@@ -9216,7 +9207,7 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
 
 react-loadable@^5.5.0:
   version "5.5.0"
-  resolved "http://nexus.ruubypay.net/repository/npm-all/react-loadable/-/react-loadable-5.5.0.tgz#582251679d3da86c32aae2c8e689c59f1196d8c4"
+  resolved "https://registry.npm.taobao.org/react-loadable/download/react-loadable-5.5.0.tgz#582251679d3da86c32aae2c8e689c59f1196d8c4"
   integrity sha1-WCJRZ509qGwyquLI5onFnxGW2MQ=
   dependencies:
     prop-types "^15.5.0"
