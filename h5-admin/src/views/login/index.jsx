@@ -5,6 +5,9 @@ import { Redirect } from 'react-router'
 import { dologin } from '../../api/login'
 import md5 from 'js-md5'
 import { message } from 'antd'
+import User from '../../store/user'
+console.log('User: ', User)
+
 class NormalLoginForm extends Component {
 	constructor(props) {
 		super(props)
@@ -23,6 +26,7 @@ class NormalLoginForm extends Component {
 						if (res.status === 1) {
 							message.success(res.message)
 							sessionStorage.setItem('role_id', res.data.role_id)
+							sessionStorage.setItem('userName', res.data.userName)
 							sessionStorage.setItem('userName', res.data.userName)
 							this.setState({
 								loginSuccess: true

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-27 17:44:47
+ * @LastEditTime: 2019-05-27 18:11:39
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
@@ -14,6 +14,7 @@ import '../assets/css/index.scss'
 import {} from 'react-router-dom'
 import Loadable from 'react-loadable'
 import Loading from '../router/loading'
+import User from '../store/user'
 const Login = Loadable({
 	loader: () => import(/* webpackChunkName: "Login" */ '../views/login/index'),
 	loading: Loading
@@ -30,7 +31,7 @@ function App() {
 				<Layout>
 					<Header className="header">
 						<Avatar size={40} icon="user" />
-						<span className="name">欢迎光临，{window.sessionStorage.getItem('userName')}</span>
+						<span className="name">欢迎光临，{User.username}</span>
 					</Header>
 					<Layout>
 						<Sider width={200} style={{ background: '#fff' }}>
