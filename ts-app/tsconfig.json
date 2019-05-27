@@ -22,12 +22,10 @@
   "exclude": [
     "node_modules",
     "build",
-    "config/**",
     "scripts",
     "acceptance-tests",
     "webpack",
     "jest",
-    "config-overrides.js",
     "src/setupTests.ts"
   ]
 }

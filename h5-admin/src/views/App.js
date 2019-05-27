@@ -3,16 +3,16 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-24 10:56:30
+ * @LastEditTime: 2019-05-27 15:56:26
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
 import MenuList from '../components/MenuList'
 import AsyncComponent from '../components/AsyncComponent'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, BrowserRouter } from 'react-router-dom'
 import ContentMain from '../components/ContentMain'
 import '../assets/css/index.scss'
-import { BrowserRouter } from 'react-router-dom'
+import {} from 'react-router-dom'
 const Login = AsyncComponent(() => import(/* webpackChunkName: "Login" */ '../views/login/index'))
 const { Header, Content, Sider } = Layout
 function App() {
