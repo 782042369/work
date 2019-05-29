@@ -106,4 +106,9 @@ module.exports = app => {
   router.post('/admin/addarticle', controller.admin.article.addarticle);
   router.put('/admin/editarticle', controller.admin.article.editarticle);
   router.delete('/admin/deletearticle', controller.admin.article.deletearticle);
+  /**
+   * 设置
+   */
+  router.post('/admin/getsetting', controller.admin.setting.getsetting);
+  router.put('/admin/editsetting', controller.admin.setting.editsetting);
 };

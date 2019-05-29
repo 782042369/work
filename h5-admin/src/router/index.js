@@ -96,6 +96,10 @@ const GoodsPhotoList = Loadable({
 	loader: () => import( /* webpackChunkName: "GoodsPhotoList" */ '../views/goods/GoodsPhotoList'),
 	loading: Loading
 })
+const Setting = Loadable({
+	loader: () => import( /* webpackChunkName: "GoodsPhotoList" */ '../views/setting'),
+	loading: Loading
+})
 
 let router = [{
 		path: '/access',
@@ -193,6 +197,9 @@ let router = [{
 		path: '/goodsphotolist',
 		component: GoodsPhotoList
 	},
-	
+	{
+		path: '/setting',
+		component: Setting
+	},
 ]
 export default router

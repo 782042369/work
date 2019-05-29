@@ -12,7 +12,6 @@ class GoodsService extends Service {
         const goods = await this.ctx.model.Goods.find({
           _id,
         });
-        console.log('goods_color: ', );
         const photoList = await this.ctx.model.GoodsImage.find({
           goods_id: _id,
         });
