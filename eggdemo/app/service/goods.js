@@ -20,19 +20,19 @@ class GoodsService extends Service {
         });
         const colorArrTemp = goods[0].goods_color.split(',');
         const goodsColorArr = [];
-        colorArrTemp.forEach((value) => {
+        colorArrTemp.forEach(value => {
           goodsColorArr.push({
-            "_id": value
-          })
-        })
+            _id: value,
+          });
+        });
         const goodsColorReulst = await this.ctx.model.GoodsColor.find({
-          $or: goodsColorArr
-        })
+          $or: goodsColorArr,
+        });
         return {
           goods: goods[0],
           photoList,
           selecttypeoptions,
-          goods_color: goodsColorReulst
+          goods_color: goodsColorReulst,
         };
       }
       const pagesize = this.ctx.request.body.pagesize || 10;
@@ -151,11 +151,11 @@ class GoodsService extends Service {
       this.ctx.request.body.market_price = Number(market_price);
       this.ctx.request.body.goods_type_id = this.app.mongoose.Types.ObjectId(goods_type_id);
       const result = await this.ctx.model.Goods.updateOne({
-          _id,
-        },
-        Object.assign(this.ctx.request.body, {
-          add_time: new Date().getTime(),
-        })
+        _id,
+      },
+      Object.assign(this.ctx.request.body, {
+        add_time: new Date().getTime(),
+      })
       );
       const goods_id = this.app.mongoose.Types.ObjectId(_id);
       this.savegoodsimg(photoList, goods_id); // 商品相册存储
@@ -181,23 +181,23 @@ class GoodsService extends Service {
   }
   async editgoodsphotocolor() {
     try {
-      let {
-        values
-      } = this.ctx.request.body
-      let result = ''
-      for (let i in values) {
+      const {
+        values,
+      } = this.ctx.request.body;
+      let result = '';
+      for (const i in values) {
         if (values[i]) {
           result = await this.ctx.model.GoodsImage.updateOne({
-            _id: i
+            _id: i,
           }, {
             color_id: values[i],
           });
           console.log('result: ', result);
         }
       }
-      return result
+      return result;
     } catch (error) {
-      return error
+      return error;
     }
   }
 }

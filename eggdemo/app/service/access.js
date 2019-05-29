@@ -20,29 +20,29 @@ class AccessService extends Service {
     const pagesize = this.ctx.request.body.pagesize || 10;
     const pagenum = this.ctx.request.body.pagenum || 1;
     const result = await this.ctx.model.Access.aggregate([{
-        $lookup: {
-          from: 'access',
-          localField: '_id',
-          foreignField: 'module_id',
-          as: 'items',
-        },
+      $lookup: {
+        from: 'access',
+        localField: '_id',
+        foreignField: 'module_id',
+        as: 'items',
       },
-      {
-        $match: {
-          module_id: 0,
-        },
+    },
+    {
+      $match: {
+        module_id: 0,
       },
-      {
-        $sort: {
-          add_time: -1,
-        },
+    },
+    {
+      $sort: {
+        add_time: -1,
       },
-      {
-        $skip: (pagenum - 1) * pagesize,
-      },
-      {
-        $limit: pagesize,
-      },
+    },
+    {
+      $skip: (pagenum - 1) * pagesize,
+    },
+    {
+      $limit: pagesize,
+    },
     ]);
     return result;
   }
@@ -72,11 +72,11 @@ class AccessService extends Service {
       this.ctx.request.body.module_id = this.app.mongoose.Types.ObjectId(module_id);
     }
     const result = await this.ctx.model.Access.updateOne({
-        _id,
-      },
-      Object.assign(this.ctx.request.body, {
-        add_time: new Date().getTime(),
-      })
+      _id,
+    },
+    Object.assign(this.ctx.request.body, {
+      add_time: new Date().getTime(),
+    })
     );
     return result;
   }

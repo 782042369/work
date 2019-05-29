@@ -33,11 +33,11 @@ class ArticleService extends Service {
   async edit() {
     const _id = this.ctx.request.body.id;
     const result = await this.ctx.model.Article.updateOne({
-        _id,
-      },
-      Object.assign(this.ctx.request.body, {
-        add_time: new Date().getTime(),
-      })
+      _id,
+    },
+    Object.assign(this.ctx.request.body, {
+      add_time: new Date().getTime(),
+    })
     );
     return result;
   }

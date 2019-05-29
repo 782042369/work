@@ -1,41 +1,42 @@
+'use strict';
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
-  var d = new Date();
+  const d = new Date();
   const ArticleSchema = new Schema({
     title: {
-      type: String
+      type: String,
     },
     cate_id: {
-      type: Schema.Types.ObjectId
+      type: Schema.Types.ObjectId,
     },
     article_img: {
-      type: String
+      type: String,
     },
     link: {
-      type: String
+      type: String,
     },
     content: {
-      type: String
+      type: String,
     },
     keywords: {
-      type: String
+      type: String,
     },
     description: {
-      type: String
+      type: String,
     },
     sort: {
       type: Number,
-      default: 100
+      default: 100,
     },
     add_time: {
       type: Number,
-      default: d.getTime()
+      default: d.getTime(),
     },
     status: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   });
   return mongoose.model('Article', ArticleSchema, 'article');
-}
+};

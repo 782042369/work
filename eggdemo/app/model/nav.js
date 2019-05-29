@@ -1,40 +1,41 @@
+'use strict';
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
-  var d = new Date();
+  const d = new Date();
   const NavSchema = new Schema({
     title: {
-      type: String
+      type: String,
     },
     link: {
-      type: String
+      type: String,
     },
     position: {
       type: Number,
-      default: 2 //1最顶部     2中间   3底部 
+      default: 2, // 1最顶部     2中间   3底部
     },
     is_opennew: {
       type: Number,
-      default: 1 //1、本窗口    2、新窗口
+      default: 1, // 1、本窗口    2、新窗口
     },
     sort: {
       type: Number,
-      default: 100
+      default: 100,
     },
     relation: { //  1,2,3
       type: String,
-      default: ''
+      default: '',
     },
     status: {
       type: Number,
-      default: 1
+      default: 1,
     },
     add_time: {
       type: Number,
-      default: d.getTime()
-    }
+      default: d.getTime(),
+    },
 
   });
 
   return mongoose.model('Nav', NavSchema, 'nav');
-}
+};
