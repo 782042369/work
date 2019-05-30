@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-27 20:19:14
+ * @LastEditTime: 2019-05-28 16:46:34
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
@@ -17,14 +17,14 @@ import Loadable from 'react-loadable'
 import Loading from '../router/loading'
 import User from '../store/user'
 const Login = Loadable({
-	loader: () => import(/* webpackChunkName: "Login" */ '../views/login/index'),
+	loader: () => import(/* webpackChunkName: "Login" */ './login/index'),
 	loading: Loading
 })
 const { Header, Content, Sider } = Layout
-function App() {
+function index() {
 	const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 	const LeftSider = withRouter(({ history }) => {
-		return <MenuList path={history.location.pathname} />
+		return <MenuList />
 	})
 	if (window.sessionStorage.getItem('role_id')) {
 		return (
@@ -59,11 +59,11 @@ function App() {
 		return (
 			<BrowserRouter>
 				<Switch>
-					<Route exact path="/" component={Login} />
+					<Route exact path="/login" component={Login} />
 				</Switch>
 			</BrowserRouter>
 		)
 	}
 }
 
-export default App
+export default index

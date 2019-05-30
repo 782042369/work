@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-05-27 18:15:38
+ * @LastEditTime: 2019-05-30 17:48:15
  */
 import React, {
 	Component
@@ -30,6 +30,7 @@ class PrivateRoute extends Component {
 			const {
 				history
 			} = this.props;
+			console.log('history: ', history);
 			setTimeout(() => {
 				history.replace('/login');
 			}, 1000);
@@ -41,6 +42,11 @@ class PrivateRoute extends Component {
 			component: Component,
 			...rest
 		} = this.props;
+		console.log('this.props: ', this.props);
+		console.log('component: ', Component);
+		console.log('rest ', {
+			...rest
+		});
 		return this.state.isAuthenticated ?
 			( < Route {
 					...rest
