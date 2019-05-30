@@ -212,7 +212,7 @@ class index extends Component {
 			})
 		}
 	}
-	handlephontChange = (info) => {
+	handlephotoChange = (info) => {
 		console.log('info: ', info)
 	}
 	render() {
@@ -424,7 +424,7 @@ class index extends Component {
 							field: 'photoList',
 							noupload: 1,
 							required: true,
-							render: (e) => this.handlephontChange(e),
+							render: (e) => this.handlephotoChange(e),
 							message: 'Please input your photoList!'
 						}
 					]

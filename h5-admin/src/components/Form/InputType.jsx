@@ -8,7 +8,7 @@ const { TextArea } = Input
 const RadioGroup = Radio.Group
 const CheckboxGroup = Checkbox.Group
 export const InputType = (item) => {
-	let { placeholder, type, field } = item
+	let { placeholder, type } = item
 	let list = item.list || [] //option
 
 	switch (type) {

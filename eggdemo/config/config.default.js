@@ -29,12 +29,21 @@ module.exports = appInfo => {
   config.adminauth = {
     match: '/admin',
   };
+  config.redis = {
+    Redis: require('ioredis'), // customize ioredis version, only set when you needed
+    client: {
+      port: 6379, // Redis port
+      host: '127.0.0.1', // Redis host
+      password: '',
+      db: 0,
+    },
+  }
   config.security = {
     csrf: {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: [ 'http://127.0.0.1:3000' ],
+    domainWhiteList: ['http://127.0.0.1:3000'],
   };
   config.cors = {
     origin: 'http://127.0.0.1:3000',
