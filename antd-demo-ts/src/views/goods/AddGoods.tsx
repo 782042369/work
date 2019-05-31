@@ -13,6 +13,9 @@ import getUrlParam from '../../tool/getUrlParam'
 import { message } from 'antd'
 import TapFrom from '../../components/Form/TapFrom'
 interface IProps {}
+interface UIType {
+	[key: string]: any
+}
 interface IState {
 	colorOptions: any
 	specification: any // 规格包装
@@ -36,12 +39,7 @@ interface IState {
 	goods_gift: any
 	recommend: any
 	goods_attrs: any
-}
-interface Test {
-	val: 'a' | 'b' | 'c'
-}
-const obj: Test = {
-	val: 'a'
+	valarr: UIType
 }
 class index extends React.Component<IProps, IState> {
 	constructor(props: any) {
@@ -68,7 +66,8 @@ class index extends React.Component<IProps, IState> {
 			goods_fitting: '',
 			goods_gift: '',
 			recommend: '',
-			goods_attrs: ''
+			goods_attrs: '',
+			valarr: []
 		}
 	}
 	goodscolorlist() {
@@ -160,13 +159,13 @@ class index extends React.Component<IProps, IState> {
 		})
 	}
 	selecttypeoptionsdom(res: any) {
-		let arr: any = []
+		let specification: any = []
 		let type = [ 'input', 'textarea', 'radio' ] // 1 input 2 textarea 3 checkbox
-		res.forEach((ele: any, index: any) => {
-			arr.push({
+		res.forEach((ele: any, index: number) => {
+			specification.push({
 				type: type[ele.attr_type - 1],
 				lable: ele.title,
-				// setValue: this.state['selecttypeoptions-' + ele._id],
+				setValue: (this.state as UIType)['selecttypeoptions-' + ele._id],
 				placeholder: '请输入',
 				field: 'selecttypeoptions-' + ele._id,
 				required: false,
@@ -175,14 +174,12 @@ class index extends React.Component<IProps, IState> {
 			if (ele.attr_type === '3') {
 				let radioGroup: any = []
 				ele.attr_value.split('\n').forEach((element: any) => {
-					console.log('element: ', element)
 					radioGroup.push({ id: element, name: element })
 				})
-				arr[index].list = radioGroup
-				console.log('radioGroup: ', radioGroup)
+				specification[index].list = radioGroup
 			}
 		})
-		arr.unshift({
+		specification.unshift({
 			type: 'select',
 			lable: '商品类型',
 			setValue: this.state.goods_type_id,
@@ -193,9 +190,7 @@ class index extends React.Component<IProps, IState> {
 			message: 'Please input your goods_type_id!',
 			render: (e: any) => this.handleSelectChange(e)
 		})
-		this.setState({
-			specification: arr
-		})
+		this.setState({ specification })
 	}
 	editorState = (txt: any) => {
 		this.setState({
@@ -244,7 +239,6 @@ class index extends React.Component<IProps, IState> {
 					arr.forEach((v: any) => {
 						obj[v] = res.data.goods[v]
 					})
-					console.log('...selecttypeoptionsarr: ', { ...selecttypeoptionsarr })
 					this.setState({
 						...obj,
 						...selecttypeoptionsarr,

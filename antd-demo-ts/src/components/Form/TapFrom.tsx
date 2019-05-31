@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-30 15:32:16
+ * @LastEditTime: 2019-05-31 12:29:37
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
@@ -58,12 +58,14 @@ class BaseForm extends React.Component<IProps, IState> {
 	formsetval(formList: any) {
 		const { setFieldsValue } = this.props.form
 		formList.forEach((res: any) => {
-			let field = res.field
-			let arr: any = {}
-			arr[field] = res.setValue
-			setTimeout(() => {
-				res.setValue && setFieldsValue(arr)
-			}, 0)
+			if (res.setValue !== '') {
+				let field = res.field
+				let arr: any = {}
+				arr[field] = res.setValue
+				setTimeout(() => {
+					res.setValue !== '' && setFieldsValue(arr)
+				}, 0)
+			}
 		})
 	}
 	initFormList = (formList: any) => {

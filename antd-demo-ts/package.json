@@ -19,6 +19,7 @@
     "babel-plugin-import": "^1.11.2",
     "customize-cra": "^0.2.12",
     "draftjs-to-html": "^0.8.4",
+    "husky": "^2.3.0",
     "install": "^0.12.2",
     "mobx": "^5.9.4",
     "node-sass": "^4.12.0",
@@ -30,12 +31,17 @@
     "react-loadable": "^5.5.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-scss": "^3.7.0",
     "ts-md5": "^1.2.4",
+    "tslint": "^5.17.0",
+    "tslint-react": "^4.0.0",
     "typescript": "3.4.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "lint": "tslint --type-check --project ./tslint.json",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
