@@ -18,7 +18,6 @@
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.11.2",
     "customize-cra": "^0.2.12",
-    "draftjs-to-html": "^0.8.4",
     "husky": "^2.3.0",
     "install": "^0.12.2",
     "mobx": "^5.9.4",

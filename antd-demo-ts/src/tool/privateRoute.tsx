@@ -3,10 +3,9 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-05-31 10:11:09
+ * @LastEditTime: 2019-05-31 16:15:42
  */
 import * as React from 'react'
-
 import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
 import { RouterProps, RouteProps } from 'react-router'
 import { message } from 'antd'
@@ -30,6 +29,7 @@ class index extends React.Component<singerProps & RouteComponentProps<{}>, singe
 	}
 
 	componentWillMount() {
+		console.log('this.state.isAuthenticated: ', this.state.isAuthenticated)
 		if (!this.state.isAuthenticated) {
 			const { history } = this.props
 			setTimeout(() => {
@@ -42,13 +42,9 @@ class index extends React.Component<singerProps & RouteComponentProps<{}>, singe
 		console.log('nextLocation: ', nextLocation)
 	}
 	render() {
-		return <div>1</div>
-		// let { component: Component, ...rest } = this.props
-		// return this.state.isAuthenticated ? (
-		// 	<Route {...rest} render={(props) => <Component {...props} />} />
-		// ) : (
-		// 	message.error('请登录...')
-		// )
+		let { component: Component, ...rest } = this.props
+		console.log('this.state.isAuthenticated: ', this.state.isAuthenticated)
+		return this.state.isAuthenticated ? <Route {...rest} component={Component} /> : message.error('请登录...')
 	}
 }
 

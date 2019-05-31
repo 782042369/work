@@ -3,7 +3,7 @@ import { Editor } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { EditorState, convertToRaw } from 'draft-js'
 import draftToHtml from '../tool/draftToHtml'
-import htmlToDraft from 'html-to-draftjs';
+// import htmlToDraft from 'html-to-draftjs'
 interface IProps {
 	editorState: any
 	val: any
@@ -18,15 +18,18 @@ class index extends React.Component<IProps, IState> {
 			editorState: EditorState.createEmpty()
 		}
 	}
-	componentWillReceiveProps(nextProps:any) {
-		if (this.props.val !== nextProps.getSysResult && nextProps.getSysResult.data) {
+	componentDidMount() {
+		// console.log('this.props.val: ', JSON.parse(this.props.val))
+	}
+	componentWillReceiveProps(nextProps: any) {
+		if (this.props.val !== nextProps.val) {
 			// 匹配富文本编辑器格式，回显保存的内容
-			const contentBlock = htmlToDraft(nextProps.getSysResult.data.roomnotes)
-			if (contentBlock) {
-				const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
-				const editorState = EditorState.createWithContent(contentState)
-				this.setState({ editorState })
-			}
+			// const contentBlock = htmlToDraft(nextProps.getSysResult.data.roomnotes)
+			// if (contentBlock) {
+			// 	const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
+			// 	const editorState = EditorState.createWithContent(contentState)
+			// 	this.setState({ editorState })
+			// }
 		}
 	}
 	onEditorStateChange = (editorState: any) => {
