@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-30 18:00:52
+ * @LastEditTime: 2019-05-31 10:31:09
  */
 import * as React from 'react'
 
@@ -12,15 +12,15 @@ import getUrlParam from '../../tool/getUrlParam'
 import { message } from 'antd'
 import BashForm from '../../components/Form'
 interface IState {
-	title: any
-	h1title: any
-	accessdata: any
-	module_name: any
+	title: string
+	h1title: string
+	accessdata: string
+	module_name: string
 	type: any
-	action_name: any
-	url: any
-	module_id: any
-	description: any
+	action_name: string
+	url: string
+	module_id: string
+	description: string
 	list: any
 	sort: any
 	status: any
@@ -39,7 +39,7 @@ class index extends React.Component<IProps, IState> {
 			url: '',
 			module_id: '',
 			description: '',
-			list: '',
+			list: [],
 			sort: '',
 			status: ''
 		}
@@ -73,14 +73,13 @@ class index extends React.Component<IProps, IState> {
 		accesslist({ module_id: 0 })
 			.then((res: any) => {
 				if (res.status === 1) {
-					let list = [ { id: 0, name: '顶级模块' } ]
+					let list: any = [ { id: 0, name: '顶级模块' } ]
 					res.data.forEach((element: any) => {
 						list.push({
 							id: element._id,
 							name: element.module_name
 						})
 					})
-					console.log('list: ', list)
 					this.setState({
 						list
 					})
@@ -100,16 +99,9 @@ class index extends React.Component<IProps, IState> {
 				_id: getUrlParam('id')
 			})
 				.then((res: any) => {
-					let { action_name, description, module_id, module_name, sort, status, type, url } = res.data[0]
+					console.log(res.data[0].module_id)
 					this.setState({
-						action_name,
-						description,
-						module_id,
-						module_name,
-						sort,
-						status,
-						type,
-						url
+						...res.data[0]
 					})
 				})
 				.catch((err: any) => {

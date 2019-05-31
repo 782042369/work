@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 菜单树
  * @Date: 2019-05-05 16:10:06
- * @LastEditTime: 2019-05-30 19:35:21
+ * @LastEditTime: 2019-05-31 11:12:24
  */
 import * as React from 'react'
 
@@ -12,8 +12,9 @@ import { Menu, Icon } from 'antd'
 import { authlist } from '../api/role'
 import { Link } from 'react-router-dom'
 import mergefieldtojson from '../tool/mergefieldtojson'
-// import { withRouter } from 'react-router-dom'
-interface IProps {}
+interface IProps {
+	history: any
+}
 interface IState {
 	list: any
 	openurl: any
@@ -23,7 +24,7 @@ class index extends React.Component<IProps, IState> {
 		super(props)
 		this.state = {
 			list: [],
-			openurl: [] // 打开第一个路由
+			openurl: [ window.sessionStorage.getItem('openkey') ] || [] // 刷新后打开
 		}
 	}
 	getlist() {
@@ -38,7 +39,6 @@ class index extends React.Component<IProps, IState> {
 					} else {
 						openurl.push('/noaccess')
 					}
-
 					this.setState({
 						list: mergefieldtojson(res.data, 'pid', 'parent_id'),
 						openurl
@@ -83,7 +83,11 @@ class index extends React.Component<IProps, IState> {
 	}
 	render() {
 		return (
-			<Menu mode="inline" defaultOpenKeys={[ '商品管理' ]}>
+			<Menu
+				mode="inline"
+				defaultOpenKeys={this.state.openurl}
+				defaultSelectedKeys={[ this.props.history.location.pathname.split('/')[1] ]}
+			>
 				{this.state.list.map((item: any) => {
 					return item.items && item.items.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
 				})}

@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-28 16:46:34
+ * @LastEditTime: 2019-05-31 10:47:53
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
@@ -24,7 +24,7 @@ const { Header, Content, Sider } = Layout
 function index() {
 	const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 	const LeftSider = withRouter(({ history }) => {
-		return <MenuList />
+		return <MenuList history={history} />
 	})
 	if (window.sessionStorage.getItem('role_id')) {
 		return (

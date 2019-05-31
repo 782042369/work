@@ -4,12 +4,12 @@
  * @param {*} parentid 过滤父对象的字段
  * @param {*} childrenid 和父过滤的字段
  */
-const mergefieldtojson = function(json: any, parentid: any, childrenid: any) {
+const mergefieldtojson = function(json: any, parentid: any, childrenid: any): [] {
 	if (!parentid) {
-		throw '缺失父亲的健' + parentid
+		return []
 	}
 	if (!childrenid) {
-		throw '缺失和父对比的字段' + childrenid
+		return []
 	}
 	const arr = json.filter((res: any) => res[parentid] === '')
 	arr.forEach((val: any) => {

@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-30 15:58:12
+ * @LastEditTime: 2019-05-31 10:34:20
  * @Description: 传统
  */
 import React from 'react'
@@ -58,7 +58,7 @@ class index extends React.Component<IProps, IState> {
 			let arr: any = {}
 			arr[field] = res.setValue
 			setTimeout(() => {
-				res.setValue && setFieldsValue(arr)
+				res.setValue !== '' && setFieldsValue(arr)
 			}, 0)
 		})
 	}
