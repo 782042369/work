@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-31 12:29:28
+ * @LastEditTime: 2019-05-31 15:17:43
  * @Description: 传统
  */
 import React from 'react'
@@ -54,12 +54,12 @@ class index extends React.Component<IProps, IState> {
 	formsetval(formList: any) {
 		const { setFieldsValue } = this.props.form
 		formList.forEach((res: any) => {
-			if (res.setValue !== '') {
+			if (res.setValue !== '' && res.type !== 'dart') {
 				let field = res.field
 				let arr: any = {}
 				arr[field] = res.setValue
 				setTimeout(() => {
-					res.setValue !== '' && setFieldsValue(arr)
+					setFieldsValue(arr)
 				}, 0)
 			}
 		})
@@ -88,7 +88,7 @@ class index extends React.Component<IProps, IState> {
 				if (type === 'dart') {
 					formItemList.push(
 						<FormItem label={lable} key={field}>
-							<Darft editorState={formList[0].render} key={formList} />
+							<Darft editorState={formList[0].render} val={formList[0].setValue} key={formList} />
 						</FormItem>
 					)
 				} else if (type === 'imgselect') {

@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-31 12:29:37
+ * @LastEditTime: 2019-05-31 15:17:55
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
@@ -58,12 +58,12 @@ class BaseForm extends React.Component<IProps, IState> {
 	formsetval(formList: any) {
 		const { setFieldsValue } = this.props.form
 		formList.forEach((res: any) => {
-			if (res.setValue !== '') {
+			if (res.setValue !== '' && res.type !== 'dart') {
 				let field = res.field
 				let arr: any = {}
 				arr[field] = res.setValue
 				setTimeout(() => {
-					res.setValue !== '' && setFieldsValue(arr)
+					setFieldsValue(arr)
 				}, 0)
 			}
 		})
@@ -72,7 +72,7 @@ class BaseForm extends React.Component<IProps, IState> {
 		const { getFieldDecorator } = this.props.form
 		let formItemList = []
 		if (formList[0].type === 'dart') {
-			formItemList.push(<Darft editorState={formList[0].render} key={formList} />)
+			formItemList.push(<Darft editorState={formList[0].render} val={formList[0].setValue} key={formList} />)
 		} else {
 			formList.forEach((item: any, index: any) => {
 				let {

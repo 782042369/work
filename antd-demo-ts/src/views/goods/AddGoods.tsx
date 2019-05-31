@@ -1,5 +1,4 @@
 import * as React from 'react'
-
 import {
 	addgoods,
 	editgoods,
@@ -193,6 +192,7 @@ class index extends React.Component<IProps, IState> {
 		this.setState({ specification })
 	}
 	editorState = (txt: any) => {
+		console.log('txt: ', txt)
 		this.setState({
 			goods_desc: txt
 		})
@@ -233,6 +233,7 @@ class index extends React.Component<IProps, IState> {
 						'goods_gift',
 						'goods_attrs',
 						'recommend',
+						'goods_desc',
 						'goods_fitting'
 					]
 
@@ -368,6 +369,7 @@ class index extends React.Component<IProps, IState> {
 					formlist: [
 						{
 							type: 'dart', // 富文本
+							setValue: this.state.goods_desc,
 							render: (e: any) => this.editorState(e)
 						}
 					]
