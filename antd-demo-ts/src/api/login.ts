@@ -8,7 +8,7 @@
 
 import request from '../tool/request'
 
-export function dologin(data?: object) {
+export function dologin(data?: any) {
 	// 登录接口
 	return request({
 		url: 'dologin',

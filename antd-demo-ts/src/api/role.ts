@@ -8,7 +8,7 @@
 
 import request from '../tool/request'
 
-export function rolelist(data?: object) {
+export function rolelist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/Rolelist',
@@ -17,7 +17,7 @@ export function rolelist(data?: object) {
 	})
 }
 
-export function addrole(data?: object) {
+export function addrole(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/AddRole',
@@ -25,7 +25,7 @@ export function addrole(data?: object) {
 		data
 	})
 }
-export function editrole(data?: object) {
+export function editrole(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/EditRole',
@@ -33,7 +33,7 @@ export function editrole(data?: object) {
 		data
 	})
 }
-export function deleterole(data?: object) {
+export function deleterole(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/DeleteRole',
@@ -41,7 +41,7 @@ export function deleterole(data?: object) {
 		data
 	})
 }
-export function auth(data?: object) {
+export function auth(data?: any) {
 	// 授权
 	return request({
 		url: 'admin/auth',
@@ -50,7 +50,7 @@ export function auth(data?: object) {
 	})
 }
 
-export function authlist(params?: object) {
+export function authlist(params?: any) {
 	// 授权
 	return request({
 		url: 'admin/authlist',

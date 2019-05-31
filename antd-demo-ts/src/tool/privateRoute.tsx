@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-05-30 17:53:29
+ * @LastEditTime: 2019-05-31 10:11:09
  */
 import * as React from 'react'
 
-import { Route, withRouter } from 'react-router-dom'
+import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
 import { RouterProps, RouteProps } from 'react-router'
 import { message } from 'antd'
 import User from '../store/user'
@@ -17,9 +17,11 @@ interface singerState {
 interface singerProps {
 	history: RouterProps['history']
 	component: RouteProps['component']
-	Component: React.Component
+	exact: any
+	path: any
+	key: any
 }
-class index extends React.Component<singerProps, singerState> {
+class index extends React.Component<singerProps & RouteComponentProps<{}>, singerState> {
 	constructor(props: any) {
 		super(props)
 		this.state = {
@@ -50,4 +52,4 @@ class index extends React.Component<singerProps, singerState> {
 	}
 }
 
-export default index
+export default withRouter(index)

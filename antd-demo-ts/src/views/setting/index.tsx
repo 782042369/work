@@ -1,10 +1,9 @@
-import * as React  from 'react'
+import * as React from 'react'
 import { editsetting, getsetting } from '../../api/setting'
 import { message } from 'antd'
 import BashForm from '../../components/Form'
 
 interface IState {
-	data: any
 	_id: any
 	h1title: any
 	tongji_code: any
@@ -20,7 +19,6 @@ class index extends React.Component<IProps, IState> {
 	constructor(props: any) {
 		super(props)
 		this.state = {
-			data: '',
 			_id: '',
 			h1title: '',
 			tongji_code: '',

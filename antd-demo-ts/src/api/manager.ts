@@ -7,7 +7,7 @@
  */
 
 import request from '../tool/request'
-export function managerlist(data?: object) {
+export function managerlist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/Managerlist',
@@ -16,7 +16,7 @@ export function managerlist(data?: object) {
 	})
 }
 
-export function addmanager(data?: object) {
+export function addmanager(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/AddManager',
@@ -24,7 +24,7 @@ export function addmanager(data?: object) {
 		data
 	})
 }
-export function editmanager(data?: object) {
+export function editmanager(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/EditManager',
@@ -32,7 +32,7 @@ export function editmanager(data?: object) {
 		data
 	})
 }
-export function deletemanager(data?: object) {
+export function deletemanager(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/DeleteManager',

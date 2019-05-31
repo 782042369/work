@@ -8,7 +8,7 @@
 
 import request from '../tool/request'
 
-export function articlelist(data?: object) {
+export function articlelist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/articlelist',
@@ -17,7 +17,7 @@ export function articlelist(data?: object) {
 	})
 }
 
-export function addarticle(data?: object) {
+export function addarticle(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/Addarticle',
@@ -25,7 +25,7 @@ export function addarticle(data?: object) {
 		data
 	})
 }
-export function editarticle(data?: object) {
+export function editarticle(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/editarticle',
@@ -33,7 +33,7 @@ export function editarticle(data?: object) {
 		data
 	})
 }
-export function deletearticle(data?: object) {
+export function deletearticle(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/Deletearticle',
@@ -41,7 +41,7 @@ export function deletearticle(data?: object) {
 		data
 	})
 }
-export function auth(data?: object) {
+export function auth(data?: any) {
 	// 授权
 	return request({
 		url: 'admin/auth',
@@ -50,7 +50,7 @@ export function auth(data?: object) {
 	})
 }
 
-export function authlist(params?: object) {
+export function authlist(params?: any) {
 	// 授权
 	return request({
 		url: 'admin/authlist',

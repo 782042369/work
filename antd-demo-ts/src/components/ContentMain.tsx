@@ -1,8 +1,7 @@
 import * as React from 'react'
-
 //引入路由
 import { Switch } from 'react-router-dom'
-import PrivateRoute from '../tool/privateRoute'
+// import PrivateRoute from '../tool/privateRoute'
 import router from '../router'
 import { Route } from 'react-router-dom'
 

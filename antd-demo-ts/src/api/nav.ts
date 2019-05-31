@@ -8,7 +8,7 @@
 
 import request from '../tool/request'
 
-export function navlist(data?: object) {
+export function navlist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/navlist',
@@ -17,7 +17,7 @@ export function navlist(data?: object) {
 	})
 }
 
-export function addnav(data?: object) {
+export function addnav(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/Addnav',
@@ -25,7 +25,7 @@ export function addnav(data?: object) {
 		data
 	})
 }
-export function editnav(data?: object) {
+export function editnav(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/editnav',
@@ -33,7 +33,7 @@ export function editnav(data?: object) {
 		data
 	})
 }
-export function deletenav(data?: object) {
+export function deletenav(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/Deletenav',
@@ -41,7 +41,7 @@ export function deletenav(data?: object) {
 		data
 	})
 }
-export function auth(data?: object) {
+export function auth(data?: any) {
 	// 授权
 	return request({
 		url: 'admin/auth',
@@ -50,7 +50,7 @@ export function auth(data?: object) {
 	})
 }
 
-export function authlist(params?: object) {
+export function authlist(params?: any) {
 	// 授权
 	return request({
 		url: 'admin/authlist',

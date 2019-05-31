@@ -3,27 +3,42 @@
  * @LastEditors: 杨宏旋
  * @Description: 时间过滤器
  * @Date: 2019-05-06 17:53:48
- * @LastEditTime: 2019-05-30 18:23:01
+ * @LastEditTime: 2019-05-31 10:16:30
  */
+
+interface Timetype {
+	Y: string
+	m: string
+	d: string
+	H: string
+	i: string
+	s: string
+}
+
+type Time = keyof Timetype
+/**
+ * 
+ * @param time 补零
+ */
+const zero = (time: any): string => {
+	let arr = time < 10 ? '0' + time : time
+	return arr
+}
 /**
  * 
  * @param {*} timestamp 时间
  * @param {*} formats 正则
  */
-const zero = (time: any): number => {
-	let arr = time < 10 ? '0' + time : time
-	return arr
-}
-const datefilter = (timestamp: any, formats?: any) => {
+const datefilter = (timestamp: number, formats?: any) => {
 	let myDate: any = new Date(timestamp)
-	let year: any = myDate.getFullYear()
-	let month: any = zero(myDate.getMonth() + 1)
-	let day: any = zero(myDate.getDate())
-	let hour: any = zero(myDate.getHours())
-	let minite: any = zero(myDate.getMinutes())
-	let second: any = zero(myDate.getSeconds())
+	let year: number = myDate.getFullYear()
+	let month: string = zero(myDate.getMonth() + 1)
+	let day: string = zero(myDate.getDate())
+	let hour: string = zero(myDate.getHours())
+	let minite: string = zero(myDate.getMinutes())
+	let second: string = zero(myDate.getSeconds())
 	let val: any = formats || 'Y年m月d日 H:i'
-	return val.replace(/Y|m|d|H|i|s/gi, function(matches: any): string {
+	return val.replace(/Y|m|d|H|i|s/gi, (matches: Time): any => {
 		return {
 			Y: year,
 			m: month,

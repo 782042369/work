@@ -4,12 +4,10 @@ import { Spin } from 'antd'
 import Loadable from 'react-loadable'
 class index extends React.Component<Loadable.LoadingComponentProps> {
 	render() {
+		let { error, isLoading, pastDelay, timedOut } = this.props
 		return (
 			<div>
-				{this.props.error}
-				{this.props.isLoading}
-				{this.props.pastDelay}
-				{this.props.timedOut}
+				{error} {isLoading} {pastDelay} {timedOut}
 				<Spin tip="Loading..." />
 			</div>
 		)

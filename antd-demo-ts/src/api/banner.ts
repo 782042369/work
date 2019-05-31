@@ -7,7 +7,7 @@
  */
 import request from '../tool/request'
 
-export function addbanner(data?: object) {
+export function addbanner(data?: any) {
 	// 增加banner
 	return request({
 		url: 'admin/addbanner',
@@ -15,7 +15,7 @@ export function addbanner(data?: object) {
 		data
 	})
 }
-export function editbanner(data?: object) {
+export function editbanner(data?: any) {
 	// 修改banner
 	return request({
 		url: 'admin/editbanner',
@@ -24,7 +24,7 @@ export function editbanner(data?: object) {
 	})
 }
 
-export function bannerlist(data?: object) {
+export function bannerlist(data?: any) {
 	// 修改banner
 	return request({
 		url: 'admin/bannerlist',
@@ -33,7 +33,7 @@ export function bannerlist(data?: object) {
 	})
 }
 
-export function deletebanner(data?: object) {
+export function deletebanner(data?: any) {
 	// 修改banner
 	return request({
 		url: 'admin/deletebanner',

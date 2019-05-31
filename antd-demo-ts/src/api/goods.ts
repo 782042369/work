@@ -11,7 +11,7 @@ import request from '../tool/request'
  * 
  * @param {*} data 添加商品
  */
-export function goodslist(data?: object) {
+export function goodslist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/goodslist',
@@ -20,7 +20,7 @@ export function goodslist(data?: object) {
 	})
 }
 
-export function deletegoods(data?: object) {
+export function deletegoods(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/deletegoods',
@@ -28,7 +28,7 @@ export function deletegoods(data?: object) {
 		data
 	})
 }
-export function addgoods(data?: object) {
+export function addgoods(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/addgoods',
@@ -37,7 +37,7 @@ export function addgoods(data?: object) {
 	})
 }
 
-export function editgoods(data?: object) {
+export function editgoods(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/editgoods',
@@ -49,7 +49,7 @@ export function editgoods(data?: object) {
  * 
  * @param {*} data 商品类型
  */
-export function goodstypelist(data?: object) {
+export function goodstypelist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/goodstypelist',
@@ -58,7 +58,7 @@ export function goodstypelist(data?: object) {
 	})
 }
 
-export function deletegoodstype(data?: object) {
+export function deletegoodstype(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/deletegoodstype',
@@ -66,7 +66,7 @@ export function deletegoodstype(data?: object) {
 		data
 	})
 }
-export function addgoodstype(data?: object) {
+export function addgoodstype(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/addgoodstype',
@@ -75,7 +75,7 @@ export function addgoodstype(data?: object) {
 	})
 }
 
-export function editgoodstype(data?: object) {
+export function editgoodstype(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/editgoodstype',
@@ -87,7 +87,7 @@ export function editgoodstype(data?: object) {
  * 
  * @param {*} data 商品属性
  */
-export function goodstypeattributelist(data?: object) {
+export function goodstypeattributelist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/goodstypeattributelist',
@@ -96,7 +96,7 @@ export function goodstypeattributelist(data?: object) {
 	})
 }
 
-export function deletegoodstypeattribute(data?: object) {
+export function deletegoodstypeattribute(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/deletegoodstypeattribute',
@@ -104,7 +104,7 @@ export function deletegoodstypeattribute(data?: object) {
 		data
 	})
 }
-export function addgoodsattribute(data?: object) {
+export function addgoodsattribute(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/addgoodsattribute',
@@ -113,7 +113,7 @@ export function addgoodsattribute(data?: object) {
 	})
 }
 
-export function editgoodsattribute(data?: object) {
+export function editgoodsattribute(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/editgoodsattribute',
@@ -125,7 +125,7 @@ export function editgoodsattribute(data?: object) {
  * 
  * @param {*} data 商品分类
  */
-export function goodscatelist(data?: object) {
+export function goodscatelist(data?: any) {
 	// 列表
 	return request({
 		url: 'admin/goodscatelist',
@@ -134,7 +134,7 @@ export function goodscatelist(data?: object) {
 	})
 }
 
-export function deletegoodscate(data?: object) {
+export function deletegoodscate(data?: any) {
 	// 删除
 	return request({
 		url: 'admin/deletegoodscate',
@@ -142,7 +142,7 @@ export function deletegoodscate(data?: object) {
 		data
 	})
 }
-export function addgoodscate(data?: object) {
+export function addgoodscate(data?: any) {
 	// 增加
 	return request({
 		url: 'admin/addgoodscate',
@@ -151,7 +151,7 @@ export function addgoodscate(data?: object) {
 	})
 }
 
-export function editgoodscate(data?: object) {
+export function editgoodscate(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/editgoodscate',
@@ -161,7 +161,7 @@ export function editgoodscate(data?: object) {
 }
 
 // 商品颜色
-export function goodscolorlist(data?: object) {
+export function goodscolorlist(data?: any) {
 	// 修改
 	return request({
 		url: 'admin/goodscolorlist',
@@ -171,7 +171,7 @@ export function goodscolorlist(data?: object) {
 }
 
 // 商品相册删除
-export function deletegoodsphotolist(data?: object) {
+export function deletegoodsphotolist(data?: any) {
 	return request({
 		url: 'admin/deletegoodsphotolist',
 		method: 'delete',
@@ -180,7 +180,7 @@ export function deletegoodsphotolist(data?: object) {
 }
 
 // 商品相册删除
-export function editgoodsphotocolor(data?: object) {
+export function editgoodsphotocolor(data?: any) {
 	return request({
 		url: 'admin/editgoodsphotocolor',
 		method: 'put',
