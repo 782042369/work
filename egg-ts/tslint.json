@@ -1,3 +1,8 @@
 {
-  "extends": ["tslint-config-egg"]
+  "extends": ["tslint-config-egg"],
+  "rules": {
+    "comment-format": [true, "check-space"],
+    "no-namespace": false,
+    "no-trailing-whitespace": true
+  }
 }

@@ -3997,11 +3997,6 @@ draft-js@^0.10.0, draft-js@~0.10.0:
     immutable "~3.7.4"
     object-assign "^4.1.0"
 
-draftjs-to-html@^0.8.4:
-  version "0.8.4"
-  resolved "https://registry.npm.taobao.org/draftjs-to-html/download/draftjs-to-html-0.8.4.tgz#bda0adc00945db1f1baf0191b34b49b24191f1df"
-  integrity sha1-vaCtwAlF2x8brwGRs0tJskGR8d8=
-
 draftjs-utils@^0.9.3:
   version "0.9.4"
   resolved "https://registry.npm.taobao.org/draftjs-utils/download/draftjs-utils-0.9.4.tgz#976c61aa133dbbbfedd65ae1dd6627d7b98c6f08"

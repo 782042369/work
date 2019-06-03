@@ -1,11 +1,8 @@
-import { Controller } from 'egg'
+import { Controller } from 'egg';
 
 export default class HomeController extends Controller {
 	async index() {
-		const { ctx } = this
-		console.log('ctx: ', ctx)
-		ctx.body = {
-			msg: '欢迎欢迎'
-		}
+		const { ctx } = this;
+		ctx.body = '欢迎欢迎';
 	}
 }
