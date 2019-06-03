@@ -1,8 +1,8 @@
-import { Application } from 'egg'
+import { Application } from 'egg';
 export default function index(app: Application): void {
-	const { router, controller }: any = app
+	const { router, controller }: any = app;
 	/**
    * 前台
    */
-	router.get('/', controller.index.home.index)
+	router.get('/', controller.index.home.index);
 }

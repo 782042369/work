@@ -8,15 +8,15 @@
 /**
  * @param {Egg.Application} app - egg application
  */
-import admin from './routes/admin'
-import index from './routes/index'
+import admin from './routes/admin';
+import index from './routes/index';
 // import api from './routes/api'
-import { Application } from 'egg'
+import { Application } from 'egg';
 export default (app: Application) => {
 	/**
    * 后台
    */
-	admin(app)
+	admin(app);
 	/**
    * api
    */
@@ -24,5 +24,5 @@ export default (app: Application) => {
 	/**
    * 前台
    */
-	index(app)
-}
+	index(app);
+};
