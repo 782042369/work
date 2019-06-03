@@ -1,54 +1,58 @@
-import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
+import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg'
 
 export default (appInfo: EggAppInfo) => {
-	const config = {} as PowerPartial<EggAppConfig>;
+	const config = {} as PowerPartial<EggAppConfig>
 
 	// override config from framework / plugin
 	// use for cookie sign key, should change to your own and keep security
-	config.keys = appInfo.name + '_1559532873843_1986';
+	config.keys = appInfo.name + '_1559532873843_1986'
 
 	// add your egg config in here
-	config.middleware = [];
+	config.middleware = []
 	config.session = {
 		key: 'xiaoxiannv',
 		maxAge: 1800000, // 1 天
 		httpOnly: true,
-		encrypt: true,
-	};
+		encrypt: true
+	}
 	// add your middleware config here
-	config.middleware = [ 'compress', 'adminauth' ];
-	config.uploadfile = 'app/public/admin/upload';
+	config.middleware = [ 'compress', 'adminauth' ]
+	config.uploadfile = 'app/public/admin/upload'
 	config.adminauth = {
-		match: '/admin',
-	};
+		match: '/admin'
+	}
 	config.redis = {
 		Redis: require('ioredis'), // customize ioredis version, only set when you needed
 		client: {
 			port: 6379, // Redis port
 			host: '127.0.0.1', // Redis host
 			password: '',
-			db: 0,
-		},
-	};
+			db: 0
+		}
+	}
 	config.security = {
 		csrf: {
 			enable: false,
-			ignoreJSON: true,
+			ignoreJSON: true
 		},
-		domainWhiteList: [ 'http://127.0.0.1:3000' ],
-	};
+		domainWhiteList: [ 'http://127.0.0.1:3000' ]
+	}
+	config.logger = {
+		encoding: 'gbk',
+		outputJSON: true
+	}
 	config.cors = {
 		origin: 'http://127.0.0.1:3000',
 		credentials: true,
-		allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
-	};
+		allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+	}
 	config.compress = {
-		threshold: 1024, // body大于配置的threshold才会压缩
-	};
+		threshold: 1024 // body大于配置的threshold才会压缩
+	}
 	config.multipart = {
 		files: 50, // body大于配置的threshold才会压缩
-		fields: 50, // body大于配置的threshold才会压缩
-	};
+		fields: 50 // body大于配置的threshold才会压缩
+	}
 	// config.mysql = {
 	//   // database configuration
 	//   client: {
@@ -71,19 +75,19 @@ export default (appInfo: EggAppInfo) => {
 	config.mongoose = {
 		client: {
 			url: 'mongodb://127.0.0.1/egg_xiaomi',
-			options: {},
-		},
-	};
+			options: {}
+		}
+	}
 	// 配置 公共url
-	config.url = 'www.phonegap100.com/';
+	config.url = 'www.phonegap100.com/'
 	// add your special config in here
 	const bizConfig = {
-		sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
-	};
+		sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`
+	}
 
 	// the return config will combines to EggAppConfig
 	return {
 		...config,
-		...bizConfig,
-	};
-};
+		...bizConfig
+	}
+}

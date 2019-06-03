@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-30 18:19:48
+ * @LastEditTime: 2019-06-03 18:54:31
  */
 import * as React from 'react'
 
@@ -99,7 +99,7 @@ class WrappedRegistrationForm extends React.Component<IProps, IState> {
 						filter_attr,
 						keywords,
 						link,
-						pid: Number(pid),
+						pid: pid === '0' ? Number(pid) : pid,
 						sub_title,
 						template,
 						title,

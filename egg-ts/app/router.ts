@@ -3,20 +3,20 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由
  * @Date: 2019-04-29 15:37:12
- * @LastEditTime: 2019-06-03 13:32:17
+ * @LastEditTime: 2019-06-03 17:41:36
  */
 /**
  * @param {Egg.Application} app - egg application
  */
-import admin from './routes/admin';
-import index from './routes/index';
+import admin from './routes/admin'
+import index from './routes/index'
 // import api from './routes/api'
-import { Application } from 'egg';
+import { Application } from 'egg'
 export default (app: Application) => {
 	/**
    * 后台
    */
-	admin(app);
+	admin(app)
 	/**
    * api
    */
@@ -24,5 +24,5 @@ export default (app: Application) => {
 	/**
    * 前台
    */
-	index(app);
-};
+	index(app)
+}

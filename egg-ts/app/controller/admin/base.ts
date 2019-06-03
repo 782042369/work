@@ -1,4 +1,4 @@
-import { Controller } from 'egg';
+import { Controller } from 'egg'
 export default class BaseController extends Controller {
 	/**
    *
@@ -10,8 +10,8 @@ export default class BaseController extends Controller {
 		this.ctx.body = {
 			status,
 			data,
-			message,
-		};
+			message
+		}
 	}
 	/**
    *
@@ -20,22 +20,23 @@ export default class BaseController extends Controller {
    * @param {*} data 数据
    */
 	public async error(status: number, message: string, data: any = []) {
-		console.log('——————————————出错了——————————————');
-		console.log('error', data);
-		console.log('——————————————出错了——————————————');
-		this.ctx.status = 200;
+		console.log('——————————————出错了——————————————')
+		console.log('error', data)
+		this.ctx.logger.warn('WARNNING!!!!', this.ctx.request.body)
+		console.log('——————————————出错了——————————————')
+		this.ctx.status = 200
 		this.ctx.body = {
 			status,
 			data,
-			message,
-		};
+			message
+		}
 	}
 	public async code() {
 		/**
      * 验证码
      */
-		const captcha: any = await this.service.tools.captcha();
-		this.ctx.response.type = 'image/svg+xml'; // 指定返回类型
-		this.ctx.body = captcha.data; // 返回验证码
+		const captcha: any = await this.service.tools.captcha()
+		this.ctx.response.type = 'image/svg+xml' // 指定返回类型
+		this.ctx.body = captcha.data // 返回验证码
 	}
 }
