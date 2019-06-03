@@ -1,11 +1,9 @@
 import * as React from 'react'
-
 import './login.scss'
-import { Form, Icon, Input, Button } from 'antd'
+import { Form, Icon, Input, Button, message } from 'antd'
 import { Redirect } from 'react-router'
 import { dologin } from '../../api/login'
 import { Md5 } from 'ts-md5/dist/md5'
-import { message } from 'antd'
 interface FormProps {
 	form: any
 }
@@ -36,9 +34,11 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 							sessionStorage.setItem('role_id', res.data.role_id)
 							sessionStorage.setItem('userName', res.data.userName)
 							sessionStorage.setItem('userName', res.data.userName)
-							this.setState({
-								loginSuccess: true
-							})
+							setTimeout(() => {
+								this.setState({
+									loginSuccess: true
+								})
+							}, 1000)
 						} else {
 							this.svgcode()
 							message.error(res.message)
@@ -58,7 +58,6 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 	componentDidMount() {}
 	render() {
 		const { getFieldDecorator } = this.props.form
-
 		if (this.state.loginSuccess) {
 			return <Redirect to="/access" />
 		} else {
@@ -108,6 +107,5 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 		}
 	}
 }
-
 const index = Form.create<FormProps>({ name: 'normal_login' })(NormalLoginForm)
 export default index

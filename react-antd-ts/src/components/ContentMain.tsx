@@ -14,12 +14,7 @@ interface IProps {}
 interface IState {}
 class index extends React.Component<IProps, IState> {
 	render() {
-		console.log(1)
-		return (
-			<Switch>
-				{roterdominit()}
-			</Switch>
-		)
+		return <Switch>{roterdominit()}</Switch>
 	}
 }
 

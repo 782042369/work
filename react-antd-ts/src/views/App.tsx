@@ -3,22 +3,24 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-06-03 18:57:18
+ * @LastEditTime: 2019-06-03 20:00:42
  */
 import React from 'react'
-import { Layout, Avatar } from 'antd'
-import MenuList from '../components/MenuList'
+import { Layout } from 'antd'
 import { withRouter, BrowserRouter, Switch } from 'react-router-dom'
 import ContentMain from '../components/ContentMain'
 import '../assets/css/index.scss'
-import {} from 'react-router-dom'
 import Loadable from 'react-loadable'
 import Loading from '../router/loading'
-import User from '../store/user'
 import PrivateRoute from '../tool/privateRoute'
-const { Header, Content, Sider } = Layout
+import Header from '../views/Header'
+const { Content, Sider } = Layout
 const Login = Loadable({
 	loader: () => import(/* webpackChunkName: "Login" */ '../views/login/index'),
+	loading: Loading
+})
+const MenuList = Loadable({
+	loader: () => import(/* webpackChunkName: "MenuList" */ '../components/MenuList'),
 	loading: Loading
 })
 function index() {
@@ -31,10 +33,7 @@ function index() {
 			<Switch>
 				<PrivateRoute exact path="/login" component={Login} />
 				<Layout>
-					<Header className="header" data-flex=" cross:center">
-						<Avatar size={40} icon="user" />
-						<span className="name">欢迎光临，{User.username}</span>
-					</Header>
+					<Header />
 					<Layout>
 						<Sider width={200} style={{ background: '#fff' }}>
 							<LeftSider />

@@ -52,9 +52,19 @@
 }
 
 .header {
-
   .name {
     margin-left: 30px;
     color: #fff;
+    flex: 1;
+  }
+}
+
+.loginout {
+  color: #fefefe;
+  text-align: right;
+  cursor: pointer;
+
+  i {
+    margin-left: 15px
   }
 }

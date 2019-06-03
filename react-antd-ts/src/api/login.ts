@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-06 12:41:01
+ * @LastEditTime: 2019-06-03 19:40:22
  */
 
 import request from '../tool/request'
@@ -13,6 +13,14 @@ export function dologin(data?: any) {
 	return request({
 		url: 'dologin',
 		method: 'post',
+		data
+	})
+}
+export function loginout(data?: any) {
+	// 登出接口
+	return request({
+		url: 'loginout',
+		method: 'get',
 		data
 	})
 }

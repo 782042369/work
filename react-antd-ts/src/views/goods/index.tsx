@@ -3,13 +3,14 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-30 15:31:19
+ * @LastEditTime: 2019-06-03 19:35:31
  */
 import * as React from 'react'
 
 import { Table, Divider, Button, message } from 'antd'
 import { goodslist, deletegoods } from '../../api/goods'
 import { Link } from 'react-router-dom'
+
 interface IProps {}
 interface IState {
 	data: any
