@@ -18,14 +18,14 @@ class index extends React.Component<IProps, IState> {
 		}
 	}
 	componentDidMount() {
-		const html = 'testing this will work'
-		const contentBlock: any = convertFromHTML(html)
+		const contentBlock: any = convertFromHTML(this.props.val)
+		console.log('contentBlock: ', contentBlock);
 		if (contentBlock) {
 			const contentState = ContentState.createFromBlockArray(contentBlock)
 			const editorState = EditorState.createWithContent(contentState)
-			this.state = {
+			this.setState({
 				editorState
-			}
+			})
 		}
 	}
 	onEditorStateChange = (editorState: any) => {

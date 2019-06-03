@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-05-31 17:22:31
+ * @LastEditTime: 2019-06-03 18:57:18
  */
 import React from 'react'
 import { Layout, Avatar } from 'antd'
@@ -21,9 +21,6 @@ const Login = Loadable({
 	loader: () => import(/* webpackChunkName: "Login" */ '../views/login/index'),
 	loading: Loading
 })
-{
-	/* <Route exact path="/login" component={Login} /> */
-}
 function index() {
 	const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
 	const LeftSider = withRouter(({ history }) => {

@@ -16,5 +16,6 @@ app/**/*.js
 test/**/*.js
 config/**/*.js
 app/**/*.map
+app/public
 test/**/*.map
 config/**/*.map

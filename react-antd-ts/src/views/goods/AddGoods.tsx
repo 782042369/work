@@ -468,7 +468,7 @@ class index extends React.Component<IProps, IState> {
 							placeholder: '请输入',
 							field: 'photoList',
 							noupload: 1,
-							required: true,
+							required: false,
 							render: (e: any) => this.handlephontChange(e),
 							message: 'Please input your photoList!'
 						}
