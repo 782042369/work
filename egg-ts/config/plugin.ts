@@ -1,22 +1,26 @@
-import { EggPlugin } from 'egg';
+import { EggPlugin } from 'egg'
 
 const plugin: EggPlugin = {
 	mongoose: {
 		enable: true,
-		package: 'egg-mongoose',
+		package: 'egg-mongoose'
 	},
 	mysql: {
 		enable: true,
-		package: 'egg-mysql',
+		package: 'egg-mysql'
 	},
 	cors: {
 		enable: true,
-		package: 'egg-cors',
+		package: 'egg-cors'
 	},
 	redis: {
 		enable: true,
-		package: 'egg-redis',
+		package: 'egg-redis'
 	},
-};
+	graphql: {
+		enable: true,
+		package: 'egg-graphql'
+	}
+}
 
-export default plugin;
+export default plugin

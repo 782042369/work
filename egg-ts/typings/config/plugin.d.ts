@@ -18,6 +18,7 @@ import 'egg-mongoose';
 import 'egg-mysql';
 import 'egg-cors';
 import 'egg-redis';
+import 'egg-graphql';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -37,5 +38,6 @@ declare module 'egg' {
     mysql?: EggPluginItem;
     cors?: EggPluginItem;
     redis?: EggPluginItem;
+    graphql?: EggPluginItem;
   }
 }

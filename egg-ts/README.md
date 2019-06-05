@@ -31,3 +31,15 @@ $ npm start
 
 - Node.js 8.x
 - Typescript 2.8+
+
+### GraphQl
+```
+graphql 目录下，有 4 种代码 
+  1 common 全局类型定义
+  2 query 查询代码
+  3 mutation 更新操作代码
+  4 业务 实现代码
+    4.1 connector 连接数据服务
+    4.2 resolver 类型实现
+    4.3 schema 定义
+```
