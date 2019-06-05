@@ -6,6 +6,9 @@ const resolvers = {
 		hello: () => {
 			console.log(1)
 			return 'Hello World!'
+		},
+		users: () => {
+			return '1'
 		}
 	}
 }

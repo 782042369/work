@@ -20,6 +20,10 @@ const plugin: EggPlugin = {
 	graphql: {
 		enable: true,
 		package: 'egg-graphql'
+	},
+	alinode: {
+		enable: true,
+		package: 'egg-alinode'
 	}
 }
 

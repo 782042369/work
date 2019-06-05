@@ -60,7 +60,7 @@ export default (appInfo: EggAppInfo) => {
 		// 是否加载到 agent 上，默认关闭
 		// agent: false,
 		// 是否加载开发者工具 graphiql, 默认开启。路由同 router 字段。使用浏览器打开该可见。
-		graphiql: true,
+		graphiql: true
 		//是否设置默认的Query和Mutation, 默认关闭
 		// defaultEmptySchema: true
 		// graphQL 路由前的拦截器
@@ -88,6 +88,17 @@ export default (appInfo: EggAppInfo) => {
 	//   // load into agent, default is close
 	//   agent: false,
 	// };
+	config.alinode = {
+		server: 'wss://agentserver.node.aliyun.com:8080',
+		appid: '80097',
+		secret: '6555a1ed3001ad62b5d783423f51bc4cf37c8a8c',
+		logdir: '/tmp/'
+		// error_log: [
+		// 	'您的应用在业务层面产生的异常日志的路径，数组，可选，可配置多个',
+		// 	'例如：/root/.logs/error.#YYYY#-#MM#-#DD#.log',
+		// 	'不更改 Egg 默认日志输出路径可不配置本项目'
+		// ]
+	}
 	config.mongoose = {
 		client: {
 			url: 'mongodb://127.0.0.1/egg_xiaomi',
