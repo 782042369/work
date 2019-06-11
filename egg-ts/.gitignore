@@ -19,4 +19,3 @@ app/**/*.map
 app/public
 test/**/*.map
 config/**/*.map
-w

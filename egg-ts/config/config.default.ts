@@ -88,6 +88,12 @@ export default (appInfo: EggAppInfo) => {
 	//   // load into agent, default is close
 	//   agent: false,
 	// };
+	config.cluster = {
+		listen: {
+			port: 7001, //可自己配置
+			hostname: '0.0.0.0'
+		}
+	}
 	config.alinode = {
 		server: 'wss://agentserver.node.aliyun.com:8080',
 		appid: '80097',
