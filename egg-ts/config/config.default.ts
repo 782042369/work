@@ -1,5 +1,4 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg'
-import * as path from 'path'
 
 export default (appInfo: EggAppInfo) => {
 	const config = {} as PowerPartial<EggAppConfig>
@@ -38,15 +37,15 @@ export default (appInfo: EggAppInfo) => {
 		encoding: 'gbk',
 		outputJSON: true
 	}
-	config.static = {
-		prefix: '/static/',
-		dir: path.join(appInfo.baseDir, 'app/view/static'),
-		// support lazy load
-		dynamic: true,
-		preload: false,
-		buffer: false,
-		maxFiles: 1000
-	}
+	// config.static = {
+	// 	prefix: '/static/',
+	// 	dir: path.join(appInfo.baseDir, 'app/view/static'),
+	// 	// support lazy load
+	// 	dynamic: true,
+	// 	preload: false,
+	// 	buffer: false,
+	// 	maxFiles: 1000
+	// }
 	config.cors = {
 		origin: 'http://127.0.0.1:3000',
 		credentials: true,

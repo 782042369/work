@@ -2,6 +2,6 @@ import { Controller } from 'egg'
 export default class HomeController extends Controller {
 	async index() {
 		const { ctx } = this
-		await ctx.render('index')
+		ctx.body = '欢迎欢迎'
 	}
 }
