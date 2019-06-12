@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-06-12 09:36:08
+ * @LastEditTime: 2019-06-12 18:57:07
  * @Description: 传统
  */
 import React from 'react'
@@ -38,7 +38,7 @@ class index extends React.Component<IProps, IState> {
 		this.props.form.validateFieldsAndScroll((err: any, values: any) => {
 			if (!err) {
 				let date1 = getFieldsValue()
-				this.props.formSubmit(date1) //最终输出
+				this.props.formSubmit(date1) // 最终输出
 			}
 		})
 	}
@@ -73,7 +73,7 @@ class index extends React.Component<IProps, IState> {
 			formList.length > 0 &&
 			formList.forEach((item: any, index: any) => {
 				let {
-					lable, //标题
+					lable, // 标题
 					field, // 字段key
 					required, // 必填
 					type,
@@ -83,7 +83,7 @@ class index extends React.Component<IProps, IState> {
 				let rulemessages = item.message || '请输入当前输入框内容亲爱的宝贝0.0' // 校验回调信息
 				let imgpath = item.imgpath || '' // 图片路径
 				let inputitem: any = ''
-				let list = item.list || [] //option
+				let list = item.list || [] // option
 				inputitem = InputType(item)
 				if (type === 'dart') {
 					formItemList.push(

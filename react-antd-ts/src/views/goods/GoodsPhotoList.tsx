@@ -87,7 +87,7 @@ class index extends React.Component<IProps, IState> {
 		this.getgoodsphoto()
 	}
 	handlephontChange = (info: any) => {}
-	render() {
+	public render() {
 		return <From formList={this.state.optionlist} h1title={this.state.h1title} formSubmit={this.handleSubmit} />
 	}
 }

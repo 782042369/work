@@ -139,7 +139,7 @@ class WrappedRegistrationForm extends React.Component<IProps, IState> {
 			distextarea: e.target.value !== 3 ? true : false
 		})
 	}
-	render() {
+	public render() {
 		const { getFieldDecorator } = this.props.form
 		const formItemLayout = {
 			labelCol: {

@@ -107,7 +107,7 @@ function getHashtagRanges(blockText: any, hashtagConfig: any) {
 function getSections(block: any, hashtagConfig: any): any {
 	let sections = []
 	let lastOffset = 0
-	let sectionRanges = block.entityRanges.map(function(range: any) {
+	let sectionRanges = block.entityRanges.map((range: any) => {
 		let offset = range.offset,
 			length = range.length,
 			key = range.key
@@ -120,10 +120,10 @@ function getSections(block: any, hashtagConfig: any): any {
 		}
 	})
 	sectionRanges = sectionRanges.concat(getHashtagRanges(block.text, hashtagConfig))
-	sectionRanges = sectionRanges.sort(function(s1: any, s2: any) {
+	sectionRanges = sectionRanges.sort((s1: any, s2: any) => {
 		return s1.offset - s2.offset
 	})
-	sectionRanges.forEach(function(r: any) {
+	sectionRanges.forEach((r: any) => {
 		if (r.offset > lastOffset) {
 			sections.push({
 				start: lastOffset,
@@ -179,7 +179,7 @@ function getStyleArrayForBlock(block: any) {
 		length: text.length
 	}
 	if (inlineStyleRanges && inlineStyleRanges.length > 0) {
-		inlineStyleRanges.forEach(function(range: any) {
+		inlineStyleRanges.forEach((range: any) => {
 			let offset = range.offset
 
 			let length = offset + range.length
@@ -249,7 +249,7 @@ function getStylesAtOffset(inlineStyles: any, offset: any) {
 function sameStyleAsPrevious(inlineStyles: any, styles: any, index: any) {
 	let sameStyled = true
 	if (index > 0 && index < inlineStyles.length) {
-		styles.forEach(function(style: any) {
+		styles.forEach((style: any) => {
 			sameStyled = sameStyled && inlineStyles[style][index] === inlineStyles[style][index - 1]
 		})
 	} else {

@@ -257,7 +257,7 @@ class index extends React.Component<IProps, IState> {
 	handlephontChange = (info: any) => {
 		console.log('info: ', info)
 	}
-	render() {
+	public render() {
 		const taps = [
 			[
 				{

@@ -9,7 +9,7 @@ const RadioGroup = Radio.Group
 const CheckboxGroup = Checkbox.Group
 export const InputType = (item: any) => {
 	let { placeholder, type }: any = item
-	let list: [any] = item.list || [] //option
+	let list: [any] = item.list || [] // option
 	switch (type) {
 		case 'input':
 			return <Input placeholder={placeholder} />

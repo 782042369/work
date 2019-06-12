@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 导航
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-28 16:55:22
+ * @LastEditTime: 2019-06-12 18:47:01
  */
 import * as React from 'react'
 
@@ -94,7 +94,7 @@ class index extends React.Component<IProps, IState> {
 			)
 		}
 	]
-	render() {
+	public render() {
 		return (
 			<div>
 				<Table

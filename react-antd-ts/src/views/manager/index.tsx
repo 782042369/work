@@ -56,7 +56,7 @@ class index extends React.Component<IProps, IState> {
 				console.log('err: ', err)
 			})
 	}
-	render() {
+	public render() {
 		return (
 			<div>
 				<Table rowKey={(record: { _id: any }) => record._id} dataSource={this.state.managerdata}>

@@ -131,7 +131,7 @@ class index extends React.Component<IProps, IState> {
 			/>
 		)
 	}
-	render() {
+	public render() {
 		return (
 			<div>
 				<Table

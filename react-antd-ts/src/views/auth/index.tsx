@@ -216,7 +216,7 @@ class WrappedNormalLoginForm extends React.Component<IProps, IState> {
 			</Form.Item>
 		))
 	}
-	render() {
+	public render() {
 		return (
 			<Form onSubmit={this.handleSubmit} className="login-form">
 				<h1>{this.state.title}角色</h1>

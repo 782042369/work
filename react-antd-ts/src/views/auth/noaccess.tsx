@@ -10,7 +10,7 @@ import * as React from 'react'
 interface IProps {}
 interface IState {}
 class index extends React.Component<IProps, IState> {
-	render() {
+	public render() {
 		return <div>请联系管理员授权</div>
 	}
 }

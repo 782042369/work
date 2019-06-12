@@ -41,7 +41,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "lint": "tslint --type-check --project ./tslint.json",
+    "lint": "tslint --project ./tslint.json",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },

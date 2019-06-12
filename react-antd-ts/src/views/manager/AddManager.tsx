@@ -108,7 +108,7 @@ class WrappedRegistrationForm extends React.Component<IProps, IState> {
 			</Option>
 		))
 	}
-	render() {
+	public render() {
 		const { getFieldDecorator } = this.props.form
 
 		const formItemLayout = {

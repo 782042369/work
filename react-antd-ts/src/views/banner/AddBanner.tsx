@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-30 18:03:38
+ * @LastEditTime: 2019-06-12 18:49:05
  */
 import * as React from 'react'
 
@@ -67,6 +67,7 @@ class index extends React.Component<IProps, IState> {
 		}
 	}
 	componentDidMount() {
+		console.log('getUrlParam: ', getUrlParam('id'))
 		if (getUrlParam('id')) {
 			this.setState({
 				h1title: '修改轮播图'
@@ -96,7 +97,7 @@ class index extends React.Component<IProps, IState> {
 		}
 	}
 
-	render() {
+	public render() {
 		const formList = [
 			{
 				type: 'input',
@@ -115,7 +116,7 @@ class index extends React.Component<IProps, IState> {
 				field: 'type',
 				required: true,
 				message: 'Please input your type!',
-				list: [ { id: 1, name: '网站' }, { id: 2, name: 'app' }, { id: 3, name: '小程序' } ] // //1、网站 2、app 3、小程序
+				list: [ { id: 1, name: '网站' }, { id: 2, name: 'app' }, { id: 3, name: '小程序' } ] // 1、网站 2、app 3、小程序
 			},
 			{
 				type: 'input',

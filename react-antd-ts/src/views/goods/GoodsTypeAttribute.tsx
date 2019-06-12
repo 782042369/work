@@ -57,7 +57,7 @@ class index extends React.Component<IProps, IState> {
 				console.log('err: ', err)
 			})
 	}
-	render() {
+	public render() {
 		return (
 			<div>
 				<Link to={`/addgoodstypeattribute?id=${getUrlParam('id')}&type=0`}>

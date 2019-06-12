@@ -19,7 +19,7 @@ class index extends React.Component<IProps, IState> {
 	}
 	componentDidMount() {
 		const contentBlock: any = convertFromHTML(this.props.val)
-		console.log('contentBlock: ', contentBlock);
+		console.log('contentBlock: ', contentBlock)
 		if (contentBlock) {
 			const contentState = ContentState.createFromBlockArray(contentBlock)
 			const editorState = EditorState.createWithContent(contentState)

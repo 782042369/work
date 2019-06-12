@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 权限
  * @Date: 2019-05-05 15:48:39
- * @LastEditTime: 2019-05-31 10:31:09
+ * @LastEditTime: 2019-06-12 18:49:00
  */
 import * as React from 'react'
 
@@ -113,7 +113,7 @@ class index extends React.Component<IProps, IState> {
 			})
 		}
 	}
-	render() {
+	public render() {
 		const formList = [
 			{
 				type: 'input',
@@ -132,7 +132,7 @@ class index extends React.Component<IProps, IState> {
 				field: 'type',
 				required: true,
 				message: 'Please input your type!',
-				list: [ { id: 1, name: '模块' }, { id: 2, name: '菜单' }, { id: 3, name: '操作' } ] // //1、模块 2、菜单 3、操作
+				list: [ { id: 1, name: '模块' }, { id: 2, name: '菜单' }, { id: 3, name: '操作' } ] // 1、模块 2、菜单 3、操作
 			},
 			{
 				type: 'input',
@@ -159,7 +159,7 @@ class index extends React.Component<IProps, IState> {
 				placeholder: '请输入',
 				field: 'module_id',
 				required: true,
-				list: this.state.list, //0、顶级模块 其他菜单
+				list: this.state.list, // 0、顶级模块 其他菜单
 				message: 'Please input your module_id!'
 			},
 			{

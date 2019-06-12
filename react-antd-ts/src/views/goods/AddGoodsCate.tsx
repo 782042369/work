@@ -139,7 +139,7 @@ class WrappedRegistrationForm extends React.Component<IProps, IState> {
 			})
 		}
 	}
-	render() {
+	public render() {
 		const { getFieldDecorator } = this.props.form
 		const formItemLayout = {
 			labelCol: {
@@ -168,7 +168,11 @@ class WrappedRegistrationForm extends React.Component<IProps, IState> {
 		if (this.state.editimgsrc !== '') {
 			editimg = (
 				<Form.Item label="原图">
-					<img alt="" style={{ maxWidth: '10vw', maxHeight: '10vw' }} src={`./${this.state.editimgsrc}`} />
+					<img
+						alt=""
+						style={{ maxWidth: '10vw', maxHeight: '10vw' }}
+						src={`http://39.97.165.4:7001${this.state.editimgsrc}`}
+					/>
 				</Form.Item>
 			)
 			editrequired = false

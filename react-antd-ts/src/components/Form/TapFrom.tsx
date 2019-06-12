@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-06-11 19:39:49
+ * @LastEditTime: 2019-06-12 18:57:03
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
@@ -76,7 +76,7 @@ class BaseForm extends React.Component<IProps, IState> {
 		} else {
 			formList.forEach((item: any, index: any) => {
 				let {
-					lable, //标题
+					lable, // 标题
 					field, // 字段key
 					required, // 必填
 					type,
@@ -99,7 +99,11 @@ class BaseForm extends React.Component<IProps, IState> {
 					if (setValue) {
 						let editimg = (
 							<Form.Item label="原图" key="editimg">
-								<img alt="这是一张图片" style={{ maxWidth: '10vw', maxHeight: '10vw' }} src={`./${setValue}`} />
+								<img
+									alt="这是一张图片"
+									style={{ maxWidth: '10vw', maxHeight: '10vw' }}
+									src={`./${setValue}`}
+								/>
 							</Form.Item>
 						)
 						formItemList.push(editimg)

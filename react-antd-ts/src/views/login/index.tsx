@@ -60,7 +60,7 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 		})
 	}
 	componentDidMount() {}
-	render() {
+	public render() {
 		const { getFieldDecorator } = this.props.form
 		if (this.state.loginSuccess) {
 			return <Redirect to="/access" />

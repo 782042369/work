@@ -78,7 +78,7 @@ class index extends React.Component<IProps, IState> {
 		}
 	}
 
-	render() {
+	public render() {
 		const formList = [
 			{
 				type: 'input',

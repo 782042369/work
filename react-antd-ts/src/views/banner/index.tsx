@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-30 15:18:33
+ * @LastEditTime: 2019-06-12 18:26:20
  */
 import * as React from 'react'
 
@@ -63,7 +63,9 @@ class index extends React.Component<IProps, IState> {
 		{
 			title: '图片',
 			dataIndex: 'link',
-			render: (text: any) => <img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`./${text}`} />
+			render: (text: any) => (
+				<img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`http://39.97.165.4:7001${text}`} />
+			)
 		},
 		{ title: '点击跳转', dataIndex: 'focus_img', rowKey: 'add_time' },
 		{
@@ -76,7 +78,7 @@ class index extends React.Component<IProps, IState> {
 			dataIndex: '_id',
 			render: (text: any) => (
 				<span>
-					<Link to={'/addgoodscate?id=' + text}>
+					<Link to={'/addbanner?id=' + text}>
 						<Button type="primary">修改</Button>
 					</Link>
 					<Divider type="vertical" />
@@ -87,7 +89,7 @@ class index extends React.Component<IProps, IState> {
 			)
 		}
 	]
-	render() {
+	public render() {
 		return (
 			<div>
 				<Table

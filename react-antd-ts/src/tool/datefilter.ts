@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 时间过滤器
  * @Date: 2019-05-06 17:53:48
- * @LastEditTime: 2019-06-03 11:33:40
+ * @LastEditTime: 2019-06-12 18:50:20
  */
 
 type Time = keyof {
@@ -15,7 +15,6 @@ type Time = keyof {
 	s: string
 }
 /**
- * 
  * @param time 补零
  */
 const zero = (time: any): string => {
@@ -23,7 +22,6 @@ const zero = (time: any): string => {
 	return arr
 }
 /**
- * 
  * @param {*} timestamp 时间
  * @param {*} formats 正则
  */

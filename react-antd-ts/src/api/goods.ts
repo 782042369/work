@@ -3,12 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: role
  * @Date: 2019-05-05 17:09:31
- * @LastEditTime: 2019-05-27 20:10:24
+ * @LastEditTime: 2019-06-12 18:56:55
  */
 
 import request from '../tool/request'
 /**
- * 
  * @param {*} data 添加商品
  */
 export function goodslist(data?: any) {
@@ -46,7 +45,6 @@ export function editgoods(data?: any) {
 	})
 }
 /**
- * 
  * @param {*} data 商品类型
  */
 export function goodstypelist(data?: any) {
@@ -84,7 +82,6 @@ export function editgoodstype(data?: any) {
 	})
 }
 /**
- * 
  * @param {*} data 商品属性
  */
 export function goodstypeattributelist(data?: any) {
@@ -122,7 +119,6 @@ export function editgoodsattribute(data?: any) {
 	})
 }
 /**
- * 
  * @param {*} data 商品分类
  */
 export function goodscatelist(data?: any) {
