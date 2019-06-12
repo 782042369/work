@@ -3,14 +3,13 @@
  * @LastEditors: 杨宏旋
  * @Description: axios请求
  * @Date: 2019-05-05 17:05:38
- * @LastEditTime: 2019-05-30 17:02:49
+ * @LastEditTime: 2019-06-12 11:04:43
  */
 import axios from 'axios'
 import qs from 'qs'
-
 // 创建axios实例
 const service = axios.create({
-	baseURL: '', // api的base_url
+	baseURL: '',
 	timeout: 100000 // 请求超时时间
 })
 // request拦截器

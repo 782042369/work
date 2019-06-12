@@ -3,11 +3,11 @@
  * @LastEditors: 杨宏旋
  * @Description: 管理后台页面
  * @Date: 2019-04-23 14:57:41
- * @LastEditTime: 2019-06-03 20:00:42
+ * @LastEditTime: 2019-06-11 17:09:48
  */
 import React from 'react'
 import { Layout } from 'antd'
-import { withRouter, BrowserRouter, Switch } from 'react-router-dom'
+import { withRouter, HashRouter, Switch } from 'react-router-dom'
 import ContentMain from '../components/ContentMain'
 import '../assets/css/index.scss'
 import Loadable from 'react-loadable'
@@ -29,7 +29,7 @@ function index() {
 		return <MenuList history={history} />
 	})
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Switch>
 				<PrivateRoute exact path="/login" component={Login} />
 				<Layout>
@@ -54,7 +54,7 @@ function index() {
 					</Layout>
 				</Layout>
 			</Switch>
-		</BrowserRouter>
+		</HashRouter>
 	)
 }
 

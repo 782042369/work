@@ -4,6 +4,8 @@ export default class LoginController extends BaseController {
 	public async index() {
 		try {
 			const code = this.ctx.request.body.code
+			console.log('code: ', code)
+			console.log('this.ctx.session.code: ', this.ctx.session.code)
 			if (code === this.ctx.session.code) {
 				const result: any = await this.service.user.finduser()
 				if (result.length > 0) {

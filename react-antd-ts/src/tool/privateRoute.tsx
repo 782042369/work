@@ -3,13 +3,14 @@
  * @LastEditors: 杨宏旋
  * @Description: 路由卫士
  * @Date: 2019-05-05 18:20:10
- * @LastEditTime: 2019-06-03 19:45:40
+ * @LastEditTime: 2019-06-12 09:59:26
  */
 import * as React from 'react'
 import { Route, withRouter, RouteComponentProps } from 'react-router-dom'
 import { RouterProps, RouteProps } from 'react-router'
-import { message } from 'antd'
+// import { message } from 'antd'
 import User from '../store/user'
+console.log('User: ', User)
 interface singerState {
 	isAuthenticated: any
 }
@@ -28,6 +29,8 @@ class index extends React.Component<singerProps & RouteComponentProps<{}>, singe
 		}
 	}
 	componentWillMount() {
+		console.log('this.state.isAuthenticated: ', this.state.isAuthenticated)
+		console.log('this.props.pat: ', this.props.path)
 		if (!this.state.isAuthenticated && this.props.path !== '/login') {
 			const { history } = this.props
 			setTimeout(() => {
@@ -37,11 +40,11 @@ class index extends React.Component<singerProps & RouteComponentProps<{}>, singe
 	}
 	render() {
 		let { component: Component, ...rest } = this.props
-		if (this.state.isAuthenticated || this.props.path === '/login') {
-			return <Route {...rest} component={Component} />
-		} else {
-			return message.error('请登录...')
-		}
+		// if (this.state.isAuthenticated || this.props.path === '/login') {
+		return <Route {...rest} component={Component} />
+		// } else {
+		// 	return message.error('请登录...')
+		// }
 	}
 }
 

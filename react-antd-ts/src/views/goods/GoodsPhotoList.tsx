@@ -60,7 +60,7 @@ class index extends React.Component<IProps, IState> {
 						setValue: element.color_id,
 						placeholder: '请输入',
 						field: element['_id'],
-						imgpath: `http://127.0.0.1:7001${element.img_url}`,
+						imgpath: `${element.img_url}`,
 						list: color,
 						render: () => (
 							<Button

@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-31 15:17:43
+ * @LastEditTime: 2019-06-12 09:36:08
  * @Description: 传统
  */
 import React from 'react'
@@ -132,7 +132,7 @@ class index extends React.Component<IProps, IState> {
 									<img
 										alt="这是一张图片"
 										style={{ maxWidth: '10vw', maxHeight: '10vw' }}
-										src={`http://127.0.0.1:7001${setValue}`}
+										src={`./${setValue}`}
 									/>
 								</Form.Item>
 							)

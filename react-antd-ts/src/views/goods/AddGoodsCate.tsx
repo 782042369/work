@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 商品
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-06-03 18:54:31
+ * @LastEditTime: 2019-06-11 19:33:45
  */
 import * as React from 'react'
 
@@ -168,11 +168,7 @@ class WrappedRegistrationForm extends React.Component<IProps, IState> {
 		if (this.state.editimgsrc !== '') {
 			editimg = (
 				<Form.Item label="原图">
-					<img
-						alt=""
-						style={{ maxWidth: '10vw', maxHeight: '10vw' }}
-						src={`http://127.0.0.1:7001${this.state.editimgsrc}`}
-					/>
+					<img alt="" style={{ maxWidth: '10vw', maxHeight: '10vw' }} src={`./${this.state.editimgsrc}`} />
 				</Form.Item>
 			)
 			editrequired = false

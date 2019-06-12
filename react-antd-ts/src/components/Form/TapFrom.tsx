@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2019-05-21 16:13:12
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2019-05-31 15:54:48
+ * @LastEditTime: 2019-06-11 19:39:49
  * @Description: 选项卡式表单提交
  */
 import React from 'react'
@@ -99,11 +99,7 @@ class BaseForm extends React.Component<IProps, IState> {
 					if (setValue) {
 						let editimg = (
 							<Form.Item label="原图" key="editimg">
-								<img
-									alt="这是一张图片"
-									style={{ maxWidth: '10vw', maxHeight: '10vw' }}
-									src={`http://127.0.0.1:7001${setValue}`}
-								/>
+								<img alt="这是一张图片" style={{ maxWidth: '10vw', maxHeight: '10vw' }} src={`./${setValue}`} />
 							</Form.Item>
 						)
 						formItemList.push(editimg)

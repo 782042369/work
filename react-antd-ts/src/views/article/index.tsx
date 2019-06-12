@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 导航
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-30 18:02:36
+ * @LastEditTime: 2019-06-11 19:34:20
  */
 import * as React from 'react'
 
@@ -58,9 +58,7 @@ class index extends React.Component<IProps, IState> {
 		{
 			title: '文章图片',
 			dataIndex: 'article_img',
-			render: (text: any) => (
-				<img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`http://127.0.0.1:7001${text}`} />
-			)
+			render: (text: any) => <img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`./${text}`} />
 		},
 		{ title: '所属分类', dataIndex: 'cate_id' },
 		{ title: '排序', dataIndex: 'sort' },

@@ -24,6 +24,10 @@ const plugin: EggPlugin = {
 	alinode: {
 		enable: true,
 		package: 'egg-alinode'
+	},
+	ejs: {
+		enable: true,
+		package: 'egg-view-ejs'
 	}
 }
 

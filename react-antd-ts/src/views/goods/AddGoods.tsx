@@ -38,7 +38,6 @@ interface IState {
 	goods_gift: any
 	recommend: any
 	goods_attrs: any
-	valarr: UIType
 }
 class index extends React.Component<IProps, IState> {
 	constructor(props: any) {
@@ -65,8 +64,7 @@ class index extends React.Component<IProps, IState> {
 			goods_fitting: '',
 			goods_gift: '',
 			recommend: '',
-			goods_attrs: '',
-			valarr: []
+			goods_attrs: ''
 		}
 	}
 	goodscolorlist() {

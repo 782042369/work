@@ -4,6 +4,7 @@ import { Form, Icon, Input, Button, message } from 'antd'
 import { Redirect } from 'react-router'
 import { dologin } from '../../api/login'
 import { Md5 } from 'ts-md5/dist/md5'
+import User from '../../store/user'
 interface FormProps {
 	form: any
 }
@@ -19,12 +20,14 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 		super(props)
 		this.state = {
 			loginSuccess: false,
-			codeimg: 'captchacode?' + new Date().getTime()
+			codeimg: './captchacode?' + new Date().getTime()
 		}
 	}
 	handleSubmit = (e: any) => {
 		e.preventDefault()
 		this.props.form.validateFields((err: any, values: any) => {
+			console.log('values: ', values)
+			console.log('err: ', err)
 			if (!err) {
 				values.password = Md5.hashStr(values.password).toString()
 				dologin(values)
@@ -33,7 +36,7 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 							message.success(res.message)
 							sessionStorage.setItem('role_id', res.data.role_id)
 							sessionStorage.setItem('userName', res.data.userName)
-							sessionStorage.setItem('userName', res.data.userName)
+							User.userlogin = true
 							setTimeout(() => {
 								this.setState({
 									loginSuccess: true
@@ -45,6 +48,7 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 						}
 					})
 					.catch((err: any) => {
+						console.log('err: ', err)
 						this.svgcode()
 					})
 			}
@@ -52,7 +56,7 @@ class NormalLoginForm extends React.Component<IProps, IState> {
 	}
 	svgcode = () => {
 		this.setState({
-			codeimg: 'captchacode?' + new Date().getTime()
+			codeimg: './captchacode?' + new Date().getTime()
 		})
 	}
 	componentDidMount() {}

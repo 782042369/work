@@ -3,7 +3,7 @@
  * @LastEditors: 杨宏旋
  * @Description: 角色
  * @Date: 2019-05-05 15:48:46
- * @LastEditTime: 2019-05-30 18:06:34
+ * @LastEditTime: 2019-06-12 11:12:26
  */
 import * as React from 'react'
 
@@ -76,9 +76,7 @@ class index extends React.Component<IProps, IState> {
 			title: '缩略图',
 			key: 'cate_img',
 			dataIndex: 'cate_img',
-			render: (text: any) => (
-				<img alt="" style={{ maxWidth: '4vw', maxHeight: '4svw' }} src={`http://127.0.0.1:7001${text}`} />
-			)
+			render: (text: any) => <img alt="" style={{ maxWidth: '4vw', maxHeight: '4svw' }} src={`./${text}`} />
 		},
 		{ title: '描述', dataIndex: 'description', key: 'description' },
 		{ title: '排序', dataIndex: 'sort', key: 'sort' },
@@ -102,9 +100,7 @@ class index extends React.Component<IProps, IState> {
 				title: '缩略图',
 				key: 'cate_img',
 				dataIndex: 'cate_img',
-				render: (text: any) => (
-					<img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`http://127.0.0.1:7001${text}`} />
-				)
+				render: (text: any) => <img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`./${text}`} />
 			},
 			{ title: '描述', dataIndex: 'description', key: 'description' },
 			{ title: '排序', dataIndex: 'sort', key: 'sort' },

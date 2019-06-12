@@ -1,4 +1,5 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg'
+import * as path from 'path'
 
 export default (appInfo: EggAppInfo) => {
 	const config = {} as PowerPartial<EggAppConfig>
@@ -37,6 +38,15 @@ export default (appInfo: EggAppInfo) => {
 		encoding: 'gbk',
 		outputJSON: true
 	}
+	config.static = {
+		prefix: '/static/',
+		dir: path.join(appInfo.baseDir, 'app/view/static'),
+		// support lazy load
+		dynamic: true,
+		preload: false,
+		buffer: false,
+		maxFiles: 1000
+	}
 	config.cors = {
 		origin: 'http://127.0.0.1:3000',
 		credentials: true,
@@ -52,6 +62,11 @@ export default (appInfo: EggAppInfo) => {
 	config.multipart = {
 		files: 50, // body大于配置的threshold才会压缩
 		fields: 50 // body大于配置的threshold才会压缩
+	}
+	config.view = {
+		mapping: {
+			'.html': 'ejs'
+		} //左边写成.html后缀，会自动渲染.html文件
 	}
 	config.graphql = {
 		router: '/graphql',
@@ -88,12 +103,6 @@ export default (appInfo: EggAppInfo) => {
 	//   // load into agent, default is close
 	//   agent: false,
 	// };
-	config.cluster = {
-		listen: {
-			port: 7001, //可自己配置
-			hostname: '0.0.0.0'
-		}
-	}
 	config.alinode = {
 		server: 'wss://agentserver.node.aliyun.com:8080',
 		appid: '80097',

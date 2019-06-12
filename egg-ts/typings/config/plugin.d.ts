@@ -20,6 +20,7 @@ import 'egg-cors';
 import 'egg-redis';
 import 'egg-graphql';
 import 'egg-alinode';
+import 'egg-view-ejs';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -41,5 +42,6 @@ declare module 'egg' {
     redis?: EggPluginItem;
     graphql?: EggPluginItem;
     alinode?: EggPluginItem;
+    ejs?: EggPluginItem;
   }
 }

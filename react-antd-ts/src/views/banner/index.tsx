@@ -63,9 +63,7 @@ class index extends React.Component<IProps, IState> {
 		{
 			title: '图片',
 			dataIndex: 'link',
-			render: (text: any) => (
-				<img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`http://127.0.0.1:7001${text}`} />
-			)
+			render: (text: any) => <img alt="" style={{ maxWidth: '4vw', maxHeight: '4vw' }} src={`./${text}`} />
 		},
 		{ title: '点击跳转', dataIndex: 'focus_img', rowKey: 'add_time' },
 		{
