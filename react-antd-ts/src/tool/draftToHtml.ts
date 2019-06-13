@@ -44,7 +44,6 @@ let blockTypesMapping: any = {
    */
 function getBlockTag(type: any) {
 	return type && blockTypesMapping[type]
-}
 
 /**
    * Function will return style string for a block.
