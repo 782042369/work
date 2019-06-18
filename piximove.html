@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./pixi.js"></script>
+<script>
+  //Aliases
+  var Container = PIXI.Container,
+    autoDetectRenderer = PIXI.autoDetectRenderer,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    Sprite = PIXI.Sprite;
+
+  //Create a Pixi stage and renderer 
+  var stage = new Container(),
+    renderer = autoDetectRenderer(256, 256);
+  document.body.appendChild(renderer.view);
+
+  //Load an image and the run the `setup` function
+  loader
+    .add("img/cat.png")
+    .load(setup);
+
+  //Define any variables that are used in more than one function
+  var cat;
+
+  function setup() {
+
+    //Create the `cat` sprite 
+    cat = new Sprite(resources["img/cat.png"].texture);
+    cat.y = 96;
+    stage.addChild(cat);
+
+    //Start the game loop
+    gameLoop();
+  }
+
+  function gameLoop() {
+
+    //Loop this function 60 times per second
+    requestAnimationFrame(gameLoop);
+
+    //Move the cat 1 pixel per frame
+    cat.x += 1;
+
+    //Render the stage
+    renderer.render(stage);
+  }
+</script>
