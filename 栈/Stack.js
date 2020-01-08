@@ -2,9 +2,10 @@
  * @Author: 杨宏旋
  * @Date: 2020-01-08 18:00:56
  * @LastEditors  : 杨宏旋
- * @LastEditTime : 2020-01-08 18:03:09
+ * @LastEditTime : 2020-01-08 18:05:17
  * @Description:
  */
+// 栈，是一种遵从后进先出(LIFO,Later-In-First-Out)原则的有序集合。新添加的元素都保存在栈的一端，称作栈顶，另一端叫做栈底。在栈中，新元素都靠近栈顶，旧元素都靠近栈底。
 class Stack {
   constructor() {
     this.items = [];
