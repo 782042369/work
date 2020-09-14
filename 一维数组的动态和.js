@@ -1,10 +1,8 @@
-/*
- * @Author: 杨宏旋
- * @Date: 2020-09-14 15:52:11
- * @LastEditors: 杨宏旋
- * @LastEditTime: 2020-09-14 16:22:37
- * @Description:
- */
+// @Author: 杨宏旋
+// @Date: 2020-09-14 15:52:11
+// @LastEditors: 杨宏旋
+// @LastEditTime: 2020-09-14 16:22:37
+// @Description:
 /**
  * 一维数组的动态和
  * @param {number[]} nums

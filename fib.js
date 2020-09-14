@@ -1,10 +1,9 @@
-/*
- * @Author: 杨宏旋
- * @Date: 2020-05-22 10:04:57
- * @LastEditors: 杨宏旋
- * @LastEditTime: 2020-05-22 10:26:08
- * @Description: 斐波那契函数
- */
+/* eslint-disable no-unused-vars */
+// @Author: 杨宏旋
+// @Date: 2020-05-22 10:04:57
+// @LastEditors: 杨宏旋
+// @LastEditTime: 2020-05-22 10:26:08
+// @Description: 斐波那契函数
 const fib1 = function (n) {
   if (n <= 2) {
     return 1
@@ -20,10 +19,6 @@ const fib2 = function (n, res1 = 1, res2 = 1) {
   }
 }
 // 缓存
-const fib3 = function (n) {
-  const cache = []
-  return helper(cache, n)
-}
 const helper = function (cache, n) {
   if (n === 1 || n === 2) {
     return 1
@@ -31,6 +26,10 @@ const helper = function (cache, n) {
   if (cache[n]) return cache[n]
   cache[n] = helper(cache, n - 1) + helper(cache, n - 2)
   return cache[n]
+}
+const fib3 = function (n) {
+  const cache = []
+  return helper(cache, n)
 }
 const fib4 = function (n) {
   const dp = []

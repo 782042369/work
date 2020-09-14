@@ -1,10 +1,8 @@
-/*
- * @Author: 杨宏旋
- * @Date: 2020-09-14 16:13:19
- * @LastEditors: 杨宏旋
- * @LastEditTime: 2020-09-14 16:21:53
- * @Description: 好数对的数目
- */
+// @Author: 杨宏旋
+// @Date: 2020-09-14 16:13:19
+// @LastEditors: 杨宏旋
+// @LastEditTime: 2020-09-14 16:21:53
+// @Description: 好数对的数目
 /**
  * @param {number[]} nums
  * @return {number}
