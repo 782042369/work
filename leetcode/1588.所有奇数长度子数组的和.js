@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2020-09-28 16:04:49
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2020-09-28 16:11:51
+ * @LastEditTime: 2020-10-13 11:15:51
  * @Description:
  */
 /**
@@ -10,7 +10,6 @@
  * @return {number}
  */
 var sumOddLengthSubarrays = function (arr) {
-  console.log('arr: ', arr)
   let sum = 0
   let index = 1
   while (index <= arr.length) {
@@ -23,7 +22,6 @@ var sumOddLengthSubarrays = function (arr) {
     }
     index += 2
   }
-  console.log('sum: ', sum)
   return sum
 }
 sumOddLengthSubarrays([1, 4, 2, 5, 3])
