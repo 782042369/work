@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2020-10-20 16:06:19
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-01-28 11:02:31
+ * @LastEditTime: 2021-01-28 11:54:09
  * @Description:
  */
 /**
@@ -16,18 +16,22 @@ class MyPromise {
     this.status = PENDING
     this.value = undefined
     this.reason = undefined
-
+    this.onFulfilledCallbacks = [] // 异步订阅onFulfilled任务
+    this.onRejectedCallbacks = [] // 异步订阅onRejected任务
     const resolve = (value) => {
-      console.log('value: ', value)
       if (this.status === PENDING) {
         this.status = FULFILLED
         this.value = value
+        // 发布onFulfilled任务
+        this.onFulfilledCallbacks.forEach((fn) => fn())
       }
     }
     const reject = (reason) => {
       if (this.status === PENDING) {
         this.status = REJECTED
         this.reason = reason
+        // 发布onRejected任务
+        this.onRejectedCallbacks.forEach((fn) => fn())
       }
     }
     try {
@@ -42,6 +46,16 @@ class MyPromise {
     }
     if (this.status === REJECTED) {
       onRejected(this.reason)
+    }
+    if (this.status === PENDING) {
+      // 订阅onFulfilled任务
+      this.onFulfilledCallbacks.push(() => {
+        onFulfilled(this.value)
+      })
+      // 订阅onRejected任务
+      this.onRejectedCallbacks.push(() => {
+        onRejected(this.reason)
+      })
     }
   }
 }
