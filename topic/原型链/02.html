@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2021-03-10 11:59:50
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-03-10 16:17:55
+ * @LastEditTime: 2021-03-10 16:25:58
  * @Description:
 -->
 <!DOCTYPE html>
@@ -19,7 +19,9 @@
   /**
    * 继承
    * 原型链继承容易污染引用值数据
+   * 实例化时无法向父类构造函数传参。
    */
+  Object.prototype.prop = '我是Object类原型上的属性'
   function Father() {
     this.a = 1
     this.b = {
@@ -36,7 +38,7 @@
 
   function Stepfather() {}
   Stepfather.prototype = new Father()
-  Stepfather.constructor = Stepfather
+  Stepfather.prototype.constructor = Stepfather // 修正原型上的constructor属性
   Stepfather.prototype.propB = '我是子类原型上的属性'
 
   const childA = new Stepfather()

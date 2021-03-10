@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2021-03-10 11:59:50
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-03-10 16:26:07
+ * @LastEditTime: 2021-03-10 16:37:29
  * @Description:
 -->
 <!DOCTYPE html>
@@ -17,8 +17,8 @@
 </html>
 <script>
   /**
-   * 构造函数继承
-   * 子类实例不是父类的实例，无法继承父类原型属性。
+   * 原型式继承
+   * 实例化时无法向父类构造函数传参，这一点和原型链继承并无差异。
    */
   Object.prototype.prop = '我是Object类原型上的属性'
   function Father() {
@@ -35,9 +35,9 @@
   }
   Father.prototype.propA = '我是父类原型上的属性'
 
-  function Stepfather() {
-    Father.call(this)
-  }
+  function Stepfather() {}
+  Stepfather.prototype = Object.create(Father.prototype)
+  Stepfather.prototype.constructor = Stepfather // 修正原型上的constructor属性
   Stepfather.prototype.propB = '我是子类原型上的属性'
 
   const childA = new Stepfather()

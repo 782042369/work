@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2021-03-10 11:59:50
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-03-10 16:26:07
+ * @LastEditTime: 2021-03-10 16:28:56
  * @Description:
 -->
 <!DOCTYPE html>
@@ -17,11 +17,12 @@
 </html>
 <script>
   /**
-   * 构造函数继承
-   * 子类实例不是父类的实例，无法继承父类原型属性。
+   * 组合继承
+   * 父类构造函数被执行了两次，污染了子类原型。
    */
   Object.prototype.prop = '我是Object类原型上的属性'
   function Father() {
+    console.log(111)
     this.a = 1
     this.b = {
       name: '',
@@ -38,6 +39,8 @@
   function Stepfather() {
     Father.call(this)
   }
+  Stepfather.prototype = new Father()
+  Stepfather.prototype.constructor = Stepfather // 修正原型上的constructor属性
   Stepfather.prototype.propB = '我是子类原型上的属性'
 
   const childA = new Stepfather()
