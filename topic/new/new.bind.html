@@ -1,0 +1,34 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-03-03 17:10:55
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-03-03 17:42:32
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function test() {}
+  function fn() {}
+  const Bind = function (context) {
+    if (typeof this !== 'function') {
+      throw new TypeError('Error')
+    }
+    var _this = this
+    var args = [...arguments].slice(1)
+    return function F() {
+      if (this instanceof F) {
+        return new _this(...args, ...arguments)
+      }
+      return _this.apply(context, args.concat(...arguments))
+    }
+  }
+</script>

@@ -1,0 +1,56 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-02-04 14:51:04
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-03-04 16:30:40
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function test1(local) {
+    // var local = 1
+    return function () {
+      local++
+      console.log('local: ', local)
+      return local
+    }
+  }
+  test1.prototype
+  function test2() {
+    lives = 0
+    const add = function () {
+      lives += 1
+      console.log('lives: ', lives)
+    }
+    const Minus = function () {
+      lives -= 1
+      console.log('lives: ', lives)
+    }
+    return {
+      add,
+      Minus,
+    }
+  }
+  debugger
+
+  const test = test2()
+  test.add()
+  test.add()
+  test.add()
+  test.add()
+  test.Minus()
+  test.add()
+  // const Test2 = test2()
+  // Test2.say()
+  // Test2.message = 2
+  // Test2.say()
+</script>

@@ -1,0 +1,60 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-03-10 11:59:50
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-03-10 16:19:32
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /**
+   * 构造函数继承
+   * 父类构造函数被执行了两次，污染了子类原型。
+   */
+  function Father() {
+    this.a = 1
+    this.b = {
+      name: '',
+    }
+    this.c = {
+      age: '',
+    }
+  }
+  Father.prototype.say = function () {
+    console.log('hi')
+  }
+  Father.prototype.propA = '我是父类原型上的属性'
+
+  function Stepfather() {
+    Father.call(this)
+  }
+  Stepfather.prototype = new Father()
+  Stepfather.constructor = Stepfather
+  Stepfather.prototype.propB = '我是子类原型上的属性'
+
+  const childA = new Stepfather()
+  console.log('childA: ', childA, childA.propA, childA.propB, childA.a)
+  const childB = new Stepfather()
+  console.log('---修改前---')
+  console.log('childA.b: ', childA.b)
+  console.log('childA.c: ', childA.c)
+  console.log('childB.b: ', childB.b)
+  console.log('childB.c: ', childB.c)
+  console.log('---修改值---')
+  childA.a = 2
+  childA.b.name = '2'
+  childA.c = '2'
+  console.log('childA.b: ', childA.b)
+  console.log('childA.c: ', childA.c)
+  console.log('childB.b: ', childB.b)
+  console.log('childB.c: ', childB.c)
+</script>

@@ -1,46 +1,39 @@
 <!--
  * @Author: 杨宏旋
  * @Date: 2020-01-08 17:35:24
- * @LastEditors  : 杨宏旋
- * @LastEditTime : 2020-01-18 10:45:15
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-02-25 15:05:13
  * @Description:
  -->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>数据结构-队列</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>数据结构-队列</title>
-</head>
-
-<body>
-
-</body>
-
+  <body></body>
 </html>
 <script type="module">
   import Queue from '../tools/Queue.js'
-  function game(namelist, num){
+  function game(namelist, num) {
     // 创建队列结构
     const q = new Queue()
+
     // 添加队列
-    for(let i =0;i<namelist.length;i++){
+    for (let i = 0; i < namelist.length; i++) {
       q.enqueue(namelist[i])
     }
-    while (q.size()>1) {
-      for(let i =0;i<num-1;i++){
+    while (q.size() > 1) {
+      for (let i = 0; i < num - 1; i++) {
         q.enqueue(q.dequeue())
       }
       q.dequeue()
     }
-    console.log('q.front(): ', q.front());
     return q.front()
   }
-  const namelist = ['杨','王','红']
-  console.time();
-  game(namelist,2);
-  console.timeEnd();
-
+  const namelist = ['杨', '王', '红']
+  game(namelist, 2)
 </script>
