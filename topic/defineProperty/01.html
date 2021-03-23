@@ -1,0 +1,42 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-03-22 15:50:04
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-03-22 15:59:52
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const o = (function () {
+    const p = {
+      name: '1',
+      age: 2,
+    }
+    return {
+      run(k) {
+        return p[k]
+      },
+    }
+  })()
+  Object.defineProperty(Object.prototype, 'self', {
+    get: function () {
+      return this
+    },
+    set: function (value) {
+      return this
+    },
+  })
+  // 该属性的存在是确保该属性可被delete方法删除});
+  var person = o.run('self')
+  delete Object.prototype.self
+  // 由于不推荐使用prototype来扩展自己定义的属性（扩展标准规定的除外），这里把扩展再去掉。这里面的用到的都是共有方法，不是__xxx__这种更为私有的方法（__xxx__）这种可能在不同浏览器里的实现不一样。
+</script>

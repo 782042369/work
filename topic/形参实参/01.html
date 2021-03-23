@@ -1,0 +1,51 @@
+<!--
+ * @Author:杨宏旋
+ * @Date:2021-03-18 11:40:42
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-03-18 11:49:50
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const a = {
+    name: 1,
+  }
+  const b = 2
+  function test(a, b) {
+    console.log('>>>>>>>>>>>>>>>')
+    console.log('a:2', a)
+    console.log('b:2', b)
+    console.log('arguments[0]:2 ', arguments[0])
+    console.log('arguments[1]:2 ', arguments[1])
+    // a.name = 11 // 直接修改引用a
+    // b = 22 // 只修改函数内部的
+
+    // a = {
+    //   name: 11, // 只修改函数内部的
+    // }
+    // b = [22] // 只修改函数内部的
+
+    arguments[0].name = 11 // 直接修改引用a
+    arguments[1] = 2 // 只修改函数内部的
+    console.log('>>>>>>>>>>>>>>>')
+    console.log('a:3', a)
+    console.log('b:3', b)
+    console.log('arguments[0]:4 ', arguments[0])
+    console.log('arguments[1]:4 ', arguments[1])
+  }
+  console.log('a:1', a)
+  console.log('b:1', b)
+  test(a, b)
+  console.log('>>>>>>>>>>>>>>>')
+  console.log('a:4', a)
+  console.log('b:4', b)
+</script>
