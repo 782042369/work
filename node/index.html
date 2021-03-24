@@ -1,0 +1,52 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-03-24 15:23:19
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-03-24 15:55:14
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="down" onclick="handleDown()">下载</button>
+  </body>
+</html>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+  function handleDown() {
+    axios
+      .post(
+        'http://127.0.0.1:7666/api/downzip',
+        {},
+        {
+          herders: {
+            'content-type': 'application/octet-stream',
+          },
+          responseType: 'blob',
+        }
+      )
+      .then((res) => {
+        const { data: blob } = res
+        const reader = new FileReader()
+        reader.readAsDataURL(blob)
+        reader.onload = (e) => {
+          const a = document.createElement('a')
+          a.download = '1.zip'
+          // 后端设置的文件名称在res.headers的 "content-disposition": "form-data; name=\"attachment\"; filename=\"20181211191944.zip\"",
+          a.href = e.target.result
+          document.body.appendChild(a)
+          a.click()
+          document.body.removeChild(a)
+        }
+      })
+      .catch((err) => {
+        console.error(err.message)
+      })
+  }
+</script>
