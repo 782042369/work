@@ -1,0 +1,43 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-04-15 15:59:47
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-04-15 17:02:54
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  var name = '1'
+  const a = {
+    name: '2',
+    say() {
+      console.log(this.name)
+      console.log('this: ', this)
+    },
+  }
+  a.say() // 2
+  var aa = a.say
+  aa() // 1
+  const b = {
+    name: '3',
+    say(fn) {
+      fn()
+    },
+  }
+  b.say(a.say) // 1
+  const bb = {
+    say() {
+      console.log(this.name)
+    },
+  }
+  bb.say.call(b) // 3
+</script>

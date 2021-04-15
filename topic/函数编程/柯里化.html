@@ -1,0 +1,29 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-04-13 10:46:04
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-04-15 17:12:55
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const curry = (fn) =>
+    (judge = (...args) =>
+      args.length >= fn.length ? fn(...args) : (arg) => judge(...args, arg))
+
+  function sum(a, b, c) {
+    return a + b + c
+  }
+
+  const currySum = curry(sum)
+  console.log('currySum(1,2,3): ', currySum(1, 2, 3, 4))
+</script>
