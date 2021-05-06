@@ -2,12 +2,12 @@
  * @Author: 杨宏旋
  * @Date: 2021-05-06 15:46:55
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-05-06 15:51:38
+ * @LastEditTime: 2021-05-06 18:01:35
  * @Description:
  */
 import Watcher from './Watcher.js'
 
-class Compile {
+export default class Compile {
   constructor(el, vm) {
     this.vm = vm
     this.el = document.querySelector(el)
@@ -111,5 +111,3 @@ class Compile {
     return dir.indexOf('on:') === 0
   }
 }
-
-export default Compile

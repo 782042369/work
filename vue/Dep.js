@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-05-06 15:49:11
  * @Description:
  */
-class Dep {
+export default class Dep {
   constructor() {
     this.subs = []
   }
@@ -19,5 +19,3 @@ class Dep {
     })
   }
 }
-
-export default Dep

@@ -2,12 +2,12 @@
  * @Author: 杨宏旋
  * @Date: 2021-05-06 15:40:35
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-05-06 15:52:33
+ * @LastEditTime: 2021-05-06 18:00:57
  * @Description:
  */
 import Dep from './Dep.js'
 
-class Watcher {
+export default class Watcher {
   constructor(vm, exp, cb) {
     this.cb = cb
     this.vm = vm
@@ -32,5 +32,3 @@ class Watcher {
     return value
   }
 }
-
-export default Watcher
