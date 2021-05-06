@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2021-04-13 10:46:04
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-04-15 17:12:55
+ * @LastEditTime: 2021-04-15 17:40:42
  * @Description:
 -->
 <!DOCTYPE html>
@@ -16,14 +16,45 @@
   <body></body>
 </html>
 <script>
-  const curry = (fn) =>
-    (judge = (...args) =>
-      args.length >= fn.length ? fn(...args) : (arg) => judge(...args, arg))
+  // const curry = (fn) =>
+  //   (judge = (...args) =>
+  //     args.length >= fn.length ? fn(...args) : (arg) => judge(...args, arg))
+
+  // function sum(a, b, c) {
+  //   return a + b + c
+  // }
+
+  // const currySum = curry(sum)
+  // console.log('currySum(1,2,3): ', currySum(1, 2, 3, 4))
+  // 柯里化函数第一版
+  function curry(fn) {
+    return function inner() {
+      // 浅拷贝入参
+      const args = Array.prototype.slice.call(arguments)
+      // 如果下一个参数的长度大于了函数的行参个数，则跳出递归
+      if (arguments.length >= fn.length) {
+        return fn.apply(undefined, args)
+      } else {
+        // 否则继续处理后续参数，返回curring函数
+        return function () {
+          // 获取合并上一次和下一次的入参
+          const allArgs = args.concat(Array.prototype.slice.call(arguments))
+          console.log('allArgs: ', allArgs)
+          return inner.apply(undefined, allArgs)
+        }
+      }
+    }
+  }
 
   function sum(a, b, c) {
     return a + b + c
   }
-
-  const currySum = curry(sum)
-  console.log('currySum(1,2,3): ', currySum(1, 2, 3, 4))
+  const addCurry = curry(sum)
+  console.log(' addCurry(): ', addCurry(1)(2, 3))
+  // // 或者
+  // const addCurry = curry(add, 1)
+  // addCurry(2) // 3
+  // // 或者
+  // const addCurry = curry(add)
+  // addCurry(1, 2) // 3
 </script>
