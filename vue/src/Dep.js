@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2021-05-06 15:45:11
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-05-06 15:49:11
+ * @LastEditTime: 2021-05-06 18:03:47
  * @Description:
  */
 export default class Dep {
@@ -15,6 +15,7 @@ export default class Dep {
   }
   notify() {
     this.subs.forEach((sub) => {
+      debugger
       sub.update()
     })
   }
