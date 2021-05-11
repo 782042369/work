@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background: red;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
+<script>
+  const changBgColor = function () {
+    const r = Math.floor(Math.random() * 255)
+    const g = Math.floor(Math.random() * 255)
+    const b = Math.floor(Math.random() * 255)
+    document.body.style.background = `rgb(${r},${g},${b})`
+  }
+  // 定时器
+  // function throttle(fn, delay) {
+  //   let timer = null
+  //   return function () {
+  //     const context = this
+  //     const args = arguments
+  //     if (!timer) {
+  //       timer = setTimeout(function () {
+  //         fn.apply(context, args)
+  //         timer = null
+  //       }, delay)
+  //     }
+  //   }
+  // }
+  function throttle(fn, delay) {
+    let pre = 0
+    return function () {
+      const context = this
+      const args = arguments
+      let now = Date.now()
+      if (now - pre >= delay) {
+        fn.apply(context, args)
+        pre = now
+      }
+    }
+  }
+
+  window.addEventListener('resize', throttle(changBgColor, 2000))
+</script>
