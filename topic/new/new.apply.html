@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2021-03-03 17:10:55
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-03-03 17:41:53
+ * @LastEditTime: 2021-05-10 14:54:25
  * @Description:
 -->
 <!DOCTYPE html>
@@ -28,15 +28,12 @@
   }
   Function.prototype.Apply = function (context = window) {
     context.fn = this
-    var result = null
-    if (arguments[1]) {
-      result = context.fn(...arguments)
-    } else {
-      result = context.fn()
-    }
+    const result = arguments[1] ? context.fn(...arguments) : context.fn()
     delete context.fn
     return result
   }
-  person.fullName.apply(person1) // 将返回 "Bill Gates"
-  person.fullName.Apply(person1) // 将返回 "Bill Gates"
+  const result = person.fullName.apply(person1) // 将返回 "Bill Gates"
+  console.log('result: ', result)
+  const result1 = person.fullName.Apply(person1) // 将返回 "Bill Gates"
+  console.log('result1: ', result1)
 </script>

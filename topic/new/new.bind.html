@@ -2,7 +2,7 @@
  * @Author: 杨宏旋
  * @Date: 2021-03-03 17:10:55
  * @LastEditors: 杨宏旋
- * @LastEditTime: 2021-03-03 17:42:32
+ * @LastEditTime: 2021-05-10 14:55:19
  * @Description:
 -->
 <!DOCTYPE html>
@@ -18,12 +18,12 @@
 <script>
   function test() {}
   function fn() {}
-  const Bind = function (context) {
+  Function.prototype.Bind = function (context) {
     if (typeof this !== 'function') {
       throw new TypeError('Error')
     }
-    var _this = this
-    var args = [...arguments].slice(1)
+    const _this = this
+    const args = [...arguments].slice(1)
     return function F() {
       if (this instanceof F) {
         return new _this(...args, ...arguments)
