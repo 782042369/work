@@ -1,0 +1,37 @@
+<!--
+ * @Author: 杨宏旋
+ * @Date: 2021-06-01 12:06:57
+ * @LastEditors: 杨宏旋
+ * @LastEditTime: 2021-06-01 12:07:33
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function search(arr, key) {
+    var low = 0,
+      high = arr.length - 1 //定义一个最高点和最低点
+    while (low <= high) {
+      //当最高点大于最低点的时候
+      const mid = Math.floor((high + low) / 2) //挑一个中间数
+      if (arr[mid] == key) {
+        return mid
+      } //如果中间数等于查找的值，返回这个中间数的位置
+      else if (arr[mid] < key) {
+        low = mid + 1 //中间值小于查找的值的话，将查找的数列段的最低点变成中点+1
+      } else if (arr[mid] > key) {
+        high = mid - 1 //大于的话最高点变成中点-1
+      } else {
+        return -1 //否则返回-1
+      }
+    }
+  }
+</script>
