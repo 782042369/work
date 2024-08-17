@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+  // Task = {
+  //   setID: function (ID) {
+  //     this.id = ID;
+  //   },
+  //   outputID: function () {
+  //     console.log(this.id);
+  //   }
+  // };
+  // // 让XYZ委托Task
+  // XYZ = Object.create(Task);
+  // XYZ.prepareTask = function (ID, Label) {
+  //   this.setID(ID);
+  //   this.label = Label;
+  // };
+  // XYZ.outputTaskDetails = function () {
+  //   this.outputID();
+  //   console.log(this.label);
+  // };
+  // console.log('XYZ: ', XYZ);
+  // ABC = Object.create(Task);
+  // console.log('ABC: ', ABC);
+
+  // function Foo() {}
+  // var a1 = new Foo();
+  // a1.constructor; // Foo(){}
+  // console.log('a1.constructor: ', a1.constructor);
+  // a1.constructor.name; // "Foo"
+  // console.log('a1.constructor.name: ', a1.constructor.name);
+
+  // function Foo() {}
+  // var a1 = new Foo();
+  // Foo.prototype.constructor = function Gotcha() {};
+  // a1.constructor; //
+  // function Gotcha() {}
+  // a1.constructor.name; // "Gotcha"
+  // console.log('a1.constructor.name: ', a1.constructor.name);
+  // a1; // Foo {}
+  // console.log('a1: ', a1);
+
+  // var Foo = {};
+  // var a1 = Object.create(Foo);
+  // a1; // Object {}
+  // console.log('a1: ', a1);
+  // Object.defineProperty(Foo, "constructor", {
+  //   enumerable: false,
+  //   value: function Gotcha() {}
+  // });
+  // a1; // Gotcha {}
+  // console.log('a1: ', a1);
+  // 类
+  // function Foo(who) {
+  //   this.me = who;
+  // }
+  // Foo.prototype.identify = function () {
+  //   return "I am " + this.me;
+  // };
+
+  // function Bar(who) {
+  //   Foo.call(this, who);
+  // }
+  // Bar.prototype = Object.create(Foo.prototype);
+  // Bar.prototype.speak = function () {
+  //   console.log("Hello, " + this.identify() + ".");
+  // };
+  // var b1 = new Bar("b1");
+  // console.log('b1: ', b1);
+  // var b2 = new Bar("b2");
+  // console.log('b2: ', b2);
+  // b1.speak();
+  // b2.speak();
+  // 对象关联
+  Foo = {
+    init: function (who) {
+      this.me = who;
+    },
+    identify: function () {
+      return "I am " + this.me;
+    }
+  };
+  Bar = Object.create(Foo);
+  console.log('Bar: ', Bar);
+  Bar.speak = function () {
+    console.log("Hello, " + this.identify() + ".");
+  };
+  var b1 = Object.create(Bar);
+  b1.init("b1");
+  var b2 = Object.create(Bar);
+  b2.init("b2");
+  b1.speak();
+  b2.speak();
+
+  
+</script>

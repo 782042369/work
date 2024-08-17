@@ -1,0 +1,35 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-02 14:04:11
+ * @Description: part7
+ */
+.section:nth-of-type(7) {
+  .fp-tableCell {
+    background-image: url(../images/part7/1.png);
+    background-size: 100% 300px;
+    background-position: top center;
+
+    #main {
+      padding-top: 300px;
+
+      .wordCloud {
+        height: 350px;
+      }
+    }
+
+    .txtbox:nth-of-type(1) {
+      padding-top: 60px;
+
+      span {
+        font-family: PingFangSC-Medium;
+        font-size: 28px;
+        color: #EA615B;
+        letter-spacing: 2px;
+        text-align: center;
+        line-height: 28px;
+      }
+    }
+  }
+}

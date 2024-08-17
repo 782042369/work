@@ -1,0 +1,62 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2018-12-29 11:41:11
+ * @Description: part6
+ */
+.section:nth-of-type(6) {
+  .fp-tableCell {
+    background-image: url(../images/part6/1.png);
+    background-size: 100% 344px;
+    background-position: top center;
+
+    .txtbox {
+      padding-top: 264px;
+      line-height: 80px;
+      margin-left: 60px;
+      text-align: left;
+    }
+
+    &>div:nth-of-type(1) {
+      height: 148px;
+      width: 326px;
+      top: 638px;
+      overflow: hidden;
+      z-index: 1000;
+
+      span {
+        display: block;
+        width: 752px;
+        height: 148px;
+        background-repeat: repeat-x;
+        background-image: url(../images/part6/3.png);
+        background-size: 326px 148px;
+      }
+    }
+
+    &>img:nth-of-type(1) {
+      height: 315px;
+      width: 405px;
+      top: 580px;
+    }
+
+    &>img:nth-of-type(2) {
+      height: 300px;
+      top: 620px;
+      left: 252px;
+      z-index: 100011;
+    }
+  }
+}
+
+.fp-completely.section:nth-of-type(6) {
+  .fp-tableCell {
+
+    &>div:nth-of-type(1) {
+      span {
+        animation: part6key1 6s cubic-bezier(0.33, 0, 0.67, 1) infinite;
+      }
+    }
+  }
+}

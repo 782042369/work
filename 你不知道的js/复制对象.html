@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  function anotherFunction() {
+    /*..*/
+  }
+  var anotherObject = {
+    c: true
+  };
+  var anotherArray = [];
+  var myObject = {
+    a: 2,
+    b: anotherObject, // 引用，不是复本! 
+    c: anotherArray, // 另一个引用!
+    d: anotherFunction
+  }
+  console.log('myObject: ', myObject.b.c = false);
+  console.log('myObject: ', myObject.c == anotherArray);
+  console.log('myObject: ', myObject.d == anotherFunction);
+</script>

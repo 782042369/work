@@ -1,0 +1,56 @@
+/*
+ * @Author: 杨宏旋
+ * @LastEditors: 杨宏旋
+ * @Description: 二维码页面
+ * @Date: 2019-03-04 21:11:30
+ * @LastEditTime: 2019-03-07 12:52:46
+ */
+
+.qrcode {
+  height: calc(100vh - 76px);
+  width: calc(100vw - 50px);
+  outline: 200px solid #95d16a;
+  box-shadow: 0 0 0 10px #95d16a;
+  margin: 38px 25px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.tree {
+  background: #e8f5e2 url('../images/tree.png') center/73px no-repeat;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  margin: 100px auto 32px;
+}
+
+.code {
+  width: 452px;
+  height: 452px;
+  margin: 70px auto 60px;
+}
+
+h5 {
+  font-size: 30px;
+  color: #333333;
+  line-height: 30px;
+  margin-bottom: 20px;
+  padding-left: 124px;
+}
+
+h5:nth-of-type(1) {
+  margin-bottom: 0;
+  padding: 0;
+  text-align: center;
+}
+
+p {
+  font-size: 26px;
+  color: #333333;
+  line-height: 42px;
+  padding-left: 124px;
+}
+
+i {
+  color: #ea615a;
+}

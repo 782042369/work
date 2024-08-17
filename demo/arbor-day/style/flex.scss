@@ -1,0 +1,51 @@
+/*
+ * @Author: 杨宏旋
+ * @LastEditors: 杨宏旋
+ * @Description: scss mixin
+ * @Date: 2019-03-04 11:17:14
+ * @LastEditTime: 2019-03-06 17:54:47
+ * dir：主轴方向
+    top：从上到下
+ * main：主轴对齐方式
+    between：两端对齐
+    center：居中对齐
+ * cross：交叉轴对齐方式
+    bottom：从上到下
+    center：居中对齐
+ * box：子元素设置
+    mean：子元素平分空间
+ */
+[flex] {
+  display: flex
+}
+
+[flex~="dir:top"] {
+  flex-direction: column
+}
+
+[flex~="main:between"] {
+  justify-content: space-between
+}
+
+[flex~="main:center"] {
+  justify-content: center
+}
+
+[flex~="cross:bottom"] {
+  align-items: flex-end
+}
+
+[flex~="cross:center"] {
+  align-items: center
+}
+
+[flex~="wrap:wrap"] {
+  flex-wrap: wrap;
+}
+
+[flex~="box:mean"]>* {
+  width: 0;
+  height: auto;
+  flex-grow: 1;
+  flex-shrink: 1
+}

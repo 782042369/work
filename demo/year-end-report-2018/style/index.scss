@@ -1,0 +1,181 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-03 12:16:38
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-02 16:20:14
+ * @Description: 2018年终乘车报告
+ */
+@import './reset.scss'; // 重置浏览器 
+@import './part1.scss';
+@import './part2.scss';
+@import './part3.scss';
+@import './part4.scss';
+@import './part5.scss';
+@import './part6.scss';
+@import './part7.scss';
+@import './part8.scss';
+@import './part9.scss';
+@import './share.scss';
+@import './animation.scss'; // 动画
+@import './compatible.scss'; // 适配x
+
+body {
+  height: 100vh;
+}
+
+
+.fp-tableCell {
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+// .musicbox {
+//   // 音乐icon
+//   position: fixed;
+//   left: 36px;
+//   z-index: 10000;
+//   top: 56px;
+//   height: 56px;
+//   width: 56px;
+//   background-image: url(../images/part1/music.png);
+//   background-size: cover;
+
+// }
+
+// .musicbox.yes {
+//   animation: partcommonkey2 6s linear infinite;
+// }
+
+// .musicbox.no {
+//   background-position-y: -56px;
+// }
+
+.txtbox {
+  font-family: PingFangSC-Medium;
+  font-size: 28px;
+  color: #2E6EA3;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 56px;
+  padding-top: 334px;
+
+  span {
+    font-size: 42px;
+    color: #EA615A;
+    line-height: 56px;
+    white-space : nowrap; 
+  }
+
+  em {
+    opacity: 0;
+    display: block;
+  }
+}
+// 词云小黑弹出框
+div.tooltip{
+  display: none !important;
+}
+.resize-sensor,.resize-sensor-expand{
+  margin: 0 !important;
+  width: 100%;
+  height: 100%;
+  left: 0 !important;
+  top: 0 !important;
+}
+.fp-completely {
+  .fp-tableCell {
+    .txtbox {
+      em {
+        opacity: 1;
+      }
+
+      em:nth-of-type(1) {
+        transition: all cubic-bezier(0.33, 0, 0.67, 1) 0.8s;
+      }
+
+      em:nth-of-type(2) {
+        transition: all cubic-bezier(0.33, 0, 0.67, 1) 1.8s;
+      }
+
+      em:nth-of-type(3) {
+        transition: all cubic-bezier(0.33, 0, 0.67, 1) 2.8s;
+      }
+
+      em:nth-of-type(4) {
+        transition: all cubic-bezier(0.33, 0, 0.67, 1) 3.8s;
+      }
+    }
+  }
+}
+.portrait {
+  text-align: center;
+  line-height: 10vh;
+  font-size: 30px;
+}
+.section:nth-child(n+2):not(.share) {
+
+  // 二维码
+  .fp-tableCell {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 38px;
+      left: 44px;
+      width: 142px;
+      height: 192px;
+      background-image: url(../images/common/code.png);
+      background-size: 100% 100%;
+      z-index: 1000000;
+
+    }
+  }
+}
+
+.section:nth-child(n+2):not(.no-report):not(.share) {
+
+  // 箭头
+  .fp-tableCell {
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 118px;
+      left: 50%;
+      transform: translateX(-50%) translateZ(0);
+      width: 46px;
+      height: 38px;
+      background-image: url(../images/common/arrow.png);
+      background-size: 100% 100%;
+      animation: partcommonkey 1.6s ease infinite;
+      z-index: 1000000;
+
+    }
+  }
+}
+
+// 小云
+.icon-box {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 100;
+}
+
+// 动画加速
+.ani-speed {
+  transform: translateZ(0);
+}
+
+// 水平居中
+.center-main {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 垂直剧中
+.center-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

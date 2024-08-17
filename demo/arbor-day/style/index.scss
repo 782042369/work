@@ -1,0 +1,288 @@
+/*
+ * @Author: 杨宏旋
+ * @LastEditors: 杨宏旋
+ * @Description: 坐地铁，让地球更绿
+ * @Date: 2019-02-27 17:36:48
+ * @LastEditTime: 2019-03-15 11:01:29
+ */
+
+header {
+  height: 806px;
+  padding-top: 82px;
+  background: url('../images/bg.png') no-repeat center center/ cover;
+  font-size: 26px;
+
+  li {
+    position: absolute;
+    right: 20px;
+    z-index: 3;
+    color: #FFFFFF;
+
+  }
+
+  li:nth-of-type(1),
+  li:nth-of-type(2) {
+    width: 75px;
+    border-radius: 50%;
+    border: 3px solid;
+    height: 75px;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      background: url('../images/css_sprites.png');
+      background-size: 302px 232px;
+    }
+
+    &::after {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &::before {
+      bottom: -24px;
+      z-index: 2;
+      left: 50%;
+      transform: translateX(-50%);
+
+    }
+  }
+
+  li:nth-of-type(3),
+  li:nth-of-type(4) {
+    height: 97px;
+    width: 131px;
+    background: url('../images/css_sprites.png');
+    background-size: 302px 232px;
+
+    i {
+      width: 60px;
+      display: inline-block;
+      margin-left: 11px;
+      padding-top: 3px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
+  li:nth-child(1) {
+    background-color: #B2E79D;
+    border-color: #60AA6C;
+    left: 20px;
+
+    &::after {
+      width: 38px;
+      height: 42px;
+      background-position: -72px -177px;
+    }
+
+    &::before {
+      width: 55px;
+      height: 30px;
+      background-position: -138px -127px;
+    }
+  }
+
+  li:nth-child(2) {
+    background-color: #BAD8F3;
+    border-color: #47A2D5;
+
+    &::after {
+      width: 42px;
+      height: 44px;
+      background-position: -10px -177px;
+    }
+
+    &::before {
+      background-position: -10px -127px;
+      width: 108px;
+      height: 30px;
+
+    }
+  }
+
+  li:nth-child(3) {
+    top: 200px;
+    background-position: -10px -10px;
+
+    i {
+      color: #EDA709;
+    }
+  }
+
+  li:nth-child(4) {
+    top: 320px;
+    background-position: -161px -10px;
+    ;
+
+    i {
+      color: #60AA6C;
+    }
+  }
+}
+
+main {
+  padding: 0 40px;
+  background: #fff;
+  border-radius: 30px 30px 0px 0px;
+  height: 890px;
+  position: absolute;
+  width: 100vw;
+  top: 780px;
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.title {
+  padding: 50px 0 30px;
+
+  span {
+    font-size: 28px;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 34px;
+    position: relative;
+    padding-right: 30px;
+
+    &::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      border-top: 2px solid #AAAAAA;
+      border-right: 2px solid #AAAAAA;
+      transform: rotate(45deg);
+      position: absolute;
+      right: 4px;
+      top: 10px;
+    }
+  }
+}
+
+h5 {
+  font-size: 34px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 34px;
+}
+
+
+.goods {
+  img {
+    width: 190px;
+    height: 190px;
+  }
+}
+
+.jifen {
+  height: 200px;
+}
+
+.jifen+.jifen {
+  margin-top: 20px;
+}
+
+// 气泡
+.bubble {
+  width: 99px;
+  line-height: 93px;
+  background: url('../images/bubble.png') no-repeat center/cover;
+  position: absolute;
+  left: 416px;
+  top: 134px;
+  color: #30714f;
+  text-align: center;
+  opacity: 0;
+}
+
+// 种树苗
+.addtreebtn {
+  width: 204px;
+  height: 106px;
+  position: absolute;
+  top: 640px;
+  left: calc(50vw - 102px);
+  background: url('../images/addtreebtn.png') no-repeat center/cover;
+
+}
+
+// 树木
+.treebox {
+  img {
+    position: absolute;
+
+  }
+
+  img:nth-child(1) {
+    width: 254px;
+    top: 170px;
+    left: 238px;
+    z-index: 2;
+
+  }
+
+
+  img:nth-child(2) {
+    width: 142px;
+    top: 250px;
+    left: 92px;
+    z-index: 1;
+
+  }
+
+  img:nth-child(3) {
+    width: 146px;
+    right: 160px;
+    top: 246px;
+    z-index: 1;
+  }
+
+  img:nth-child(4) {
+    width: 142px;
+    left: -20px;
+    top: 306px;
+    z-index: 2;
+  }
+
+  img:nth-child(5) {
+    width: 188px;
+    right: 6px;
+    top: 242px;
+    z-index: 2;
+
+  }
+}
+
+// 气泡动画
+.bubbleToUp {
+  animation: bubbleToUp .8s;
+}
+
+// 按钮动画
+.addbtnani {
+  animation: anibtn .24s;
+}
+
+// 树成长动画
+.addtreeani {
+  animation: addtree 1.6s;
+}
+
+// 更多 树木
+.moretree {
+  width: 100%;
+  position: absolute;
+  top: 134px;
+  opacity: 0;
+  transition: all .5s;
+}
+
+.moretreeop1 {
+  opacity: 1;
+
+}

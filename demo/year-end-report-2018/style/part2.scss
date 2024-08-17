@@ -1,0 +1,61 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-24 11:29:45
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2018-12-29 11:37:16
+ * @Description: part2
+ */
+.section:nth-of-type(2):not(.no-report) {
+  .fp-tableCell {
+    &>img:nth-of-type(1) {
+      height: 108px;
+      width: 292px;
+      left: 54px;
+      top: 188px;
+    }
+
+    &>img:nth-of-type(2) {
+      height: 102px;
+      width: 218px;
+      right: 0;
+      top: 512px;
+
+    }
+    &>div:nth-of-type(1) {
+      position: absolute;
+      right: 0px;
+      top: 600px;
+      width: 530px;
+      height: 300px;
+      img {
+        width: 530px;
+        height: 300px;
+        opacity: 0;
+      }
+    }
+    &>img:nth-of-type(3) {
+      height: 92px;
+      right: 0;
+      bottom: 238px;
+    }
+
+    &>img:nth-of-type(4) {
+      width: 580px;
+      left: -120px;
+      bottom: 0;
+    }
+  }
+}
+
+.fp-completely.section:nth-of-type(2) {
+  .fp-tableCell {
+    &>div:nth-of-type(1) {
+        animation: part2key1 1.5s cubic-bezier(.66, .01, 1, 1);
+      img{
+        animation: part2key2 1.5s cubic-bezier(.66, .01, 1, 1);
+        opacity: 1;
+      }
+    }
+  }
+}
+

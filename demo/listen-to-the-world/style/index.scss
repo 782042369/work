@@ -1,0 +1,56 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-03 12:16:38
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-30 12:40:40
+ * @Description: 途听天下
+ */
+@import './reset.scss'; // 重置浏览器 
+@import './animation.scss'; // 动画
+@import './header.scss'; // 头部
+@import './music_box.scss'; // 音乐播放
+@import './join.scss'; // 可能喜欢
+@import './footer.scss'; // 底部
+@import './dialog.scss'; // 弹窗
+
+main {
+  padding-bottom: 70px;
+  background-image: radial-gradient(closest-side, #300909 53%, #000000 100%);
+}
+
+.left_label {
+  display: block;
+  background: #D2AA74;
+  box-shadow: 0 2px 4px 0 #111111;
+  border-radius: 0px 96px 96px 0px;
+  font-size: 27px;
+  color: #FFFFFF;
+  line-height: 28px;
+  padding: 12px 0 0 22px;
+  position: relative;
+  height: 80px;
+  width: 440px;
+
+  em {
+    display: block;
+    font-size: 20px;
+    color: #FFEAB9;
+    margin-top: 5px;
+    line-height: 28px
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    transform-origin: 0 0;
+    transform: scale(0.5);
+    border: 1px solid #FFFFFF;
+    /*no*/
+    border-left: none;
+    border-radius: 0px 192px 192px 0;
+  }
+}

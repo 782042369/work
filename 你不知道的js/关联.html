@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  if (!Object.create) {
+    Object.create = function (o) {
+      function F() {}
+      F.prototype = o;
+      return new F();
+    };
+  }
+  var foo = {
+    something: function () {
+      console.log("Tell me something good...");
+    }
+  };
+  var foo1 = Object.create(foo);
+  var bar = Object.create(foo1);
+  console.log('bar: ', bar.__proto__.__proto__);
+  bar.something(); // Tell me something good...
+</script>

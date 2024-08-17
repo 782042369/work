@@ -1,0 +1,30 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-10 11:26:19
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-30 14:53:07
+ * @Description: 重置浏览器
+ */
+html {
+  box-sizing: border-box;
+}
+
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+input,
+button,
+span,
+div {
+  -webkit-tap-highlight-color: rgba(219, 219, 219, 0);
+  outline: none;
+  border: none;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  let count = 1000;
+  let array = new Array();
+  const suiji = (count) => {
+    let rand = parseInt(Math.random() * count);
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === rand) return false;
+    }
+    array.push(rand);
+  }
+  for (let i = 0;; i++) {
+    if (array.length < count) {
+      suiji(count)
+    } else {
+      break;
+    }
+  }
+  console.log('array: ', array);
+</script>

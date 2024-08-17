@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // let p1 = new Promise(function (resolve, reject) {
+  //   reject("Oops");
+  // });
+  // let p2 = Promise.reject("Oops");
+  // p1.then(res => {
+  //   console.log('res: ', res);
+  // }).catch(res => {
+  //   console.log('res: ', res);
+  // })
+  // p2.then(res => {
+  //   console.log('res: ', res);
+  // }).catch(res => {
+  //   console.log('res: ', res);
+  // }).catch(res => {
+  //   console.log('res: ', res);
+  // })
+  let fulfilledTh = {
+    then: function (cb) {
+      cb(42);
+    }
+  };
+  let rejectedTh = {
+    then: function (cb, errCb) {
+      throw ('1');
+      cb("Oops");
+    }
+  };
+
+  // let p = Promise.resolve(fulfilledTh);
+  let s = Promise.resolve(rejectedTh);
+  // p.then(res => {
+  //   console.log('res: ', res);
+  // })
+  s.then(res1 => {
+    console.log('res1: ', res1);
+  }).catch(res2 => {
+    console.log('res2: ', res2);
+  })
+  // let rejectedTh = {
+  //   then: function (cb, errCb) {
+  //     errCb("Oops");
+  //   }
+  // };
+  // let p1 = Promise.resolve(fulfilledTh);
+  // let p2 = Promise.resolve(rejectedTh);
+  
+</script>

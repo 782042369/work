@@ -1,0 +1,190 @@
+/*
+ * @Author: yanghognxuan
+ * @Date: 2018-12-29 12:38:11
+ * @LastEditors: yanghognxuan
+ * @LastEditTime: 2019-01-02 14:05:07
+ * @Description: 适配长屏幕
+ */
+@media screen and (min-height: 800px) {
+
+  // 适配长屏幕
+  .section:nth-of-type(1) {
+
+    main:nth-of-type(2) {
+      .icon-box:nth-of-type(1) {
+        top: 250px;
+      }
+
+      .icon-box:nth-of-type(2) {
+        top: 484px;
+      }
+
+      .icon-box:nth-of-type(3) {
+        top: 382px;
+      }
+
+      .icon-box:nth-of-type(4) {
+        top: 484px;
+      }
+
+      .icon-box:nth-of-type(5) {
+        top: 660px;
+      }
+
+    }
+  }
+
+  .section:nth-of-type(2):not(.no-report) {
+    .fp-tableCell {
+      &>img:nth-of-type(2) {
+        top: 512px;
+
+      }
+
+      &>div:nth-of-type(1) {
+        top: 650px;
+      }
+    }
+  }
+
+  .section:nth-of-type(3) {
+    .fp-tableCell {
+      &>img:nth-of-type(1) {
+        top: 738px;
+      }
+
+      .txtbox {
+        padding-top: 288px;
+      }
+
+      &>img:nth-of-type(2) {
+        top: 678px;
+      }
+
+      &>img:nth-of-type(3) {
+        top: 468px;
+      }
+
+      .icon-box:nth-of-type(1) {
+        top: 114px;
+      }
+
+      .icon-box:nth-of-type(2) {
+        top: 468px;
+      }
+
+      .icon-box:nth-of-type(3) {
+        top: 610px;
+      }
+
+      .icon-box:nth-of-type(4) {
+        top: 330px;
+      }
+    }
+  }
+
+  .section:nth-of-type(4) {
+    .fp-tableCell {
+      background-position: 0 620px;
+
+      &>img:nth-of-type(1) {
+        top: 924px;
+      }
+
+      hr {
+        top: 1008px;
+      }
+
+      .txtbox {
+        padding-top: 268px;
+      }
+
+      .icon-box:nth-of-type(1) {
+        top: 698px;
+      }
+
+      .icon-box:nth-of-type(2) {
+        top: 516px;
+      }
+
+      .icon-box:nth-of-type(3) {
+        top: 630px;
+      }
+    }
+  }
+
+  .section:nth-of-type(6) {
+    .fp-tableCell {
+      .txtbox {
+        padding-top: 336px;
+      }
+
+      &>div:nth-of-type(1) {
+        top: 770px;
+      }
+
+      &>img:nth-of-type(1) {
+        top: 716px;
+      }
+
+      &>img:nth-of-type(2) {
+        top: 756px;
+      }
+    }
+  }
+
+  .section:nth-of-type(7) {
+    .fp-tableCell {
+      #main {
+        .wordCloud {
+          height: 400px;
+        }
+      }
+
+      .txtbox:nth-of-type(1) {
+        padding-top: 82px;
+      }
+    }
+  }
+
+  .section:nth-of-type(8) {
+    .fp-tableCell {
+      .txtbox:nth-of-type(1) {
+        padding-top: 176px;
+      }
+    }
+
+    .icon-box:nth-of-type(1) {
+      top: 650px;
+    }
+
+    .icon-box:nth-of-type(2) {
+      top: 916px;
+    }
+
+    .icon-box:nth-of-type(3) {
+      top: 770px;
+    }
+
+    .icon-box:nth-of-type(4) {
+      top: 844px;
+    }
+  }
+
+  .no-report {
+    .fp-tableCell {
+      .txtbox:nth-of-type(1) {
+        padding-top: 80px;
+      }
+
+      &>img:nth-of-type(1) {
+        top: 360px;
+      }
+
+      .txtbox:nth-of-type(2) {
+        padding-top: 420px;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  let arr = [1];
+  let brr = arr;
+  let brr1 = JSON.parse(JSON.stringify(arr));
+  let crr = 1;
+  let drr = crr;
+  brr.push(2);
+  brr1.push(3);
+  drr = 2;
+  console.log('arr: ', arr);
+  console.log('brr: ', brr);
+  console.log('brr1: ', brr1);
+  console.log('crr: ', crr);
+  console.log('drr: ', drr);
+</script>

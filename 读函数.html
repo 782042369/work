@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      height: 200px;
+      background: red;
+      border-radius: 50% / 23%;
+    }
+  </style>
+</head>
+
+<body>
+</body>
+<div class='box'></div>
+
+</html>
+<script>
+  // async function async1() {
+  //   console.log('async1 start');
+  //   await Promise.resolve();
+  //   console.log('async1 end');
+  // }
+  // async1();
+  // new Promise((resolve, reject) => {
+  //   console.log('Promise‘ start');
+  //   resolve()
+  // }).then(() => {
+  //   console.log('Promise then1');
+  // }).then(() => {
+  //   console.log('Promise then2');
+  // }).then(() => {
+  //   console.log('Promise then3');
+  // })
+
+  // bar();
+  // bar = function () { // 函数表达式
+  //   console.log(1);
+  // };
+  // bar();
+
+  // function bar() { // 函数声明 最先执行
+  //   console.log(2);
+  // }
+  // bar();
+  // (function bar() { // 自执行
+  //   console.log(3);
+  // })();
+  // bar();
+  // bar = 5;
+  // (function bar() { // 自执行
+  //   console.log(4);
+  // })();
+  // bar();
+  // console.log(bar)
+  // box.addEventListener("click", function () { // 匿名函数
+  //   alert("aaa")
+  // });
+
+  // var v = "hello";
+  // (function () {
+  //   console.log(v);
+  //   v = "world";
+  //   console.log(v);
+  // })();
+  // console.log(v);
+
+  var v = "hello";
+  if (true) {
+    console.log(v);
+    var v = "world";
+    console.log(v);
+  }
+  console.log(v);
+</script>

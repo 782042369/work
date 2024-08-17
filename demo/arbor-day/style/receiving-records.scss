@@ -1,0 +1,159 @@
+/*
+ * @Author: 杨宏旋
+ * @LastEditors: 杨宏旋
+ * @Description: 中奖记录
+ * @Date: 2019-03-04 21:11:30
+ * @LastEditTime: 2019-03-22 18:43:01
+ */
+.box {
+  background: url('../images/records.png') no-repeat top center/100% 350px;
+  padding-top: 62px;
+}
+
+header {
+  background: #fff;
+  margin: 0 62px 62px 62px;
+  border-radius: 10px;
+  height: 225px;
+  padding-top: 29px;
+
+  h5,
+  em {
+    font-size: 26px;
+    line-height: 26px;
+  }
+
+  h5 {
+    color: #2f2f2f;
+    padding-bottom: 55px;
+    text-align: center;
+    position: relative;
+
+    em {
+      height: 6px;
+      width: 6px;
+      background: #333333;
+      border-radius: 999px;
+      top: 12px;
+      position: absolute;
+      transform: translateY(-50%);
+      margin-left: 10px;
+    }
+
+    em:nth-child(1) {
+      transform: translateY(-50%) scaleX(-1);
+      margin-left: -20px;
+    }
+
+    em::after {
+      width: 59px;
+      height: 2px;
+      background: #333333;
+      content: '';
+      margin-left: 9px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  li+li {
+    margin-left: 80px;
+  }
+
+  span {
+    font-size: 56px;
+    color: #ffc40a;
+    line-height: 56px;
+    margin-right: 10px;
+  }
+
+
+  em {
+    color: #2f2f2f;
+  }
+
+}
+
+.title-txt {
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #ffc40a;
+    border-right: 2px solid #ffc40a;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 6px;
+    margin-left: 10px;
+  }
+}
+
+
+
+main {
+  height: calc(100vh - 350px);
+  overflow: auto;
+  padding: 37px 30px 30px 30px;
+  -webkit-overflow-scrolling: touch;
+
+  span {
+    font-size: 24px;
+    color: #ffc40a;
+    line-height: 24px;
+    width: 50%;
+  }
+
+  h6 {
+    font-size: 30px;
+    color: #333333;
+    width: 50%;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+
+  em {
+    font-size: 24px;
+    color: #999999;
+    text-align: right;
+    width: 50%;
+    line-height: 24px;
+  }
+
+  li+li {
+    margin-top: 41px;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+  font-size: 26px;
+  color: #ffffff;
+  letter-spacing: 0;
+  line-height: 50px;
+  background: url('../images/titlebg.png') no-repeat center/cover;
+  height: 50px;
+  width: 175px;
+  text-align: center;
+}
+
+ul+.title {
+  margin-top: 71px;
+}
+
+// 暂无
+.nodate {
+  background: #FFF9E7;
+  border-radius: 13px;
+  font-size: 30px;
+  color: #E1AB42;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 48px;
+  padding: 18px 0 16px 0;
+  width: 500px;
+  height: 130px;
+  margin: 60px auto 100px;
+}
